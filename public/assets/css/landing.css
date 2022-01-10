@@ -1,0 +1,411 @@
+.navbar-brand .img-fluid{width: 70%;}
+.jtheader{padding: 10px 0;background: #fff;}
+
+
+.sectionland{padding: 60px 0;}
+#hero{padding: 200px 0; color: #fff; background-image: none; background-size: auto; background-image: radial-gradient(#001c5e 1px,#000717 1px); -webkit-background-size: 20px 20px; background-size: 20px 20px;}
+.footerland {
+    background: #151515;
+    padding: 15px 0;
+    color: #f7f7f7;
+}
+.foot-copyright {
+  text-align: center;
+  font-size: 13px;
+}
+.foot-copyright a {
+  color: #ffff;
+}
+
+.navbar-expand-xl .navbar-collapse {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+
+.navbar-nav {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.navbar-nav .nav-item {
+    position: relative;
+}
+.navbar-nav .nav-item .nav-link {font-weight: 600; font-family: "Poppins";font-size: 15px; padding-right: 12px; -webkit-transition: all 0.3s ease; transition: all 0.3s ease;
+}
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link.active {
+    opacity: 1;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+
+
+.landing-home {
+    scroll-behavior: smooth;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background-position: right top;
+    background-size: cover;
+    background: linear-gradient(90deg, #f1f0ff 21px, transparent 1%) center, linear-gradient(#eae7ff 21px, transparent 1%) center, rgba(115, 102, 255, 0.34902);
+    background-size: 23px 23px;
+}
+.landing-home .content h1 {
+    font-weight: 600;
+    color: var(--theme-deafult);
+    font-weight: 700;
+    -webkit-text-fill-color: transparent;
+    background: -o-linear-gradient(transparent, transparent);
+    -webkit-background-clip: text;
+    background-image: -webkit-linear-gradient(rgba(158, 107, 248, 0.5), rgba(119, 101, 250, 0.5)), url(../../assets/images/landing/title.gif);
+    background-position: left;
+    line-height: 1;
+    font-size: calc(25px + (57 - 25) * ((100vw - 300px) / (1920 - 300)));
+}
+.landing-home .content h2 {
+    font-size: calc(20px + (28 - 20) * ((100vw - 300px) / (1920 - 300)));
+}
+.landing-home .content p {
+    font-size: calc(14px + (20 - 14) * ((100vw - 300px) / (1920 - 300)));
+    font-weight: 200;
+    font-family: Poppins;
+    padding-right: 50px;
+}
+.landing-home .navbar-brand img {
+    width: 70%;
+}
+.landing-home .btn-grp .btn img {
+    height: 20px;
+    margin-right: 5px;
+}
+.landing-home .decoration li {
+    position: absolute;
+}
+.landing-home .decoration li img {
+    height: 20px;
+}
+.landing-home .decoration .one {
+    left: -10px;
+    top: 200px;
+    -webkit-animation: spin 10s infinite;
+    animation: spin 10s infinite;
+}
+.landing-home .decoration .two {
+    left: 35%;
+    top: 80px;
+    -webkit-animation: animationtop 10s infinite;
+    animation: animationtop 10s infinite;
+}
+.landing-home .decoration .three {
+    bottom: 40px;
+    left: 160px;
+    -webkit-animation: animationleft 10s infinite;
+    animation: animationleft 10s infinite;
+}
+.landing-home .decoration .four {
+    left: 42%;
+    top: 40%;
+    -webkit-animation: spin 15s infinite;
+    animation: spin 15s infinite;
+}
+.landing-home .decoration .five {
+    bottom: -6px;
+    left: 30%;
+    -webkit-animation: spin 20s infinite;
+    animation: spin 20s infinite;
+}
+.landing-home .decoration .six {
+    left: 46%;
+    top: 20%;
+    -webkit-animation: animationleft 5s infinite;
+    animation: animationleft 5s infinite;
+}
+.landing-home .decoration .seven {
+    left: -11px;
+    top: 70%;
+    -webkit-animation: animationleft 5s infinite;
+    animation: animationleft 5s infinite;
+}
+.landing-home .screen1 {
+    position: absolute;
+    right: 0;
+    top: 150px;
+    -webkit-box-shadow: 0 0 47px 10px rgba(115, 102, 255, 0.1);
+    box-shadow: 0 0 47px 10px rgba(115, 102, 255, 0.1);
+    border-radius: 10px;
+    -webkit-animation: animationleft 20s infinite;
+    animation: animationleft 20s infinite;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.landing-home .screen1:hover {
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-box-shadow: 0 0 47px 10px rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 47px 10px rgba(255, 255, 255, 0.35);
+}
+.landing-home .screen2 {
+    position: absolute;
+    left: 70px;
+    top: 270px;
+    -webkit-box-shadow: 0 0 47px 10px rgba(115, 102, 255, 0.1);
+    box-shadow: 0 0 47px 10px rgba(115, 102, 255, 0.1);
+    border-radius: 10px;
+    -webkit-animation: animationtop 30s infinite;
+    animation: animationtop 30s infinite;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.landing-home .screen2:hover {
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-box-shadow: 0 0 47px 10px rgba(115, 102, 255, 0.35);
+    box-shadow: 0 0 47px 10px rgba(115, 102, 255, 0.35);
+}
+.landing-home .content {
+    height: calc(100vh - 101px);
+    margin-top: 101px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-left: 100px;
+}
+.landing-home .sticky-header header .nav-padding {
+    padding: 30px 50px;
+}
+
+
+.landing-page .navbar-expand-xl .navbar-collapse {
+    background-color: transparent;
+}
+.landing-page .page-body-wrapper {
+    min-height: 100vh;
+    background: #eaf4ff;
+    overflow: hidden;
+}
+.landing-page .navbar-nav .nav-item.buy-btn {
+    background-color: white;
+    border-radius: 5px;
+    padding: 0 20px;
+    margin-left: 10px;
+}
+.landing-page .navbar-nav .nav-item.buy-btn a {
+    color: var(--theme-deafult);
+}
+.landing-page .sticky-header header {
+    background: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    z-index: 100;
+    left: 0;
+    height: auto;
+}
+.landing-page .sticky-header header.sticky {
+    margin-top: 0;
+    background: #f4f1fb;
+}
+.landing-page .sticky-header header.sticky .navbar-nav .nav-item .nav-link {
+    color: #2c323f;
+    font-size: 16px;
+    padding: 15px 12px;
+}
+.landing-page .sticky-header header.sticky .buy-btn {
+    background: linear-gradient(26deg, #7366ff 0%, #a26cf8 100%);
+}
+.landing-page .sticky-header header.sticky .buy-btn a {
+    color: #fff !important;
+}
+.landing-center {
+    text-align: center;
+}
+.landing-center .title {
+    margin-bottom: 30px;
+}
+.landing-center .footer-content h1 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    letter-spacing: 1px;
+}.landing-slider h4 {
+    position: relative;
+    font-size: 20px;
+    color: #7366ff;
+    text-transform: capitalize;
+}
+.landing-slider h4:before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 12px;
+    margin: 0 auto;
+    background-color: rgba(115, 102, 255, 0.15);
+    z-index: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.landing-cards {
+    -webkit-transform: rotate(-12deg);
+    transform: rotate(-12deg);
+}
+.landing-cards .landing-card {
+    border-radius: 15px;
+    -webkit-box-shadow: 0 0 37px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 37px rgba(255, 255, 255, 0.2);
+    margin: 15px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.landing-cards .landing-card:hover {
+    -webkit-transform: translate(0, -7px) scale(1.01);
+    transform: translate(0, -7px) scale(1.01);
+    -webkit-box-shadow: 0 0 37px rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 37px rgba(255, 255, 255, 0.4);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.landing-ul li {
+    position: relative;
+    padding-left: 30px;
+    font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1920 - 300)));
+    padding-bottom: calc(5px + (10 - 5) * ((100vw - 300px) / (1920 - 300)));
+    color: #737171;
+}
+.landing-ul li::before {
+    content: "-";
+    font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1920 - 300)));
+    left: 0;
+    position: absolute;
+    top: -3px;
+}
+.landing-home .sticky .navbar-brand img {
+    max-height: 35px;
+}
+
+@media (max-width: 1440px) {
+    .navbar-nav .nav-item .nav-link {
+        font-size: 16px;
+        padding: 12px 7px;
+    }
+    .layout .text-left {
+        margin-bottom: -5px;
+    }
+    .layout .text-left .btn {
+        font-size: 11px;
+        margin-bottom: 5px;
+        margin-left: 0.1rem !important;
+    }
+    .landing-home .content {
+        margin-left: 30px;
+    }
+    .landing-home .btn {
+        padding: 0.375rem 0.8rem;
+    }
+    .landing-home .screen2 {
+        left: 0;
+    }
+}
+@media (max-width: 1366px) {
+    .landing-home .col-xl-5 {
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 0 100% 100% 0;
+    }
+    .landing-cards .landing-card {
+        margin: 5px;
+    }
+}
+
+
+@media only screen and (max-width: 1199px) {
+    .landing-home {
+        min-height: 768px;
+    }
+    .landing-home .content {
+        min-height: 668px;
+    }
+    .landing-home .content .mr-3 {
+        margin-right: 0.5rem !important;
+    }
+    .landing-home .screen1 {
+        left: 100px;
+    }
+    .landing-page .buy-btn {
+        position: relative;
+    }
+    .landing-page .navbar-expand-xl .navbar-collapse {
+        background-color: white;
+        margin-top: 20px;
+    }
+    .landing-page .navbar-expand-xl .navbar-collapse .navbar-nav {
+        padding: 20px 30px 30px 30px;
+    }
+    .bg-sky-blue .main-landing {
+        height: 700px;
+    }
+    .bg-sky-blue .main-landing .landing-main-content {
+        width: 70%;
+    }
+    .landing-main .sticky .navbar-expand-xl .navbar-brand {
+        top: 8px;
+    }
+    .landing-main .sticky .navbar-expand-xl .navabr_btn-set {
+        top: 16px;
+    }
+    .landing-main .navbar-toggler span {
+        background-color: #fff;
+    }
+    .landing-main .navbar_nav_modify {
+        width: 100vw;
+        left: 0;
+        position: fixed;
+        height: 100vh;
+        background-color: #293240;
+        top: 0;
+        padding: 120px 0px;
+    }
+    .landing-main h4 {
+        font-size: 20px;
+    }
+    .landing-main .navbar-expand-xl .navabr_btn-set {
+        position: fixed;
+        top: 24px;
+        z-index: 1;
+        right: 20px;
+    }
+    .landing-main .navbar-expand-xl .navbar-brand {
+        padding-left: 5px;
+        z-index: 1;
+        position: fixed;
+        top: 14px;
+    }
+    .landing-main .navbar-expand-xl .navbar-collapse .navbar-nav .nav-item a {
+        padding: 28px 60px;
+        width: 16px;
+        margin: 0 auto;
+        text-align: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .landing-main .navbar-expand-lg .navbar-brand {
+        padding-left: 5px;
+    }
+    .landing-main .navbar-expand-lg .navbar-collapse .navbar-nav .nav-item a {
+        padding: 9px;
+    }
+}
