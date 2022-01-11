@@ -1,7 +1,6 @@
 @extends('layouts.auth.master')
 @section('title', 'Team Area')
 
-
 @section('css')
 @endsection
 

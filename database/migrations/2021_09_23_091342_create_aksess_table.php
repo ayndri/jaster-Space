@@ -14,11 +14,13 @@ class CreateAksessTable extends Migration
     public function up()
     {
         Schema::create('aksess', function (Blueprint $table) {
-            $table->bigIncrements('idAks');
-            $table->integer('idWeb');
-            $table->string('domAks', 40);
-            $table->string('userAks', 40);
-            $table->string('passAks', 40);
+            $table->bigIncrements('idAkses');
+            $table->integer('idOrder')->nullable();
+            $table->integer('idBrief')->nullable();
+            $table->integer('idHost')->nullable();
+            $table->string('dimainAkses', 40)->nullable();
+            $table->string('userAkses', 40)->nullable();
+            $table->string('passAkses', 40)->nullable();
             $table->timestamps();
         });
     }

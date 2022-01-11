@@ -16,14 +16,10 @@ class CreateTrxsTable extends Migration
     {
         Schema::create('trxs', function (Blueprint $table) {
             $table->bigIncrements('idTrx');
-            $table->integer('idWeb');
-            $table->decimal('dpTrx');
-            $table->decimal('reTrx');
-            $table->decimal('payTrx');
-            $table->string('fromTrx', 40);
-            $table->string('serTrx', 40);
-            $table->integer('qtyTrx');
-            $table->decimal('harTrx');
+            $table->integer('idOrder')->nullable();
+            $table->string('paketTrx', 40)->nullable();
+            $table->integer('qtyTrx')->nullable();
+            $table->integer('hargaTrx')->nullable();
             $table->timestamps();
         });
     }
