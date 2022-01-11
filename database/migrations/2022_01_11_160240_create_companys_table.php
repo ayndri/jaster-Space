@@ -15,12 +15,11 @@ class CreateCompanysTable extends Migration
     {
         Schema::create('companys', function (Blueprint $table) {
             $table->bigIncrements('idComp');
-            $table->unsignedBigInteger('idUser')->nullable();
-            $table->foreign('idUser')->references('idUser')->on('users')->cascadeOnDelete();
-            $table->string('brandComp');
-            $table->string('namaComp');
-            $table->string('addrComp');
-            $table->string('kotaComp');
+            $table->integer('idUser')->nullable();
+            $table->string('brandComp')->nullable();
+            $table->string('namaComp')->nullable();
+            $table->string('addrComp')->nullable();
+            $table->string('kotaComp')->nullable();
             $table->timestamps();
         });
     }

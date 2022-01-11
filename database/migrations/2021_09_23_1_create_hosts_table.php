@@ -14,10 +14,10 @@ class CreateHostsTable extends Migration
     public function up()
     {
         Schema::create('hosts', function (Blueprint $table) {
-            $table->bigIncrements('idHost');
-            $table->string('domHost', 40);
-            $table->string('userHost', 40);
-            $table->string('passHost', 40);
+            $table->bigIncrements('idHost')->nullable();
+            $table->string('domHost', 40)->nullable();
+            $table->string('userHost', 40)->nullable();
+            $table->string('passHost', 40)->nullable();
             $table->timestamps();
         });
     }
