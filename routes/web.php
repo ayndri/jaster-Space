@@ -12,7 +12,7 @@ Route::get('/', [App\Http\Controllers\AdmController::class, 'index'])->name('/')
 
 // Route::get('/in', 'App\Http\Controllers\AdmController@index')->name('admin');
 
-    
+
 // Route::prefix('in')->group(function () {
 //     Route::view('/', 'dashboard.index')->name('index');
 // });
@@ -58,7 +58,9 @@ Route::get('/jweb/{id}/view', ['as' => 'jweb.view', 'uses' => 'App\Http\Controll
 Route::get('/jweb/{id}/edit', ['as' => 'jweb.edit', 'uses' => 'App\Http\Controllers\JwebCtrl@edit']);
 Route::post('/jweb/{id}/edit', ['as' => 'jweb.update', 'uses' => 'App\Http\Controllers\JwebCtrl@update']);
 
-
+Route::get('/domain', ['as' => 'domain.index', 'uses' => 'App\Http\Controllers\DomainController@index']);
+Route::get('/domain/search', ['as' => 'domain.search', 'uses' => 'App\Http\Controllers\DomainController@searchAjax']);
+Route::get('/domain/getHosting', ['as' => 'domain.getHosting', 'uses' => 'App\Http\Controllers\DomainController@getHosting']);
 
 
 Route::get('/reset', ['as' => 'reset.pass', 'uses' => 'App\Http\Controllers\AdmController@reset'])->middleware('admin');

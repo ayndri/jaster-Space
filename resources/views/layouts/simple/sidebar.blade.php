@@ -22,19 +22,20 @@
     <li class="nav-item">
       <a class="{{ request()->route()->getPrefix() == '/page-layouts' ? 'active' : '' }}" href="#">
 	  <i data-feather="hard-drive"></i><span>Server</span>
-      
+
       </a>
       <ul class="nav-submenu">
         <li><a href="{{route('host.all')}}" class="{{ Route::currentRouteName() == 'hosting' ? 'active' : '' }}">Hosting</a></li>
         <li><a href="#" class="{{ Route::currentRouteName() == 'domain' ? 'active' : '' }}">Domain</a></li>
         <li><a href="#" class="{{ Route::currentRouteName() == 'renewal' ? 'active' : '' }}">Renewal</a></li>
+        <li><a href="{{route('domain.index')}}" class=" ">Cari Hosting</a></li>
       </ul>
     </li>
 
     <li class="nav-item">
       <a class="{{ request()->route()->getPrefix() == '/page-layouts' ? 'active' : '' }}" >
 	  <i data-feather="flag"></i><span>JasterAds</span>
-      
+
       </a>
       <ul class="nav-submenu">
         <li><a href="{{route('ads.active')}}" class="{{ Route::currentRouteName() == 'acv-ads' ? 'active' : '' }}">Active Ads</a></li>
@@ -47,7 +48,7 @@
     <li class="nav-item">
       <a class="{{ request()->route()->getPrefix() == '/page-layouts' ? 'active' : '' }}" href="#">
 	  <i data-feather="instagram"></i><span>Jastergram</span>
-      
+
       </a>
       <ul class="nav-submenu">
         <li><a href="#" class="{{ Route::currentRouteName() == 'prog-jg' ? 'active' : '' }}">List Progress</a></li>
