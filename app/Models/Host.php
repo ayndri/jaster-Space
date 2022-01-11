@@ -9,4 +9,8 @@ class Host extends Model
 {
     protected $fillable = ['domHost', 'userHost', 'passHost'];
     protected $primaryKey = 'idHost';
+
+    public function domain(){
+        return $this->hasMany(Domain::class);
+    }
 }
