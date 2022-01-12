@@ -36,6 +36,7 @@ class CreateBriefsTable extends Migration
         });
     }
 
+    
     /**
      * Reverse the migrations.
      *

@@ -12,3 +12,4 @@ class Brief extends Model
     protected $fillable = ['idAkses', 'idOrder', 'idComp', 'logoBrief', 'colorBrief', 'waBrief', 'emailBrief', 'igBrief', 'passgramBrief', 'fbBrief', 'sosBrief', 'telBrief', 'mpBrief', 'reqBrief', 'postBrief', 'targetBrief'];
     protected $primaryKey = 'idBrief';
 }
+

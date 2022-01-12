@@ -26,6 +26,7 @@ class CreateAksessTable extends Migration
         });
     }
 
+    
     /**
      * Reverse the migrations.
      *

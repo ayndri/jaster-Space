@@ -13,3 +13,4 @@ class Trx extends Model
     protected $primaryKey = 'idTrx';
 
 }
+

@@ -15,3 +15,4 @@ class Host extends Model
         return $this->hasMany(Domain::class);
     }
 }
+
