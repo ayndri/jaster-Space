@@ -15,17 +15,17 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('idOrder');
-            $table->integer('idBrief');
-            $table->integer('idAkses');
-            $table->integer('idUser');
-            $table->integer('idComp');
-            $table->integer('dpTrx');
-            $table->integer('renew');
-            $table->date('deadlineTrx');
-            $table->string('fromTrx');
-            $table->string('jenisOrder');
-            $table->string('totalOrder');
-            $table->string('statusWeb');
+            $table->integer('idBrief')->nullable();
+            $table->integer('idAkses')->nullable();
+            $table->integer('idUser')->nullable();
+            $table->integer('idComp')->nullable();
+            $table->integer('dpTrx')->nullable();
+            $table->integer('renew')->nullable();
+            $table->date('deadlineTrx')->nullable();
+            $table->string('fromTrx')->nullable();
+            $table->string('jenisOrder')->nullable();
+            $table->string('totalOrder')->nullable();
+            $table->string('statusWeb')->nullable();
 
             $table->timestamps();
         });

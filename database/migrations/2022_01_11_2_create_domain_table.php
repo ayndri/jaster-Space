@@ -17,7 +17,7 @@ class CreateDomainTable extends Migration
             $table->id();
             $table->string('namaDomain',200);
             $table->unsignedBigInteger('host_id')->nullable();
-            $table->foreign('host_id')->references('idHost')->on('hosts')->cascadeOnDelete();
+            $table->foreign('host_id')->references('idHost')->on('hosts')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,5 +30,6 @@ class CreateDomainTable extends Migration
     public function down()
     {
         Schema::dropIfExists('domain');
+        Schema::dropForeign(['host_id']);
     }
 }
