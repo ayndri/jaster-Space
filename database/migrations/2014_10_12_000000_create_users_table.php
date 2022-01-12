@@ -18,11 +18,14 @@ class CreateUsersTable extends Migration
             $table->string('nama');
             $table->string('email')->unique();
             $table->string('usrn')->unique();
+            $table->string('jabatUser')->nullable();
             $table->timestamp('lastLogin')->nullable();
             $table->string('password')->default('$2y$10$KnrGw3LGvU5nRsaXPkyDy.0WvnEy3FbCi7q5kab9IwgTQPg9i5Zmi');
-            $table->integer('levelUser');
-            $table->string('telpUser');
-            $table->string('fotoUser');
+            $table->string('waUser')->nullable();
+            $table->date('tglUser')->nullable();
+            $table->string('addrUser')->nullable();
+            $table->string('kotaUser')->nullable();
+            $table->string('fotoUser')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
