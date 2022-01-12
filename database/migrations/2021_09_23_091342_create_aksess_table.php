@@ -17,8 +17,7 @@ class CreateAksessTable extends Migration
             $table->bigIncrements('idAkses');
             $table->integer('idOrder')->nullable();
             $table->integer('idBrief')->nullable();
-            $table->unsignedBigInteger('host_id')->nullable();
-            $table->foreign('host_id')->references('idHost')->on('hosts')->onDelete('cascade');
+            $table->integer('idHost')->nullable();
             $table->string('domainAkses', 40)->nullable();
             $table->string('userAkses', 40)->nullable();
             $table->string('passAkses', 40)->nullable();
