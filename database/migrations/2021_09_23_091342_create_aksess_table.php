@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateAksessTable extends Migration
 {
-    
     /**
      * Run the migrations.
      *
@@ -26,7 +25,6 @@ class CreateAksessTable extends Migration
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
