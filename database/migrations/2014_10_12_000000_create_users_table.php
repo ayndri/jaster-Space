@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('usrn')->unique();
             $table->timestamp('lastLogin')->nullable();
             $table->string('password')->default('$2y$10$KnrGw3LGvU5nRsaXPkyDy.0WvnEy3FbCi7q5kab9IwgTQPg9i5Zmi');
-            $table->integer('levelUser');
             $table->string('telpUser');
             $table->string('fotoUser');
             $table->rememberToken();
