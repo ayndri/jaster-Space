@@ -22,9 +22,10 @@ class User extends Authenticatable
         'email',
         'usrn',
         'password',
-        'levelUser',
         'telpUser',
-        'lastLogin'
+        'lastLogin',
+        'jabatUser',
+        'fotoUser'
     ];
 
     /**

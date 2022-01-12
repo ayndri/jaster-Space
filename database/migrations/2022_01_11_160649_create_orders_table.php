@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->integer('idComp')->nullable();
             $table->integer('dpTrx')->nullable();
             $table->integer('renew')->nullable();
+            $table->integer('pmOrder')->nullable();
             $table->date('deadlineTrx')->nullable();
             $table->string('fromTrx')->nullable();
             $table->string('jenisOrder')->nullable();

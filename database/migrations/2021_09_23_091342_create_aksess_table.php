@@ -18,7 +18,7 @@ class CreateAksessTable extends Migration
             $table->integer('idOrder')->nullable();
             $table->integer('idBrief')->nullable();
             $table->integer('idHost')->nullable();
-            $table->string('dimainAkses', 40)->nullable();
+            $table->string('domainAkses', 40)->nullable();
             $table->string('userAkses', 40)->nullable();
             $table->string('passAkses', 40)->nullable();
             $table->timestamps();

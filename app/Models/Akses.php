@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Akses extends Model
 {
     protected $table = "aksess";
-    protected $fillable = ['idWeb', 'domAks', 'userAks', 'passAks'];
+    protected $fillable = ['idOrder', 'idBrief', 'idHost', 'domainAkses', 'userAkses', 'passAkses'];
     protected $primaryKey = 'idAkses';
 
     public function jweb()
