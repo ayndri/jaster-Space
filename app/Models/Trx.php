@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trx extends Model
 {
+  
     protected $table = "trxs";
     protected $fillable = ['idOrder', 'paketTrx', 'qtyTrx', 'hargaTrx'];
     protected $primaryKey = 'idTrx';

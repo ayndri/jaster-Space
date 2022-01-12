@@ -292,7 +292,7 @@ class JwebCtrl extends Controller
         $akses->save();
 
         $ambilUser = User::where('email', '=', $request->input('email'))->first();
-
+        
         $order = new Order;
         $order->idBrief = $brief->idBrief;
         $order->idAkses = $akses->idAkses;

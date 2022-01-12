@@ -7,6 +7,7 @@ use Illuminate\Contracts\Database\Events\MigrationEvent;
 
 class CreateTrxsTable extends Migration
 {
+    
     /**
      * Run the migrations.
      *
