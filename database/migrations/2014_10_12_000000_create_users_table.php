@@ -22,7 +22,10 @@ class CreateUsersTable extends Migration
             $table->string('jabatUser')->nullable();
             $table->timestamp('lastLogin')->nullable();
             $table->string('password')->default('$2y$10$KnrGw3LGvU5nRsaXPkyDy.0WvnEy3FbCi7q5kab9IwgTQPg9i5Zmi');
-            $table->string('telpUser')->nullable();
+            $table->string('waUser')->nullable();
+            $table->date('tglUser')->nullable();
+            $table->string('addrUser')->nullable();
+            $table->string('kotaUser')->nullable();
             $table->string('fotoUser')->nullable();
             $table->rememberToken();
             $table->timestamps();
