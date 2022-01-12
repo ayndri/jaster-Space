@@ -59,9 +59,11 @@ Route::get('/jweb/{id}/edit', ['as' => 'jweb.edit', 'uses' => 'App\Http\Controll
 Route::post('/jweb/{id}/edit', ['as' => 'jweb.update', 'uses' => 'App\Http\Controllers\JwebCtrl@update']);
 
 Route::get('/domain', ['as' => 'domain.index', 'uses' => 'App\Http\Controllers\DomainController@index']);
+Route::post('/domain', ['as' => 'domain.store', 'uses' => 'App\Http\Controllers\DomainController@store']);
 Route::get('/domain/search', ['as' => 'domain.search', 'uses' => 'App\Http\Controllers\DomainController@searchAjax']);
-Route::get('/domain/getHosting', ['as' => 'domain.getHosting', 'uses' => 'App\Http\Controllers\DomainController@getHosting']);
-
+Route::get('/domain/{id}/view', ['as' => 'domain.view', 'uses' => 'App\Http\Controllers\DomainController@view']);
+Route::post('/domain/{id}/edit', ['as' => 'domain.edit', 'uses' => 'App\Http\Controllers\DomainController@edit']);
+Route::get('/domain/{id}/gethosting', ['as' => 'domain.gethosting', 'uses' => 'App\Http\Controllers\DomainController@getHosting']);
 
 Route::get('/reset', ['as' => 'reset.pass', 'uses' => 'App\Http\Controllers\AdmController@reset'])->middleware('admin');
 Route::post('/reset', ['as' => 'change.pass', 'uses' => 'App\Http\Controllers\AdmController@change'])->middleware('admin');

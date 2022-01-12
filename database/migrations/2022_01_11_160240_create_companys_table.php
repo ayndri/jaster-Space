@@ -19,7 +19,7 @@ class CreateCompanysTable extends Migration
             $table->string('brandComp')->nullable();
             $table->string('namaComp')->nullable();
             $table->string('addrComp')->nullable();
-            $table->string('kotaComp')->nullable();
+            // $table->string('kotaComp')->nullable();
             $table->timestamps();
         });
     }

@@ -7,12 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Akses extends Model
 {
+    use HasFactory;
     protected $table = "aksess";
-    protected $fillable = ['idWeb', 'domAks', 'userAks', 'passAks'];
+    protected $fillable = [
+        'idOrder',
+        'idBrief',
+        'domainAkses',
+        'userAkses',
+        'passAkses',
+        'host_id'];
     protected $primaryKey = 'idAkses';
 
-    public function jweb()
+  public function hosting()
   {
-    return $this->belongsTo('App\Jweb', 'idWeb');
+      return $this->belongsTo(Host::class,'host_id', 'idHost');
   }
 }
