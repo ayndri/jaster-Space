@@ -7,6 +7,7 @@ use Illuminate\Contracts\Database\Events\MigrationEvent;
 
 class CreateTrxsTable extends Migration
 {
+    
     /**
      * Run the migrations.
      *
@@ -25,6 +26,7 @@ class CreateTrxsTable extends Migration
     }
 
     /**
+     * 
      * Reverse the migrations.
      *
      * @return void

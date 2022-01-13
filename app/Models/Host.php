@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Host extends Model
 {
+    
     protected $fillable = ['domHost', 'userHost', 'passHost'];
     protected $primaryKey = 'idHost';
 
@@ -14,3 +15,4 @@ class Host extends Model
         return $this->hasMany(Domain::class);
     }
 }
+

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFailedJobsTable extends Migration
 {
+    
     /**
      * Run the migrations.
      *
@@ -23,6 +24,7 @@ class CreateFailedJobsTable extends Migration
             $table->timestamp('failed_at')->useCurrent();
         });
     }
+    
 
     /**
      * Reverse the migrations.

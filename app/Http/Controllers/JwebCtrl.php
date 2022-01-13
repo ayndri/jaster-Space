@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 use App\Models\Jweb;
 use App\Models\Akses;
+use App\Models\Company;
+use App\Models\User;
+use App\Models\Brief;
+use App\Models\Order;
 use Illuminate\Support\Carbon;
 
 class JwebCtrl extends Controller
@@ -156,7 +160,7 @@ class JwebCtrl extends Controller
         return view('adm.jweb.all', compact('hasil'));
     } 
 
-    public function tambah(Request $request)
+    public function tambahsalah(Request $request)
     {
         $request->validate([
             
@@ -224,6 +228,124 @@ class JwebCtrl extends Controller
         $trx->save();
 
         return back()->with('success', 'Record Created Successfully.');
+    }
+
+    public function tambah(Request $request)
+    {
+        
+        $cekuser = User::where('email', '=', $request->input('email'))->first();
+
+        if ($cekuser == null) {
+
+            $user = new User;
+            $user->email = $request->email;
+            $user->nama = $request->nama;
+            $user->jabatUser = $request->jabatUser;
+            $user->telpUser = $request->telpUser;
+            $user->save();
+
+        }
+
+        
+
+      $cekcompany = Company::where('brandComp', '=', $request->input('brandComp'))->first();
+
+      if ($cekcompany == null) {
+        
+        $comp = new Company;
+            $comp->idUser = $user->idUser;
+            $comp->brandComp = $request->brandComp;
+            $comp->namaComp = $request->namaComp;
+            $comp->addrComp = $request->addrComp;
+            $comp->save();
+
+      }
+      
+        
+        $akses = new Akses;
+        $akses->domainAkses = $request->domainAkses;
+        $akses->userAkses = $request->userAkses;
+        $akses->passAkses = $request->passAkses;
+        $akses->save();
+
+        $ambilcomp = Company::where('brandComp', '=', $request->input('brandComp'))->first();
+
+
+
+        $brief = new Brief;
+        $brief->idAkses = $akses->idAkses;
+        if ($cekcompany == null) {
+        $brief->idComp = $comp->idComp;
+        }
+        else{
+            $brief->idComp = $ambilcomp->idComp;
+        }
+        
+        $brief->postBrief = $request->postBrief;
+        $brief->logoBrief = $request->logoBrief;
+        $brief->colorBrief = $request->colorBrief;
+        $brief->targetBrief = $request->targetBrief;
+        $brief->reqBrief = $request->reqBrief;
+        $brief->save();
+
+        $akses->idBrief = $brief->idBrief;
+        $akses->save();
+
+        $ambilUser = User::where('email', '=', $request->input('email'))->first();
+        
+    
+
+        
+        $order = new Order;
+        $order->idBrief = $brief->idBrief;
+        $order->idAkses = $akses->idAkses;
+        if ($cekuser == null) {
+        $order->idUser = $user->idUser;
+        }
+        else {
+            $order->idUser = $ambilUser->idUser;
+        }
+
+        if ($cekcompany == null) {
+           $order->idComp = $comp->idComp;
+            }
+            else{
+            $order->idComp = $ambilcomp->idComp;
+            }
+        
+        $order->dpTrx = $request->dpTrx;
+        $order->renew = $request->renew;
+        $order->pmOrder = $request->pmOrder;
+        $order->fromTrx = $request->fromTrx;
+        $order->jenisOrder = "Website";
+        $order->save();
+
+        $akses->idOrder = $order->idOrder;
+        $akses->save();
+
+        $brief->idOrder = $order->idOrder;
+        $brief->save();
+
+        $c = count($request->paketTrx);
+
+        $paketTrx = $request->paketTrx;
+        $qtyTrx = $request->qtyTrx;
+        $hargaTrx = $request->hargaTrx;
+
+        for ( $i=0; $i< $c; ++$i) {
+            $trx = new Trx;
+            $trx->idOrder = $order->idOrder;
+            $trx->paketTrx = $paketTrx[$i];
+            $trx->qtyTrx = $qtyTrx[$i];
+            $trx->hargaTrx = $hargaTrx[$i];
+            $trx->save();
+        }   
+
+     
+
+        
+        return back();
+
     }
 
 }

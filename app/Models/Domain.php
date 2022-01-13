@@ -18,3 +18,4 @@ class Domain extends Model
         return $this->belongsTo(Host::class,'host_id', 'idHost');
     }
 }
+

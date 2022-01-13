@@ -43,6 +43,7 @@ Route::get('/ads/pay/{ant}', ['as' => 'ads.pay', 'uses' => 'App\Http\Controllers
 Route::get('/ads/all', ['as' => 'ads.allads', 'uses' => 'App\Http\Controllers\AdsController@allads']);
 
 
+
 Route::get('/host', ['as' => 'host.all', 'uses' => 'App\Http\Controllers\HostCtrl@index']);
 Route::post('/host/add', ['as' => 'host.add', 'uses' => 'App\Http\Controllers\HostCtrl@add']);
 Route::get('/host/{id}/view', ['as' => 'host.view', 'uses' => 'App\Http\Controllers\HostCtrl@view']);
