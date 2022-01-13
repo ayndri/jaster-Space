@@ -15,6 +15,7 @@ use App\Models\User;
 use App\Models\Brief;
 use App\Models\Order;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class JwebCtrl extends Controller
 {
@@ -248,18 +249,34 @@ class JwebCtrl extends Controller
 
         
 
-      $cekcompany = Company::where('brandComp', '=', $request->input('brandComp'))->first();
+      $cekcompany = Company::where('brandComp', '=', $request->brandComp)->first();
+
+      
 
       if ($cekcompany == null) {
         
         $comp = new Company;
-            $comp->idUser = $user->idUser;
+            $comp->idUser = Auth::user()->idUser;
             $comp->brandComp = $request->brandComp;
             $comp->namaComp = $request->namaComp;
             $comp->addrComp = $request->addrComp;
             $comp->save();
 
       }
+
+      if ( $cekuser != null )
+      {
+          if( $cekcompany != null )
+          {
+        $comp = new Company;
+        $comp->idUser = Auth::user()->idUser;
+        $comp->brandComp = $request->brandComp;
+        $comp->namaComp = $request->namaComp;
+        $comp->addrComp = $request->addrComp;
+        $comp->save();
+          }
+      }
+
       
         
         $akses = new Akses;
@@ -270,6 +287,14 @@ class JwebCtrl extends Controller
 
         $ambilcomp = Company::where('brandComp', '=', $request->input('brandComp'))->first();
 
+        if ($request->hasFile('logoBrief')) {
+            $file = $request->file('logoBrief');
+            $nama_file = Carbon::now()->format('mYd')."_".$file->getClientOriginalName();
+            $tujuan_upload = "img/logo";
+            $file->move($tujuan_upload, $nama_file);
+            }else{
+                $nama_file = "placeholder.png";
+        }
 
 
         $brief = new Brief;
@@ -282,7 +307,7 @@ class JwebCtrl extends Controller
         }
         
         $brief->postBrief = $request->postBrief;
-        $brief->logoBrief = $request->logoBrief;
+        $brief->logoBrief = $nama_file;
         $brief->colorBrief = $request->colorBrief;
         $brief->targetBrief = $request->targetBrief;
         $brief->reqBrief = $request->reqBrief;
@@ -293,10 +318,33 @@ class JwebCtrl extends Controller
 
         $ambilUser = User::where('email', '=', $request->input('email'))->first();
         
+
+        
+//  $unique_no = Tiket::orderBy('idTiket', 'DESC')->pluck('idTiket')->first();
+//  if ($unique_no == null or $unique_no == "") {
+//      #If Table is Empty
+//      $unique_no = 1;
+//  } else {
+//      #If Table has Already some Data
+//      $unique_no = $unique_no + 1;
+//  }
+
     
+        $unique_no = 455;
+
+        $isiorder = Order::orderBy('idOrder', 'DESC')->pluck('idOrder')->first();
+
+        if ($isiorder == null or $isiorder == "") {
+            #If Table is Empty
+            $unique_no = 455;
+        } else {
+            #If Table has Already some Data
+            $unique_no = $unique_no + 1;
+        }
 
         
         $order = new Order;
+        $order->nomerOrder = "JW".$unique_no;
         $order->idBrief = $brief->idBrief;
         $order->idAkses = $akses->idAkses;
         if ($cekuser == null) {
@@ -317,7 +365,9 @@ class JwebCtrl extends Controller
         $order->renew = $request->renew;
         $order->pmOrder = $request->pmOrder;
         $order->fromTrx = $request->fromTrx;
+        $order->totalOrder = $request->totalOrder;
         $order->jenisOrder = "Website";
+        $order->statusWeb = 1;
         $order->save();
 
         $akses->idOrder = $order->idOrder;

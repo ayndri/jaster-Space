@@ -35,7 +35,7 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<form class="d-flex theme-form" method="POST" action="{{ route('jweb.tambah') }}">
+		<form class="d-flex theme-form" enctype="multipart/form-data" method="POST" action="{{ route('jweb.tambah') }}">
             @csrf
 
 		<div class="col-md-5">
@@ -124,7 +124,7 @@
                                  </div>
                                  <div class="form-group">
                                     <label class="col-form-label">Logo</label>
-                                    <input class="form-control mb-1" name="logoBrief" type="file" id="logoWeb">
+                                    <input class="form-control mb-1" name="logoBrief" type="file" id="">
                                     <small class="text-danger">Jika file lebih dari 4MB, Bisa dikirim via email : <span class="text-primary">data@jaster.co.id</span></small>
                                     <div id="image-holder" class="tempatnya"></div>
                                     <div class="invalid-feedback">Kolom ini belum terisi</div>
@@ -287,7 +287,9 @@
                         </div>
                     </div>    
                     </div>
-                    total: <span id="total"></span>
+                   
+                    <input class="" id="totalasli" type="hidden" value="" name="totalOrder">
+                    Total: <span id="total"></span>
                 
               
                
@@ -320,7 +322,7 @@
         document.getElementById("remove").style.display = "block";
 
         $("#itemlist").append(
-            '<div class="item_order targetfields d-flex" id="item_order['+i+']"><div class="form-group"><label class="col-form-label">Service</label><input class="form-control" type="text" name="paketTrx[]" required></div><div class="form-group" style="width: 100px;"><label class="col-form-label">Qty</label><input class="qty form-control" type="number" name="qtyTrx[]" required></div><div class="form-group"><label class="col-form-label">Harga</label><input class="harga form-control" type="text" onkeypress="validate(event)" name="hargaTrx[]" required></div></div>');
+            '<div class="item_order targetfields d-flex" id="item_order['+i+']"><div class="form-group"><label class="col-form-label">Paket</label><select class="form-control" name="paketTrx[]" id="selpost" required=""><option disabled>--- Pilih salah satu ---</option><option value="Beli Hosting">Beli Hosting</option><option value="Beli Domain">Beli Domain</option><option value="Web Company Profile">Web Company Profile</option><option value="Web Sales">Web Sales</option><option value="Web Listing">Web Listing</option><option value="Web Resto">Web Resto</option><option value="Web Dinas / Instansi">Web Dinas / Instansi</option><option value="Web Kecantikan">Web Kecantikan</option><option value="Web Toko Online">Web Toko Online</option><option value="Web Rental">Web Rental</option><option value="Web Travel">Web Travel</option><option value="Blog">Blog</option><option value="Web Booking / Hotel">Web Booking / Hotel</option><option value="Redesign / Web Custom">Redesign / Web Custom</option><option value="Logo">Logo</option><option value="Brosur">Brosur</option><option value="Company Profile">Company Profile</option><option value="Menu / Banner Service">Menu / Banner Service</option><option value="Kartu Nama">Kartu Nama</option><option value="Stempel">Stempel</option><option value="ID Card">ID Card</option><option value="Sticker">Sticker</option><option value="Nota / Invoice">Nota / Invoice</option><option value="Google Adwords">Google Adwords</option><option value="Design Katalog">Design Katalog</option><option value="Domain Security">Domain Security</option><option value="Google Business">Google Business</option><option value="Foto Produk">Foto Produk</option></select></div><div class="form-group" style="width:100px"><label class="col-form-label">Qty</label><input class="qty form-control" type="number" name="qtyTrx[]" required></div><div class="form-group"><label class="col-form-label">Harga</label><input class="harga form-control" type="text" name="hargaTrx[]" required></div></div>');
     
     
             $(function() {
@@ -336,6 +338,8 @@ $(".item_order").on('keyup change', function(e) {
      $(this).find(".subtotal").val(subtotal);
      if(!isNaN(subtotal))
          total+=subtotal;
+
+         $("#totalasli").val(total);
 
  });
 
