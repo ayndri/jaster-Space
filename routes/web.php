@@ -21,8 +21,15 @@ Route::get('/', [App\Http\Controllers\AdmController::class, 'index'])->name('/')
 
 Route::group(['middleware' => 'auth'], function () {
 
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+//Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
+Route::get('/absen', ['as' => 'absen', 'uses' => 'App\Http\Controllers\AbsenController@formabsen']);
+Route::post('/absen', ['as' => 'add.absen', 'uses' => 'App\Http\Controllers\AbsenController@storeabsen']);
+Route::get('/listabsen', ['as' => 'team.absen', 'uses' => 'App\Http\Controllers\AbsenController@teamabsen']);
+Route::get('/list', ['as' => 'admin.absen', 'uses' => 'App\Http\Controllers\AbsenController@adminabsen']);
+Route::any('/cancel/{abs}', ['as' => 'cancel.absen', 'uses' => 'App\Http\Controllers\AbsenController@ubahabsen']);
+Route::any('/tolak/{abs}', ['as' => 'tolak.absen', 'uses' => 'App\Http\Controllers\AbsenController@tolakabsen']);
+Route::any('/setuju/{abs}', ['as' => 'setuju.absen', 'uses' => 'App\Http\Controllers\AbsenController@setujuabsen']);
 
 Route::get('/ads/active', ['as' => 'ads.active', 'uses' => 'App\Http\Controllers\AdsController@index']);
 Route::get('/ads/new', ['as' => 'ads.new', 'uses' => 'App\Http\Controllers\AdsController@add']);
