@@ -21,7 +21,6 @@ class CreateAksessTable extends Migration
             $table->integer('domainAkses')->nullable();
             $table->integer('userAkses')->nullable();
             $table->integer('passAkses')->nullable();
-            
             $table->timestamps();
         });
     }
