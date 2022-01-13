@@ -19,7 +19,7 @@ class AksesFactory extends Factory
             'userAkses' => $this->faker->userName,
             'passAkses' => $this->faker->password,
             'domainAkses' => $this->faker->domainName,
-            'host_id' => $this->faker->numberBetween(1,2),
+            'host_id' => $this->faker->numberBetween(1,3),
         ];
     }
 }

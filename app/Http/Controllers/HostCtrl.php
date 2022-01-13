@@ -11,10 +11,10 @@ class HostCtrl extends Controller
 {
     public function index()
     {
-        $allhost = Host::orderBy('created_at','asc')->get();
+        $allhost = Host::withCount('domain')->orderBy('created_at','asc')->get();
         return view('adm.host.all', compact('allhost'));
-        
-    } 
+
+    }
 
 
     public function view($id)
@@ -47,12 +47,12 @@ class HostCtrl extends Controller
         return response()->json($response);
     }
 
-    
+
     public function destroy($id)
     {
         Host::destroy($id);
         return redirect('/host');
-    }   
+    }
     public function add(Request $request)
     {
         $request->validate([
@@ -68,10 +68,10 @@ class HostCtrl extends Controller
     public function edit(Request $request, $id) {
         $request->validate([
             'domHost' => 'required',
-            'userHost' => 'required', 
-            'passHost' => 'required', 
+            'userHost' => 'required',
+            'passHost' => 'required',
         ]);
-       
+
         Host::where('idHost', $id)
             ->update([
                 'domHost' => $request->domHost,

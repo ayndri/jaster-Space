@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Host;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,8 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call([
+            HostSeed::class,
+            RoleSeeder::class,
+            UserSeeder::class
+        ]);
         \App\Models\Akses::factory(100)->create();
-        $this->call(RoleSeeder::class);
-        $this->call(UserSeeder::class);
     }
 }
