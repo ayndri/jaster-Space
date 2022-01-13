@@ -10,3 +10,4 @@ class Topup extends Model
     protected $fillable = ['idAds', 'saldoTop', 'tglTop', 'doneTop', 'created_at','updated_at'];
     protected $primaryKey = 'idTop';
 }
+

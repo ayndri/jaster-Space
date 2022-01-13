@@ -3,11 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Contracts\Database\Events\MigrationEvent;
 
-class CreateTrxsTable extends Migration
+class CreateAksessTable extends Migration
 {
-    
     /**
      * Run the migrations.
      *
@@ -15,24 +13,25 @@ class CreateTrxsTable extends Migration
      */
     public function up()
     {
-        Schema::create('trxs', function (Blueprint $table) {
-            $table->bigIncrements('idTrx');
+        Schema::create('aksess', function (Blueprint $table) {
+            $table->bigIncrements('idAkses');
             $table->integer('idOrder')->nullable();
-            $table->string('paketTrx', 40)->nullable();
-            $table->integer('qtyTrx')->nullable();
-            $table->integer('hargaTrx')->nullable();
+            $table->integer('idBrief')->nullable();
+            $table->integer('idHost')->nullable();
+            $table->integer('domainAkses')->nullable();
+            $table->integer('userAkses')->nullable();
+            $table->integer('passAkses')->nullable();
             $table->timestamps();
         });
     }
 
     /**
-     * 
      * Reverse the migrations.
      *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('trxs');
+        Schema::dropIfExists('aksess');
     }
 }

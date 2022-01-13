@@ -21,3 +21,4 @@ class Jweb extends Model
         return $this->hasMany('App\Trx');
     }
 }
+

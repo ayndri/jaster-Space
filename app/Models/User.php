@@ -17,6 +17,8 @@ class User extends Authenticatable
      *
      * @var array
      */
+    
+     
     protected $primaryKey = 'idUser';
     protected $fillable = [
         'nama',
@@ -24,7 +26,9 @@ class User extends Authenticatable
         'usrn',
         'password',
         'telpUser',
-        'lastLogin'
+        'lastLogin',
+        'jabatUser',
+        'fotoUser'
     ];
 
     /**
