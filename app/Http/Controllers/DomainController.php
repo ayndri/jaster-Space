@@ -9,6 +9,12 @@ use Alert;
 
 class DomainController extends Controller
 {
+
+    public function getAllDomain() {
+        $domain = Akses::get();
+        return view('adm.domain.listDomain',compact('domain'));
+    }
+
     public function index() {
         $domain = Akses::with('hosting')->get();
         $hosts = Host::get();
@@ -26,8 +32,6 @@ class DomainController extends Controller
             'idOrder' => $request->idOrder,
             'updated_at' => $request->tgl
         ]);
-        // dd($domains);
-        // $domains->save();
         return redirect()->route('domain.index');
     }
 

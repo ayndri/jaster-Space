@@ -65,6 +65,16 @@ Route::get('/domain/search', ['as' => 'domain.search', 'uses' => 'App\Http\Contr
 Route::get('/domain/{id}/view', ['as' => 'domain.view', 'uses' => 'App\Http\Controllers\DomainController@view']);
 Route::post('/domain/{id}/edit', ['as' => 'domain.edit', 'uses' => 'App\Http\Controllers\DomainController@edit']);
 Route::get('/domain/{id}/gethosting', ['as' => 'domain.gethosting', 'uses' => 'App\Http\Controllers\DomainController@getHosting']);
+Route::get('/domain/all-domain', ['as' => 'domain.getAllDomain', 'uses' => 'App\Http\Controllers\DomainController@getAllDomain']);
+
+Route::get('/account',['as' => 'account.index','uses' => 'App\Http\Controllers\AccountController@index']);
+Route::get('/account/add-account',['as' => 'account.create','uses' => 'App\Http\Controllers\AccountController@create']);
+Route::post('/account/add-account',['as' => 'account.store','uses' => 'App\Http\Controllers\AccountController@store']);
+Route::get('/account/{user:nama}/edit-account',['as' => 'account.edit','uses' => 'App\Http\Controllers\AccountController@edit']);
+Route::post('/account/{user:nama}/edit-account',['as' => 'account.update','uses' => 'App\Http\Controllers\AccountController@update']);
+Route::get('/account/{user:nama}/delete-account',['as' => 'account.delete','uses' => 'App\Http\Controllers\AccountController@delete']);
+
+
 
 Route::get('/reset', ['as' => 'reset.pass', 'uses' => 'App\Http\Controllers\AdmController@reset'])->middleware('admin');
 Route::post('/reset', ['as' => 'change.pass', 'uses' => 'App\Http\Controllers\AdmController@change'])->middleware('admin');

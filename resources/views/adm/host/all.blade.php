@@ -27,9 +27,9 @@ tengahkan
 		<div class="row">
 		<div class="col-md-8">
          <div class="card">
-            
+
              <div class="card-body">
-                
+
         <div class="card">
          <div class="table-responsive">
              <table class="table table-striped" id="dttbls">
@@ -48,7 +48,7 @@ tengahkan
                      {{ $no++ }}
                      </td>
                      <td>
-                      {{ $all->domHost }}
+                      {{ $all->domHost }} ({{$all->domain_count;}} website)
                      </td>
                      <td>
                       <a href="https://{{ $all->domHost }}/cpanel" class="btn-sm btn-primary d-inline-block" target="_blank">Open cPanel</a>
@@ -60,51 +60,51 @@ tengahkan
                    <tr>
                    <td colspan="6" class="text-center">Nothing</td>
                    </tr>
-                   
+
                  @endforelse
-                  
-                     
+
+
                      </tbody>
              </table>
          </div>
          </div>
              </div>
           </div>
-          
+
 		</div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
                   <form class="theme-form" id="formhost" method="POST" action="{{ route('host.add') }}">
-   
-                     @csrf 
+
+                     @csrf
                         @foreach ($errors->all() as $error)
                         <p class="text-danger">{{ $error }}</p>
-                        @endforeach 
+                        @endforeach
                         <div class="col-md-12">
                            <div class="form-group">
                               <label class="col-form-label">Domain</label>
                               <input id="domHost" class="form-control" type="text" name="domHost" required>
                            </div>
-         
+
                            <div class="form-group">
                             <label class="col-form-label">Username</label>
                             <input id="userHost" class="form-control" type="text" name="userHost" required="">
                          </div>
-         
+
                            <div class="form-group">
                               <label class="col-form-label">Password</label>
                               <input id="passHost" class="form-control" type="text" name="passHost" required="">
                            </div>
                         </div>
-                     
-                     
-   
-                     
+
+
+
+
                      <div class="form-group mt-5">
                         <button class="btn btn-primary btn-block w100" type="submit">Submit</button>
                      </div>
-                     
+
                   </form>
                 </div>
              </div>

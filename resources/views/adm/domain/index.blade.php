@@ -1,6 +1,6 @@
 @extends('layouts.simple.master')
 
-@section('title', 'All Hosting')
+@section('title', 'Cari Hosting')
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">

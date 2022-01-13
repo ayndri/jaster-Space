@@ -17,8 +17,8 @@ class User extends Authenticatable
      *
      * @var array
      */
-    
-     
+
+
     protected $primaryKey = 'idUser';
     protected $fillable = [
         'nama',
@@ -49,4 +49,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'nama';
+    }
 }
