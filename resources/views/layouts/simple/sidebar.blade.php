@@ -66,5 +66,19 @@
       </a>
     </li>
 
+
+    <li class="nav-item">
+      <a class="{{ request()->route()->getPrefix() == '/page-layouts' ? 'active' : '' }}" href="#">
+        <i data-feather="user"></i><span>Absen</span>
+
+      </a>
+      <ul class="nav-submenu">
+        <li><a href="{{ route('team.absen') }}" class="{{ Route::currentRouteName() == 'prog-jg' ? 'active' : '' }}">List Absen Team</a></li>
+        <li><a href="{{ route('admin.absen') }}" class="{{ Route::currentRouteName() == 'prog-jg' ? 'active' : '' }}">List Absen Super</a></li>
+        <li><a href="{{ route('absen') }}" class="{{ Route::currentRouteName() == 'hist-jg' ? 'active' : '' }}">Tambah Absen</a></li>
+        
+      </ul>
+    </li>
+
   </ul>
 </div>
