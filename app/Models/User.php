@@ -28,7 +28,9 @@ class User extends Authenticatable
         'telpUser',
         'lastLogin',
         'jabatUser',
-        'fotoUser'
+        'fotoUser',
+        'addrUser',
+        'kotaUser'
     ];
 
     /**

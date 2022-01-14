@@ -83,6 +83,9 @@ Route::get('/account/{user:nama}/edit-account',['as' => 'account.edit','uses' =>
 Route::post('/account/{user:nama}/edit-account',['as' => 'account.update','uses' => 'App\Http\Controllers\AccountController@update']);
 Route::get('/account/{user:nama}/delete-account',['as' => 'account.delete','uses' => 'App\Http\Controllers\AccountController@delete']);
 
+Route::get('/profile/{user:nama}/edit-profile',['as' => 'profile.edit','uses' => 'App\Http\Controllers\ProfileController@edit']);
+Route::post('/profile/{user:nama}/edit-profile',['as' => 'profile.update','uses' => 'App\Http\Controllers\ProfileController@update']);
+
 
 
 Route::get('/reset', ['as' => 'reset.pass', 'uses' => 'App\Http\Controllers\AdmController@reset'])->middleware('admin');
