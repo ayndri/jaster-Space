@@ -56,6 +56,8 @@ Route::post('/host/add', ['as' => 'host.add', 'uses' => 'App\Http\Controllers\Ho
 Route::get('/host/{id}/view', ['as' => 'host.view', 'uses' => 'App\Http\Controllers\HostCtrl@view']);
 Route::post('/host/{id}/edit', ['as' => 'host.edit', 'uses' => 'App\Http\Controllers\HostCtrl@edit']);
 Route::get('/host/{id}/del', ['as' => 'host.del', 'uses' => 'App\Http\Controllers\HostCtrl@destroy']);
+Route::get('/host/{host:domHost}/list-domain', ['as' => 'host.getDomain', 'uses' => 'App\Http\Controllers\HostCtrl@getDomain']);
+
 
 
 Route::get('/jweb/add', ['as' => 'jweb.add', 'uses' => 'App\Http\Controllers\JwebCtrl@add']);
