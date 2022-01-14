@@ -100,7 +100,7 @@ tengahkan
                             <br>
                             <img src="{{asset('assets/images/user/10.jpg')}}" alt="NULL" srcset="" width="120px">
                             @else
-                            <img src="{{asset('storage/'.$user->fotoUser)}}" alt="" srcset="">
+                            <img src="{{asset('public/assets/fotoUser')}}/{{$user->fotoUser}}" alt="" srcset="" width="120px">
                             @endif
                             <input class="form-control mt-2" name="fotoUser" type="file">
                         </div>

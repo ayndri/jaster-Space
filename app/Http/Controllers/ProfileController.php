@@ -14,15 +14,16 @@ class ProfileController extends Controller
 
     public function update(Request $request, User $user) {
 
-        if($request->file('fotoUser')){
-            if($user->fotoUser && file_exists(storage_path('app/public/' . $user->fotoUser))){
-            \Storage::delete('public/'.$user->fotoUser);
+        if ($request->hasFile('fotoUser')) {
+            $file = $request->file('fotoUser');
+            $nama_file = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = "public/assets/fotoUser";
+            $file->move($tujuan_upload, $nama_file);
+            $user->fotoUser = $nama_file;
+          } else {
+            $nama_file = NULL;
+          }
 
-        }
-            $nama_file = time() . "_" . $request->file('fotoUser')->getClientOriginalName();
-            $file = $request->file('fotoUser')->store('fotoUser/'.$nama_file, 'public');
-            $user->fotoUser = $file;
-        }
         Alert::success('Berhasil','Profile telah diupdate');
         $user->save($request->all());
         return redirect()->route('profile.edit',auth()->user()->nama);
