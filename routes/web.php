@@ -66,6 +66,8 @@ Route::get('/jweb/{id}/view', ['as' => 'jweb.view', 'uses' => 'App\Http\Controll
 Route::get('/jweb/{id}/edit', ['as' => 'jweb.edit', 'uses' => 'App\Http\Controllers\JwebCtrl@edit']);
 Route::post('/jweb/{id}/edit', ['as' => 'jweb.update', 'uses' => 'App\Http\Controllers\JwebCtrl@update']);
 
+Route::get('/web/{id}/edit', ['as' => 'web.edit', 'uses' => 'App\Http\Controllers\JwebCtrl@editweb']);
+
 Route::get('/domain', ['as' => 'domain.index', 'uses' => 'App\Http\Controllers\DomainController@index']);
 Route::post('/domain', ['as' => 'domain.store', 'uses' => 'App\Http\Controllers\DomainController@store']);
 Route::get('/domain/search', ['as' => 'domain.search', 'uses' => 'App\Http\Controllers\DomainController@searchAjax']);

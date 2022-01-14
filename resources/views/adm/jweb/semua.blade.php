@@ -44,25 +44,25 @@
                           @foreach($webs as $web)
                           <tr>
                             <td>
-                            {{ $web->brandWeb }}
+                            {{ $web->brandComp }}
                             </td>
                             <td>
-                            {{ $web->namaWeb }}
+                            {{ $web->nama }}
                             </td>
                             <td>
-                              {{ $web->mailWeb }}
+                              {{ $web->email }}
                             </td>
                             <td>
-                              {{ $web->domAks }}
+                              {{ $web->domainAkses }}
                             </td>
                             <td class="text-right">
-                              <a class="btn btn-primary text-light" href="/jweb/{{ $web->idWeb }}/view" data-toggle="tooltip" data-placement="top" title="View">
+                              <a class="btn btn-primary text-light" href="/web/{{ $web->idBrief }}/view" data-toggle="tooltip" data-placement="top" title="View">
                                 <i class="icon-eye"></i>
                               </a>
-                              <a class="btn btn-info text-light" href="/jweb/{{ $web->idWeb }}/edit" data-toggle="tooltip" data-placement="top" title="Edit">
+                              <a class="btn btn-info text-light" href="/web/{{ $web->idBrief }}/edit" data-toggle="tooltip" data-placement="top" title="Edit">
                                 <i class="icon-pencil"></i>
                               </a>
-                              <!-- <form action="{{ $web->idWeb }}" method="post" class="dinline">
+                              <!-- <form action="{{ $web->idBrief }}" method="post" class="dinline">
                                 @csrf
                                 @method('delete')
                               <a class="btn btn-danger  text-light" onclick="confirm('{{ __("Yakin Mau hapus data ini?") }}') ? this.parentElement.submit() : ''" data-toggle="tooltip" data-placement="top" title="Delete">

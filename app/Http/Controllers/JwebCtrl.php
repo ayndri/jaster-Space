@@ -17,6 +17,7 @@ use App\Models\Order;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
+
 class JwebCtrl extends Controller
 {
     public function add(Request $request)
@@ -27,7 +28,11 @@ class JwebCtrl extends Controller
     public function all(Request $request)
     {
         $client = new \GuzzleHttp\Client();
-        $request = $client->get('http://myjaster.com/api/order');
+        $request = $client->request('GET', 'http://myjaster.com/api/order', [
+            'query' => [
+                'statWeb' => 0
+            ],
+        ]);
         $response = $request->getBody();
         $hasil = json_decode($response, true);
 
@@ -36,11 +41,15 @@ class JwebCtrl extends Controller
 
     public function semua()
     {
-        $webs = DB::table('jwebs')
-        ->join('aksess', 'aksess.idWeb', '=', 'jwebs.idWeb')
-        ->join('trxs', 'trxs.idWeb', '=', 'aksess.idWeb')
-        ->where('jwebs.statWeb', '=', 1)
+        $webs = DB::table('trxs')
+        ->join('orders', 'orders.idOrder', '=', 'trxs.idOrder')
+        ->join('briefs', 'briefs.idBrief', '=', 'orders.idBrief')
+        ->join('aksess', 'aksess.idAkses', '=', 'orders.idAkses')
+        ->join('users', 'users.idUser', '=', 'orders.idUser')
+        ->join('companys', 'companys.idComp', '=', 'orders.idComp')
+        ->where('orders.statusWeb', '=', 1)
         ->get();
+
         return view('adm.jweb.semua', compact('webs'));
     }
 
@@ -56,13 +65,15 @@ class JwebCtrl extends Controller
         $response = $request->getBody();
         $coba = json_decode($response, true);
 
-        $webs = DB::table('jwebs')
-        ->join('aksess', 'aksess.idWeb', '=', 'jwebs.idWeb')
-        ->join('trxs', 'trxs.idWeb', '=', 'aksess.idWeb')
-        ->where('jwebs.idWeb', '=', $id)
-        ->first();
+        // $webs = DB::table('briefs')
+        // ->join('aksess', 'aksess.idBrief', '=', 'briefs.idAkses')
+        // ->join('trxs', 'trxs.idWeb', '=', 'aksess.idWeb')
+        // ->where('jwebs.idWeb', '=', $id)
+        // ->first();
 
-        return view('adm.jweb.view', compact('coba', 'webs'));
+        return view('adm.jweb.view', compact('coba'));
+
+        //dd($coba);
     }
 
     public function edit($id)
@@ -77,13 +88,24 @@ class JwebCtrl extends Controller
         $response = $request->getBody();
         $coba = json_decode($response, true);
 
-        $webs = DB::table('jwebs')
-        ->join('aksess', 'aksess.idWeb', '=', 'jwebs.idWeb')
-        ->join('trxs', 'trxs.idWeb', '=', 'aksess.idWeb')
-        ->where('jwebs.idWeb', '=', $id)
+       
+
+
+        return view('adm.jweb.edit', compact('coba'));
+    }
+
+    public function editweb($id)
+    {
+        $webs = DB::table('trxs')
+        ->join('orders', 'orders.idOrder', '=', 'trxs.idOrder')
+        ->join('briefs', 'briefs.idBrief', '=', 'orders.idBrief')
+        ->join('aksess', 'aksess.idAkses', '=', 'orders.idAkses')
+        ->join('users', 'users.idUser', '=', 'orders.idUser')
+        ->join('companys', 'companys.idComp', '=', 'orders.idComp')
+        ->where('briefs.idBrief', '=', $id)
         ->first();
 
-        return view('adm.jweb.edit', compact('coba', 'webs'));
+        return view('adm.jweb.editweb', compact('webs'));
     }
 
     public function update(Request $request, Jweb $coba)
@@ -243,7 +265,10 @@ class JwebCtrl extends Controller
             $user->nama = $request->nama;
             $user->jabatUser = $request->jabatUser;
             $user->telpUser = $request->telpUser;
+            $user->assignRole('4');
             $user->save();
+
+
 
         }
 
@@ -256,7 +281,12 @@ class JwebCtrl extends Controller
       if ($cekcompany == null) {
         
         $comp = new Company;
-            $comp->idUser = Auth::user()->idUser;
+        if ($cekuser == null) {
+            $comp->idUser = $user->idUser;
+        }
+        else{
+            $comp->idUser = $cekuser->idUser;
+        }
             $comp->brandComp = $request->brandComp;
             $comp->namaComp = $request->namaComp;
             $comp->addrComp = $request->addrComp;
@@ -264,18 +294,7 @@ class JwebCtrl extends Controller
 
       }
 
-      if ( $cekuser != null )
-      {
-          if( $cekcompany != null )
-          {
-        $comp = new Company;
-        $comp->idUser = Auth::user()->idUser;
-        $comp->brandComp = $request->brandComp;
-        $comp->namaComp = $request->namaComp;
-        $comp->addrComp = $request->addrComp;
-        $comp->save();
-          }
-      }
+     
 
       
         
@@ -316,6 +335,14 @@ class JwebCtrl extends Controller
         $akses->idBrief = $brief->idBrief;
         $akses->save();
 
+        if ($cekcompany == null) {
+        
+        $comp->idBrief = $brief->idBrief;
+        $comp->save();
+    
+          }
+
+
         $ambilUser = User::where('email', '=', $request->input('email'))->first();
         
 
@@ -329,22 +356,28 @@ class JwebCtrl extends Controller
 //      $unique_no = $unique_no + 1;
 //  }
 
-    
-        $unique_no = 455;
+
 
         $isiorder = Order::orderBy('idOrder', 'DESC')->pluck('idOrder')->first();
 
         if ($isiorder == null or $isiorder == "") {
             #If Table is Empty
-            $unique_no = 455;
+            $ornum = 455;
         } else {
-            #If Table has Already some Data
-            $unique_no = $unique_no + 1;
+
+            $lastorderId = Order::orderBy('idOrder', 'desc')->first()->nomerOrder;
+
+            $lastIncreament = substr($lastorderId, -3);
+
+            $newOrderId = 'JW' . str_pad($lastIncreament + 1, 3, 0, STR_PAD_LEFT);
+           
+            $ornum = $newOrderId;
+           
         }
 
         
         $order = new Order;
-        $order->nomerOrder = "JW".$unique_no;
+        $order->nomerOrder = $ornum;
         $order->idBrief = $brief->idBrief;
         $order->idAkses = $akses->idAkses;
         if ($cekuser == null) {
@@ -391,7 +424,8 @@ class JwebCtrl extends Controller
             $trx->save();
         }   
 
-     
+        
+        DB::connection('mysql2')->table('jwebs')->where('brandWeb', '=', $request->brandComp)->update(['statWeb' => 1]);
 
         
         return back();

@@ -25,7 +25,7 @@ class AbsenController extends Controller
         $absen = new Absen;
         $absen->tglAbsen = $request->tglAbsen;
         $absen->tglMulai = Carbon::now('Asia/jakarta');
-        $absen->tglHabis = Carbon::now('Asia/jakarta')->addHours(1);
+        $absen->tglHabis = Carbon::now('Asia/jakarta')->addMinutes(2);
         $absen->idUser = Auth::user()->idUser;
         $absen->jmlAbsen = $request->jmlAbsen;
         $absen->perihalAbsen = $request->perihalAbsen;
