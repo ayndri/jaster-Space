@@ -13,7 +13,7 @@
       </div>
     </form>
     <div class="header-logo-wrapper col-6 p-0">
-     
+
       <button class="toogle-nav" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu">
         <svg width="35" height="35" viewBox="0 0 100 100">
           <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
@@ -24,7 +24,7 @@
       <div class="logo-wrapper"><a href="{{route('/')}}"><img class="img-fluid" src="{{asset('assets/img/logodash.png')}}" alt=""></a></div>
     </div>
     <div class="left-header col horizontal-wrapper ps-0">
-      
+
     </div>
     <div class="nav-right col-6 pull-right right-header p-0">
       <ul class="nav-menus">
@@ -51,17 +51,17 @@
             <li><a class="btn btn-primary" href="#">Check all notification</a></li>
           </ul>
         </li>
-        
-        
+
+
         <li class="maximize"><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
         <li class="profile-nav onhover-dropdown p-0 me-0">
           <div class="media profile-media">
             <img class="b-r-10" src="{{asset('assets/img/face1.jpg')}}" alt="">
-            
+
           </div>
           <ul class="profile-dropdown onhover-show-div">
             <li class="fotopro"><img src="{{asset('assets/img/face1.jpg')}}"/><p class="namanya">{{ auth()->user()->nama }}</p><span class="siapanya">Welcomeback !</span>
-            <li><a href="#"><i data-feather="user"></i><span>Account </span></a></li>
+            <li><a href="{{route('profile.edit',auth()->user()->nama)}}"><i data-feather="user"></i><span>Account </span></a></li>
             <li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>
             <li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
             <li><a href="{{ route('reset.pass') }}"><i data-feather="settings"></i><span>Password</span></a></li>
@@ -71,7 +71,7 @@
       </ul>
     </div>
     <script class="result-template" type="text/x-handlebars-template">
-      <div class="ProfileCard u-cf">                        
+      <div class="ProfileCard u-cf">
       <div class="ProfileCard-avatar"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-airplay m-0"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg></div>
       <div class="ProfileCard-details">
       <div class="ProfileCard-realName">@{{name}}</div>

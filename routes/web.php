@@ -56,6 +56,8 @@ Route::post('/host/add', ['as' => 'host.add', 'uses' => 'App\Http\Controllers\Ho
 Route::get('/host/{id}/view', ['as' => 'host.view', 'uses' => 'App\Http\Controllers\HostCtrl@view']);
 Route::post('/host/{id}/edit', ['as' => 'host.edit', 'uses' => 'App\Http\Controllers\HostCtrl@edit']);
 Route::get('/host/{id}/del', ['as' => 'host.del', 'uses' => 'App\Http\Controllers\HostCtrl@destroy']);
+Route::get('/host/{host:domHost}/list-domain', ['as' => 'host.getDomain', 'uses' => 'App\Http\Controllers\HostCtrl@getDomain']);
+
 
 
 Route::get('/jweb/add', ['as' => 'jweb.add', 'uses' => 'App\Http\Controllers\JwebCtrl@add']);
@@ -80,6 +82,9 @@ Route::post('/account/add-account',['as' => 'account.store','uses' => 'App\Http\
 Route::get('/account/{user:nama}/edit-account',['as' => 'account.edit','uses' => 'App\Http\Controllers\AccountController@edit']);
 Route::post('/account/{user:nama}/edit-account',['as' => 'account.update','uses' => 'App\Http\Controllers\AccountController@update']);
 Route::get('/account/{user:nama}/delete-account',['as' => 'account.delete','uses' => 'App\Http\Controllers\AccountController@delete']);
+
+Route::get('/profile/{user:nama}/edit-profile',['as' => 'profile.edit','uses' => 'App\Http\Controllers\ProfileController@edit']);
+Route::post('/profile/{user:nama}/edit-profile',['as' => 'profile.update','uses' => 'App\Http\Controllers\ProfileController@update']);
 
 
 

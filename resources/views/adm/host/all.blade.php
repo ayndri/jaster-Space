@@ -48,7 +48,7 @@ tengahkan
                      {{ $no++ }}
                      </td>
                      <td>
-                      {{ $all->domHost }} ({{$all->domain_count;}} website)
+                      {{ $all->domHost }} <a href="{{route('host.getDomain',$all->domHost) }}"> ({{$all->domain_count}} website) </a>
                      </td>
                      <td>
                       <a href="https://{{ $all->domHost }}/cpanel" class="btn-sm btn-primary d-inline-block" target="_blank">Open cPanel</a>

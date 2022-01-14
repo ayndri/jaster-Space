@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Akses;
 use Illuminate\Http\Request;
 use App\Models\Host;
 use Illuminate\Support\Facades\DB;
@@ -82,5 +83,10 @@ class HostCtrl extends Controller
         Alert::success('Berhasil', 'Perubahan Sukses');
         return redirect('/host');
 
+    }
+
+    public function getDomain(Request $request, Host $host) {
+        $domainHost = Akses::with('hosting')->where('host_id','=',$host->idHost)->get();
+        return view('adm.host.all-domain-data',compact('host','domainHost'));
     }
 }
