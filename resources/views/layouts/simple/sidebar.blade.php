@@ -27,7 +27,7 @@
       <ul class="nav-submenu">
         <li><a href="{{route('host.all')}}" class="{{ Route::currentRouteName() == 'hosting' ? 'active' : '' }}">Hosting</a></li>
         <li><a href="{{route('domain.getAllDomain')}}" class="{{ Route::currentRouteName() == 'domain' ? 'active' : '' }}">Domain</a></li>
-        <li><a href="#" class="{{ Route::currentRouteName() == 'renewal' ? 'active' : '' }}">Renewal</a></li>
+        <li><a href="{{route('renewal.index')}}" class="{{ Route::currentRouteName() == 'renewal' ? 'active' : '' }}">Renewal</a></li>
         <li><a href="{{route('domain.index')}}" class=" ">Cari Hosting</a></li>
       </ul>
     </li>
@@ -76,7 +76,7 @@
         <li><a href="{{ route('team.absen') }}" class="{{ Route::currentRouteName() == 'prog-jg' ? 'active' : '' }}">List Absen Team</a></li>
         <li><a href="{{ route('admin.absen') }}" class="{{ Route::currentRouteName() == 'prog-jg' ? 'active' : '' }}">List Absen Super</a></li>
         <li><a href="{{ route('absen') }}" class="{{ Route::currentRouteName() == 'hist-jg' ? 'active' : '' }}">Tambah Absen</a></li>
-        
+
       </ul>
     </li>
 

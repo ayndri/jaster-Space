@@ -58,7 +58,7 @@ Route::post('/host/{id}/edit', ['as' => 'host.edit', 'uses' => 'App\Http\Control
 Route::get('/host/{id}/del', ['as' => 'host.del', 'uses' => 'App\Http\Controllers\HostCtrl@destroy']);
 Route::get('/host/{host:domHost}/list-domain', ['as' => 'host.getDomain', 'uses' => 'App\Http\Controllers\HostCtrl@getDomain']);
 
-
+Route::get('/renewal', ['as' => 'renewal.index', 'uses' => 'App\Http\Controllers\RenewalController@index']);
 
 Route::get('/jweb/add', ['as' => 'jweb.add', 'uses' => 'App\Http\Controllers\JwebCtrl@add']);
 Route::post('/jweb/add', ['as' => 'jweb.tambah', 'uses' => 'App\Http\Controllers\JwebCtrl@tambah']);
