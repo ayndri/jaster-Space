@@ -164,7 +164,7 @@
                                           <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-original-title="" title=""></button>
                                         </div>
                                         <div class="modal-body" id="viewNotes">
-                                            <textarea id="mytextarea" class="form-control" name="reqBrief" placeholder="Content"></textarea>
+                                            <textarea id="" class="ckeditor form-control" name="reqBrief" placeholder="Content"></textarea>
                                         </div>
                                       </div>
                                     </div>
@@ -217,12 +217,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Reference</label>
-                                <select class="form-control" name="fromTrx" id="selpost" required="">
-                                    <option disabled>--- Pilih salah satu ---</option>
-                                    <option value="Akun A">Akun A</option>
-                                    <option value="Akun B">Akun B</option>
-                                    <option value="JasterAds">JasterAds</option>
-                                    </select>
+                                    <input class="form-control" type="test" name="fromTrx" required>
                             </div>
                         </div>
                     </div>
@@ -288,7 +283,7 @@
                     </div>    
                     </div>
                    
-                    <input class="" id="totalasli" type="hidden" value="" name="totalOrder">
+                    <input class="" id="totalasli" type="hidden" name="totalOrder">
                     Total: <span id="total"></span>
                 
               
@@ -306,6 +301,13 @@
 @endsection
 
 @section('script')
+<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.ckeditor').ckeditor();
+    });
+</script>
     
 <script type="text/javascript">
 
@@ -384,6 +386,8 @@ $(".item_order").on('keyup change', function(e) {
      $(this).find(".subtotal").val(subtotal);
      if(!isNaN(subtotal))
          total+=subtotal;
+
+         $("#totalasli").val(total);
 
  });
 

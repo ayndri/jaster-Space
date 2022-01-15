@@ -1,6 +1,6 @@
 @extends('layouts.simple.master')
 
-@section('title', 'Add Order')
+@section('title', 'Lihat Order')
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
@@ -23,11 +23,11 @@
 @endsection
 
 @section('breadcrumb-title')
-<h3>Add Order</h3>
+<h3>Lihat Order</h3>
 @endsection
 
 @section('tambah')
-<a href="{{route('jweb.all')}}" class="btn-sm btn-danger d-inline-block"><i class="fa fa-long-arrow-left"></i> Cancel</a>
+<a href="{{route('jweb.semua')}}" class="btn-sm btn-danger d-inline-block"><i class="fa fa-long-arrow-left"></i> Cancel</a>
 @endsection
 
 @section('content')
@@ -56,91 +56,32 @@
                          <div class="col-md-6">
                             <div class="form-group">
                                 <label class="col-form-label">Nama Brand</label>
-                                <input class="form-control" type="text" name="brandComp" value="{{ $coba[0]['brandWeb'] }}" required>
+                                <input class="form-control" type="text" name="brandComp" value="{{ $webs->brandComp }}" required>
                              </div>
                              <div class="form-group">
                                 <label class="col-form-label">Nama Instansi</label>
-                                <input class="form-control" type="text" name="namaComp" value="{{ $coba[0]['brandWeb'] }}" required>
+                                <input class="form-control" type="text" name="namaComp" value="{{ $webs->brandComp}}" required>
                              </div>
                              <div class="form-group">
                                  <label class="col-form-label">Email Aktif</label>
-                                 <input class="form-control" type="mail" name="email" value="{{ $coba[0]['emailWeb'] }}" required>
+                                 <input class="form-control" type="mail" name="email" value="{{ $webs->email }}" required>
                               </div>
                          </div>
                          <div class="col-md-6">
 
-                            @if(strpos($coba[0]['namaWeb'], '-'))
 
-                            @php $pic = explode(' - ', $coba[0]['namaWeb']) @endphp
 
-                            @if( $pic != null)
-
-                            <div class="form-group">
-                               <label class="col-form-label">Nama PIC</label>
-                               <input class="form-control" type="text" name="nama" value="{{ $pic[0] }}" required>
-                            </div>
-                            <div class="form-group">
-                               <label class="col-form-label">Jabatan</label>
-                               <input class="form-control" type="text" name="jabatUser" value="{{ $pic[1] }}" required>
-                            </div>
-
-                            @else 
-
-                            <div class="form-group">
-                               <label class="col-form-label">Nama PIC</label>
-                               <input class="form-control" type="text" name="nama" value="{{ $coba[0]['namaWeb'] }}" required>
-                            </div>
-                            <div class="form-group">
-                               <label class="col-form-label">Jabatan</label>
-                               <input class="form-control" type="text" name="jabatUser" required>
-                            </div>
-
-                           @endif
-
-                           @elseif(strpos($coba[0]['namaWeb'], ','))
-
-                           @php $pic = explode(' , ', $coba[0]['namaWeb']) @endphp
-
-                           @if( $pic != null)
-
-                           <div class="form-group">
-                              <label class="col-form-label">Nama PIC</label>
-                              <input class="form-control" type="text" name="nama" value="{{ $pic[0] }}" required>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-form-label">Jabatan</label>
-                              <input class="form-control" type="text" name="jabatUser" value="{{ $pic[1] }}" required>
-                           </div>
-
-                           @else 
-
-                           <div class="form-group">
-                              <label class="col-form-label">Nama PIC</label>
-                              <input class="form-control" type="text" name="nama" value="{{ $coba[0]['namaWeb'] }}" required>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-form-label">Jabatan</label>
-                              <input class="form-control" type="text" name="jabatUser" required>
-                           </div>
-
-                          @endif
-
-                          @else
-
-                          <div class="form-group">
-                              <label class="col-form-label">Nama PIC</label>
-                              <input class="form-control" type="text" name="nama" value="{{ $coba[0]['namaWeb'] }}" required>
-                           </div>
-                           <div class="form-group">
-                              <label class="col-form-label">Jabatan</label>
-                              <input class="form-control" type="text" name="jabatUser" required>
-                           </div>
-
-                           @endif
-                           
+                             <div class="form-group">
+                                <label class="col-form-label">Nama PIC</label>
+                                <input class="form-control" type="text" name="nama" value="{{ $webs->nama }}" required>
+                             </div>
+                             <div class="form-group">
+                                <label class="col-form-label">Jabatan</label>
+                                <input class="form-control" type="text" name="jabatUser" value="{{ $webs->jabatUser }}" required>
+                             </div>
                              <div class="form-group">
                                 <label class="col-form-label">No Whatsapp PIC</label>
-                                <input class="form-control" type="text" onkeypress="validate(event)" value="{{ $coba[0]['waWeb'] }}" name="telpUser" required>
+                                <input class="form-control" type="text" onkeypress="validate(event)" value="{{ $webs->telpUser }}" name="telpUser" required>
                              </div>
                          </div>
                      </div>
@@ -148,7 +89,7 @@
                        
                         <div class="form-group">
                            <label class="col-form-label">Alamat Office</label>
-                           <textarea class="form-control" name="addrComp" required> {{ $webs->addrWeb ?? $coba[0]['almWeb'] }}, {{ $coba[0]['posWeb'] }} </textarea>
+                           <textarea class="form-control" name="addrComp" required> {{ $webs->addrComp }} </textarea>
                         </div>
             
              </div>
@@ -165,16 +106,16 @@
                             <div class="col-md-6">
                                <div class="form-group">
                                    <label class="col-form-label">Domain</label>
-                                   <input class="form-control" type="text" name="domainAkses" value="{{ $coba[0]['domWeb'] }}" required>
+                                   <input class="form-control" type="text" name="domainAkses" value="{{ $webs->domainAkses }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">Username</label>
-                                    <input class="form-control" type="text" name="userAkses" required>
+                                    <input class="form-control" type="text" name="userAkses" value="{{ $webs->userAkses }}" required>
                                  </div>
                                  <div class="form-group">
                                     <label class="col-form-label">Tipe Post</label>
-                                    <select class="form-control" name="postBrief" id="selpost" required="">
-                                        <option disabled>--- Pilih salah satu ---</option>
+                                    <select class="form-control" name="postBrief" id="selpost" disabled required="">
+                                        <option disabled>{{ $webs->postBrief }}</option>
                                         <option value="Artikel">Artikel</option>
                                         <option value="Produk">Produk</option>
                                         <option value="Service">Service</option>
@@ -185,8 +126,8 @@
                                  </div>
                                  <div class="form-group">
                                     <label class="col-form-label">Logo</label><br>
-                                    <input class="form-control mb-1" accept="image/*" name="logoBrief" type="file" id="myImageInput" style="display: none;">
-                                    <img id="myImagePreview" width="200" src="https://myjaster.com/img/logo/{{ $coba[0]['logoweb'] }}"/><br><br>
+                                    <input class="form-control mb-1" accept="image/*" name="logoBrief" type="file">
+                                    
                                     <small class="text-danger">Jika file lebih dari 4MB, Bisa dikirim via email : <span class="text-primary">data@jaster.co.id</span></small>
                                     <div id="image-holder" class="tempatnya"></div>
                                     <div class="invalid-feedback">Kolom ini belum terisi</div>
@@ -196,16 +137,16 @@
    
                                 <div class="form-group">
                                     <label class="col-form-label">Color</label>
-                                    <input class="form-control" type="text" name="colorBrief" value="{{ $coba[0]['warnaWeb'] }}" required>
+                                    <input class="form-control" type="text" name="colorBrief" value="{{ $webs->colorBrief }}" required>
                                  </div>
                                 <div class="form-group">
                                    <label class="col-form-label">Password</label>
-                                   <input class="form-control" type="text" name="passAkses" required>
+                                   <input class="form-control" type="text" name="passAkses" value="{{ $webs->passAkses }}" required>
                                 </div>
                                 <div class="form-group">
                                    <label class="col-form-label">Target</label>
-                                   <select class="form-control" name="targetBrief" id="selpost" required="">
-                                       <option disabled>--- Pilih salah satu ---</option>
+                                   <select class="form-control" name="targetBrief" id="selpost" disabled required="">
+                                       <option disabled>{{ $webs->targetBrief }}</option>
                                        <option value="WA atau Telepon">WA atau Telepon</option>
                                        <option value="Email">Email</option>
                                        <option value="Checkout">Checkout</option>
@@ -226,7 +167,7 @@
                                           <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-original-title="" title=""></button>
                                         </div>
                                         <div class="modal-body" id="viewNotes">
-                                            <textarea id="" class="ckeditor form-control" name="reqBrief" placeholder="Content"></textarea>
+                                            <textarea class="ckeditor form-control" name="reqBrief" placeholder="Content">{{ $webs->reqBrief }}</textarea>
                                         </div>
                                       </div>
                                     </div>
@@ -255,19 +196,19 @@
 
                             <div class="form-group">
                                 <label class="col-form-label">Down Payment</label>
-                                <input class="form-control" type="text" onkeypress="validate(event)" name="dpTrx" required>
+                                <input class="form-control" type="text" onkeypress="validate(event)" name="dpTrx" value="{{ $webs->dpTrx }}" disabled required>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Renewal</label>
-                                <input class="form-control" type="text" onkeypress="validate(event)" name="renew" required>
+                                <input class="form-control" type="text" onkeypress="validate(event)" name="renew" value="{{ $webs->renew }}" disabled required>
                             </div>
                         </div>
                         
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="col-form-label">Payment Method</label>
-                                <select class="form-control" name="pmOrder" id="selpost" required="">
-                                    <option disabled>--- Pilih salah satu ---</option>
+                                <select class="form-control" name="pmOrder" id="selpost" disabled required="">
+                                    <option disabled>{{ $webs->pmOrder }}</option>
                                     <option value="bca">Bank BCA</option>
                                     <option value="mandiri">Bank Mandiri</option>
                                     <option value="bni">Bank BNI</option>
@@ -279,12 +220,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Reference</label>
-                                <select class="form-control" name="fromTrx" id="selpost" required="">
-                                    <option disabled>--- Pilih salah satu ---</option>
-                                    <option value="Akun A">Akun A</option>
-                                    <option value="Akun B">Akun B</option>
-                                    <option value="JasterAds">JasterAds</option>
-                                    </select>
+                                <input class="form-control" type="text" name="fromTrx" value="{{ $webs->fromTrx }}" disabled required>
                             </div>
                         </div>
                     </div>
@@ -301,13 +237,15 @@
                     <a id="add" class="btn-ic btn-danger hilang" style="padding: 3px 10px;width: 50px;"><i class="icon-plus"></i></a>
                 </div>
 
+                @foreach ($trxweb as $trx)
+
                 <div class="card-body items itemlist" id="itemlist">
                 
-                    <div class="item_order targetfields d-flex" id="item_order[0]">
+                    <div class="item_order targetfields d-flex" id="item_order">
                             <div class="form-group">
                                 <label class="col-form-label">Paket</label>
-                                <select class="form-control" name="paketTrx[]" id="selpost" required="">
-                                    <option disabled>--- Pilih salah satu ---</option>
+                                <select class="form-control" name="paketTrx[]" id="selpost" required="" disabled>
+                                    <option>{{ $trx->paketTrx }}</option>
                                     <option value="Beli Hosting">Beli Hosting</option>
                                     <option value="Beli Domain">Beli Domain</option>
                                     <option value="Web Company Profile">Web Company Profile</option>
@@ -341,17 +279,19 @@
                             </div>
                         <div class="form-group" style="width: 100px;">
                             <label class="col-form-label">Qty</label>
-                            <input class="qty form-control" type="number" name="qtyTrx[]" required>
+                            <input class="qty form-control" type="number" name="qtyTrx[]" value="{{ $trx->qtyTrx }}" disabled required>
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">Harga</label>
-                            <input class="harga form-control" type="text" name="hargaTrx[]" required>
+                            <input class="harga form-control" type="text" name="hargaTrx[]" value="{{ $trx->hargaTrx }}" disabled required>
                         </div>
                     </div>    
                     </div>
+
+                    @endforeach
                    
                     <input class="" id="totalasli" type="hidden" value="" name="totalOrder">
-                    Total: <span id="total"></span>
+                    Total: <span id="total">{{ $webs->totalOrder }}</span>
                 
              </div>
         </div>
@@ -364,7 +304,6 @@
 @endsection
 
 @section('script')
-
 <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 
 <script type="text/javascript">
@@ -372,8 +311,6 @@
         $('.ckeditor').ckeditor();
     });
 </script>
-
-    
     
 <script type="text/javascript">
 

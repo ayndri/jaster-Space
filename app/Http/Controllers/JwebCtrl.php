@@ -41,8 +41,7 @@ class JwebCtrl extends Controller
 
     public function semua()
     {
-        $webs = DB::table('trxs')
-        ->join('orders', 'orders.idOrder', '=', 'trxs.idOrder')
+        $webs = DB::table('orders')
         ->join('briefs', 'briefs.idBrief', '=', 'orders.idBrief')
         ->join('aksess', 'aksess.idAkses', '=', 'orders.idAkses')
         ->join('users', 'users.idUser', '=', 'orders.idUser')
@@ -96,16 +95,99 @@ class JwebCtrl extends Controller
 
     public function editweb($id)
     {
-        $webs = DB::table('trxs')
-        ->join('orders', 'orders.idOrder', '=', 'trxs.idOrder')
+        $webs = DB::table('orders')
         ->join('briefs', 'briefs.idBrief', '=', 'orders.idBrief')
         ->join('aksess', 'aksess.idAkses', '=', 'orders.idAkses')
         ->join('users', 'users.idUser', '=', 'orders.idUser')
         ->join('companys', 'companys.idComp', '=', 'orders.idComp')
-        ->where('briefs.idBrief', '=', $id)
+        ->where('orders.idBrief', '=', $id)
         ->first();
 
-        return view('adm.jweb.editweb', compact('webs'));
+        $trxweb = DB::table('orders')
+        ->join('trxs', 'trxs.idOrder', '=', 'orders.idOrder')
+        ->where('orders.idBrief', '=', $id)
+        ->get();
+
+        //dd($trxweb);
+
+        return view('adm.jweb.editweb', compact('webs', 'trxweb'));
+    }
+
+    public function ubahweb($id, Request $request)
+    {
+
+        $c = count($request->idTrx);
+
+
+        for ( $i=0; $i< $c; ++$i) {
+
+           DB::table('trxs')
+           ->where('idTrx', $request->idTrx[$i])
+           ->update(['trxs.paketTrx' => $request->paketTrx[$i],
+            'trxs.qtyTrx' => $request->qtyTrx[$i],
+            'trxs.hargaTrx' => $request->hargaTrx[$i],]);
+
+        }  
+
+
+        DB::table('orders')
+        ->join('briefs', 'briefs.idBrief', '=', 'orders.idBrief')
+        ->join('aksess', 'aksess.idAkses', '=', 'orders.idAkses')
+        ->join('users', 'users.idUser', '=', 'orders.idUser')
+        ->join('companys', 'companys.idComp', '=', 'orders.idComp')
+        ->join('trxs', 'orders.idOrder', '=', 'trxs.idOrder')
+        ->where('orders.idBrief', '=', $id)
+        ->update([  'companys.brandComp' => $request->brandComp,
+        'companys.namaComp' => $request->namaComp,
+        'users.email' => $request->email,
+        'users.nama' => $request->nama,
+        'users.jabatUser' => $request->jabatUser,
+        'users.telpUser' => $request->telpUser,
+        'aksess.domainAkses' => $request->domainAkses,
+        'aksess.userAkses' => $request->userAkses,
+        'briefs.postBrief' => $request->postBrief,
+        'briefs.colorBrief' => $request->colorBrief,
+        'aksess.passAkses' => $request->passAkses,
+        'briefs.targetBrief' => $request->targetBrief,
+        'briefs.reqBrief' => $request->reqBrief,
+        'orders.dpTrx' => $request->dpTrx,
+        'orders.renew' => $request->renew,
+        'orders.pmOrder' => $request->pmOrder,
+        'orders.fromTrx' => $request->fromTrx,
+        'orders.totalOrder' => $request->totalOrder,
+        ]);
+
+      
+
+
+        $trxweb = DB::table('orders')
+        ->join('trxs', 'trxs.idOrder', '=', 'orders.idOrder')
+        ->where('orders.idBrief', '=', $id)
+        ->get();
+
+        //dd($trxweb);
+
+       return back();
+    }
+
+    public function webview($id)
+    {
+        $webs = DB::table('orders')
+        ->join('briefs', 'briefs.idBrief', '=', 'orders.idBrief')
+        ->join('aksess', 'aksess.idAkses', '=', 'orders.idAkses')
+        ->join('users', 'users.idUser', '=', 'orders.idUser')
+        ->join('companys', 'companys.idComp', '=', 'orders.idComp')
+        ->where('orders.idBrief', '=', $id)
+        ->first();
+
+        $trxweb = DB::table('orders')
+        ->join('trxs', 'trxs.idOrder', '=', 'orders.idOrder')
+        ->where('orders.idBrief', '=', $id)
+        ->get();
+
+        //dd($trxweb);
+
+        return view('adm.jweb.webview', compact('webs', 'trxweb'));
     }
 
     public function update(Request $request, Jweb $coba)
@@ -369,7 +451,7 @@ class JwebCtrl extends Controller
 
             $lastIncreament = substr($lastorderId, -3);
 
-            $newOrderId = 'JW' . str_pad($lastIncreament + 1, 3, 0, STR_PAD_LEFT);
+            $newOrderId = str_pad($lastIncreament + 1, 3, 0, STR_PAD_LEFT);
            
             $ornum = $newOrderId;
            
@@ -377,7 +459,7 @@ class JwebCtrl extends Controller
 
         
         $order = new Order;
-        $order->nomerOrder = $ornum;
+        $order->nomerOrder = 'JW' . $ornum;
         $order->idBrief = $brief->idBrief;
         $order->idAkses = $akses->idAkses;
         if ($cekuser == null) {
