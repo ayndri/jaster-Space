@@ -27,7 +27,7 @@
 @endsection
 
 @section('tambah')
-<a href="{{route('ads.active')}}" class="btn-sm btn-danger d-inline-block"><i class="fa fa-long-arrow-left"></i> Cancel</a>
+<a href="{{route('jweb.all')}}" class="btn-sm btn-danger d-inline-block"><i class="fa fa-long-arrow-left"></i> Cancel</a>
 @endsection
 
 @section('content')
@@ -69,31 +69,76 @@
                          </div>
                          <div class="col-md-6">
 
+                            @if(strpos($coba[0]['namaWeb'], '-'))
+
                             @php $pic = explode(' - ', $coba[0]['namaWeb']) @endphp
 
-                            @if( $pic == null)
+                            @if( $pic != null)
 
-                             <div class="form-group">
-                                <label class="col-form-label">Nama PIC</label>
-                                <input class="form-control" type="text" name="nama" value="{{ $pic[0] }}" required>
-                             </div>
-                             <div class="form-group">
-                                <label class="col-form-label">Jabatan</label>
-                                <input class="form-control" type="text" name="jabatUser" value="{{ $pic[1] }}" required>
-                             </div>
+                            <div class="form-group">
+                               <label class="col-form-label">Nama PIC</label>
+                               <input class="form-control" type="text" name="nama" value="{{ $pic[0] }}" required>
+                            </div>
+                            <div class="form-group">
+                               <label class="col-form-label">Jabatan</label>
+                               <input class="form-control" type="text" name="jabatUser" value="{{ $pic[1] }}" required>
+                            </div>
 
-                             @else 
+                            @else 
 
-                             <div class="form-group">
-                                <label class="col-form-label">Nama PIC</label>
-                                <input class="form-control" type="text" name="nama" value="{{ $coba[0]['namaWeb'] }}" required>
-                             </div>
-                             <div class="form-group">
-                                <label class="col-form-label">Jabatan</label>
-                                <input class="form-control" type="text" name="jabatUser" required>
-                             </div>
+                            <div class="form-group">
+                               <label class="col-form-label">Nama PIC</label>
+                               <input class="form-control" type="text" name="nama" value="{{ $coba[0]['namaWeb'] }}" required>
+                            </div>
+                            <div class="form-group">
+                               <label class="col-form-label">Jabatan</label>
+                               <input class="form-control" type="text" name="jabatUser" required>
+                            </div>
 
-                            @endif
+                           @endif
+
+                           @elseif(strpos($coba[0]['namaWeb'], ','))
+
+                           @php $pic = explode(' , ', $coba[0]['namaWeb']) @endphp
+
+                           @if( $pic != null)
+
+                           <div class="form-group">
+                              <label class="col-form-label">Nama PIC</label>
+                              <input class="form-control" type="text" name="nama" value="{{ $pic[0] }}" required>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-form-label">Jabatan</label>
+                              <input class="form-control" type="text" name="jabatUser" value="{{ $pic[1] }}" required>
+                           </div>
+
+                           @else 
+
+                           <div class="form-group">
+                              <label class="col-form-label">Nama PIC</label>
+                              <input class="form-control" type="text" name="nama" value="{{ $coba[0]['namaWeb'] }}" required>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-form-label">Jabatan</label>
+                              <input class="form-control" type="text" name="jabatUser" required>
+                           </div>
+
+                          @endif
+
+                          @else
+
+                          <div class="form-group">
+                              <label class="col-form-label">Nama PIC</label>
+                              <input class="form-control" type="text" name="nama" value="{{ $coba[0]['namaWeb'] }}" required>
+                           </div>
+                           <div class="form-group">
+                              <label class="col-form-label">Jabatan</label>
+                              <input class="form-control" type="text" name="jabatUser" required>
+                           </div>
+
+                           @endif
+
+
                              <div class="form-group">
                                 <label class="col-form-label">No Whatsapp PIC</label>
                                 <input class="form-control" type="text" onkeypress="validate(event)" value="{{ $coba[0]['waWeb'] }}" name="telpUser" required>

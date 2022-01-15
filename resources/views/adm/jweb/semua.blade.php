@@ -1,6 +1,6 @@
 @extends('layouts.simple.master')
 
-@section('title', 'Add Order')
+@section('title', 'List Website')
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
@@ -14,12 +14,9 @@
 @endsection
 
 @section('breadcrumb-title')
-<h3>Add Order</h3>
+<h3>List Website</h3>
 @endsection
 
-@section('tambah')
-<a href="{{route('ads.active')}}" class="btn-sm btn-danger d-inline-block"><i class="fa fa-long-arrow-left"></i> Cancel</a>
-@endsection
 
 @section('content')
 
