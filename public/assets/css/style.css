@@ -3848,11 +3848,12 @@ strong ~ p {
 }
 .card .card-header {
     background-color: #fff;
-    padding: 25px;
+    padding: 20px;
     border-bottom: 1px solid #ecf3fa;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    position: relative;
+    position: relative;display: flex;
+    justify-content: space-between;
 }
 .card .card-header.card-no-border {
     border-bottom: none !important;
@@ -3912,7 +3913,7 @@ strong ~ p {
     font-size: 13px;
 }
 .card .card-body {
-    padding: 25px;
+    padding: 20px;
     background-color: rgba(0, 0, 0, 0);
 }
 .card .card-body p:last-child {
@@ -5603,9 +5604,6 @@ div.DTS div.dataTables_scrollBody table {
     margin: 0 10px;
     height: 2.7142em;
     background-color: #fff;
-}
-.dataTables_wrapper table.dataTable {
-    border: 1px solid #efefef;
 }
 .dataTables_wrapper table.dataTable tbody td.select-checkbox,
 .dataTables_wrapper table.dataTable tbody th.select-checkbox {
@@ -24011,9 +24009,8 @@ body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body
     border: 1px solid var(--co-bg);
 }
 body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper .dataTables_filter input[type="search"] {
-    background-color: var(--co-bg);
-    border: 1px solid var(--co-bg);
-    color: rgba(255, 255, 255, 0.73);
+    background-color: #647286;border:0;
+    color: #fff;
 }
 body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper table.dataTable.display tbody tr,
 body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper table.dataTable.order-column.stripe tbody tr {
@@ -24035,13 +24032,7 @@ body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body
 body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper table.dataTable.order-column.stripe tbody tr.even > .sorting_1 {
     background-color: #22262f;
 }
-body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper table.dataTable {
-    border: 1px solid var(--co-bg);
-}
-body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper table.dataTable thead th,
-body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper table.dataTable thead td {
-    border-bottom: 2px solid var(--co-bg);
-}
+
 body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper table.dataTable input,
 body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper table.dataTable select {
     background-color: var(--co-bg);
@@ -24056,7 +24047,7 @@ body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body
     border: 1px solid #98a6ad;
 }
 body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper .table-striped tbody tr:nth-of-type(odd) {
-    --bs-table-accent-bg: var(--co-bg);
+    --bs-table-accent-bg: rgba(255, 255, 255, 0.04);
 }
 body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper .dataTables_paginate .paginate_button {
     color: rgba(255, 255, 255, 0.73) !important;
@@ -32086,7 +32077,7 @@ right: -8px;
 .page-wrapper .page-body-wrapper .page-body {
     min-height: calc(100vh - 136px);
     margin-top: 136px;
-    padding: 0 15px 0 15px;
+    padding: 0 15px 40px 15px;
     position: relative;
     -webkit-transition: 0.5s;
     transition: 0.5s;

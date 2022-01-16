@@ -3,6 +3,7 @@
     --theme-default: #6777ef;
     --theme-secondary: #EE5A24;
     --ungu: #301BEC;
+    --warning: #ffe82b;
     --co-dark: #161b22;
     --co-bg: #0d1117;
     --co-obj: #21262d; 
@@ -92,7 +93,7 @@ flex-direction: column;
 .kecil {
     max-width: 550px !important;
 }
-.btn-ic{padding: 6px 10px; display: inline-block; border-radius: 50px; width: 34px; text-align: center;}
+.btn-ic{padding: 6px 10px; display: inline-block; border-radius: 50px; width: 36px; text-align: center;}
 .table > tbody{vertical-align: baseline;}.swal-footer{text-align: center;}
 .form-control:disabled,
 .form-control[readonly] {
@@ -108,3 +109,20 @@ flex-direction: column;
     border-radius: 6px;
 }
 .inputjax input{background: #4f5b6a; border-color: #0d1117;color: #fff;}
+
+.card .card-header h6{margin: 0;}
+.listtrx{display:flex;column-gap:20px}.listtrx .form-group{width:100%}
+.flex-gap{display: flex; column-gap: 15px;}
+.heading3{text-align:center;display:inline-block;width:100%;margin:30px 0;font-size:20px}
+.heading3 small{font-size:20px;font-weight:600;color:#ffe82b}
+.inblock{display: inline-block;}
+.form-icon{display:flex;align-items:center;background:#313842!important;border:1px solid #525c6a!important;border-radius:.25rem}
+.form-icon input{border:0!important}.form-icon span,.form-icon i,.form-icon svg{font-weight:400;flex:0 0 auto;padding:0 10px;border-right:1px solid #667282}
+.dataTable .thead{background: #647286;}
+@media (min-width:550px){
+    
+.bagi2{columns: 2; column-gap: 20px;}.form-group select option{color: #f7f7f7;}
+}
+@media (max-width:550px){
+.listtrx{flex-direction:column}.listtrx .form-group{width:100%!important}
+}

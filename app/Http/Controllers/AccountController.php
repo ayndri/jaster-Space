@@ -48,7 +48,7 @@ class AccountController extends Controller
             'usrn' => $request->usrn,
             'jabatUser' => $request->jabatUser,
             'password' => bcrypt('1234'),
-            'waUser' => $request->waUser,
+            'telpUser' => $request->telpUser,
             'tglUser' => $request->tglUser,
             'addrUser' => $request->addrUser,
             'kotaUser' => $request->kotaUser

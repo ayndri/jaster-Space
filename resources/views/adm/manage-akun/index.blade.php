@@ -4,7 +4,6 @@
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/bootstrap.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatables.css')}}">
 @endsection
 
@@ -34,7 +33,7 @@
 
         <div class="card">
          <div class="table-responsive">
-             <table class="table table-striped" id="dtbasic">
+             <table class="table table-striped" id="dtsearch">
                  <thead class="thead">
                      <tr>
                        <th scope="col" class="sort">No</th>
@@ -59,13 +58,13 @@
                      {{ $user->email }}
                      </td>
                      <td>
-                        @if ($user->roles->pluck('name')[0] == 1)
+                        @if ($user->roles->pluck('nama')[0] == 1)
                         Superadmin
-                        @elseif ($user->roles->pluck('name')[0] == 2)
+                        @elseif ($user->roles->pluck('nama')[0] == 2)
                             Admin
-                        @elseif ($user->roles->pluck('name')[0] == 3)
+                        @elseif ($user->roles->pluck('nama')[0] == 3)
                             Team
-                        @elseif ($user->roles->pluck('name')[0] == 4)
+                        @elseif ($user->roles->pluck('nama')[0] == 4)
                             Client
                         @else
                             Magang
@@ -74,11 +73,12 @@
                      <td>
                         {{ Carbon\Carbon::parse($user->lastLogin)->format('d F Y H:i') }}
                      </td>
-                     <td>
-                        <a class="btn btn-primary" href="{{route('account.edit',$user->nama)}}"><svg width="20" className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" /></svg>Edit</a>
+                     
+                    <td class="text-right">
+                        <a class="btn-ic btn-primary m-r-5" href="{{route('account.edit',$user->nama)}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="icon-pencil"></i></a>
+                        <a href="{{ route('account.delete', $user->nama) }}" class="btn-ic btn-danger hilang"><i class="icon-close"></i></a>
+                    </td>
 
-                        <a href="{{ route('account.delete', $user->nama) }}" class="btn btn-danger hilang"><svg className="w-6 h-6" width="20" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg> Delete </a>
-                     </td>
                    </tr>
                     @empty
                    <tr>
@@ -122,8 +122,5 @@
         });
     });
 
-    $('#dtbasic').DataTable({
-            lengthMenu: [5, 10, 20, 50, 100, 200, 500],
-    });
  </script>
 @endsection

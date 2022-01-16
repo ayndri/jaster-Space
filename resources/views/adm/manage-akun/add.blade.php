@@ -3,8 +3,6 @@
 @section('title', 'Add Campaign')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/date-picker.css')}}">
 @endsection
 
 @section('mxwidth')
@@ -12,11 +10,6 @@ tengahkan
 @endsection
 
 @section('style')
-<style>
-    .bagi2 {
-	columns: 2;
-    }
-</style>
 @endsection
 
 @section('breadcrumb-title')
@@ -86,7 +79,10 @@ tengahkan
 
                         <div class="form-group">
                            <label class="col-form-label">Nomer Whatsapp</label>
-                           <input class="form-control" type="text" name="waUser" value="{{ old('waUser') }}">
+                           <div class="form-icon">
+                            <span>+62</span>
+                            <input class="form-control" type="text" name="telpUser" value="{{ old('telpUser') }}">
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -128,10 +124,6 @@ tengahkan
 @endsection
 
 @section('script')
-
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
 
 <script>
     setTimeout(function() {

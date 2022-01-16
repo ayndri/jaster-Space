@@ -25,6 +25,7 @@ class User extends Authenticatable
         'email',
         'usrn',
         'password',
+        'tglUser',
         'telpUser',
         'lastLogin',
         'jabatUser',

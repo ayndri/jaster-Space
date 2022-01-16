@@ -12,7 +12,7 @@
       </a>
       <ul class="nav-submenu">
       <li><a href="{{ Route('jweb.all') }}" class="{{ Route::currentRouteName() == 'list-prog' ? 'active' : '' }}">List Pending</a></li>
-      <li><a href="{{ Route('jweb.semua') }}" class="{{ Route::currentRouteName() == 'list-prog' ? 'active' : '' }}">List Fix</a></li>
+      <li><a href="{{ Route('jweb.semua') }}" class="{{ Route::currentRouteName() == 'list-prog' ? 'active' : '' }}">Progress</a></li>
       <li><a href="{{ Route('jweb.add') }}" class="{{ Route::currentRouteName() == 'list-prog' ? 'active' : '' }}">Add Order</a></li>
       <li><a href="#" class="{{ Route::currentRouteName() == 'history-order' ? 'active' : '' }}">History Order</a></li>
       <li><a href="#" class="{{ Route::currentRouteName() == 'prog-point' ? 'active' : '' }}">Progress Point</a></li>
