@@ -73,10 +73,10 @@
                      <td>
                         {{ Carbon\Carbon::parse($user->lastLogin)->format('d F Y H:i') }}
                      </td>
-                     
+
                     <td class="text-right">
-                        <a class="btn-ic btn-primary m-r-5" href="{{route('account.edit',$user->nama)}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="icon-pencil"></i></a>
-                        <a href="{{ route('account.delete', $user->nama) }}" class="btn-ic btn-danger hilang"><i class="icon-close"></i></a>
+                        <a class="btn-ic btn-primary m-r-5" href="{{route('account.edit',$user)}}" data-toggle="tooltip" data-placement="top" title="Edit"><i class="icon-pencil"></i></a>
+                        <a href="{{ route('account.delete', $user) }}" class="btn-ic btn-danger hilang"><i class="icon-close"></i></a>
                     </td>
 
                    </tr>

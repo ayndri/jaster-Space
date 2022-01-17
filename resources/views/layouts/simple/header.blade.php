@@ -61,7 +61,7 @@
           </div>
           <ul class="profile-dropdown onhover-show-div">
             <li class="fotopro"><img src="{{asset('assets/img/face1.jpg')}}"/><p class="namanya">{{ auth()->user()->nama }}</p><span class="siapanya">Welcomeback !</span>
-            <li><a href="{{route('profile.edit',auth()->user()->nama)}}"><i data-feather="user"></i><span>Account </span></a></li>
+            <li><a href="{{route('profile.edit',auth()->user()->idUser)}}"><i data-feather="user"></i><span>Account </span></a></li>
             <li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>
             <li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
             <li><a href="{{ route('reset.pass') }}"><i data-feather="settings"></i><span>Password</span></a></li>

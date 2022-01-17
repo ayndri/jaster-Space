@@ -34,7 +34,7 @@ tengahkan
 		<div class="col-md-12">
          <div class="card">
              <div class="card-body">
-               <form class="theme-form" method="POST" action="{{ route('account.update',$user->nama) }}" enctype="multipart/form-data">
+               <form class="theme-form" method="POST" action="{{ route('account.update',$user) }}" enctype="multipart/form-data">
 
                   @csrf
                     <div class="error-message">

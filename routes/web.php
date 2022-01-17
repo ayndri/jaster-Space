@@ -84,12 +84,12 @@ Route::get('/domain/all-domain', ['as' => 'domain.getAllDomain', 'uses' => 'App\
 Route::get('/account',['as' => 'account.index','uses' => 'App\Http\Controllers\AccountController@index']);
 Route::get('/account/add-account',['as' => 'account.create','uses' => 'App\Http\Controllers\AccountController@create']);
 Route::post('/account/add-account',['as' => 'account.store','uses' => 'App\Http\Controllers\AccountController@store']);
-Route::get('/account/{user:nama}/edit-account',['as' => 'account.edit','uses' => 'App\Http\Controllers\AccountController@edit']);
-Route::post('/account/{user:nama}/edit-account',['as' => 'account.update','uses' => 'App\Http\Controllers\AccountController@update']);
-Route::get('/account/{user:nama}/delete-account',['as' => 'account.delete','uses' => 'App\Http\Controllers\AccountController@delete']);
+Route::get('/account/{user}/edit-account',['as' => 'account.edit','uses' => 'App\Http\Controllers\AccountController@edit']);
+Route::post('/account/{user}/edit-account',['as' => 'account.update','uses' => 'App\Http\Controllers\AccountController@update']);
+Route::get('/account/{user}/delete-account',['as' => 'account.delete','uses' => 'App\Http\Controllers\AccountController@delete']);
 
-Route::get('/profile/{user:nama}/edit-profile',['as' => 'profile.edit','uses' => 'App\Http\Controllers\ProfileController@edit']);
-Route::post('/profile/{user:nama}/edit-profile',['as' => 'profile.update','uses' => 'App\Http\Controllers\ProfileController@update']);
+Route::get('/profile/{user}/edit-profile',['as' => 'profile.edit','uses' => 'App\Http\Controllers\ProfileController@edit']);
+Route::post('/profile/{user}/edit-profile',['as' => 'profile.update','uses' => 'App\Http\Controllers\ProfileController@update']);
 
 
 
