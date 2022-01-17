@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2022 at 10:24 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Generation Time: Jan 17, 2022 at 11:47 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -163,7 +163,11 @@ INSERT INTO `aksess` (`idAkses`, `idOrder`, `idBrief`, `host_id`, `domainAkses`,
 (97, NULL, NULL, 1, 'becker.net', 'frieda.reinger', 'eGV-|l~%<', '2022-01-14 09:13:33', '2022-01-14 09:13:33'),
 (98, NULL, NULL, 3, 'leannon.com', 'oschoen', 'PjR3bLSI(3W\'n|~9PU1', '2022-01-14 09:13:33', '2022-01-14 09:13:33'),
 (99, NULL, NULL, 1, 'olson.com', 'plarkin', 'E_:GxH0l3bFYwM`~\\i\'', '2022-01-14 09:13:33', '2022-01-14 09:13:33'),
-(100, NULL, NULL, 3, 'borer.com', 'omari86', 'Ofd#\"R~/t*i', '2022-01-14 09:13:33', '2022-01-14 09:13:33');
+(100, NULL, NULL, 3, 'borer.com', 'omari86', 'Ofd#\"R~/t*i', '2022-01-14 09:13:33', '2022-01-14 09:13:33'),
+(101, 6, 9, NULL, 'kangrikza.com', 'admrikza', 'jurnalrikza', '2022-01-16 08:02:13', '2022-01-16 08:02:13'),
+(102, 7, 10, NULL, 'kangrikza.com', 'admrikza', 'jurnalrikza', '2022-01-16 08:05:42', '2022-01-16 08:05:42'),
+(103, NULL, 11, NULL, 'kangrikza.com', 'admrikza', 'jurnalrikza', '2022-01-17 22:30:26', '2022-01-17 22:30:26'),
+(104, NULL, 12, NULL, 'kangrikza.com', 'admrikza', 'jurnalrikza', '2022-01-17 22:35:43', '2022-01-17 22:35:43');
 
 -- --------------------------------------------------------
 
@@ -205,6 +209,7 @@ CREATE TABLE `briefs` (
   `idOrder` int(11) DEFAULT NULL,
   `idComp` int(11) DEFAULT NULL,
   `logoBrief` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `paketBrief` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `colorBrief` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `waBrief` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `emailBrief` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -225,15 +230,9 @@ CREATE TABLE `briefs` (
 -- Dumping data for table `briefs`
 --
 
-INSERT INTO `briefs` (`idBrief`, `idAkses`, `idOrder`, `idComp`, `logoBrief`, `colorBrief`, `waBrief`, `emailBrief`, `igBrief`, `passGramBrief`, `fbBrief`, `sosBrief`, `telfBrief`, `mpBrief`, `reqBrief`, `postBrief`, `targetBrief`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 'placeholder.png', 'blue', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Artikel', 'WA atau Telepon', '2022-01-14 08:02:44', '2022-01-14 08:02:44'),
-(2, 2, 2, 1, 'placeholder.png', 'blue', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Artikel', 'WA atau Telepon', '2022-01-14 08:03:24', '2022-01-14 08:03:25'),
-(3, 3, 3, 1, 'placeholder.png', 'blue', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Artikel', 'WA atau Telepon', '2022-01-14 08:05:48', '2022-01-14 08:05:48'),
-(4, 4, NULL, 2, '01202214_Rectangle 144.png', 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Produk', 'WA atau Telepon', '2022-01-14 08:52:00', '2022-01-14 08:52:00'),
-(5, 5, NULL, 2, '01202214_Rectangle 144.png', 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Produk', 'WA atau Telepon', '2022-01-14 08:52:45', '2022-01-14 08:52:45'),
-(6, 6, NULL, 2, '01202214_Rectangle 144.png', 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Produk', 'WA atau Telepon', '2022-01-14 08:53:41', '2022-01-14 08:53:41'),
-(7, 7, 4, 2, '01202214_Rectangle 144.png', 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Produk', 'WA atau Telepon', '2022-01-14 08:53:57', '2022-01-14 08:53:57'),
-(8, 101, 5, 6, '01202214_undraw_Social_friends_re_7uaa.png', 'check', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Artikel', 'WA atau Telepon', '2022-01-14 09:08:49', '2022-01-14 09:08:49');
+INSERT INTO `briefs` (`idBrief`, `idAkses`, `idOrder`, `idComp`, `logoBrief`, `paketBrief`, `colorBrief`, `waBrief`, `emailBrief`, `igBrief`, `passGramBrief`, `fbBrief`, `sosBrief`, `telfBrief`, `mpBrief`, `reqBrief`, `postBrief`, `targetBrief`, `created_at`, `updated_at`) VALUES
+(11, 103, NULL, 7, NULL, 'basic', '#4ea03e', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Tidak ada request', 'Artikel', 'WA atau Telepon', '2022-01-17 22:30:26', '2022-01-17 22:30:26'),
+(12, 104, NULL, 7, NULL, 'basic', '#4ea03e', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Tidak ada request', 'Artikel', 'WA atau Telepon', '2022-01-17 22:35:43', '2022-01-17 22:35:43');
 
 -- --------------------------------------------------------
 
@@ -257,12 +256,7 @@ CREATE TABLE `companys` (
 --
 
 INSERT INTO `companys` (`idComp`, `idUser`, `idBrief`, `brandComp`, `namaComp`, `addrComp`, `created_at`, `updated_at`) VALUES
-(1, 26, 1, 'PT CAPTAIN MARINE INDONESIA', 'PT CAPTAIN MARINE INDONESIA', 'Gedung Ciputra International (Tokopedia Tower) Lantai 16 Ruang 38, Jl Lingkar Luar Barat, Cengkareng,Jakarta Barat, Jakarta Barat 11740', '2022-01-14 08:02:44', '2022-01-14 08:02:44'),
-(2, 1, NULL, 'test', 'test', 'test', '2022-01-14 08:52:00', '2022-01-14 08:52:00'),
-(3, 1, NULL, 'test', 'test', 'test', '2022-01-14 08:52:45', '2022-01-14 08:52:45'),
-(4, 1, NULL, 'test', 'test', 'test', '2022-01-14 08:53:41', '2022-01-14 08:53:41'),
-(5, 1, NULL, 'test', 'test', 'test', '2022-01-14 08:53:56', '2022-01-14 08:53:56'),
-(6, 1, NULL, 'check', 'check', 'check', '2022-01-14 09:08:49', '2022-01-14 09:08:49');
+(7, 8, 9, 'KangRikza', 'KangRikza', 'Ponpes Askhabul Kahfi\r\nJl. Raya Cangkiran-Gunungpati Km.3 Polaman Kec. Mijen Kota Semarang - Jawa Tengah, 50217', '2022-01-16 08:02:13', '2022-01-16 08:02:13');
 
 -- --------------------------------------------------------
 
@@ -421,9 +415,12 @@ CREATE TABLE `model_has_roles` (
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 1),
 (1, 'App\\Models\\User', 2),
+(1, 'App\\Models\\User', 10),
 (2, 'App\\Models\\User', 3),
 (3, 'App\\Models\\User', 4),
 (4, 'App\\Models\\User', 5),
+(4, 'App\\Models\\User', 8),
+(4, 'App\\Models\\User', 11),
 (5, 'App\\Models\\User', 6);
 
 -- --------------------------------------------------------
@@ -456,11 +453,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`idOrder`, `nomerOrder`, `idBrief`, `idAkses`, `idUser`, `idComp`, `dpTrx`, `renew`, `pmOrder`, `deadlineTrx`, `fromTrx`, `jenisOrder`, `totalOrder`, `statusWeb`, `created_at`, `updated_at`) VALUES
-(1, '455', 1, 1, 26, 1, 1500000, 500000, 'bca', NULL, 'Akun A', 'Website', NULL, '1', '2022-01-14 08:02:44', '2022-01-14 08:02:44'),
-(2, 'JW456', 2, 2, 26, 1, 1500000, 500000, 'bca', NULL, 'Akun A', 'Website', NULL, '1', '2022-01-14 08:03:25', '2022-01-14 08:03:25'),
-(3, 'JW457', 3, 3, 26, 1, 1500000, 500000, 'bca', NULL, 'Akun A', 'Website', NULL, '1', '2022-01-14 08:05:48', '2022-01-14 08:05:48'),
-(4, 'JW456', 7, 7, 27, 2, 1, 1, 'bca', NULL, 'Akun A', 'Website', NULL, '1', '2022-01-14 08:53:57', '2022-01-14 08:53:57'),
-(5, 'JW456', 8, 101, 7, 6, 123, 123, 'bca', NULL, 'Akun A', 'Website', NULL, '1', '2022-01-14 09:08:49', '2022-01-14 09:08:49');
+(6, 'JW455', 9, 101, 8, 7, 1000000, 1100000, 'bni', NULL, 'Instagram', 'Website', NULL, '1', '2022-01-16 08:02:13', '2022-01-16 08:02:13'),
+(7, 'JW456', 10, 102, 8, 7, 1000000, 1100000, 'bni', NULL, 'Instagram', 'Website', NULL, '1', '2022-01-16 08:05:42', '2022-01-16 08:05:42');
 
 -- --------------------------------------------------------
 
@@ -633,11 +627,10 @@ CREATE TABLE `trxs` (
 --
 
 INSERT INTO `trxs` (`idTrx`, `idOrder`, `paketTrx`, `qtyTrx`, `hargaTrx`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Beli Domain', 1, 150000, '2022-01-14 08:02:44', '2022-01-14 08:02:44'),
-(2, 2, 'Beli Hosting', 1, 100, '2022-01-14 08:03:25', '2022-01-14 08:03:25'),
-(3, 3, 'Beli Domain', 1, 250000, '2022-01-14 08:05:48', '2022-01-14 08:05:48'),
-(4, 4, 'Beli Hosting', 1, 100000, '2022-01-14 08:53:57', '2022-01-14 08:53:57'),
-(5, 5, 'Beli Hosting', 1, 20, '2022-01-14 09:08:49', '2022-01-14 09:08:49');
+(6, 6, 'Web Company Profile', 1, 2000000, '2022-01-16 08:02:14', '2022-01-16 08:02:14'),
+(7, 6, 'Beli Hosting', 1, 550000, '2022-01-16 08:02:14', '2022-01-16 08:02:14'),
+(8, 7, 'Web Company Profile', 1, 2000000, '2022-01-16 08:05:43', '2022-01-16 08:05:43'),
+(9, 7, 'Beli Hosting', 1, 550000, '2022-01-16 08:05:43', '2022-01-16 08:05:43');
 
 -- --------------------------------------------------------
 
@@ -669,12 +662,13 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`idUser`, `nama`, `email`, `usrn`, `jabatUser`, `tglUser`, `lastLogin`, `password`, `telpUser`, `fotoUser`, `addrUser`, `kotaUser`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'superadmin', 'superadmin@superadmin.com', 'superadmin', 'superadmin', NULL, '2022-01-14 09:05:45', '$2y$10$2xc2Cj3yHqaYSfZbF5jGEOBMiCJvrLs10LZE8EtS0PyXU8MkRGgT2', '1111', '', 'addr superadmin', 'kota superadmin', NULL, '2022-01-14 09:05:45', '2022-01-14 09:05:45'),
-(2, 'jaster', 'jaster@superadmin.com', 'jaster', 'jaster', NULL, '2022-01-14 09:05:46', '$2y$10$B1H0bz/2VAI0YI47hHOnJuK./rCEKEiiwJHBBEhG0zui1gr5AdZv.', '1111', '', 'addr jaster', 'kota jaster', NULL, '2022-01-14 09:05:46', '2022-01-14 09:05:46'),
+(2, 'jaster', 'jaster@superadmin.com', 'jaster', 'jaster', NULL, '2022-01-16 06:58:41', '$2y$10$B1H0bz/2VAI0YI47hHOnJuK./rCEKEiiwJHBBEhG0zui1gr5AdZv.', '1111', '', 'addr jaster', 'kota jaster', NULL, '2022-01-14 09:05:46', '2022-01-16 06:58:41'),
 (3, 'admin', 'admin@admin.com', 'admin', 'admin', NULL, '2022-01-14 09:05:46', '$2y$10$.p.arIgfv7U4WkoxLHf7eOmMFkF1O0l1gu6PzU4oGtj9QLhAtViES', '1111', '', 'addr admin', 'kota admin', NULL, '2022-01-14 09:05:46', '2022-01-14 09:05:46'),
 (4, 'team', 'team@team.com', 'team', 'team', NULL, '2022-01-14 09:05:46', '$2y$10$JKt4rXlh90mSjjfgls2MI.nXyLLcCpplpsij6wFXwyPwLEimobAw2', '1111', '', 'addr team', 'kota team', NULL, '2022-01-14 09:05:46', '2022-01-14 09:05:46'),
 (5, 'client', 'client@client.com', 'client', 'client', NULL, '2022-01-14 09:05:46', '$2y$10$6.dqrfo3l/0JaBnRvdPk/.dVQ4HcUP46GcRNK/hIEt64zYEZ0.Upe', '1111', '', 'addr client', 'kota client', NULL, '2022-01-14 09:05:46', '2022-01-14 09:05:46'),
 (6, 'magang', 'magang@magang.com', 'magang', 'magang', NULL, '2022-01-14 09:05:46', '$2y$10$a193YWSj.vU82rXDr2iyKO/FQ.MgqPoxKuFeuHjfGcpQ94xd1S7VS', '1111', '', 'addr magang', 'kota magang', NULL, '2022-01-14 09:05:46', '2022-01-14 09:05:46'),
-(7, 'check', 'check', NULL, 'check', NULL, NULL, '$2y$10$KnrGw3LGvU5nRsaXPkyDy.0WvnEy3FbCi7q5kab9IwgTQPg9i5Zmi', '123', NULL, NULL, NULL, NULL, '2022-01-14 09:08:49', '2022-01-14 09:08:49');
+(10, 'GustiML', 'gustimardi@gmail.com', 'gustiml', 'Owner', '1999-02-28', '2022-01-17 22:15:32', '$2y$10$hD2VvyQ9543kGTY5ecXmj.o1M8r5bmxwUqr0nsZDW1i6oBshr5Rjm', '82223332840', NULL, 'Jl Kampar no 7B', 'Surabaya', NULL, '2022-01-16 08:36:46', '2022-01-17 22:15:32'),
+(11, 'Muhamad Rikza Saputro', 'rikzasaputro1995@gmail.com', NULL, 'Khodimul Ma\'had', NULL, NULL, '$2y$10$KnrGw3LGvU5nRsaXPkyDy.0WvnEy3FbCi7q5kab9IwgTQPg9i5Zmi', '85641554248', NULL, NULL, NULL, NULL, '2022-01-17 22:30:25', '2022-01-17 22:30:25');
 
 --
 -- Indexes for dumped tables
@@ -817,7 +811,7 @@ ALTER TABLE `absens`
 -- AUTO_INCREMENT for table `aksess`
 --
 ALTER TABLE `aksess`
-  MODIFY `idAkses` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `idAkses` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `akunads`
@@ -829,13 +823,13 @@ ALTER TABLE `akunads`
 -- AUTO_INCREMENT for table `briefs`
 --
 ALTER TABLE `briefs`
-  MODIFY `idBrief` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idBrief` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `companys`
 --
 ALTER TABLE `companys`
-  MODIFY `idComp` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idComp` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -865,7 +859,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `idOrder` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idOrder` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `topups`
@@ -877,13 +871,13 @@ ALTER TABLE `topups`
 -- AUTO_INCREMENT for table `trxs`
 --
 ALTER TABLE `trxs`
-  MODIFY `idTrx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idTrx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `idUser` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idUser` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables

@@ -117,7 +117,7 @@ flex-direction: column;
 .heading3 small{font-size:20px;font-weight:600;color:#ffe82b}
 .inblock{display: inline-block;}
 .form-icon{display:flex;align-items:center;background:#313842!important;border:1px solid #525c6a!important;border-radius:.25rem}
-.form-icon input{border:0!important}.form-icon span,.form-icon i,.form-icon svg{font-weight:400;flex:0 0 auto;padding:0 10px;border-right:1px solid #667282}
+.form-icon input{border:0!important}.form-icon span,.form-icon i,.form-icon svg{color: #ffe82b;font-weight:400;flex:0 0 auto;padding:0 10px;border-right:1px solid #667282}
 .dataTable .thead{background: #647286;}
 @media (min-width:550px){
     

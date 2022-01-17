@@ -339,9 +339,7 @@ class JwebCtrl extends Controller
     {
 
         $cekuser = User::where('email', '=', $request->input('email'))->first();
-
         if ($cekuser == null) {
-
             $user = new User;
             $user->email = $request->email;
             $user->nama = $request->nama;
@@ -349,18 +347,10 @@ class JwebCtrl extends Controller
             $user->telpUser = $request->telpUser;
             $user->assignRole('4');
             $user->save();
-
-
-
         }
-
-
-
-      $cekcompany = Company::where('brandComp', '=', $request->brandComp)->first();
-
-
-
-      if ($cekcompany == null) {
+        
+        $cekcompany = Company::where('brandComp', '=', $request->brandComp)->first();
+        if ($cekcompany == null) {
 
         $comp = new Company;
         if ($cekuser == null) {
@@ -374,11 +364,7 @@ class JwebCtrl extends Controller
             $comp->addrComp = $request->addrComp;
             $comp->save();
 
-      }
-
-
-
-
+        }
 
         $akses = new Akses;
         $akses->domainAkses = $request->domainAkses;
@@ -387,16 +373,6 @@ class JwebCtrl extends Controller
         $akses->save();
 
         $ambilcomp = Company::where('brandComp', '=', $request->input('brandComp'))->first();
-
-        if ($request->hasFile('logoBrief')) {
-            $file = $request->file('logoBrief');
-            $nama_file = Carbon::now()->format('mYd')."_".$file->getClientOriginalName();
-            $tujuan_upload = "img/logo";
-            $file->move($tujuan_upload, $nama_file);
-            }else{
-                $nama_file = "placeholder.png";
-        }
-
 
         $brief = new Brief;
         $brief->idAkses = $akses->idAkses;
@@ -408,7 +384,6 @@ class JwebCtrl extends Controller
         }
 
         $brief->postBrief = $request->postBrief;
-        // $brief->logoBrief = $nama_file;
         $brief->paketBrief = $request->paketBrief;
         $brief->colorBrief = $request->colorBrief;
         $brief->targetBrief = $request->targetBrief;
@@ -423,22 +398,10 @@ class JwebCtrl extends Controller
         $comp->idBrief = $brief->idBrief;
         $comp->save();
 
-          }
+        }
 
 
         $ambilUser = User::where('email', '=', $request->input('email'))->first();
-
-
-
-//  $unique_no = Tiket::orderBy('idTiket', 'DESC')->pluck('idTiket')->first();
-//  if ($unique_no == null or $unique_no == "") {
-//      #If Table is Empty
-//      $unique_no = 1;
-//  } else {
-//      #If Table has Already some Data
-//      $unique_no = $unique_no + 1;
-//  }
-
 
 
         $isiorder = Order::orderBy('idOrder', 'DESC')->pluck('idOrder')->first();

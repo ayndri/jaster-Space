@@ -9,7 +9,7 @@ class Brief extends Model
 {
     
     protected $table = "briefs";
-    protected $fillable = ['idAkses', 'idOrder', 'idComp', 'logoBrief', 'colorBrief', 'waBrief', 'emailBrief', 'igBrief', 'passgramBrief', 'fbBrief', 'sosBrief', 'telBrief', 'mpBrief', 'reqBrief', 'postBrief', 'targetBrief'];
+    protected $fillable = ['idAkses', 'idOrder', 'idComp', 'logoBrief', 'paketBrief', 'colorBrief', 'waBrief', 'emailBrief', 'igBrief', 'passgramBrief', 'fbBrief', 'sosBrief', 'telBrief', 'mpBrief', 'reqBrief', 'postBrief', 'targetBrief'];
     protected $primaryKey = 'idBrief';
 }
 
