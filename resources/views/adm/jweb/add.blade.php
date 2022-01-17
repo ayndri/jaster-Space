@@ -11,7 +11,7 @@
 
 @section('style')
 <style>
-    
+
 .d-flex.theme-form {
   flex-wrap: wrap;
 }
@@ -35,11 +35,11 @@
 <div class="container-fluid">
 		<form class="" enctype="multipart/form-data" method="POST" action="{{ route('jweb.tambah') }}">
             @csrf
-            
+
 	<div class="row">
 		<div class="col-md-6">
          <div class="card">
-             
+
             <div class="card-header">
                 <h6>🏢 Company Details</h6>
             </div>
@@ -47,7 +47,7 @@
                   {{-- @csrf  --}}
                 @foreach ($errors->all() as $error)
                 <p class="text-danger">{{ $error }}</p>
-                @endforeach 
+                @endforeach
                 <input class="form-control" type="hidden" name="idWeb" required>
                 <input class="form-control" type="hidden" name="statweb" value="1" required>
                 <div class="bagi2">
@@ -79,16 +79,16 @@
                             <input class="form-control" type="text" onkeypress="validate(event)" name="telpUser" required>
                         </div>
                         </div>
-                </div> 
+                </div>
                 <div class="form-group">
                     <label class="col-form-label">Alamat Office</label>
                     <textarea class="form-control" name="addrComp" required></textarea>
                 </div>
-            
+
              </div>
           </div>
 		</div>
-        
+
 		<div class="col-md-6">
             <div class="card">
                 <div class="card-header">
@@ -163,18 +163,18 @@
                             </div>
                         </div>
                         </div>
-                    </div>            
+                    </div>
                     <span class="inblock" style="margin-top: 22px !important;"><b>Note :</b> Pastikan data diatas sudah benar, Double Check</span>
-                
+
                 </div>
              </div>
         </div>
-        
+
 		<div class="col-md-5">
             <div class="card">
                 <div class="card-header">
                     <h6>🔰 Payment Details</h6>
-                    
+
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -196,7 +196,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="col-form-label">Payment Method</label>
@@ -221,7 +221,7 @@
                 </div>
              </div>
         </div>
-        
+
 		<div class="col-md-7">
             <div class="card itemdet" id="itemdet">
                 <div class="card-header">
@@ -282,16 +282,16 @@
                                 <input class="harga form-control" type="text" name="hargaTrx[]" required>
                             </div>
                         </div>
-                    </div>    
                     </div>
-                
+                    </div>
+
                     <input class="" id="totalasli" type="hidden" name="totalOrder">
 
                     <span class="heading3">Total: <small id="total">Rp 2.500.000</small></span>
                     <button class="btn btn-primary btn-block w100" type="submit">Save Changes</button>
                     </div>
-                   
-                    
+
+
              </div>
         </div>
 
@@ -315,7 +315,7 @@
 
 $(".item_order").on('keyup change', function(e) {
  var total = 0;
- 
+
  $(".item_order").each(function() {
 
      var qty = parseInt($(this).find(".qty").val());
@@ -336,22 +336,17 @@ $(".item_order").on('keyup change', function(e) {
 
     });
 
-    
 
-    
 
-    $("#remove").click(function(){  
 
-        if($(".item_order").length == 2){
-            document.getElementById("remove").style.display = "none";
+
+    $("#remove").click(function(){
+        if ($("item_order").length < i) {
+        document.getElementById("item_order["+i--+"]").style.display = "none";
         }
-        $('.item_order').not(':first').last().remove();
+    });
 
 
-
-    });  
-
-   
 
 </script>
 
@@ -378,7 +373,7 @@ function kasihtitik(objek) {
 $(function() {
 $(".item_order").on('keyup change', function(e) {
  var total = 0;
- 
+
  $(".item_order").each(function() {
 
      var qty = parseInt($(this).find(".qty").val());
@@ -401,41 +396,41 @@ $(".item_order").on('keyup change', function(e) {
 
 <script type="text/javascript">
     $("#logoWeb").on('change', function () {
-    
+
         var imgPath = $(this)[0].value;
         var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
-        
+
         if (extn == "psd" || extn == "png" || extn == "jpg" || extn == "cdr" || extn == "pdf") {
            if (typeof (FileReader) != "undefined") {
-        
+
                var image_holder = $("#image-holder");
                image_holder.empty();
-        
+
                var reader = new FileReader();
                reader.onload = function (e) {
                    $("<img />", {
                        "src": e.target.result,
                            "class": "thumb-image"
                    });
-            
+
                }
                image_holder.show();
                reader.readAsDataURL($(this)[0].files[0]);
-               
+
                var maxfilesize = 2000  * 2400;  // 1 Mb
                var filesize    = this.files[0].size;
-               
+
                if(filesize > maxfilesize) {
                    document.getElementById( 'image-holder').style.display = "none"
                    alert("File lebih dari 4MB, Anda bisa kirim manual lewat Email");
                }
-               
+
                else {
                 image_holder.show();
                reader.readAsDataURL($(this)[0].files[0]);
                }
-               
-               
+
+
            } else {
                alert("This browser does not support FileReader.");
            }
