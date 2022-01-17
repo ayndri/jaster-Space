@@ -87,7 +87,7 @@ class JwebCtrl extends Controller
         $response = $request->getBody();
         $coba = json_decode($response, true);
 
-       
+
 
 
         return view('adm.jweb.edit', compact('coba'));
@@ -127,7 +127,7 @@ class JwebCtrl extends Controller
             'trxs.qtyTrx' => $request->qtyTrx[$i],
             'trxs.hargaTrx' => $request->hargaTrx[$i],]);
 
-        }  
+        }
 
 
         DB::table('orders')
@@ -157,7 +157,7 @@ class JwebCtrl extends Controller
         'orders.totalOrder' => $request->totalOrder,
         ]);
 
-      
+
 
 
         $trxweb = DB::table('orders')
@@ -193,17 +193,17 @@ class JwebCtrl extends Controller
     public function update(Request $request, Jweb $coba)
     {
         $request->validate([
-            
+
             ]);
-    
+
             $ser = [];
             $qty = array();
             $har = array();
-    
+
             $serTrx = $request->serTrx;
             $qtyTrx = $request->qtyTrx;
             $harTrx = $request->harTrx;
-                
+
             foreach ($request->serTrx as $key => $titleser) {
                 $ser[] = $titleser;
             }
@@ -213,7 +213,7 @@ class JwebCtrl extends Controller
             foreach ($request->harTrx as $key => $titlehar) {
                 $har[] = $titlehar;
             }
-    
+
             if ($request->hasFile('logoWeb')) {
                 $file = $request->file('logoWeb');
                 $nama_file = Carbon::now()->format('mYd')."_".$file->getClientOriginalName();
@@ -222,7 +222,7 @@ class JwebCtrl extends Controller
                 }else{
                     $nama_file = "placeholder.png";
             }
-    
+
             $jweb = new Jweb;
             $jweb->brandWeb = $request->brandWeb;
             $jweb->statWeb = 1;
@@ -233,19 +233,19 @@ class JwebCtrl extends Controller
             $jweb->waWeb = $request->waWeb;
             $jweb->addrWeb = $request->addrWeb;
             $jweb->postWeb = $request->postWeb;
-            
+
             $jweb->colorWeb = $request->colorWeb;
             $jweb->targetWeb = $request->targetWeb;
             $jweb->reqWeb = $request->reqWeb;
             $jweb->save();
-    
+
             $akses = new Akses;
             $akses->idWeb = $jweb->idWeb;
             $akses->domAks = $request->domAks;
             $akses->userAks = $request->userAks;
             $akses->passAks = $request->passAks;
             $akses->save();
-    
+
             $trx = new Trx;
             $trx->idWeb = $jweb->idWeb;
             $trx->dpTrx = $request->dpTrx;
@@ -263,12 +263,12 @@ class JwebCtrl extends Controller
         $hasil = json_decode($response, true);
 
         return view('adm.jweb.all', compact('hasil'));
-    } 
+    }
 
     public function tambahsalah(Request $request)
     {
         $request->validate([
-            
+
         ]);
 
         $ser = [];
@@ -278,7 +278,7 @@ class JwebCtrl extends Controller
         $serTrx = $request->serTrx;
         $qtyTrx = $request->qtyTrx;
         $harTrx = $request->harTrx;
-            
+
         foreach ($request->serTrx as $key => $titleser) {
             $ser[] = $titleser;
         }
@@ -337,7 +337,7 @@ class JwebCtrl extends Controller
 
     public function tambah(Request $request)
     {
-        
+
         $cekuser = User::where('email', '=', $request->input('email'))->first();
 
         if ($cekuser == null) {
@@ -354,14 +354,14 @@ class JwebCtrl extends Controller
 
         }
 
-        
+
 
       $cekcompany = Company::where('brandComp', '=', $request->brandComp)->first();
 
-      
+
 
       if ($cekcompany == null) {
-        
+
         $comp = new Company;
         if ($cekuser == null) {
             $comp->idUser = $user->idUser;
@@ -376,10 +376,10 @@ class JwebCtrl extends Controller
 
       }
 
-     
 
-      
-        
+
+
+
         $akses = new Akses;
         $akses->domainAkses = $request->domainAkses;
         $akses->userAkses = $request->userAkses;
@@ -406,9 +406,10 @@ class JwebCtrl extends Controller
         else{
             $brief->idComp = $ambilcomp->idComp;
         }
-        
+
         $brief->postBrief = $request->postBrief;
-        $brief->logoBrief = $nama_file;
+        // $brief->logoBrief = $nama_file;
+        $brief->paketBrief = $request->paketBrief;
         $brief->colorBrief = $request->colorBrief;
         $brief->targetBrief = $request->targetBrief;
         $brief->reqBrief = $request->reqBrief;
@@ -418,17 +419,17 @@ class JwebCtrl extends Controller
         $akses->save();
 
         if ($cekcompany == null) {
-        
+
         $comp->idBrief = $brief->idBrief;
         $comp->save();
-    
+
           }
 
 
         $ambilUser = User::where('email', '=', $request->input('email'))->first();
-        
 
-        
+
+
 //  $unique_no = Tiket::orderBy('idTiket', 'DESC')->pluck('idTiket')->first();
 //  if ($unique_no == null or $unique_no == "") {
 //      #If Table is Empty
@@ -452,12 +453,12 @@ class JwebCtrl extends Controller
             $lastIncreament = substr($lastorderId, -3);
 
             $newOrderId = str_pad($lastIncreament + 1, 3, 0, STR_PAD_LEFT);
-           
+
             $ornum = $newOrderId;
-           
+
         }
 
-        
+
         $order = new Order;
         $order->nomerOrder = 'JW' . $ornum;
         $order->idBrief = $brief->idBrief;
@@ -475,7 +476,7 @@ class JwebCtrl extends Controller
             else{
             $order->idComp = $ambilcomp->idComp;
             }
-        
+
         $order->dpTrx = $request->dpTrx;
         $order->renew = $request->renew;
         $order->pmOrder = $request->pmOrder;
@@ -504,12 +505,12 @@ class JwebCtrl extends Controller
             $trx->qtyTrx = $qtyTrx[$i];
             $trx->hargaTrx = $hargaTrx[$i];
             $trx->save();
-        }   
+        }
 
-        
-        DB::connection('mysql2')->table('jwebs')->where('brandWeb', '=', $request->brandComp)->update(['statWeb' => 1]);
 
-        
+        // DB::connection('mysql')->table('jwebs')->where('brandWeb', '=', $request->brandComp)->update(['statWeb' => 1]);
+
+
         return back();
 
     }
