@@ -71,7 +71,7 @@
                         @endif
                      </td>
                      <td>
-                        {{ Carbon\Carbon::parse($user->lastLogin)->format('d F Y H:i') }}
+                        {{ Carbon\Carbon::parse($user->lastLogin)->locale('id')->diffForHumans(null, true) . " lalu"; }}
                      </td>
 
                     <td class="text-right">
