@@ -194,14 +194,14 @@
                                 <label class="col-form-label">Down Payment</label>
                                 <div class="form-icon">
                                     <span>Rp</span>
-                                    <input class="form-control" type="text" onkeypress="validate(event)" onkeyup="kasihtitik(this);" name="dpTrx" required>
+                                    <input class="rupiah form-control" type="text" id="dp" onkeypress="validate(event)" onkeyup="kasihtitik(this);" name="dpTrx" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Renewal</label>
                                 <div class="form-icon">
                                     <span>Rp</span>
-                                    <input class="form-control" type="text" onkeypress="validate(event)" onkeyup="kasihtitik(this);" name="renew" required>
+                                    <input class="rupiah form-control" type="text" id="renew" onkeypress="validate(event)" onkeyup="kasihtitik(this);" name="renew" required>
                                 </div>
                             </div>
                         </div>
@@ -244,7 +244,7 @@
                 <div class="card-body">
                     <div class="itemlist" id="itemlist">
 
-                        <div class="listtrx" id="item_order[0]">
+                        <div class="item_order targetfields listtrx" id="item_order[0]">
                             <div class="form-group">
                                 <label class="col-form-label">Service</label>
                                 <select class="form-control" name="paketTrx[]" id="selpost" required="">
@@ -282,7 +282,7 @@
                             </div>
                         <div class="form-group" style="width: 250px;">
                             <label class="col-form-label">Qty</label>
-                            <input class="qty form-control" type="number" name="qtyTrx[]" onkeypress="validate(event)" required>
+                            <input class="qty form-control" type="number" name="qtyTrx[]" required>
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">Harga</label>
@@ -295,8 +295,8 @@
                     </div>
 
                     <input class="" id="totalasli" type="hidden" name="totalOrder">
-
-                    <span class="heading3">Total: <small id="total">Rp 2.500.000</small></span>
+            
+                    <span class="heading3">Total: <small id="total">Rp </small></span>
                     <button class="btn btn-primary btn-block w100" type="submit">Submit New Order</button>
                     </div>
 
@@ -312,77 +312,109 @@
 @endsection
 
 @section('script')
+<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+
 <script type="text/javascript">
-    var i = 0;
-    document.getElementById("remove").style.display = "none";
-    $("#add").click(function(){
-        i++
-        document.getElementById("remove").style.display = "block";
-        $("#itemlist").append(
-            '<div class="listtrx" id="item_order['+i+']"><div class="form-group"><label class="col-form-label">Service</label><select class="form-control" name="paketTrx[]" id="selpost" required=""><option disabled selected>--- Pilih salah satu ---</option><option value="Beli Hosting">Beli Hosting</option><option value="Beli Domain">Beli Domain</option><option value="Web Company Profile">Web Company Profile</option><option value="Web Sales">Web Sales</option><option value="Web Listing">Web Listing</option><option value="Web Resto">Web Resto</option><option value="Web Dinas / Instansi">Web Dinas / Instansi</option><option value="Web Kecantikan">Web Kecantikan</option><option value="Web Toko Online">Web Toko Online</option><option value="Web Rental">Web Rental</option><option value="Web Travel">Web Travel</option><option value="Blog">Blog</option><option value="Web Booking / Hotel">Web Booking / Hotel</option><option value="Redesign / Web Custom">Redesign / Web Custom</option><option value="Logo">Logo</option><option value="Brosur">Brosur</option><option value="Company Profile">Company Profile</option><option value="Menu / Banner Service">Menu / Banner Service</option><option value="Kartu Nama">Kartu Nama</option><option value="Stempel">Stempel</option><option value="ID Card">ID Card</option><option value="Sticker">Sticker</option><option value="Nota / Invoice">Nota / Invoice</option><option value="Google Adwords">Google Adwords</option><option value="Design Katalog">Design Katalog</option><option value="Domain Security">Domain Security</option><option value="Google Business">Google Business</option><option value="Foto Produk">Foto Produk</option></select></div><div class="form-group" style="width:250px"><label class="col-form-label">Qty</label><input class="qty form-control" type="number" name="qtyTrx[]" onkeypress="validate(event)" required></div><div class="form-group"><label class="col-form-label">Harga</label><div class="form-icon"><span>Rp</span><input class="harga form-control" type="text" name="hargaTrx[]" required></div></div></div>');
-        $(function() {
-
-$(".item_order").on('keyup change', function(e) {
- var total = 0;
-
- $(".item_order").each(function() {
-
-     var qty = parseInt($(this).find(".qty").val());
-     var harga = parseInt($(this).find(".harga").val());
-     var subtotal = qty * harga;
-     $(this).find(".subtotal").val(subtotal);
-     if(!isNaN(subtotal))
-         total+=subtotal;
-
-         $("#totalasli").val(total);
-
- });
-
- $("#total").html(total);
-});
-
-})
-
+    $(document).ready(function () {
+        $('.ckeditor').ckeditor();
     });
-
-
-
-
-
-    $("#remove").click(function(){
-        if ($("item_order").length < i) {
-        document.getElementById("item_order["+i--+"]").style.display = "none";
-        }
-    });
-
-
-
 </script>
 
 <script>
 
 function kasihtitik(objek) {
-     separator = ".";
-     a = objek.value;
-     b = a.replace(/[^\d]/g,"");
-     c = "";
-     panjang = b.length;
-     j = 0;
-     for (i = panjang; i > 0; i--) {
-       j = j + 1;
-       if (((j % 3) == 1) && (j != 1)) {
-         c = b.substr(i-1,1) + separator + c;
-     } else {
-         c = b.substr(i-1,1) + c;
-     }
- }
- objek.value = c;
+    separator = ".";
+    a = objek.value;
+    b = a.replace(/[^\d]/g,"");
+    c = "";
+    panjang = b.length;
+    j = 0;
+    for (i = panjang; i > 0; i--) {
+      j = j + 1;
+      if (((j % 3) == 1) && (j != 1)) {
+        c = b.substr(i-1,1) + separator + c;
+    } else {
+        c = b.substr(i-1,1) + c;
+    }
 }
+objek.value = c;
+}
+ 
+ </script>
+    
+<script type="text/javascript">
 
-$(function() {
+   
+
+    var i = 0;
+  
+    document.getElementById("remove").style.display = "none";
+   
+    $("#add").click(function(){
+
+        i++
+
+        document.getElementById("remove").style.display = "block";
+
+        $("#itemlist").append(
+            '<div class="item_order targetfields listtrx" id="item_order[0]"><div class="form-group"><label class="col-form-label">Service</label><select class="form-control" name="paketTrx[]" id="selpost" required=""><option disabled selected>--- Pilih salah satu ---</option><option value="Beli Hosting">Beli Hosting</option><option value="Beli Domain">Beli Domain</option><option value="Web Company Profile">Web Company Profile</option><option value="Web Sales">Web Sales</option><option value="Web Listing">Web Listing</option><option value="Web Resto">Web Resto</option><option value="Web Dinas / Instansi">Web Dinas / Instansi</option><option value="Web Kecantikan">Web Kecantikan</option><option value="Web Toko Online">Web Toko Online</option><option value="Web Rental">Web Rental</option><option value="Web Travel">Web Travel</option><option value="Blog">Blog</option><option value="Web Booking / Hotel">Web Booking / Hotel</option><option value="Redesign / Web Custom">Redesign / Web Custom</option><option value="Logo">Logo</option><option value="Brosur">Brosur</option><option value="Company Profile">Company Profile</option><option value="Menu / Banner Service">Menu / Banner Service</option><option value="Kartu Nama">Kartu Nama</option><option value="Stempel">Stempel</option><option value="ID Card">ID Card</option><option value="Sticker">Sticker</option><option value="Nota / Invoice">Nota / Invoice</option><option value="Google Adwords">Google Adwords</option><option value="Design Katalog">Design Katalog</option><option value="Domain Security">Domain Security</option><option value="Google Business">Google Business</option><option value="Foto Produk">Foto Produk</option></select></div><div class="form-group" style="width: 250px;"><label class="col-form-label">Qty</label><input class="qty form-control" type="number" name="qtyTrx[]" required></div><div class="form-group"><label class="col-form-label">Harga</label><div class="form-icon"><span>Rp</span><input class="harga form-control" type="text" name="hargaTrx[]" required></div></div></div>');
+    
+    
+            $(function() {
+
 $(".item_order").on('keyup change', function(e) {
  var total = 0;
+ 
+ $(".item_order").each(function() {
 
+     var qty = parseInt($(this).find(".qty").val());
+     var harga = parseInt($(this).find(".harga").val());
+     var subtotal = qty * harga;
+     $(this).find(".subtotal").val(subtotal);
+     if(!isNaN(subtotal))
+         total+=subtotal;
+
+        
+
+         $("#totalasli").val(total);
+
+         
+
+ });
+
+ $("#total").html(total);
+});
+
+})
+
+    });
+
+    
+
+    
+
+    $("#remove").click(function(){  
+
+        if($(".item_order").length == 2){
+            document.getElementById("remove").style.display = "none";
+        }
+        $('.item_order').not(':first').last().remove();
+
+
+
+    });  
+
+   
+
+</script>
+
+<script>
+
+$(function() {
+
+$(".item_order").on('keyup change', function(e) {
+ var total = 0;
+ 
  $(".item_order").each(function() {
 
      var qty = parseInt($(this).find(".qty").val());
@@ -404,4 +436,8 @@ $(".item_order").on('keyup change', function(e) {
 </script>
 
 
+
+<script src="{{asset('assets/js/datepicker/date-picker/datepicker.js')}}"></script>
+<script src="{{asset('assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
+<script src="{{asset('assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
 @endsection

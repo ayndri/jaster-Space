@@ -49,6 +49,8 @@ class JwebCtrl extends Controller
         ->where('orders.statusWeb', '=', 1)
         ->get();
 
+        
+
         return view('adm.jweb.semua', compact('webs'));
     }
 
@@ -421,6 +423,8 @@ class JwebCtrl extends Controller
 
         }
 
+        $dp = str_replace(".", "", $request->dpTrx);
+        $renew = str_replace(".", "", $request->renew);
 
         $order = new Order;
         $order->nomerOrder = 'JW' . $ornum;
@@ -440,8 +444,8 @@ class JwebCtrl extends Controller
             $order->idComp = $ambilcomp->idComp;
             }
 
-        $order->dpTrx = $request->dpTrx;
-        $order->renew = $request->renew;
+        $order->dpTrx = $dp;
+        $order->renew = $renew;
         $order->pmOrder = $request->pmOrder;
         $order->fromTrx = $request->fromTrx;
         $order->totalOrder = $request->totalOrder;
