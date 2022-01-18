@@ -447,6 +447,8 @@ class JwebCtrl extends Controller
         $order->dpTrx = $dp;
         $order->renew = $renew;
         $order->pmOrder = $request->pmOrder;
+        $order->tglOrder = $request->tglOrder;
+        $order->deadlineOrder = $request->deadlineOrder;
         $order->fromTrx = $request->fromTrx;
         $order->totalOrder = $request->totalOrder;
         $order->jenisOrder = "Website";

@@ -204,6 +204,10 @@
                                     <input class="rupiah form-control" type="text" id="renew" onkeypress="validate(event)" onkeyup="kasihtitik(this);" name="renew" required>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Tanggal Order</label>
+                                <input class="rupiah form-control" type="date" onkeypress="validate(event)" name="tglOrder" required>
+                            </div>
                         </div>
 
                         <div class="col-md-6">
@@ -223,6 +227,10 @@
                             <div class="form-group">
                                 <label class="col-form-label">Reference</label>
                                     <input class="form-control" type="test" name="fromTrx" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Deadline</label>
+                                    <input class="form-control" type="date" name="deadlineOrder" required>
                             </div>
                         </div>
                     </div>
@@ -381,8 +389,11 @@ $(".item_order").on('keyup change', function(e) {
          
 
  });
+ var	reverse = total.toString().split('').reverse().join(''),
+	ribuan 	= reverse.match(/\d{1,3}/g);
+	ribuan	= ribuan.join('.').split('').reverse().join('');
 
- $("#total").html(total);
+ $("#total").text('Rp '+ribuan);
 });
 
 })
@@ -428,7 +439,11 @@ $(".item_order").on('keyup change', function(e) {
 
  });
 
- $("#total").html(total);
+ var	reverse = total.toString().split('').reverse().join(''),
+	ribuan 	= reverse.match(/\d{1,3}/g);
+	ribuan	= ribuan.join('.').split('').reverse().join('');
+
+ $("#total").text('Rp '+ribuan);
 });
 
 })
