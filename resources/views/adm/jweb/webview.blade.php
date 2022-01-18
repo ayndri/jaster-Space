@@ -201,6 +201,10 @@
                                     <input class="rupiah form-control" type="text" id="renew" value="@money($webs->renew)" onkeypress="validate(event)" name="renew" required>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Tanggal Order</label>
+                                <input class="rupiah form-control" type="date" value="{{ $webs->tglOrder }}" onkeypress="validate(event)" name="tglOrder" required>
+                            </div>
                         </div>
 
                         <div class="col-md-6">
@@ -219,6 +223,10 @@
                             <div class="form-group">
                                 <label class="col-form-label">Reference</label>
                                     <input class="form-control" type="text" value="{{ $webs->fromTrx }}" name="fromTrx" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Deadline</label>
+                                    <input class="form-control" type="date" name="deadlineOrder" value="{{ $webs->deadlineOrder }}" required>
                             </div>
                         </div>
                     </div>
