@@ -1,6 +1,6 @@
 @extends('layouts.simple.master')
 
-@section('title', 'Add Campaign')
+@section('title', 'Add User')
 
 @section('css')
 @endsection

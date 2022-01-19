@@ -19,6 +19,7 @@ h1,h2,h3,h4,h5,h6{font-weight: 600;}
 .flex {
     display: flex;
 }
+.inflex{display: inline-flex;align-items: center;}
 .flex-col {
 flex-direction: column;
 }.w65 {
@@ -93,14 +94,11 @@ flex-direction: column;
 .kecil {
     max-width: 550px !important;
 }
-.btn-ic{padding: 6px 10px; display: inline-block; border-radius: 50px; width: 36px; text-align: center;}
-.table > tbody{vertical-align: baseline;}.swal-footer{text-align: center;}
-.form-control:disabled,
-.form-control[readonly] {
-    background: #23282f !important;
-    color: #676767;
-}
-
+.btn-ic{padding: 10px 12px; display: inline-flex; text-align: center; align-items: center; border-radius: 5px;}
+.btn-ic svg{width: 20px; height: 20px;}
+.table > tbody{vertical-align: middle;}.swal-footer{text-align: center;}
+.form-control:disabled,.form-control[readonly] {background: #313842 !important; color: #e8e8e8;}
+.acttitle {display: flex; align-items: center; justify-content: end;}
 .card-sm {
     display: inline-block;
     padding: 15px;

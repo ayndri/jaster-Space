@@ -13,7 +13,8 @@ class AccountController extends Controller
     public function index() {
 
         $users = User::get();
-        return view('adm.manage-akun.index',compact('users'));
+        $roles = Role::get();
+        return view('adm.manage-akun.index',compact('users','roles'));
 
     }
 

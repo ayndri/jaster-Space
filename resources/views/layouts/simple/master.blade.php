@@ -23,7 +23,7 @@
                 <div class="col-6">
                   @yield('breadcrumb-title')
                 </div>
-                <div class="col-6 text-right">
+                <div class="col-6 acttitle">
                   @yield('tambah')
                 </div>
               </div>

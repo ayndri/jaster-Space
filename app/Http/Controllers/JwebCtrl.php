@@ -16,6 +16,7 @@ use App\Models\Brief;
 use App\Models\Order;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class JwebCtrl extends Controller
@@ -47,6 +48,7 @@ class JwebCtrl extends Controller
         ->join('users', 'users.idUser', '=', 'orders.idUser')
         ->join('companys', 'companys.idComp', '=', 'orders.idComp')
         ->where('orders.statusWeb', '=', 1)
+        ->orderBy('orders.tglOrder', 'desc')
         ->get();
 
         
@@ -480,7 +482,8 @@ class JwebCtrl extends Controller
         // DB::connection('mysql')->table('jwebs')->where('brandWeb', '=', $request->brandComp)->update(['statWeb' => 1]);
 
 
-        return back();
+        Alert::success('Lets get to Work', 'Project has been Created');
+        return redirect()->route('jweb.semua');
 
     }
 

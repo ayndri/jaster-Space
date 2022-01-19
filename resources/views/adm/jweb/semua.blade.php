@@ -1,123 +1,94 @@
 @extends('layouts.simple.master')
 
-@section('title', 'List Website')
+@section('title', 'Active Order')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/date-picker.css')}}">
 @endsection
 
 @section('mxwidth')
+tengahkan
 @endsection
 
 @section('style')
 @endsection
 
 @section('breadcrumb-title')
-<h3>List Website</h3>
+<h3>Active Order</h3>
 @endsection
 
+@section('tambah')
+<a href="{{route('jweb.add')}}" class="btn-sm btn-primary d-inline-block">Add New</a>
+@endsection
 
 @section('content')
 
 
 <div class="container-fluid">
 	<div class="row">
-		
 		<div class="col-md-12">
-            <div class="card">
-                <div class="table-responsive p-3">
-                    <table class="table table-striped table-bordered" id="dttbls">
-                        <thead class="thead">
-                            <tr>
-                              <th scope="col" class="sort" data-sort="brandWeb">Brand</th>
-                              <th scope="col" class="sort" data-sort="brandWeb">Nama </th>
-                              <th scope="col" class="sort" data-sort="namaWeb">Email</th>
-                              <th scope="col" class="sort" data-sort="domWeb">Domain</th>
-                              <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="list">
-                          @foreach($webs as $web)
-                          <tr>
-                            <td>
-                            {{ $web->brandComp }}
-                            </td>
-                            <td>
-                            {{ $web->nama }}
-                            </td>
-                            <td>
-                              {{ $web->email }}
-                            </td>
-                            <td>
-                              {{ $web->domainAkses }}
-                            </td>
-                            <td class="text-right">
-                              <a class="btn btn-primary text-light" href="/web/{{ $web->idBrief }}/view" data-toggle="tooltip" data-placement="top" title="View">
-                                <i class="icon-eye"></i>
-                              </a>
-                              <a class="btn btn-info text-light" href="/web/{{ $web->idBrief }}/edit" data-toggle="tooltip" data-placement="top" title="Edit">
-                                <i class="icon-pencil"></i>
-                              </a>
-                              <!-- <form action="{{ $web->idBrief }}" method="post" class="dinline">
-                                @csrf
-                                @method('delete')
-                              <a class="btn btn-danger  text-light" onclick="confirm('{{ __("Yakin Mau hapus data ini?") }}') ? this.parentElement.submit() : ''" data-toggle="tooltip" data-placement="top" title="Delete">
-                                <i class="icon-close"></i>
-                              </a>
-                            </form> -->
-        
-                            </td>
-                          </tr>
-                          
-                          @endforeach
-                            
-                            </tbody>
-                    </table>
-                </div>
-                </div>
-          </div>
-		</div>
+      <div class="card">
+        <div class="card-body">
+          
+        <div class="table-responsive">
+          <table class="table table-striped">
+          <thead class="thead">
+              <tr>
+                <th scope="col" class="sort" data-sort="brandWeb">No.Order</th>
+                <th scope="col" class="sort" data-sort="brandWeb">Nama Brand</th>
+                <th scope="col" class="sort" data-sort="brandWeb">Deadline</th>
+                <th scope="col" class="sort" data-sort="domWeb">Progress</th>
+                <th scope="col" class="sort" data-sort="updated_at">Terakhir Update</th>
+                <th class="text-right">Action</th>
+              </tr>
+          </thead>
+          <tbody class="list">
+            @foreach($webs as $web)
+            <tr>
+              <td>
+              #{{ $web->nomerOrder }}
+              </td>
+              <td>
+              {{ $web->brandComp }}
+              </td>
+              <td>
+                {{ Carbon\Carbon::parse($web->deadlineOrder)->locale('id')->translatedFormat('d F Y')}}
+              </td>
+              <td>
+                0%
+              </td>
+              <td>
+                {{ Carbon\Carbon::parse($web->updated_at)->locale('id')->diffForHumans(null, true) . " lalu"; }}
+              </td>
+              <td class="text-right">
+                <a class="btn-ic btn-primary m-r-5" href="/web/{{ $web->idBrief }}/view" data-toggle="tooltip" data-placement="top" title="View">
+                  <i data-feather="eye"></i>
+                </a>
+                <a class="btn-ic btn-secondary m-r-5" href="https://{{ $web->domainAkses }}/in" target="_blank" data-toggle="tooltip" data-placement="top" title="Login">
+                  <i data-feather="log-in"></i>
+                </a>
+                <a class="btn-ic btn-success" href="https://{{ $web->domainAkses }}" target="_blank">
+                  <i data-feather="globe" class="m-r-10"></i> Lihat Website
+                </a>
+                {{-- <a class="btn-ic btn-success m-r-5" href="/web/{{ $web->idBrief }}/edit" data-toggle="tooltip" data-placement="top" title="Edit">
+                  <i class="icon-pencil"></i>
+                </a> --}}
+               
+
+              </td>
+            </tr>
+            
+            @endforeach
+              
+              </tbody>
+          </table>     
+      </div>
+        </div>
+      </div>
+    </div>
 	</div>
 </div>
 
 @endsection
 
 @section('script')
-    
-<script type="text/javascript">
-
-   
-
-    var i = 0;
-
-       
-
-    $("#add").click(function(){
-
-   
-
-        ++i;
-
-   
-
-        $("#itemlist").append(
-            '<div class="item_order d-flex" id="item_order"><div class="form-group"><label class="col-form-label">Service</label><input class="form-control" type="text" name="serTrx['+i+']" required></div><div class="form-group" style="width: 100px;"><label class="col-form-label">Qty</label><input class="form-control" type="number" name="qtyTrx['+i+']" required></div><div class="form-group"><label class="col-form-label">Harga</label><input class="form-control" type="text" onkeypress="validate(event)" name="harTrx['+i+']" required></div></div>');
-    });
-
-   
-
-    $("#remove").click(function(){  
-
-         $('#itemlist').parent().find('#item_order').remove();
-
-    });  
-
-   
-
-</script>
-
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
 @endsection
