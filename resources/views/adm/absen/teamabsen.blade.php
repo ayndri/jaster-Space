@@ -1,10 +1,8 @@
 @extends('layouts.simple.master')
 
-@section('title', 'List Absen')
+@section('title', 'History Absen')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/date-picker.css')}}">
 @endsection
 
 @section('style')
@@ -15,10 +13,12 @@ tengahkan
 @endsection
 
 @section('breadcrumb-title')
-<h3>List Absen</h3>
+<h3>History Absen</h3>
 @endsection
 
-
+@section('tambah')
+<a href="{{route('absen.add')}}" class="btn-sm btn-primary d-inline-block">Add New</a>
+@endsection
 
 @section('content')
 
@@ -50,10 +50,10 @@ tengahkan
                      {{ $no++ }}
                      </td>
                      <td>
-                     {{ $abs->created_at }}
+                      {{ Carbon\Carbon::parse($abs->created_at)->locale('id')->translatedFormat('d F Y')}}
                      </td>
                      <td>
-                     {{ $abs->jmlAbsen }}
+                     {{ $abs->jmlAbsen }} Hari Kerja
                      </td>
                      <td>
                         {{ $abs->perihalAbsen }}
@@ -61,29 +61,28 @@ tengahkan
                      <td>
                         @if ( $abs->statusAbsen == 1)
                         <span>On Hold</span>
-                        @elseif ( $abs->statusAbsen == 2)
-                        <span>Di izinkan</span>
                         @elseif ( $abs->statusAbsen == 3)
-                        <span>Di tolak</span>
-                        @elseif ( $abs->statusAbsen == 4)
-                        <span>Time Out / Di izinkan</span>
+                        <span>Ditolak</span>
                         @elseif ( $abs->statusAbsen == 5)
                         <span>Cancel</span>
+                        @else
+                        <span>Diizinkan</span>
                         @endif
                      </td>
 
                      <input class="form-control" type="hidden" name="idAbsen" id="idAbsen" value="{{ $abs->idAbsen }}">
                      <td class="text-right">
-                        <a class="setuju btn-ic btn-primary m-r-5" href="{{ route('setuju.absen', $abs->idAbsen) }}" data-toggle="tooltip" data-placement="top" title="Edit">
-                            <i class="icon-check"></i>
-                          </a>
                          <a class="btn-ic btn-success m-r-5" href="#see-{{ $abs->idAbsen }}" data-bs-toggle="modal" data-target="#see-{{ $abs->idAbsen }}" id="modalnote"
                           data-note="{{ $abs->noteAds }}"
                           data-target="#viewNotes" title="View Notes">
                             <i class="icon-eye"></i>
                           </a>
 
-                        <a href="{{ route('tolak.absen', $abs->idAbsen) }}" class="btn-ic btn-danger hilang"><i class="icon-close"></i></a>
+                          @if ( $abs->statusAbsen == 1)
+                          <a href="{{ route('cancel.absen', $abs->idAbsen) }}" class="btn-ic btn-danger hilang"><i class="icon-close"></i></a>
+                          @else
+                          @endif
+                        
 
                      </td>
                    </tr>
@@ -132,7 +131,7 @@ tengahkan
 
        const url = $(this).attr('href');
        swal({
-        title: 'Yakin mau ditolak ?',
+        title: 'Yakin mau dibatalkan ?',
            text: 'Pastikan dulu biar ngga salah 🙏',
            icon: 'warning',
            buttons: ["Gajadi, maap", "Cancel!"],
@@ -143,27 +142,6 @@ tengahkan
        });
    });
    </script>
-
-<script>
-    $('.setuju').on('click', function (event) {
-        event.preventDefault();
-        var idAbsen = $('#idAbsen').val();
- 
- 
-        const url = $(this).attr('href');
-        swal({
-         title: 'Yakin mau disetujui ?',
-            text: 'Pastikan dulu biar ngga salah 🙏',
-            icon: 'warning',
-            buttons: ["Gajadi, maap", "Ya setuju!"],
-        }).then(function(value) {
-            if (value) {
-                window.location.href = url;
-            }
-        });
-    });
-    </script>
-
    <script>
     // jquerynya
     $('.modalnote').on('click', function (event) {

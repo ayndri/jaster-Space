@@ -3,8 +3,6 @@
 @section('title', 'Latest Top Up')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/date-picker.css')}}">
 @endsection
 
 @section('style')
@@ -23,13 +21,7 @@ tengahkan
 @endsection
 
 @php
-$salA = DB::table('iklans')
-        ->leftJoin('topups','topups.idAds','iklans.idAds')
-        ->where('topups.doneTop', 'no')
-        ->where('iklans.akunAds', 'Akun A')
-        ->sum('topups.saldoTop');
-$rumusa = $salA * 10/100;
-$fixa = $salA + $rumusa;
+
 
 $salB = DB::table('iklans')
         ->leftJoin('topups','topups.idAds','iklans.idAds')
@@ -53,21 +45,14 @@ $fixc = $salC + $rumusc;
 
 <div class="container-fluid">
 		<div class="row">
-        <div class="col-md-4">
-            <div class="card-sm">
-                <span class="btn-sm btn-primary d-inline-block m-b-15">Akun A</span>
-                <h4>@rupiah($fixa)</h4>
-                <p class="m-0">@rupiah($salA) x PPN 10%</p>
-            </div>
-        </div>
-		<div class="col-md-4">
+		<div class="col-md-6">
             <div class="card-sm">
                     <span class="btn-sm btn-danger d-inline-block m-b-15">Akun B</span>
                     <h4>@rupiah($fixb)</h4>
                     <p class="m-0">@rupiah($salB) x PPN 10%</p>
             </div>
         </div>
-		<div class="col-md-4">
+		<div class="col-md-6">
             <div class="card-sm">
                     <span class="btn-sm btn-success d-inline-block m-b-15">JasterAds</span>
                     <h4>@rupiah($fixc)</h4>
@@ -124,7 +109,7 @@ $fixc = $salC + $rumusc;
                    </tr>
                    @empty
                    <tr>
-                   <td colspan="6" class="text-center">Nothing</td>
+                   <td colspan="6" class="text-center">All Clear</td>
                    </tr>
                    
                  @endforelse
@@ -161,7 +146,4 @@ $fixc = $salC + $rumusc;
        });
    });
    </script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
 @endsection

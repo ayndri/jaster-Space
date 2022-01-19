@@ -1,6 +1,6 @@
 @extends('layouts.simple.master')
 
-@section('title', 'Account')
+@section('title', 'Account Client')
 
 @section('css')
 @endsection
@@ -12,11 +12,10 @@
 @endsection
 
 @section('breadcrumb-title')
-<h3>Account</h3>
+<h3>Account Client</h3>
 @endsection
 
 @section('tambah')
-<a href="{{route('account.create')}}" class="btn-sm btn-primary d-inline-block">Tambah User</a>
 @endsection
 
 @section('content')
@@ -37,7 +36,6 @@
                        <th scope="col" class="sort">No</th>
                        <th scope="col" class="sort">Nama User</th>
                        <th scope="col" class="sort">Email</th>
-                       <th scope="col" class="sort">Role User</th>
                        <th scope="col" class="sort">Last Login</th>
                        <th scope="col" class="sort">Action</th>
                      </tr>
@@ -54,9 +52,6 @@
                      </td>
                      <td>
                      {{ $user->email }}
-                     </td>
-                     <td>
-                        
                      </td>
                      <td>
                         {{ Carbon\Carbon::parse($user->lastLogin)->locale('id')->diffForHumans(null, true) . " lalu"; }}

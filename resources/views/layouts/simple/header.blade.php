@@ -56,16 +56,31 @@
         <li class="maximize"><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
         <li class="profile-nav onhover-dropdown p-0 me-0">
           <div class="media profile-media">
+
+            @if (auth()->user()->fotoUser == NULL)
             <img class="b-r-10" src="{{asset('assets/img/face1.jpg')}}" alt="">
+              @else
+              <img class="b-r-10" src="{{asset('public/assets/fotoUser')}}/{{auth()->user()->fotoUser}}">
+              @endif
+
+              
 
           </div>
           <ul class="profile-dropdown onhover-show-div">
-            <li class="fotopro"><img src="{{asset('assets/img/face1.jpg')}}"/><p class="namanya">{{ auth()->user()->nama }}</p><span class="siapanya">Welcomeback !</span>
+            <li class="fotopro">
+
+              @if (auth()->user()->fotoUser == NULL)
+                <img src="{{asset('assets/img/face1.jpg')}}">
+              @else
+                <img src="{{asset('public/assets/fotoUser')}}/{{auth()->user()->fotoUser}}">
+              @endif
+              
+              <p class="namanya">{{ auth()->user()->nama }}</p><span class="siapanya">Welcomeback !</span>
             <li><a href="{{route('profile.edit',auth()->user()->idUser)}}"><i data-feather="user"></i><span>Account </span></a></li>
             <li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>
             <li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
             <li><a href="{{ route('reset.pass') }}"><i data-feather="settings"></i><span>Password</span></a></li>
-            <li><a href="{{route('logout')}}"><i data-feather="log-out"> </i><span>Log out</span></a></li>
+            <li><a href="{{ route('logout') }}"><i data-feather="log-out"> </i><span>Log out</span></a></li>
           </ul>
         </li>
       </ul>

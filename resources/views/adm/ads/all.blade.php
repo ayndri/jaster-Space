@@ -64,14 +64,14 @@ tengahkan
                      </td>
                      <td class="text-right">
                          <a class="btn-ic btn-primary m-r-5" href="edit/{{ $act->idAds }}" data-toggle="tooltip" data-placement="top" title="Edit">
-                           <i class="icon-pencil"></i>
+                          <i data-feather="edit-2"></i>
                          </a>
                          <a class="btn-ic btn-success m-r-5" href="#see-{{ $act->idAds }}" data-bs-toggle="modal" data-target="#see-{{ $act->idAds }}" id="modalnote"
                           data-note="{{ $act->noteAds }}"
                           data-target="#viewNotes" title="View Notes">
-                            <i class="icon-eye"></i>
+                          <i data-feather="eye"></i>
                           </a>
-                        <a href="{{route('ads.del', $act->idAds)}}" class="btn-ic btn-danger hilang"><i class="icon-close"></i></a>
+                        <a href="{{route('ads.del', $act->idAds)}}" class="btn-ic btn-danger hilang"><i data-feather="trash-2"></i></a>
                      </td>
                    </tr>
 

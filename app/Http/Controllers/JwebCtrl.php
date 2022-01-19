@@ -40,7 +40,7 @@ class JwebCtrl extends Controller
         return view('adm.jweb.all', compact('hasil'));
     }
 
-    public function semua()
+    public function active()
     {
         $webs = DB::table('orders')
         ->join('briefs', 'briefs.idBrief', '=', 'orders.idBrief')

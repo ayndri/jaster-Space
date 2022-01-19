@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Absen;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AbsenController extends Controller
 {
     public function formabsen () {
-        return view('absen.absen');
+        return view('adm.absen.absen');
     }
 
     public function storeabsen(Request $request)
@@ -33,7 +34,8 @@ class AbsenController extends Controller
         $absen->statusAbsen = 1;
         $absen->save();
         
-        return back();
+        Alert::success('Oke', 'Izin absen telah terkirim');
+        return redirect('/absen/all');
 
     }
 
@@ -41,46 +43,55 @@ class AbsenController extends Controller
 
         $absen = Absen::orderBy('idAbsen','desc')
                 ->where('idUser', Auth::user()->idUser)
+                ->where('statusAbsen','!=',5)
                 ->get();
 
-        return view('absen.teamabsen', compact('absen'));
+        return view('adm.absen.teamabsen', compact('absen'));
     }
 
-    public function ubahabsen($abs)
+    public function ubah($abs)
     {
         Absen::where('idAbsen', $abs)
             ->update([
                 'statusAbsen' => 5,
             ]);
 
-            return back();
+            Alert::success('Oke', 'Absen telah kamu batalkan');
+            return redirect('/absen/all');
     }
 
-    public function tolakabsen($abs)
+    public function tolak($abs)
     {
         Absen::where('idAbsen', $abs)
             ->update([
                 'statusAbsen' => 3,
             ]);
 
-            return back();
+        Alert::success('Nice One', 'Absen telah ditolak');
+        return redirect('/absen/list');
     }
 
-    public function setujuabsen($abs)
+    public function setuju($abs)
     {
         Absen::where('idAbsen', $abs)
             ->update([
                 'statusAbsen' => 2,
             ]);
 
-            return back();
+        Alert::success('Nice One', 'Absen telah diizinkan');
+        return redirect('/absen/list');
     }
 
     public function adminabsen () {
 
         $absen = Absen::orderBy('idAbsen','asc')
                 ->get();
-
-        return view('absen.adminabsen', compact('absen'));
+              
+        if (auth()->user()->hasRole('1')) {
+            return view('adm.absen.adminabsen', compact('absen'));
+        }else{
+            abort(404);
+        }
+   
     }
 }

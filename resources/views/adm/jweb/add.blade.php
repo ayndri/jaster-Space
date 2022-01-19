@@ -25,7 +25,7 @@
 @endsection
 
 @section('tambah')
-<a href="{{route('jweb.semua')}}" class="btn-sm btn-danger d-inline-block"><i class="fa fa-long-arrow-left"></i> Cancel</a>
+<a href="{{route('jweb.active')}}" class="btn-sm btn-danger d-inline-block"><i class="fa fa-long-arrow-left"></i> Cancel</a>
 @endsection
 
 @section('content')
@@ -240,7 +240,7 @@
 
 		<div class="col-md-7">
             <div class="card itemdet" id="itemdet">
-                <div class="card-header">
+                <div class="card-header flexbetween">
                     <h6 class="m-0">🛒 Order Details</h6>
                     <div class="flex-gap">
                         <a id="add" class="btn-ic btn-primary hilang"><i class="icon-plus"></i></a>

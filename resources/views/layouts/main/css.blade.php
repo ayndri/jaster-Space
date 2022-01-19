@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/font-awesome.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatables.css')}}">
 <!-- ico-font-->
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/icofont.css')}}">
 <!-- Themify icon-->

@@ -3,9 +3,6 @@
 @section('title', 'All Domain')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/bootstrap.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatables.css')}}">
 @endsection
 
 @section('style')
@@ -77,8 +74,6 @@ tengahkan
 @endsection
 
 @section('script')
-<script src="{{asset('assets/js/datatable/datatables/datatable.custom.js')}}"></script>
-<script src="{{asset('assets/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
 <script>
     $('.hilang').on('click', function (event) {
         event.preventDefault();

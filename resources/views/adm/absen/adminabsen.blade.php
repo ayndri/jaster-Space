@@ -1,10 +1,8 @@
 @extends('layouts.simple.master')
 
-@section('title', 'List Absen')
+@section('title', 'Manage Absen')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/date-picker.css')}}">
 @endsection
 
 @section('style')
@@ -15,12 +13,10 @@ tengahkan
 @endsection
 
 @section('breadcrumb-title')
-<h3>List Absen</h3>
+<h3>Manage Absen</h3>
 @endsection
 
-@section('tambah')
-<a href="{{route('ads.new')}}" class="btn-sm btn-primary d-inline-block">Add New</a>
-@endsection
+
 
 @section('content')
 
@@ -37,10 +33,11 @@ tengahkan
                  <thead class="thead">
                      <tr>
                        <th scope="col" class="sort" data-sort="no">No</th>
-                       <th scope="col" class="sort" data-sort="namaAds">Tgl Absen</th>
-                       <th scope="col" class="sort" data-sort="akhirAds">Jumlah Absen</th>
-                       <th scope="col" class="sort" data-sort="mulaiAds">Hal Absen</th>
-                       <th scope="col" class="sort" data-sort="mulaiAds">Status Absen</th>
+                       <th scope="col" class="sort">Tgl Absen</th>
+                       <th scope="col" class="sort">Tgl Submit</th>
+                       <th scope="col" class="sort">Jumlah Absen</th>
+                       <th scope="col" class="sort">Alasan</th>
+                       <th scope="col" class="sort">Status</th>
                        <th class="text-right">Action</th>
                      </tr>
                  </thead>
@@ -52,10 +49,13 @@ tengahkan
                      {{ $no++ }}
                      </td>
                      <td>
-                     {{ $abs->created_at }}
+                      {{ Carbon\Carbon::parse($abs->tglAbsen)->locale('id')->translatedFormat('d F Y')}}
                      </td>
                      <td>
-                     {{ $abs->jmlAbsen }}
+                      {{ $abs->created_at }}
+                     </td>
+                     <td>
+                     {{ $abs->jmlAbsen }} Hari Kerja
                      </td>
                      <td>
                         {{ $abs->perihalAbsen }}
@@ -64,11 +64,11 @@ tengahkan
                         @if ( $abs->statusAbsen == 1)
                         <span>On Hold</span>
                         @elseif ( $abs->statusAbsen == 2)
-                        <span>Di izinkan</span>
+                        <span>Diizinkan</span>
                         @elseif ( $abs->statusAbsen == 3)
-                        <span>Di tolak</span>
+                        <span>Ditolak</span>
                         @elseif ( $abs->statusAbsen == 4)
-                        <span>Time Out / Di izinkan</span>
+                        <span>Time Out / Diizinkan</span>
                         @elseif ( $abs->statusAbsen == 5)
                         <span>Cancel</span>
                         @endif
@@ -76,13 +76,18 @@ tengahkan
 
                      <input class="form-control" type="hidden" name="idAbsen" id="idAbsen" value="{{ $abs->idAbsen }}">
                      <td class="text-right">
-                         <a class="btn-ic btn-success m-r-5" href="#see-{{ $abs->idAbsen }}" data-bs-toggle="modal" data-target="#see-{{ $abs->idAbsen }}" id="modalnote"
-                          data-note="{{ $abs->noteAds }}"
-                          data-target="#viewNotes" title="View Notes">
-                            <i class="icon-eye"></i>
+                        
+                      <a class="btn-ic btn-success m-r-5" href="#see-{{ $abs->idAbsen }}" data-bs-toggle="modal" data-target="#see-{{ $abs->idAbsen }}" id="modalnote"
+                        data-note="{{ $abs->noteAds }}"
+                        data-target="#viewNotes" title="View Notes">
+                        <i data-feather="eye"></i>
+                        </a>
+                        
+                        <a class="setuju btn-ic btn-primary m-r-5" href="{{ route('setuju.absen', $abs->idAbsen) }}" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <i data-feather="check"></i>
                           </a>
 
-                        <a href="{{ route('cancel.absen', $abs->idAbsen) }}" class="btn-ic btn-danger hilang"><i class="icon-close"></i></a>
+                        <a href="{{ route('tolak.absen', $abs->idAbsen) }}" class="btn-ic btn-danger hilang"><i data-feather="slash"></i></a>
 
                      </td>
                    </tr>
@@ -131,10 +136,10 @@ tengahkan
 
        const url = $(this).attr('href');
        swal({
-        title: 'Yakin mau dibatalkan ?',
+        title: 'Yakin mau ditolak ?',
            text: 'Pastikan dulu biar ngga salah 🙏',
            icon: 'warning',
-           buttons: ["Gajadi, maap", "Cancel!"],
+           buttons: ["Gajadi, maap", "Tolak"],
        }).then(function(value) {
            if (value) {
                window.location.href = url;
@@ -142,6 +147,27 @@ tengahkan
        });
    });
    </script>
+
+<script>
+    $('.setuju').on('click', function (event) {
+        event.preventDefault();
+        var idAbsen = $('#idAbsen').val();
+ 
+ 
+        const url = $(this).attr('href');
+        swal({
+         title: 'Yakin mau disetujui ?',
+            text: 'Pastikan dulu biar ngga salah 🙏',
+            icon: 'warning',
+            buttons: ["Gajadi, maap", "Ya setuju!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
+    </script>
+
    <script>
     // jquerynya
     $('.modalnote').on('click', function (event) {
@@ -154,7 +180,4 @@ tengahkan
         $('#comment-modal').modal();
     });
     </script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
 @endsection

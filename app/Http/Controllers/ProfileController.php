@@ -16,7 +16,7 @@ class ProfileController extends Controller
 
         if ($request->hasFile('fotoUser')) {
             $file = $request->file('fotoUser');
-            $nama_file = time() . "_" . $file->getClientOriginalName();
+            $nama_file = random_int(1000, 9999) . "_" . $file->getClientOriginalName();
             $tujuan_upload = "public/assets/fotoUser";
             $file->move($tujuan_upload, $nama_file);
             $user->fotoUser = $nama_file;
@@ -26,6 +26,6 @@ class ProfileController extends Controller
 
         Alert::success('Berhasil','Profile telah diupdate');
         $user->save($request->all());
-        return redirect()->route('profile.edit',auth()->user()->nama);
+        return redirect()->route('profile.edit',auth()->user()->idUser);
     }
 }

@@ -3,8 +3,9 @@
     $('#dtbasic').DataTable( {
       retrieve: true,
       searching: false,
-        paging: false,
+        paging: true,
         responsive: true,
+        "pageLength": 15,
         "order": [[ 0, 'desc' ]]
     } );
   } );

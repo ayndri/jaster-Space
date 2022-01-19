@@ -3,7 +3,6 @@
 @section('title', 'All Hosting')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
 @endsection
 
 @section('style')
@@ -50,10 +49,10 @@ tengahkan
                      <td>
                       {{ $all->domHost }} <a href="{{route('host.getDomain',$all->domHost) }}"> ({{$all->domain_count}} website) </a>
                      </td>
-                     <td>
-                      <a href="https://{{ $all->domHost }}/cpanel" class="btn-sm btn-primary d-inline-block" target="_blank">Open cPanel</a>
-                      <a class="btn-ic btn-success btn-round" onclick="show({{ $all->idHost }})"><i class="icon-pencil"></i></a>
-                      <a href="{{ route('host.del', $all->idHost) }}" class="btn-ic btn-danger btn-round hilang"><i class="icon-close"></i></a>
+                     <td class="flex">
+                        <a href="https://{{ $all->domHost }}/cpanel" class="btn-sm btn-primary m-r-5" target="_blank">Open</a>
+                            <a class="btn-ic btn-success  m-r-5" onclick="show({{ $all->idHost }})"><i class="icon-pencil"></i></a>
+                            <a href="{{ route('host.del', $all->idHost) }}" class="btn-ic btn-danger hilang"><i class="icon-close"></i></a>
                      </td>
                    </tr>
                     @empty
@@ -101,7 +100,7 @@ tengahkan
 
 
 
-                     <div class="form-group mt-5">
+                     <div class="form-group m-t-40">
                         <button class="btn btn-primary btn-block w100" type="submit">Submit</button>
                      </div>
 

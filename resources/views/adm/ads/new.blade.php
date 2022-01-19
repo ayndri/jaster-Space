@@ -3,8 +3,6 @@
 @section('title', 'Add Campaign')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/date-picker.css')}}">
 @endsection
 
 @section('mxwidth')
@@ -48,7 +46,6 @@ tengahkan
                            <label class="col-form-label">Akun Ads</label>
                            <select class="form-control digits" name="akunAds" id="exampleFormControlSelect9" required="">
                               <option disabled>--- Pilih salah satu ---</option>
-                              <option value="Akun A">Akun A</option>
                               <option value="Akun B">Akun B</option>
                               <option selected value="JasterAds">JasterAds</option>
                             </select>
@@ -95,7 +92,4 @@ tengahkan
 
 @section('script')
 
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
 @endsection

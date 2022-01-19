@@ -3,8 +3,6 @@
 @section('title', 'Edit Profile')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/date-picker.css')}}">
 @endsection
 
 @section('mxwidth')
@@ -86,7 +84,10 @@ tengahkan
 
                         <div class="form-group">
                            <label class="col-form-label">Nomer Whatsapp</label>
-                           <input class="form-control" type="text" name="waUser" value="{{ $user->waUser }}">
+                           <div class="form-icon">
+                              <span>+62</span>
+                              <input class="form-control" type="text" name="telpUser" value="{{ $user->telpUser }}" onkeypress="validate(event)" required>
+                          </div>
                         </div>
 
                         <div class="form-group">
@@ -96,18 +97,18 @@ tengahkan
 
                         <div class="form-group mt-4">
                             <label class="form-label">Upload foto profile</label>
+                            <br/>
                             @if ($user->fotoUser == NULL)
-                            <br>
-                            <img src="{{asset('assets/images/user/10.jpg')}}" alt="NULL" srcset="" width="120px">
+                            <img src="{{asset('assets/images/user/10.jpg')}}" alt="NULL" srcset="" width="120px" class="m-t-10 m-b-10">
                             @else
-                            <img src="{{asset('public/assets/fotoUser')}}/{{$user->fotoUser}}" alt="" srcset="" width="120px">
+                            <img src="{{asset('public/assets/fotoUser')}}/{{$user->fotoUser}}" alt="" srcset="" width="120px" class="m-t-10 m-b-10">
                             @endif
                             <input class="form-control mt-2" name="fotoUser" type="file">
                         </div>
                      </div>
                   </div>
                   <div class="form-group mt-5">
-                     <button class="btn btn-primary btn-block w100" type="submit">Submit</button>
+                     <button class="btn btn-primary btn-block w100" type="submit">Save Changes</button>
                   </div>
 
                </form>
@@ -120,14 +121,4 @@ tengahkan
 @endsection
 
 @section('script')
-
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
-
-<script>
-    setTimeout(function() {
-        $('.error-message').hide()
-    }, 4000);
-</script>
 @endsection

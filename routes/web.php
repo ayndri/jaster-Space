@@ -21,15 +21,15 @@ Route::get('/', [App\Http\Controllers\AdmController::class, 'index'])->name('/')
 
 Route::group(['middleware' => 'auth'], function () {
 
-//Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
-Route::get('/absen', ['as' => 'absen', 'uses' => 'App\Http\Controllers\AbsenController@formabsen']);
-Route::post('/absen', ['as' => 'add.absen', 'uses' => 'App\Http\Controllers\AbsenController@storeabsen']);
-Route::get('/listabsen', ['as' => 'team.absen', 'uses' => 'App\Http\Controllers\AbsenController@teamabsen']);
-Route::get('/list', ['as' => 'admin.absen', 'uses' => 'App\Http\Controllers\AbsenController@adminabsen']);
-Route::any('/cancel/{abs}', ['as' => 'cancel.absen', 'uses' => 'App\Http\Controllers\AbsenController@ubahabsen']);
-Route::any('/tolak/{abs}', ['as' => 'tolak.absen', 'uses' => 'App\Http\Controllers\AbsenController@tolakabsen']);
-Route::any('/setuju/{abs}', ['as' => 'setuju.absen', 'uses' => 'App\Http\Controllers\AbsenController@setujuabsen']);
+Route::get('/absen/add', ['as' => 'absen.add', 'uses' => 'App\Http\Controllers\AbsenController@formabsen']);
+Route::post('/absen/add', ['as' => 'add.absen', 'uses' => 'App\Http\Controllers\AbsenController@storeabsen']);
+Route::get('/absen/all', ['as' => 'team.absen', 'uses' => 'App\Http\Controllers\AbsenController@teamabsen']);
+Route::get('/absen/list', ['as' => 'admin.absen', 'uses' => 'App\Http\Controllers\AbsenController@adminabsen']);
+Route::any('/absen/o/{abs}', ['as' => 'cancel.absen', 'uses' => 'App\Http\Controllers\AbsenController@ubah']);
+Route::any('/absen/x/{abs}', ['as' => 'tolak.absen', 'uses' => 'App\Http\Controllers\AbsenController@tolak']);
+Route::any('/absen/v/{abs}', ['as' => 'setuju.absen', 'uses' => 'App\Http\Controllers\AbsenController@setuju']);
 
 Route::get('/ads/active', ['as' => 'ads.active', 'uses' => 'App\Http\Controllers\AdsController@index']);
 Route::get('/ads/new', ['as' => 'ads.new', 'uses' => 'App\Http\Controllers\AdsController@add']);
@@ -63,7 +63,7 @@ Route::get('/renewal', ['as' => 'renewal.index', 'uses' => 'App\Http\Controllers
 Route::get('/jweb/add', ['as' => 'jweb.add', 'uses' => 'App\Http\Controllers\JwebCtrl@add']);
 Route::post('/jweb/add', ['as' => 'jweb.tambah', 'uses' => 'App\Http\Controllers\JwebCtrl@tambah']);
 Route::get('/jweb/all', ['as' => 'jweb.all', 'uses' => 'App\Http\Controllers\JwebCtrl@all']);
-Route::get('/jweb/semua', ['as' => 'jweb.semua', 'uses' => 'App\Http\Controllers\JwebCtrl@semua']);
+Route::get('/jweb/active', ['as' => 'jweb.active', 'uses' => 'App\Http\Controllers\JwebCtrl@active']);
 Route::get('/jweb/{id}/view', ['as' => 'jweb.view', 'uses' => 'App\Http\Controllers\JwebCtrl@view']);
 Route::get('/jweb/{id}/edit', ['as' => 'jweb.edit', 'uses' => 'App\Http\Controllers\JwebCtrl@edit']);
 Route::post('/jweb/{id}/edit', ['as' => 'jweb.update', 'uses' => 'App\Http\Controllers\JwebCtrl@update']);
@@ -82,6 +82,8 @@ Route::get('/domain/{id}/gethosting', ['as' => 'domain.gethosting', 'uses' => 'A
 Route::get('/domain/all-domain', ['as' => 'domain.getAllDomain', 'uses' => 'App\Http\Controllers\DomainController@getAllDomain']);
 
 Route::get('/account',['as' => 'account.index','uses' => 'App\Http\Controllers\AccountController@index']);
+Route::get('/akun/team',['as' => 'akun.team','uses' => 'App\Http\Controllers\AccountController@team']);
+Route::get('/akun/client',['as' => 'akun.client','uses' => 'App\Http\Controllers\AccountController@client']);
 Route::get('/account/add-account',['as' => 'account.create','uses' => 'App\Http\Controllers\AccountController@create']);
 Route::post('/account/add-account',['as' => 'account.store','uses' => 'App\Http\Controllers\AccountController@store']);
 Route::get('/account/{user}/edit-account',['as' => 'account.edit','uses' => 'App\Http\Controllers\AccountController@edit']);

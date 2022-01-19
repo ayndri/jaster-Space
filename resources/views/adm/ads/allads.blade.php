@@ -3,15 +3,14 @@
 @section('title', 'History Top Up')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatables.css')}}">
+@endsection
+
+@section('mxwidth')
 @endsection
 
 @section('style')
 @endsection
 
-@section('mxwidth')
-@endsection
 
 @section('breadcrumb-title')
 <h3>History Top Up</h3>
@@ -33,7 +32,7 @@
                 
         <div class="card">
          <div class="table-responsive">
-             <table class="table table-striped" id="dttbls">
+            <table class="table table-striped" id="dtbasic">
                  <thead class="thead">
                      <tr>
                        <th scope="col" class="sort" data-sort="no">No</th>
@@ -113,6 +112,4 @@
        });
    });
 </script>
-<script src="{{asset('assets/js/datatable/datatables/datatable.custom.js')}}"></script>
-<script src="{{asset('assets/js/datatable/datatables/jquery.dataTables.min.js')}}"></script> 
 @endsection

@@ -161,7 +161,7 @@ class AdsController extends Controller
     {
         $semuaads = DB::table('iklans')
         ->leftJoin('topups','topups.idAds','iklans.idAds')
-        ->orderBy('tglTop','desc')
+        ->orderBy('tglTop','asc')
         ->get();
         return view('adm.ads.allads', compact('semuaads'));
         

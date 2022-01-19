@@ -3852,8 +3852,7 @@ strong ~ p {
     border-bottom: 1px solid #ecf3fa;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    position: relative;display: flex;
-    justify-content: space-between;
+    position: relative;
 }
 .card .card-header.card-no-border {
     border-bottom: none !important;
@@ -5670,6 +5669,7 @@ table.dataTable:not(.fixedHeader-locked):not(.fixedHeader-floating) {
 table.dataTable {
     border-collapse: collapse !important;
     margin-top: 0 !important;
+    margin-bottom: 40px !important;
 }
 table.dataTable thead .sorting:before,
 table.dataTable thead .sorting:after,
@@ -10975,7 +10975,7 @@ th {
 }
 .table th {
     color: #2b2b2b;
-    font-weight: 500;
+    font-weight: 600;
 }
 .table td {
     color: #2b2b2b;
@@ -23994,9 +23994,9 @@ body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body
     color: #fff;
 }
 body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper .dataTables_length select {
-    background-color: var(--co-bg);
+    background-color: #647286;
     color: rgba(255, 255, 255, 0.73);
-    border: 1px solid var(--co-bg);
+    border: unset;
 }
 body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper .dataTables_length,
 body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper .dataTables_filter,
@@ -24006,7 +24006,7 @@ body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body
     color: rgba(255, 255, 255, 0.73);
 }
 body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper .dataTables_paginate {
-    border: 1px solid var(--co-bg);
+    border: unset;
 }
 body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper .dataTables_filter input[type="search"] {
     background-color: #647286;border:0;
@@ -24057,7 +24057,7 @@ body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body
     border-color: var(--theme-default);
 }
 body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
-    color: #98a6ad !important;
+    color: #fff !important;
 }
 body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
 body.dark-only .page-wrapper .page-body-wrapper .page-body .card:not(.email-body) .dataTables_wrapper .dataTables_paginate .paginate_button.disabled :active {

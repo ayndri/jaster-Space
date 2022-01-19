@@ -10,11 +10,6 @@ tengahkan
 @endsection
 
 @section('style')
-<style>
-    .bagi2 {
-	columns: 2;
-    }
-</style>
 @endsection
 
 @section('breadcrumb-title')

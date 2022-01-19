@@ -67,7 +67,7 @@ tengahkan
                   <i data-feather="log-in"></i>
                 </a>
                 <a class="btn-ic btn-success" href="https://{{ $web->domainAkses }}" target="_blank">
-                  <i data-feather="globe" class="m-r-10"></i> Lihat Website
+                  <i data-feather="globe" class="m-r-10"></i> Buka Web
                 </a>
                 {{-- <a class="btn-ic btn-success m-r-5" href="/web/{{ $web->idBrief }}/edit" data-toggle="tooltip" data-placement="top" title="Edit">
                   <i class="icon-pencil"></i>

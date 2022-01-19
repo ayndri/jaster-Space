@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Alert;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
@@ -15,6 +16,25 @@ class AccountController extends Controller
         $users = User::get();
         $roles = Role::get();
         return view('adm.manage-akun.index',compact('users','roles'));
+
+    }
+
+    public function client() {
+
+        $users = DB::table('users')
+        ->get();
+        
+        $roles = Role::get();
+        return view('adm.akun.client',compact('users','roles'));
+
+    }
+
+    public function team() {
+
+        $users = DB::table('users')
+        ->get();
+        $roles = Role::get();
+        return view('adm.akun.team',compact('users','roles'));
 
     }
 
