@@ -43,7 +43,7 @@
                  <tbody class="list">
                   @php $no = 1; @endphp
                   @forelse ($users as $key => $user)
-                  @if ($user->hasRole('3'))
+                  @if ($user->hasRole('1|2|3|4'))
 
 
                    <tr>
