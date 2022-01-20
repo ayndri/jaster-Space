@@ -17,9 +17,9 @@
 @endsection
 
 @section('tambah')
-<a href="{{route('jweb.semua')}}" class="btn-sm btn-success inflex m-r-10"><svg class="w-6 h-6 m-r-5" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<a href="{{route('jweb.active')}}" class="btn-sm btn-success inflex m-r-10"><svg class="w-6 h-6 m-r-5" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path></svg> Go Back</a>
-<a class="btn-sm btn-danger" href="#">Edit</a>
+<a class="btn-sm btn-danger" href="{{ route('web.edit', $webs->idBrief) }}">Edit</a>
 @endsection
 
 @section('content')

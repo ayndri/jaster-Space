@@ -10,6 +10,10 @@ tengahkan
 @endsection
 
 @section('style')
+<style>
+  .thead tr{border:0px}
+  .thead .sort, .thead .sorting {background: #21262D }
+</style>
 @endsection
 
 @section('breadcrumb-title')
@@ -30,7 +34,7 @@ tengahkan
         <div class="card-body">
           
         <div class="table-responsive">
-          <table class="table table-striped">
+          <table class="table table-striped" id="dttbls">
           <thead class="thead">
               <tr>
                 <th scope="col" class="sort" data-sort="brandWeb">No.Order</th>
@@ -60,6 +64,9 @@ tengahkan
                 {{ Carbon\Carbon::parse($web->updated_at)->locale('id')->diffForHumans(null, true) . " lalu"; }}
               </td>
               <td class="text-right">
+                <a class="btn-ic btn-primary m-r-5" href="{{route('progress', $web->idBrief)}}" data-toggle="tooltip" data-placement="top" title="View">
+                  <i class="icon-pencil"></i>
+                </a>
                 <a class="btn-ic btn-primary m-r-5" href="/web/{{ $web->idBrief }}/view" data-toggle="tooltip" data-placement="top" title="View">
                   <i data-feather="eye"></i>
                 </a>
@@ -91,4 +98,13 @@ tengahkan
 @endsection
 
 @section('script')
+<script src="{{asset('assets/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatables/datatable.custom.js')}}"></script>
+
+<script type="text/javascript"> 
+
+     $('#dttbls').DataTable();
+
+
+   </script>
 @endsection

@@ -231,6 +231,8 @@
                                 <label class="col-form-label">Deadline</label>
                                     <input class="form-control" type="date" name="deadlineOrder" required>
                             </div>
+
+                           
                         </div>
                     </div>
 
