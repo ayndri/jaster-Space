@@ -9,14 +9,7 @@ use Illuminate\Http\Request;
 class RenewalController extends Controller
 {
     public function index() {
-        // where('created_at','<',today()->subDay(361))->
-        $order = Order::get();
-        foreach ($order as $orders) {
-            if ($orders->created_at->subDay(11)) {
-                echo "".$orders->nomerOrder.'<br>';
-                 echo "".$orders->created_at.'<br>';
-            }
-
-        }
+        $renewals = Order::get();
+        return view('adm.renewal.index',compact('renewals'));
     }
 }

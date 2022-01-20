@@ -19,9 +19,9 @@
 </style>
 @endsection
 
-{{-- @section('mxwidth')
+@section('mxwidth')
 tengahkan
-@endsection --}}
+@endsection
 
 @section('breadcrumb-title')
 <h3>All Domain</h3>
@@ -36,7 +36,7 @@ tengahkan
 <div class="container-fluid">
 	<div class="row">
         {{-- no hosting --}}
-		<div class="col-md-8">
+		<div class="col-md-12">
          <div class="card">
 
              <div class="card-body">

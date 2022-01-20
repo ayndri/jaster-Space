@@ -86,13 +86,16 @@ Route::get('/akun/team',['as' => 'akun.team','uses' => 'App\Http\Controllers\Acc
 Route::get('/akun/client',['as' => 'akun.client','uses' => 'App\Http\Controllers\AccountController@client']);
 Route::get('/account/add-account',['as' => 'account.create','uses' => 'App\Http\Controllers\AccountController@create']);
 Route::post('/account/add-account',['as' => 'account.store','uses' => 'App\Http\Controllers\AccountController@store']);
-Route::get('/account/{user}/edit-account',['as' => 'account.edit','uses' => 'App\Http\Controllers\AccountController@edit']);
-Route::post('/account/{user}/edit-account',['as' => 'account.update','uses' => 'App\Http\Controllers\AccountController@update']);
+Route::get('/account/{idUser}/edit-account',['as' => 'account.edit','uses' => 'App\Http\Controllers\AccountController@edit']);
+Route::post('/account/{idUser}/edit-account',['as' => 'account.update','uses' => 'App\Http\Controllers\AccountController@update']);
 Route::get('/account/{user}/delete-account',['as' => 'account.delete','uses' => 'App\Http\Controllers\AccountController@delete']);
 
 Route::get('/profile/{user}/edit-profile',['as' => 'profile.edit','uses' => 'App\Http\Controllers\ProfileController@edit']);
 Route::post('/profile/{user}/edit-profile',['as' => 'profile.update','uses' => 'App\Http\Controllers\ProfileController@update']);
 
+Route::get('/email',['as' => 'email','uses' => 'App\Http\Controllers\MailController@index']);
+Route::get('/email/send',['as' => 'email.create','uses' => 'App\Http\Controllers\MailController@create']);
+Route::post('/email/send',['as' => 'email.send','uses' => 'App\Http\Controllers\MailController@store']);
 
 
 Route::get('/reset', ['as' => 'reset.pass', 'uses' => 'App\Http\Controllers\AdmController@reset'])->middleware('admin');
