@@ -31,6 +31,9 @@ Route::any('/absen/o/{abs}', ['as' => 'cancel.absen', 'uses' => 'App\Http\Contro
 Route::any('/absen/x/{abs}', ['as' => 'tolak.absen', 'uses' => 'App\Http\Controllers\AbsenController@tolak']);
 Route::any('/absen/v/{abs}', ['as' => 'setuju.absen', 'uses' => 'App\Http\Controllers\AbsenController@setuju']);
 
+Route::get('/progress/{id}', ['as' => 'progress', 'uses' => 'App\Http\Controllers\BriefController@progress']);
+Route::post('/progressadd/{id}', ['as' => 'progress.add', 'uses' => 'App\Http\Controllers\BriefController@progressadd']);
+
 Route::get('/ads/active', ['as' => 'ads.active', 'uses' => 'App\Http\Controllers\AdsController@index']);
 Route::get('/ads/new', ['as' => 'ads.new', 'uses' => 'App\Http\Controllers\AdsController@add']);
 Route::post('/ads/new', ['as' => 'ads.add', 'uses' => 'App\Http\Controllers\AdsController@store']);

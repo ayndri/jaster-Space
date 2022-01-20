@@ -112,26 +112,71 @@ class JwebCtrl extends Controller
         ->where('orders.idBrief', '=', $id)
         ->get();
 
-        //dd($trxweb);
+        $count = DB::table('orders')
+        ->join('trxs', 'trxs.idOrder', '=', 'orders.idOrder')
+        ->where('orders.idBrief', '=', $id)
+        ->count();
 
-        return view('adm.jweb.editweb', compact('webs', 'trxweb'));
+        $plusone = $count + 1;
+
+        //dd($trxweb);
+        //dd($plusone);
+        return view('adm.jweb.editweb', compact('webs', 'trxweb', 'count', 'plusone'));
     }
 
     public function ubahweb($id, Request $request)
     {
 
-        $c = count($request->idTrx);
+        $count = DB::table('orders')
+        ->join('trxs', 'trxs.idOrder', '=', 'orders.idOrder')
+        ->where('orders.idBrief', '=', $id)
+        ->count();
+
+        $c = count($request->paketTrx);
+
+        if( $count == $c )
+        {
 
 
         for ( $i=0; $i< $c; ++$i) {
 
+
+
            DB::table('trxs')
            ->where('idTrx', $request->idTrx[$i])
-           ->update(['trxs.paketTrx' => $request->paketTrx[$i],
+           ->update(
+            ['trxs.idOrder' => $request->idOrder,
+            'trxs.paketTrx' => $request->paketTrx[$i],
             'trxs.qtyTrx' => $request->qtyTrx[$i],
-            'trxs.hargaTrx' => $request->hargaTrx[$i],]);
+            'trxs.hargaTrx' => $request->hargaTrx[$i],]
+            );
 
         }
+
+        }
+        else{
+            for ( $i = $count; $i < $c; ++$i) {
+                DB::table('trxs')
+                ->insert(
+                 ['trxs.idOrder' => $request->idOrder,
+                 'trxs.paketTrx' => $request->paketTrx[$i],
+                 'trxs.qtyTrx' => $request->qtyTrx[$i],
+                 'trxs.hargaTrx' => $request->hargaTrx[$i],
+                 'created_at' => Carbon::now(),
+                 'updated_at' => Carbon::now(),]
+                 
+                 );
+            }
+        }
+
+        // DB::table('trxs')
+        // ->where('idTrx', $request->idTrx)
+        // ->update(
+        //     ['trxs.idOrder' => $request->idOrder,
+        //     'trxs.paketTrx' => $request->paketTrx,
+        //     'trxs.qtyTrx' => $request->qtyTrx,
+        //     'trxs.hargaTrx' => $request->hargaTrx,]
+        //     );
 
 
         DB::table('orders')
@@ -162,16 +207,8 @@ class JwebCtrl extends Controller
         ]);
 
 
-
-
-        $trxweb = DB::table('orders')
-        ->join('trxs', 'trxs.idOrder', '=', 'orders.idOrder')
-        ->where('orders.idBrief', '=', $id)
-        ->get();
-
-        //dd($trxweb);
-
-       return back();
+        Alert::success('Lets get to Work', 'Project has been Edited');
+        return redirect()->route('jweb.active');
     }
 
     public function webview($id)
@@ -483,7 +520,7 @@ class JwebCtrl extends Controller
 
 
         Alert::success('Lets get to Work', 'Project has been Created');
-        return redirect()->route('jweb.semua');
+        return redirect()->route('jweb.active');
 
     }
 

@@ -11,6 +11,11 @@
 @endsection
 
 @section('style')
+<style>
+  .thead tr{border:0px}
+  .thead .sort, .thead .sorting {background: #21262D }
+</style>
+
 @endsection
 
 @section('breadcrumb-title')
@@ -27,7 +32,7 @@
 		<div class="col-md-12">
             <div class="card">
                 <div class="table-responsive p-3">
-                    <table class="table table-striped table-bordered" id="dttbls">
+                    <table class="table display table-striped table-bordered" id="dttbls">
                         <thead class="thead">
                             <tr>
                               <th scope="col" class="sort" data-sort="brandWeb">Tanggal</th>
@@ -84,6 +89,15 @@
 @endsection
 
 @section('script')
+<script src="{{asset('assets/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatables/datatable.custom.js')}}"></script>
+
+<script type="text/javascript"> 
+
+     $('#dttbls').DataTable();
+
+
+   </script>
     
 <script type="text/javascript">
 
@@ -120,4 +134,5 @@
 <script src="{{asset('assets/js/datepicker/date-picker/datepicker.js')}}"></script>
 <script src="{{asset('assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
 <script src="{{asset('assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
+
 @endsection
