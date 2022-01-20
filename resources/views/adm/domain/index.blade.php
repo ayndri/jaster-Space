@@ -16,9 +16,9 @@
 </style>
 @endsection
 
-{{-- @section('mxwidth')
+@section('mxwidth')
 tengahkan
-@endsection --}}
+@endsection
 
 @section('breadcrumb-title')
 <h3>All Domain</h3>

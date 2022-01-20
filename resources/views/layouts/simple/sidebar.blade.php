@@ -16,6 +16,7 @@
         <li><a href="{{ Route('jweb.add') }}" class="{{ Route::currentRouteName() == 'jweb' ? 'active' : '' }}">Add Order</a></li>
         <li><a class="{{ Route::currentRouteName() == 'history-order' ? 'active' : '' }}">History Order</a></li>
         <li><a class="{{ Route::currentRouteName() == 'prog-point' ? 'active' : '' }}">Progress Point</a></li>
+        <li><a href="{{ Route('email') }}" class="{{ Route::currentRouteName() == 'prog-point' ? 'active' : '' }}">Send Email</a></li>
       </ul>
     </li>
 
@@ -65,7 +66,9 @@
         <span>Account</span>
       </a>
       <ul class="nav-submenu">
+        @role('1|2|3|5')
         <li><a href="{{ route('akun.team') }}" class="{{ Route::currentRouteName() == 'akun' ? 'active' : '' }}">Team Account</a></li>
+        @endrole
         <li><a href="{{ route('akun.client') }}" class="{{ Route::currentRouteName() == 'akun' ? 'active' : '' }}">Client Account</a></li>
       </ul>
     </li>

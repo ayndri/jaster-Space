@@ -15,26 +15,22 @@ class AccountController extends Controller
 
         $users = User::get();
         $roles = Role::get();
+
         return view('adm.manage-akun.index',compact('users','roles'));
 
     }
 
     public function client() {
 
-        $users = DB::table('users')
-        ->get();
-        
-        $roles = Role::get();
-        return view('adm.akun.client',compact('users','roles'));
+        $users = User::get();
+        return view('adm.akun.client',compact('users'));
 
     }
 
     public function team() {
 
-        $users = DB::table('users')
-        ->get();
-        $roles = Role::get();
-        return view('adm.akun.team',compact('users','roles'));
+        $users = User::get();
+        return view('adm.akun.team',compact('users'));
 
     }
 
@@ -82,16 +78,35 @@ class AccountController extends Controller
 
     }
 
-    public function edit(User $user) {
+    public function edit($idUser) {
 
+        $user = User::findOrFail($idUser);
         $roles = Role::get();
         return view('adm.manage-akun.edit',compact('user','roles'));
 
     }
 
-    public function update(Request $request , User $user) {
+    public function update(Request $request , $idUser) {
 
-        $user->update($request->all());
+        $request->validate([
+            'nama' => 'required',
+            'usrn' => 'required',
+            'tglUser' => 'required',
+            'addrUser' => 'required',
+            'email' => 'required',
+        ]);
+        $user = User::findOrFail($idUser);
+       $user->update([
+                'nama' => $request->nama,
+                'usrn' => $request->usrn,
+                'tglUser' => $request->tglUser,
+                'addrUser' => $request->addrUser,
+                'email' => $request->email,
+                'jabatUser' => $request->jabatUser,
+                'telpUser' => $request->telpUser,
+                'kotaUser' => $request->kotaUser,
+            ]);
+        $user->assignRole($request->idRole);
         Alert::success('Berhasil','Data berhasil diupdate');
         return redirect()->route('account.index');
 

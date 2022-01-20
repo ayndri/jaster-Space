@@ -56,7 +56,17 @@
                      {{ $user->email }}
                      </td>
                      <td>
-                        
+                        @if ($user->hasRole('1'))
+                            Superadmin
+                        @elseif ($user->hasRole('2'))
+                            Admin
+                        @elseif ($user->hasRole('3'))
+                            Team
+                        @elseif ($user->hasRole('4'))
+                            Client
+                        @else
+                            Magang
+                        @endif
                      </td>
                      <td>
                         {{ Carbon\Carbon::parse($user->lastLogin)->locale('id')->diffForHumans(null, true) . " lalu"; }}

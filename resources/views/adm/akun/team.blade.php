@@ -43,6 +43,9 @@
                  <tbody class="list">
                   @php $no = 1; @endphp
                   @forelse ($users as $key => $user)
+                  @if ($user->hasRole('3'))
+
+
                    <tr>
                      <td>
                         {{ $no++}}
@@ -63,6 +66,7 @@
                     </td>
 
                    </tr>
+                   @endif
                     @empty
                    <tr>
                    <td colspan="6" class="text-center">Nothing</td>
