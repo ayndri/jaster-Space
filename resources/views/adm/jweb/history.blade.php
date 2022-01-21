@@ -44,7 +44,7 @@
             @foreach($webs as $web)
             <tr>
               <td>
-              @if ($web->statusWeb == 2)
+              @if ($web->statusOrder == 1)
               <span class="small-icon bg-primary"><i data-feather="trending-up"></i></span>
               @else
               @endif

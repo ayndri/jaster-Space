@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2022 at 02:33 AM
+-- Generation Time: Jan 21, 2022 at 10:28 AM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- PHP Version: 8.0.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,6 +41,14 @@ CREATE TABLE `absens` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `absens`
+--
+
+INSERT INTO `absens` (`idAbsen`, `idUser`, `tglAbsen`, `tglMulai`, `tglHabis`, `jmlAbsen`, `perihalAbsen`, `isiAbsen`, `statusAbsen`, `created_at`, `updated_at`) VALUES
+(1, 4, '2022-01-19', '2022-01-21 11:12:29', '2022-01-21 11:14:29', 2, 'Kurang Fit', 'tes', 1, '2022-01-21 04:12:29', '2022-01-21 04:12:29'),
+(2, 4, '2022-01-21', '2022-01-21 11:17:08', '2022-01-21 11:19:08', 3, 'Acara Keluarga', 'tes', 1, '2022-01-21 04:17:08', '2022-01-21 04:17:08');
+
 -- --------------------------------------------------------
 
 --
@@ -65,10 +73,11 @@ CREATE TABLE `aksess` (
 
 INSERT INTO `aksess` (`idAkses`, `idOrder`, `idBrief`, `host_id`, `domainAkses`, `userAkses`, `passAkses`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, NULL, 'kangrikza.com', 'admrikza', 'jurnalrikza', '2022-01-19 13:10:49', '2022-01-19 13:10:49'),
-(2, 2, 2, NULL, 'daihatsumobilku.com', 'admdaihatsu', 'passnya', '2022-01-19 13:56:50', '2022-01-19 13:56:50'),
-(3, 3, 3, NULL, 'perwiramultijaya.com', 'admperwira', 'passnya', '2022-01-19 14:03:30', '2022-01-19 14:03:31'),
-(4, 4, 4, NULL, 'hkpi.co.id', 'admhkpi', 'passnya', '2022-01-19 14:08:38', '2022-01-19 14:08:39'),
-(5, 5, 5, NULL, 'abisatyaabadimining.com', 'admabisatya', 'passnya', '2022-01-19 14:11:56', '2022-01-19 14:11:57');
+(2, 2, 2, NULL, 'daihatsumobilku.com', 'admdaihatsu', 'mobilkukeren!', '2022-01-19 13:56:50', '2022-01-19 13:56:50'),
+(3, 3, 3, NULL, 'perwiramultijaya.com', 'admperwira', 'alatelektrik', '2022-01-19 14:03:30', '2022-01-19 14:03:31'),
+(4, 4, 4, NULL, 'hkpi.co.id', 'admhkpi', 'wisatakuliner', '2022-01-19 14:08:38', '2022-01-19 14:08:39'),
+(5, 5, 5, NULL, 'abisatyaabadimining.com', 'admabisatya', 'abimining', '2022-01-19 14:11:56', '2022-01-19 14:11:57'),
+(10, 10, 10, 3, 'Abisatyaabadimining.com', 'admjaster', 'designkreatif', '2022-01-21 03:41:00', '2022-01-21 03:41:00');
 
 -- --------------------------------------------------------
 
@@ -137,7 +146,8 @@ INSERT INTO `briefs` (`idBrief`, `idAkses`, `idOrder`, `idComp`, `logoBrief`, `p
 (2, 2, 2, 2, NULL, 'Basic', '#dd3333', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Artikel', 'WA atau Telepon', NULL, '2022-01-19 13:56:50', '2022-01-19 13:56:50'),
 (3, 3, 3, 3, NULL, 'Business', '#2d3192', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'AtasNama : Sarwono Wibisono - Direktur', 'Produk', 'WA atau Telepon', NULL, '2022-01-19 14:03:31', '2022-01-19 14:03:31'),
 (4, 4, 4, 4, NULL, 'Basic', '#2a2a2a', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Artikel', 'WA atau Telepon', NULL, '2022-01-19 14:08:38', '2022-01-19 14:08:39'),
-(5, 5, 5, 5, NULL, 'Basic', '#2a2a2a', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Design kalo bisa hpir mirip dengan pt trakindo utama', 'Artikel', 'WA atau Telepon', NULL, '2022-01-19 14:11:56', '2022-01-19 14:11:57');
+(5, 5, 5, 5, NULL, 'Basic', '#2a2a2a', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Design kalo bisa hpir mirip dengan pt trakindo utama', 'Artikel', 'WA atau Telepon', NULL, '2022-01-19 14:11:56', '2022-01-19 14:11:57'),
+(10, 10, 10, 8, NULL, 'Premium', 'Warna hitam & emas sesuai logo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Design kalo bisa hpir mirip dengan pt trakindo utama', 'Produk', 'WA atau Telepon', NULL, '2022-01-21 03:41:00', '2022-01-21 03:41:00');
 
 -- --------------------------------------------------------
 
@@ -165,7 +175,8 @@ INSERT INTO `companys` (`idComp`, `idUser`, `idBrief`, `brandComp`, `namaComp`, 
 (2, 10, 2, 'DaihatsuMobilku', 'PT Astra internasional .tbk', 'Jl. Jayanegara No.30D, Gatul, Banjaragung,\r\nKec. Puri, Kabupaten Mojokerto, Jawa Timur 61363', '2022-01-19 13:56:49', '2022-01-19 13:56:50'),
 (3, 11, 3, 'Perwira Multi', 'PT. Perwiramulti Jaya Kencana', 'Jl. Simpang Darmo Permai Selatan IV no. 84, Surabaya - Jawa Timur 60226', '2022-01-19 14:03:30', '2022-01-19 14:03:31'),
 (4, 12, 4, 'HKPI', 'Himpunan Kuliner & Pariwisata Indonesia', 'JI. Joyoboyo No. 10, Sawunggaling, Kec. Wonokromo Kota Surabaya, Jawa Timur 60243', '2022-01-19 14:08:38', '2022-01-19 14:08:39'),
-(5, 13, 5, 'Abisatya Abadi', 'PT Abisatya Abadi Mining', 'Jl. PH Husin 2 Komplek Imigrasi no. 15/16 Pontianak, Kalimantan Barat. 78111', '2022-01-19 14:11:56', '2022-01-19 14:11:56');
+(5, 13, 5, 'Abisatya Abadi', 'PT Abisatya Abadi Mining', 'Jl. PH Husin 2 Komplek Imigrasi no. 15/16 Pontianak, Kalimantan Barat. 78111', '2022-01-19 14:11:56', '2022-01-19 14:11:56'),
+(8, 13, 10, 'PT Abisatya Abadi Mining', 'PT Abisatya Abadi Mining', 'Jl. PH Husin 2 Komplek Imigrasi no. 15/16, Pontianak, Kalimantan Barat. 78111', '2022-01-21 03:41:00', '2022-01-21 03:41:00');
 
 -- --------------------------------------------------------
 
@@ -233,7 +244,8 @@ INSERT INTO `hosts` (`idHost`, `domHost`, `userHost`, `passHost`, `created_at`, 
 (6, 'jasterads.com', 'u5234554', '8PUve6MZCI', '2022-01-06 09:13:06', '2022-01-21 00:25:06'),
 (7, 'jasawebsidoarjo.com', 'u6728999', 'uHfyQ88r2m', '2022-01-07 00:23:43', '2022-01-14 09:13:06'),
 (8, 'website1juta.com', 'u7143870', '2RgMtZJa', '2022-01-08 00:24:48', '2022-01-14 09:13:06'),
-(9, 'sukafotoproduk.com', 'sukafoto', '1f5JvzXI', '2022-01-09 00:24:35', '2022-01-14 09:13:06');
+(9, 'sukafotoproduk.com', 'sukafoto', '1f5JvzXI', '2022-01-09 00:24:35', '2022-01-14 09:13:06'),
+(45, 'Hosting Luar', NULL, NULL, '2022-01-21 03:36:57', '2022-01-21 03:36:57');
 
 -- --------------------------------------------------------
 
@@ -319,7 +331,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (22, '2022_01_11_160649_create_orders_table', 15),
 (23, '2021_09_23_091342_create_aksess_table', 16),
 (24, '2021_09_23_1_create_hosts_table', 17),
-(25, '2021_09_23_2_create_aksess_table', 18);
+(25, '2021_09_23_2_create_aksess_table', 18),
+(26, '2022_01_21_162359_create_notifications_table', 19);
 
 -- --------------------------------------------------------
 
@@ -367,6 +380,23 @@ INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_id` bigint(20) UNSIGNED NOT NULL,
+  `data` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `read_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
@@ -385,7 +415,7 @@ CREATE TABLE `orders` (
   `fromTrx` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `jenisOrder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `totalOrder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `statusWeb` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `statusOrder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -394,12 +424,13 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`idOrder`, `nomerOrder`, `idBrief`, `idAkses`, `idUser`, `idComp`, `dpTrx`, `renew`, `pmOrder`, `tglOrder`, `deadlineOrder`, `fromTrx`, `jenisOrder`, `totalOrder`, `statusWeb`, `created_at`, `updated_at`) VALUES
-(1, 'JW455', 1, 1, 9, 1, 1000000, 1100000, 'bni', '2022-01-13', '2022-01-20', 'Instagram', 'Website', '1450000', '3', '2022-01-19 13:10:49', '2022-01-19 13:10:49'),
-(2, 'JW456', 2, 2, 10, 2, 850000, 700000, 'bca', '2022-01-14', '2022-01-21', 'Instagram', 'Website', '1530000', '2', '2022-01-19 13:56:50', '2022-01-19 13:56:50'),
-(3, 'JW457', 3, 3, 11, 3, 2550000, 1650000, 'bca', '2022-01-17', '2022-01-24', 'Teman ??', 'Website', '4550000', '2', '2022-01-19 14:03:31', '2022-01-19 14:03:31'),
-(4, 'JW458', 4, 4, 12, 4, 1700000, 950000, 'bca', '2022-01-17', '2022-01-24', 'Teman - Luqman SHS', 'Website', '1670000', '2', '2022-01-19 14:08:39', '2022-01-19 14:08:39'),
-(5, 'JW459', 5, 5, 13, 5, 1700000, 700000, 'bca', '2022-01-18', '2022-01-25', 'Instagram', 'Website', '1530000', '2', '2022-01-19 14:11:57', '2022-01-19 14:11:57');
+INSERT INTO `orders` (`idOrder`, `nomerOrder`, `idBrief`, `idAkses`, `idUser`, `idComp`, `dpTrx`, `renew`, `pmOrder`, `tglOrder`, `deadlineOrder`, `fromTrx`, `jenisOrder`, `totalOrder`, `statusOrder`, `created_at`, `updated_at`) VALUES
+(1, 'JW455', 1, 1, 9, 1, 1000000, 1100000, 'bni', '2022-01-13', '2022-01-20', 'Instagram', 'Website', '1450000', '1', '2022-01-19 13:10:49', '2022-01-19 13:10:49'),
+(2, 'JW456', 2, 2, 10, 2, 850, 700, 'bca', '2022-01-14', '2022-01-21', 'Instagram', 'Website', NULL, '2', '2022-01-19 13:56:50', '2022-01-19 13:56:50'),
+(3, 'JW457', 3, 3, 11, 3, 2550, 1650, 'bca', '2022-01-17', '2022-01-24', 'Teman ??', 'Website', NULL, '1', '2022-01-19 14:03:31', '2022-01-19 14:03:31'),
+(4, 'JW458', 4, 4, 12, 4, 1700, 950, 'bca', '2022-01-17', '2022-01-24', 'Teman - Luqman SHS', 'Website', NULL, '1', '2022-01-19 14:08:39', '2022-01-19 14:08:39'),
+(5, 'JW459', 5, 5, 13, 5, 1700, 700, 'bca', '2022-01-18', '2022-01-25', 'Instagram', 'Website', NULL, '1', '2022-01-19 14:11:57', '2022-01-19 14:11:57'),
+(10, 'JW460', 10, 10, 13, 8, 1500, 250, 'bca', '2022-01-21', '2022-01-28', 'instagram', 'Website', NULL, '1', '2022-01-21 03:41:00', '2022-01-21 03:41:00');
 
 -- --------------------------------------------------------
 
@@ -583,7 +614,8 @@ INSERT INTO `trxs` (`idTrx`, `idOrder`, `paketTrx`, `qtyTrx`, `hargaTrx`, `creat
 (7, 4, 'Web Company Profile', 1, 1970000, '2022-01-19 14:08:39', '2022-01-19 14:08:39'),
 (8, 4, 'Beli Domain', 1, -300000, '2022-01-19 14:08:39', '2022-01-19 14:08:39'),
 (9, 5, 'Web Company Profile', 1, 1700000, '2022-01-19 14:11:57', '2022-01-19 14:11:57'),
-(10, 5, 'Beli Domain', 1, -170000, '2022-01-19 14:11:57', '2022-01-19 14:11:57');
+(10, 5, 'Beli Domain', 1, -170000, '2022-01-19 14:11:57', '2022-01-19 14:11:57'),
+(19, 10, 'Web Rental', 1, 2700000, '2022-01-21 03:41:00', '2022-01-21 03:41:00');
 
 -- --------------------------------------------------------
 
@@ -614,14 +646,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`idUser`, `nama`, `email`, `usrn`, `jabatUser`, `tglUser`, `lastLogin`, `password`, `telpUser`, `fotoUser`, `addrUser`, `kotaUser`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'GustiML', 'cs@jaster.co.id', 'gustiml', 'Superman', '2022-01-19', '2022-01-20 22:54:47', '$2y$10$KnrGw3LGvU5nRsaXPkyDy.0WvnEy3FbCi7q5kab9IwgTQPg9i5Zmi', '89601965565', '5532_face.jpg', 'Jl Kampar no 7B', 'Surabaya', NULL, '2022-01-19 12:18:26', '2022-01-20 22:54:47'),
+(1, 'GustiML', 'cs@jaster.co.id', 'gustiml', 'Superman', '2022-01-19', '2022-01-21 02:08:10', '$2y$10$KnrGw3LGvU5nRsaXPkyDy.0WvnEy3FbCi7q5kab9IwgTQPg9i5Zmi', '89601965565', '5532_face.jpg', 'Jl Kampar no 7B', 'Surabaya', NULL, '2022-01-19 12:18:26', '2022-01-21 02:08:10'),
 (2, 'AjengDwi', 'ajengd543@gmail.com', 'ajeng', NULL, NULL, NULL, '$2y$10$NUSsXx4.vXF7NjdzXiC3feplilUj3ElOkRv2ZxCK8nnHWujkN0FLu', NULL, NULL, NULL, 'Surabaya', NULL, '2022-01-19 12:40:06', '2022-01-19 12:40:06'),
-(3, 'Finaillis', 'sfinailis@gmail.com', 'fina', NULL, NULL, '2022-01-20 06:47:28', '$2y$10$Unr1f1sX1mQsrCUME7G7W.Sxr7xhNY93dFvtCFJC0khg9mjgw/6sO', NULL, NULL, NULL, 'Mojokerto', NULL, '2022-01-19 12:40:24', '2022-01-20 06:47:28'),
-(4, 'Yunda', 'dewinurayundari.dnaaa@gmail.com', 'yunda', NULL, NULL, '2022-01-20 05:04:29', '$2y$10$J9vHiTT.rPOX.UZsNMl4X.lIfZplS/LNfHjFGu.6E/hZgBlN/.jm2', NULL, NULL, NULL, 'Pasuruan', NULL, '2022-01-19 12:40:45', '2022-01-20 05:04:29'),
-(5, 'Dinda Aditama', 'dinda.aditamaa@gmail.com', 'dinda', NULL, NULL, NULL, '$2y$10$SwlSXmYZ5B0VU82IwxSFfO5MbLY6mlHh.4D8tDHLuV254/Xk9SUB6', NULL, NULL, NULL, 'Surabaya', NULL, '2022-01-19 12:41:16', '2022-01-19 12:41:16'),
-(6, 'Gilang Valdi', 'gilangvaldip@gmail.com', 'gilang', NULL, NULL, '2022-01-20 07:22:27', '$2y$10$5Sx0mDx1oTFErgXJzRcRtundQoKknPDRsJA6fKgB2GFx0Rj3fsRx2', NULL, NULL, NULL, 'Sidoarjo', NULL, '2022-01-19 12:43:19', '2022-01-20 07:22:27'),
-(7, 'Rafi Arrazak', 'rafirazah@gmail.com', 'Rafi', NULL, NULL, '2022-01-20 06:09:58', '$2y$10$fNabXA9CeQSRwPZoazG6y.MUx3Fe7U5PZ7FGt3al8EnUhpdSGP60y', NULL, NULL, NULL, 'Jombang', NULL, '2022-01-19 12:43:55', '2022-01-20 06:09:58'),
-(8, 'Naufal', 'nopalmdev@gmail.com', 'naufal', NULL, NULL, NULL, '$2y$10$P6S0nmKHH8.TeLQE1.tIEO4IoMIDPtNfk3X1MtldUFaD1OIZpKW5O', NULL, NULL, NULL, 'Gresik', NULL, '2022-01-19 12:44:22', '2022-01-19 12:44:22'),
+(3, 'Finaillis', 'sfinailis@gmail.com', 'fina', NULL, NULL, '2022-01-21 02:49:46', '$2y$10$Unr1f1sX1mQsrCUME7G7W.Sxr7xhNY93dFvtCFJC0khg9mjgw/6sO', NULL, '2860_IMG_5386.jpg', NULL, 'Mojokerto', NULL, '2022-01-19 12:40:24', '2022-01-21 02:53:34'),
+(4, 'Yunda', 'dewinurayundari.dnaaa@gmail.com', 'yunda', NULL, NULL, '2022-01-21 09:19:25', '$2y$10$J9vHiTT.rPOX.UZsNMl4X.lIfZplS/LNfHjFGu.6E/hZgBlN/.jm2', NULL, NULL, NULL, 'Pasuruan', NULL, '2022-01-19 12:40:45', '2022-01-21 09:19:25'),
+(5, 'Dinda Aditama', 'dinda.aditamaa@gmail.com', 'dinda', NULL, NULL, '2022-01-21 02:18:58', '$2y$10$SwlSXmYZ5B0VU82IwxSFfO5MbLY6mlHh.4D8tDHLuV254/Xk9SUB6', NULL, '3132_png-transparent-sparkling-emoji-iph', NULL, 'Surabaya', NULL, '2022-01-19 12:41:16', '2022-01-21 02:22:12'),
+(6, 'Gilang Valdi', 'gilangvaldip@gmail.com', 'gilang', NULL, NULL, '2022-01-21 01:46:46', '$2y$10$5Sx0mDx1oTFErgXJzRcRtundQoKknPDRsJA6fKgB2GFx0Rj3fsRx2', NULL, NULL, NULL, 'Sidoarjo', NULL, '2022-01-19 12:43:19', '2022-01-21 01:46:46'),
+(7, 'Rafi Arrazak', 'rafirazah@gmail.com', 'Rafi', NULL, NULL, '2022-01-21 02:45:07', '$2y$10$fNabXA9CeQSRwPZoazG6y.MUx3Fe7U5PZ7FGt3al8EnUhpdSGP60y', NULL, NULL, NULL, 'Jombang', NULL, '2022-01-19 12:43:55', '2022-01-21 02:45:07'),
+(8, 'Naufal', 'nopalmdev@gmail.com', 'naufal', NULL, NULL, '2022-01-21 03:22:04', '$2y$10$P6S0nmKHH8.TeLQE1.tIEO4IoMIDPtNfk3X1MtldUFaD1OIZpKW5O', NULL, NULL, NULL, 'Gresik', NULL, '2022-01-19 12:44:22', '2022-01-21 03:22:04'),
 (9, 'Muhamad Rikza Saputro', 'rikzasaputro1995@gmail.com', NULL, 'Khodimul Ma\'had', NULL, NULL, '$2y$10$KnrGw3LGvU5nRsaXPkyDy.0WvnEy3FbCi7q5kab9IwgTQPg9i5Zmi', '85641554248', NULL, NULL, NULL, NULL, '2022-01-19 13:10:49', '2022-01-19 13:10:49'),
 (10, 'Yoyok widodo', 'widodoyoyok98@gmail.com', NULL, 'Sales Executive', NULL, NULL, '$2y$10$KnrGw3LGvU5nRsaXPkyDy.0WvnEy3FbCi7q5kab9IwgTQPg9i5Zmi', '81232811040', NULL, NULL, NULL, NULL, '2022-01-19 13:56:49', '2022-01-19 13:56:49'),
 (11, 'Citra', 'perwira_kencana51a@yahoo.com', NULL, 'Staff', NULL, NULL, '$2y$10$KnrGw3LGvU5nRsaXPkyDy.0WvnEy3FbCi7q5kab9IwgTQPg9i5Zmi', '81259008542', NULL, NULL, NULL, NULL, '2022-01-19 14:03:30', '2022-01-19 14:03:30'),
@@ -710,6 +742,13 @@ ALTER TABLE `model_has_roles`
   ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
 
 --
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `notifications_notifiable_type_notifiable_id_index` (`notifiable_type`,`notifiable_id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -769,13 +808,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `absens`
 --
 ALTER TABLE `absens`
-  MODIFY `idAbsen` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idAbsen` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `aksess`
 --
 ALTER TABLE `aksess`
-  MODIFY `idAkses` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idAkses` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `akunads`
@@ -787,13 +826,13 @@ ALTER TABLE `akunads`
 -- AUTO_INCREMENT for table `briefs`
 --
 ALTER TABLE `briefs`
-  MODIFY `idBrief` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idBrief` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `companys`
 --
 ALTER TABLE `companys`
-  MODIFY `idComp` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idComp` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `emails`
@@ -811,7 +850,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `hosts`
 --
 ALTER TABLE `hosts`
-  MODIFY `idHost` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `idHost` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `iklans`
@@ -823,13 +862,13 @@ ALTER TABLE `iklans`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `idOrder` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idOrder` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `topups`
@@ -841,7 +880,7 @@ ALTER TABLE `topups`
 -- AUTO_INCREMENT for table `trxs`
 --
 ALTER TABLE `trxs`
-  MODIFY `idTrx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idTrx` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `users`

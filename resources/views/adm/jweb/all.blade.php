@@ -28,6 +28,8 @@
 	<div class="row">
 		
 		<div class="col-md-12">
+
+      @if($hasil != null)
             <div class="card">
                 <div class="table-responsive p-3">
                     <table class="table display table-striped table-bordered" id="dttbls">
@@ -44,21 +46,18 @@
                           @foreach($hasil as $res)
                           <tr>
                             <td>
+                              {{ Carbon\Carbon::parse($res['created_at'])->locale('id')->format('l, j F Y') }}
+                            </td>
+                            <td>
                             {{ $res['brandWeb'] }}
                             </td>
                             <td>
-                            {{ $res['domWeb'] }}
+                              {{ $res['namaWeb'] }}
                             </td>
                             <td>
-                              {{ $res['emailWeb'] }}
-                            </td>
-                            <td>
-                              {{ $res['almWeb'] }}
+                              {{ $res['domWeb'] }}
                             </td>
                             <td class="text-right">
-                              <a class="btn btn-primary text-light" href="/jweb/{{ $res['idWeb'] }}/view" data-toggle="tooltip" data-placement="top" title="View">
-                                <i class="icon-eye"></i>
-                              </a>
                               <a class="btn btn-info text-light" href="/jweb/{{ $res['idWeb'] }}/edit" data-toggle="tooltip" data-placement="top" title="Edit">
                                 <i class="icon-pencil"></i>
                               </a>
@@ -79,10 +78,15 @@
                     </table>
                 </div>
                 </div>
+                @else
+                Belum ada order lagi
+                @endif
           </div>
+
+          
 		</div>
 	</div>
-</div>
+
 
 @endsection
 
@@ -92,7 +96,9 @@
 
 <script type="text/javascript"> 
 
-     $('#dttbls').DataTable();
+     $('#dttbls').DataTable({
+      "order": [[ 4, "desc" ]]
+     });
 
 
    </script>
