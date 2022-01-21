@@ -13,7 +13,7 @@ class HostCtrl extends Controller
     public function index()
     {
         $allhost = Host::withCount('domain')->orderBy('created_at','desc')->get();
-        return view('adm.host.all', compact('allhost'));
+        return view('adm.server.hosting', compact('allhost'));
 
     }
 
@@ -86,7 +86,7 @@ class HostCtrl extends Controller
     }
 
     public function getDomain(Request $request, Host $host) {
-        $domainHost = Akses::with('hosting')->where('host_id','=',$host->idHost)->get();
-        return view('adm.host.all-domain-data',compact('host','domainHost'));
+        $host = Akses::with('hosting')->where('host_id','=',$host->idHost)->get();
+        return view('adm.server.listDomHost',compact('host'));
     }
 }

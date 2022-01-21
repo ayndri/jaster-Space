@@ -17,7 +17,7 @@ tengahkan
 @endsection
 
 @section('tambah')
-<a href="{{route('host.all')}}" class="btn-sm btn-danger d-inline-block"><i class="fa fa-long-arrow-left"></i> Cancel</a>
+<a href="{{route('domain.index')}}" class="btn-sm btn-danger d-inline-block"><i class="fa fa-long-arrow-left"></i> Cancel</a>
 @endsection
 
 @section('content')
@@ -55,7 +55,7 @@ tengahkan
                    <td colspan="6" class="text-center">Nothing</td>
                    </tr>
 
-                 @endforelse
+                    @endforelse
 
 
                      </tbody>

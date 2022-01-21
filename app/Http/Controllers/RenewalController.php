@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class RenewalController extends Controller
 {
     public function index() {
-        $renewals = Order::get();
-        return view('adm.renewal.index',compact('renewals'));
+        $renewals = Order::with('users')->get();
+        return view('adm.server.renewal',compact('renewals'));
     }
 }
