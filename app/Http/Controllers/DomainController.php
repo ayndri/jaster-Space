@@ -136,7 +136,7 @@ class DomainController extends Controller
     }
 
     public function list(Request $request , Host $host) {
-        $domainHost = Akses::with('hosting')->where('host_id','=',$host->idHost)->get();
+        $domainHost = Akses::with('hosting','orders')->where('host_id','=',$host->idHost)->get();
         return view('adm.server.domainListData',compact('domainHost','host'));
     }
 }
