@@ -141,6 +141,18 @@
                             <label class="col-form-label">Password</label>
                             <input class="form-control" type="text" name="passAkses" value="{{ $webs->passAkses }}" required>
                         </div>
+
+                        <div class="form-group">
+                            <label class="col-form-label">Hosting</label>
+                            <select class="form-control" name="idHost" id="selpost" required="">
+                                <option disabled selected>--- Pilih salah satu ---</option>
+                                @foreach ( $host as $hos)
+                                <option @if ( $webs->host_id == $hos->idHost) selected @endif value="{{$hos->idHost}}">{{$hos->domHost}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+
+
                         <div class="form-group">
                             <label class="col-form-label">Target</label>
                             <select class="form-control" name="targetBrief" id="selpost" required="">
@@ -191,14 +203,14 @@
                                 <label class="col-form-label">Down Payment</label>
                                 <div class="form-icon">
                                     <span>Rp</span>
-                                    <input class="rupiah form-control" type="text" id="dp" value="@money($webs->dpTrx)" onkeypress="validate(event)"  name="dpTrx" required>
+                                    <input class="rupiah form-control" type="text" id="dp" value="@money($webs->dpTrx)" onkeypress="validate(event)" onkeyup="kasihtitik(this);"  name="dpTrx" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Renewal</label>
                                 <div class="form-icon">
                                     <span>Rp</span>
-                                    <input class="rupiah form-control" type="text" id="renew" value="@money($webs->renew)" onkeypress="validate(event)" name="renew" required>
+                                    <input class="rupiah form-control" type="text" id="renew" value="@money($webs->renew)" onkeypress="validate(event)" onkeyup="kasihtitik(this);" name="renew" required>
                                 </div>
                             </div>
                             <div class="form-group">

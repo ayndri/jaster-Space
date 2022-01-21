@@ -25,7 +25,7 @@
 
 
 <div class="container-fluid">
-		<form class="" enctype="multipart/form-data" method="POST">
+		<form class="" enctype="multipart/form-data" method="POST" action="{{ route('jweb.tambah') }}">
             @csrf
 
 	<div class="row">
@@ -207,6 +207,8 @@
                                 <option value="Landing">Landing</option>
                                 </select>
                             </div>
+
+                            
                         
                         
                         <div class="form-group">
@@ -241,6 +243,17 @@
                             <label class="col-form-label">Password</label>
                             <input class="form-control" type="text" name="passAkses">
                         </div>
+
+                        <div class="form-group">
+                            <label class="col-form-label">Hosting</label>
+                            <select class="form-control" name="idHost" id="selpost" required="">
+                                <option disabled selected>--- Pilih salah satu ---</option>
+                                @foreach ( $host as $hos)
+                                <option value="{{$hos->idHost}}">{{$hos->domHost}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+
                         <div class="form-group">
                             <label class="col-form-label">Target</label>
                             <select class="form-control" name="targetBrief" id="selpost" required="">
@@ -291,14 +304,14 @@
                                 <label class="col-form-label">Down Payment</label>
                                 <div class="form-icon">
                                     <span>Rp</span>
-                                    <input class="rupiah form-control" type="text" id="dp"  onkeypress="validate(event)"  name="dpTrx">
+                                    <input class="rupiah form-control" type="text" id="dp" onkeyup="kasihtitik(this);"  onkeypress="validate(event)"  name="dpTrx">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Renewal</label>
                                 <div class="form-icon">
                                     <span>Rp</span>
-                                    <input class="rupiah form-control" type="text" id="renew"  onkeypress="validate(event)" name="renew">
+                                    <input class="rupiah form-control" type="text" id="renew" onkeyup="kasihtitik(this);"  onkeypress="validate(event)" name="renew">
                                 </div>
                             </div>
                             <div class="form-group">

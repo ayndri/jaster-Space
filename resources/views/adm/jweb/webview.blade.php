@@ -119,6 +119,12 @@
                             <label class="col-form-label">Password</label>
                             <input class="form-control" type="text" name="passAkses" value="{{ $webs->passAkses }}" readonly>
                         </div>
+
+                        <div class="form-group">
+                            <label class="col-form-label">Hosting</label>
+                            <input class="form-control" type="text" name="postBrief" value="{{ $webs->domHost }}" readonly>
+                            </div>
+
                         <div class="form-group">
                             <label class="col-form-label">Target</label>
                             <input class="form-control" type="text" name="targetBrief" value="{{ $webs->targetBrief }}" readonly>

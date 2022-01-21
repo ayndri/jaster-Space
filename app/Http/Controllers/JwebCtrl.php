@@ -23,7 +23,10 @@ class JwebCtrl extends Controller
 {
     public function add(Request $request)
     {
-        return view('adm.jweb.add');
+        $host = DB::table('hosts')
+        ->get();
+        
+        return view('adm.jweb.add', compact('host'));
     }
 
     public function all(Request $request)
@@ -47,7 +50,7 @@ class JwebCtrl extends Controller
         ->join('aksess', 'aksess.idAkses', '=', 'orders.idAkses')
         ->join('users', 'users.idUser', '=', 'orders.idUser')
         ->join('companys', 'companys.idComp', '=', 'orders.idComp')
-        ->where('orders.statusWeb', 2)
+        ->where('orders.statusOrder', 1)
         ->orderBy('orders.tglOrder', 'desc')
         ->get();
 
@@ -106,10 +109,11 @@ class JwebCtrl extends Controller
         $response = $request->getBody();
         $coba = json_decode($response, true);
 
+        $host = DB::table('hosts')
+                ->get();
 
 
-
-        return view('adm.jweb.edit', compact('coba'));
+        return view('adm.jweb.edit', compact('coba', 'host'));
     }
 
     public function editweb($id)
@@ -117,6 +121,7 @@ class JwebCtrl extends Controller
         $webs = DB::table('orders')
         ->join('briefs', 'briefs.idBrief', '=', 'orders.idBrief')
         ->join('aksess', 'aksess.idAkses', '=', 'orders.idAkses')
+        ->join('hosts', 'aksess.host_id', '=', 'hosts.idHost')
         ->join('users', 'users.idUser', '=', 'orders.idUser')
         ->join('companys', 'companys.idComp', '=', 'orders.idComp')
         ->where('orders.idBrief', '=', $id)
@@ -134,9 +139,12 @@ class JwebCtrl extends Controller
 
         $plusone = $count + 1;
 
+        $host = DB::table('hosts')
+                ->get();
+
         //dd($trxweb);
         //dd($plusone);
-        return view('adm.jweb.editweb', compact('webs', 'trxweb', 'count', 'plusone'));
+        return view('adm.jweb.editweb', compact('webs', 'trxweb', 'count', 'plusone', 'host'));
     }
 
     public function ubahweb($id, Request $request)
@@ -214,6 +222,7 @@ class JwebCtrl extends Controller
         'aksess.passAkses' => $request->passAkses,
         'briefs.targetBrief' => $request->targetBrief,
         'briefs.reqBrief' => $request->reqBrief,
+        'aksess.host_id' => $request->idHost,
         'orders.dpTrx' => $request->dpTrx,
         'orders.renew' => $request->renew,
         'orders.pmOrder' => $request->pmOrder,
@@ -231,6 +240,7 @@ class JwebCtrl extends Controller
         $webs = DB::table('orders')
         ->join('briefs', 'briefs.idBrief', '=', 'orders.idBrief')
         ->join('aksess', 'aksess.idAkses', '=', 'orders.idAkses')
+        ->join('hosts', 'aksess.host_id', '=', 'hosts.idHost')
         ->join('users', 'users.idUser', '=', 'orders.idUser')
         ->join('companys', 'companys.idComp', '=', 'orders.idComp')
         ->where('orders.idBrief', '=', $id)
@@ -240,6 +250,7 @@ class JwebCtrl extends Controller
         ->join('trxs', 'trxs.idOrder', '=', 'orders.idOrder')
         ->where('orders.idBrief', '=', $id)
         ->get();
+
 
         //dd($trxweb);
 
@@ -423,6 +434,7 @@ class JwebCtrl extends Controller
         }
 
         $akses = new Akses;
+        $akses->host_id = $request->idHost;
         $akses->domainAkses = $request->domainAkses;
         $akses->userAkses = $request->userAkses;
         $akses->passAkses = $request->passAkses;
@@ -506,7 +518,7 @@ class JwebCtrl extends Controller
         $order->fromTrx = $request->fromTrx;
         $order->totalOrder = $request->totalOrder;
         $order->jenisOrder = "Website";
-        $order->statusWeb = 1;
+        $order->statusOrder = 1;
         $order->save();
 
         $akses->idOrder = $order->idOrder;

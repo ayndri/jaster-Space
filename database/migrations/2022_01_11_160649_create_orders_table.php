@@ -28,7 +28,7 @@ class CreateOrdersTable extends Migration
             $table->string('fromTrx')->nullable();
             $table->string('jenisOrder')->nullable();
             $table->string('totalOrder')->nullable();
-            $table->string('statusWeb')->nullable();
+            $table->string('statusOrder')->nullable();
 
             $table->timestamps();
         });
