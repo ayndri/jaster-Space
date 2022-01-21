@@ -12,7 +12,7 @@ class HostCtrl extends Controller
 {
     public function index()
     {
-        $allhost = Host::withCount('domain')->orderBy('created_at','asc')->get();
+        $allhost = Host::withCount('domain')->orderBy('created_at','desc')->get();
         return view('adm.host.all', compact('allhost'));
 
     }

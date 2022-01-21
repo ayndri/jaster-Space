@@ -63,10 +63,20 @@ Route::get('/host/{host:domHost}/list-domain', ['as' => 'host.getDomain', 'uses'
 
 Route::get('/renewal', ['as' => 'renewal.index', 'uses' => 'App\Http\Controllers\RenewalController@index']);
 
+
+Route::get('/domain', ['as' => 'domain.index', 'uses' => 'App\Http\Controllers\DomainController@index']);
+Route::post('/domain', ['as' => 'domain.store', 'uses' => 'App\Http\Controllers\DomainController@store']);
+Route::get('/domain/search', ['as' => 'domain.search', 'uses' => 'App\Http\Controllers\DomainController@searchAjax']);
+Route::get('/domain/{id}/view', ['as' => 'domain.view', 'uses' => 'App\Http\Controllers\DomainController@view']);
+Route::post('/domain/{id}/edit', ['as' => 'domain.edit', 'uses' => 'App\Http\Controllers\DomainController@edit']);
+Route::get('/domain/{id}/gethosting', ['as' => 'domain.gethosting', 'uses' => 'App\Http\Controllers\DomainController@getHosting']);
+Route::get('/domain/all-domain', ['as' => 'domain.getAllDomain', 'uses' => 'App\Http\Controllers\DomainController@getAllDomain']);
+
 Route::get('/jweb/add', ['as' => 'jweb.add', 'uses' => 'App\Http\Controllers\JwebCtrl@add']);
 Route::post('/jweb/add', ['as' => 'jweb.tambah', 'uses' => 'App\Http\Controllers\JwebCtrl@tambah']);
 Route::get('/jweb/all', ['as' => 'jweb.all', 'uses' => 'App\Http\Controllers\JwebCtrl@all']);
 Route::get('/jweb/active', ['as' => 'jweb.active', 'uses' => 'App\Http\Controllers\JwebCtrl@active']);
+Route::get('/jweb/history', ['as' => 'jweb.history', 'uses' => 'App\Http\Controllers\JwebCtrl@history']);
 Route::get('/jweb/{id}/view', ['as' => 'jweb.view', 'uses' => 'App\Http\Controllers\JwebCtrl@view']);
 Route::get('/jweb/{id}/edit', ['as' => 'jweb.edit', 'uses' => 'App\Http\Controllers\JwebCtrl@edit']);
 Route::post('/jweb/{id}/edit', ['as' => 'jweb.update', 'uses' => 'App\Http\Controllers\JwebCtrl@update']);
@@ -76,13 +86,6 @@ Route::post('/web/{id}/edit', ['as' => 'web.ubah', 'uses' => 'App\Http\Controlle
 
 Route::get('/web/{id}/view', ['as' => 'web.view', 'uses' => 'App\Http\Controllers\JwebCtrl@webview']);
 
-Route::get('/domain', ['as' => 'domain.index', 'uses' => 'App\Http\Controllers\DomainController@index']);
-Route::post('/domain', ['as' => 'domain.store', 'uses' => 'App\Http\Controllers\DomainController@store']);
-Route::get('/domain/search', ['as' => 'domain.search', 'uses' => 'App\Http\Controllers\DomainController@searchAjax']);
-Route::get('/domain/{id}/view', ['as' => 'domain.view', 'uses' => 'App\Http\Controllers\DomainController@view']);
-Route::post('/domain/{id}/edit', ['as' => 'domain.edit', 'uses' => 'App\Http\Controllers\DomainController@edit']);
-Route::get('/domain/{id}/gethosting', ['as' => 'domain.gethosting', 'uses' => 'App\Http\Controllers\DomainController@getHosting']);
-Route::get('/domain/all-domain', ['as' => 'domain.getAllDomain', 'uses' => 'App\Http\Controllers\DomainController@getAllDomain']);
 
 Route::get('/account',['as' => 'account.index','uses' => 'App\Http\Controllers\AccountController@index']);
 Route::get('/akun/team',['as' => 'akun.team','uses' => 'App\Http\Controllers\AccountController@team']);
@@ -96,9 +99,9 @@ Route::get('/account/{user}/delete-account',['as' => 'account.delete','uses' => 
 Route::get('/profile/{user}/edit-profile',['as' => 'profile.edit','uses' => 'App\Http\Controllers\ProfileController@edit']);
 Route::post('/profile/{user}/edit-profile',['as' => 'profile.update','uses' => 'App\Http\Controllers\ProfileController@update']);
 
-Route::get('/email',['as' => 'email','uses' => 'App\Http\Controllers\MailController@index']);
-Route::get('/email/send',['as' => 'email.create','uses' => 'App\Http\Controllers\MailController@create']);
-Route::post('/email/send',['as' => 'email.send','uses' => 'App\Http\Controllers\MailController@store']);
+Route::get('/finish',['as' => 'email','uses' => 'App\Http\Controllers\MailController@index']);
+Route::get('/send',['as' => 'email.create','uses' => 'App\Http\Controllers\MailController@create']);
+Route::post('/send',['as' => 'email.send','uses' => 'App\Http\Controllers\MailController@store']);
 
 
 Route::get('/reset', ['as' => 'reset.pass', 'uses' => 'App\Http\Controllers\AdmController@reset'])->middleware('admin');

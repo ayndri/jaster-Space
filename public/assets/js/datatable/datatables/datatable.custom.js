@@ -14,8 +14,9 @@
   $(document).ready(function() {
     $('#dtsearch').DataTable( {
       retrieve: true,
-        paging: false,
+        paging: true,
         responsive: true,
+        "pageLength": 15,
         "order": [[ 0, 'desc' ]]
     } );
   } );

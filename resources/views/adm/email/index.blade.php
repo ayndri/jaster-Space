@@ -30,46 +30,43 @@ tengahkan
 
              <div class="card-body">
 
-        <div class="card">
-         <div class="table-responsive">
-             <table class="table table-striped" id="dttbls">
-                 <thead class="thead">
-                     <tr>
-                         <th scope="col" class="sort">No</th>
-                         <th scope="col" class="sort">No Order</th>
-                       <th scope="col" class="sort">Email</th>
-                       <th scope="col" class="sort">Link GDrive</th>
-                     </tr>
-                 </thead>
-                 <tbody class="list">
-                @php $no = 1; @endphp
-                @forelse ($emails as $email )
-                <tr>
-                  <td>
-                     {{ $no++}}
-                  </td>
-                  <td>
-                     #{{ $email->noOrder}}
-                  </td>
-                  <td>
-                     {{ $email->email}}
-                  </td>
-                  <td>
-                     <a class="btn-ic btn-primary m-r-5" href="{{$email->gd}}" target="_blank" data-toggle="tooltip" data-placement="top" title="Edit"><i class="icon-eye"></i></a>
-                  </td>
-
-                </tr>
-                @empty
-                   <tr>
-                   <td colspan="6" class="text-center">Nothing</td>
-                   </tr>
-                   @endforelse
-
-                     </tbody>
-
-             </table>
-            </div>
-         </div>
+                    <table class="table table-striped" id="dtsearch">
+                        <thead class="thead">
+                           <tr>
+                               <th scope="col" class="sort">No</th>
+                               <th scope="col" class="sort">No Order</th>
+                               <th scope="col" class="sort">Email</th>
+                               <th scope="col" class="sort">Link GDrive</th>
+                           </tr>
+                        </thead>
+                        <tbody class="list">
+                       @php $no = 1; @endphp
+                       @forelse ($emails as $email )
+                       <tr>
+                        <td>
+                        {{ $no++}}
+                        </td>
+                        <td>
+                        #{{ $email->noOrder}}
+                        </td>
+                        <td>
+                        {{ $email->email}}
+                        </td>
+                        <td>
+                             
+                        <a class="btn btn-success" href="{{$email->gd}}" target="_blank">Open GDrive</a>
+                        </td>
+       
+                       </tr>
+                       @empty
+                          <tr>
+                          <td colspan="6" class="text-center">Tidak ada History Send Email</td>
+                          </tr>
+                          @endforelse
+       
+                            </tbody>
+       
+                    </table>
              </div>
           </div>
 
@@ -82,9 +79,7 @@ tengahkan
 
 @section('script')
 <script>
-      $('#dttbls').DataTable({
-        "lengthChange": false
-    });
+    
     $('.hilang').on('click', function (event) {
         event.preventDefault();
         const url = $(this).attr('href');

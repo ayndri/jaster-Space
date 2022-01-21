@@ -47,13 +47,28 @@ class JwebCtrl extends Controller
         ->join('aksess', 'aksess.idAkses', '=', 'orders.idAkses')
         ->join('users', 'users.idUser', '=', 'orders.idUser')
         ->join('companys', 'companys.idComp', '=', 'orders.idComp')
-        ->where('orders.statusWeb', '=', 1)
+        ->where('orders.statusWeb', 2)
         ->orderBy('orders.tglOrder', 'desc')
         ->get();
 
         
 
-        return view('adm.jweb.semua', compact('webs'));
+        return view('adm.jweb.active', compact('webs'));
+    }
+
+    public function history()
+    {
+        $webs = DB::table('orders')
+        ->join('briefs', 'briefs.idBrief', '=', 'orders.idBrief')
+        ->join('aksess', 'aksess.idAkses', '=', 'orders.idAkses')
+        ->join('users', 'users.idUser', '=', 'orders.idUser')
+        ->join('companys', 'companys.idComp', '=', 'orders.idComp')
+        ->orderBy('orders.tglOrder', 'desc')
+        ->get();
+
+        
+
+        return view('adm.jweb.history', compact('webs'));
     }
 
     public function view($id)

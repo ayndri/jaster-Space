@@ -32,7 +32,7 @@
                 
         <div class="card">
          <div class="table-responsive">
-            <table class="table table-striped" id="dtbasic">
+            <table class="table table-striped" id="dtsearch">
                  <thead class="thead">
                      <tr>
                        <th scope="col" class="sort" data-sort="no">No</th>

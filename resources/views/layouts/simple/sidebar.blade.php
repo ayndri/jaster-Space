@@ -7,21 +7,21 @@
     </li>
 
     <li class="nav-item">
-      <a class="{{ request()->route()->getPrefix() == '/page-layouts' ? 'active' : '' }}" href="#">
+      <a class="{{ request()->route()->getPrefix() == '/page-layouts' ? 'active' : '' }}">
 	  <i data-feather="monitor"></i><span>Jasterweb</span>
       </a>
       <ul class="nav-submenu">
         <li><a href="{{ Route('jweb.active') }}" class="{{ Route::currentRouteName() == 'jweb' ? 'active' : '' }}">Progress</a></li>
         <li><a href="{{ Route('jweb.all') }}" class="{{ Route::currentRouteName() == 'jweb' ? 'active' : '' }}">List Pending</a></li>
         <li><a href="{{ Route('jweb.add') }}" class="{{ Route::currentRouteName() == 'jweb' ? 'active' : '' }}">Add Order</a></li>
-        <li><a class="{{ Route::currentRouteName() == 'history-order' ? 'active' : '' }}">History Order</a></li>
+        <li><a href="{{ Route('jweb.history') }}"class="{{ Route::currentRouteName() == 'jweb' ? 'active' : '' }}">History</a></li>
         <li><a class="{{ Route::currentRouteName() == 'prog-point' ? 'active' : '' }}">Progress Point</a></li>
         <li><a href="{{ Route('email') }}" class="{{ Route::currentRouteName() == 'prog-point' ? 'active' : '' }}">Send Email</a></li>
       </ul>
     </li>
 
     <li class="nav-item">
-      <a class="{{ request()->route()->getPrefix() == '/page-layouts' ? 'active' : '' }}" href="#">
+      <a class="{{ request()->route()->getPrefix() == '/page-layouts' ? 'active' : '' }}">
 	  <i data-feather="hard-drive"></i><span>Server</span>
 
       </a>
@@ -62,7 +62,7 @@
 
     <li class="nav-item">
       <a class="{{ request()->route()->getPrefix() == '/page-layouts' ? 'active' : '' }}">
-        <svg className="w-6 h-6" width="20" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" /></svg>
+        <i data-feather="users"></i>
         <span>Account</span>
       </a>
       <ul class="nav-submenu">
@@ -76,12 +76,15 @@
 
     <li class="nav-item">
       <a class="{{ request()->route()->getPrefix() == '/page-layouts' ? 'active' : '' }}">
-        <i data-feather="user"></i><span>Absen</span>
+        <i data-feather="bookmark"></i>
+        <span>Absen</span>
 
       </a>
       <ul class="nav-submenu">
+        @role('2|3|5')
         <li><a href="{{ route('absen.add') }}" class="{{ Route::currentRouteName() == 'absen' ? 'active' : '' }}">Tambah Absen</a></li>
         <li><a href="{{ route('team.absen') }}" class="{{ Route::currentRouteName() == 'absen' ? 'active' : '' }}">History Absen</a></li>
+        @endrole
         @role('1')
         <li><a href="{{ route('admin.absen') }}" class="{{ Route::currentRouteName() == 'absen' ? 'active' : '' }}">Kelola Absen</a></li>
         @endrole

@@ -50,9 +50,9 @@ tengahkan
                       {{ $all->domHost }} <a href="{{route('host.getDomain',$all->domHost) }}"> ({{$all->domain_count}}) </a>
                      </td>
                      <td class="flex">
-                        <a href="https://{{ $all->domHost }}/cpanel" class="btn btn-primary m-r-5" target="_blank">Open</a>
-                            <a class="btn-ic btn-success  m-r-5" onclick="show({{ $all->idHost }})"><i data-feather="edit-2"></i></a>
-                            <a href="{{ route('host.del', $all->idHost) }}" class="btn-ic btn-danger hilang"><i data-feather="trash"></i></a>
+                        <a href="https://{{ $all->domHost }}/cpanel" class="btn-sm btn-primary m-r-5" target="_blank">Open</a>
+                            <a class="btn-ic btn-success  m-r-5" onclick="show({{ $all->idHost }})"><i class="icon-pencil"></i></a>
+                            <a href="{{ route('host.del', $all->idHost) }}" class="btn-ic btn-danger hilang"><i class="icon-close"></i></a>
                      </td>
                    </tr>
                     @empty

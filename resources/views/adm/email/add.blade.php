@@ -65,8 +65,9 @@ tengahkan
 
 
 
-                  <div class="form-group mt-5">
-                     <button class="btn btn-primary btn-block w100" type="submit">Submit</button>
+                  <div class="form-group mt-5 text-center">
+                      <span>Pastikan Order sudah lunas sebelum kamu Send Email</span>
+                     <button class="btn btn-primary btn-block w100 m-t-10" type="submit">Send Now</button>
                   </div>
 
                </form>

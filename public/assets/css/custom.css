@@ -31,7 +31,7 @@ flex-direction: column;
 .simplebar-mask{z-index: 99 !important}
 
 .navtop{padding:10px 7px;background:var(--co-obj)}
-.nav-submenu{visibility: hidden; opacity: 0;-webkit-transform: rotateX(-75deg);position: absolute; top: 35px; z-index: 1000; margin: 0px; padding: 7px; min-width: 190px; -webkit-transform-origin: 0% 0%; -webkit-transition: -webkit-transform 0.3s, opacity 0.3s; -webkit-transform-style: preserve-3d; background-color: #21262d; box-shadow: 0 10px 15px rgba(33, 38, 45, 0.29); border: 1px solid rgba(255, 255, 255, 0.04);}
+.nav-submenu{visibility: hidden; opacity: 0;-webkit-transform: rotateX(-75deg);position: absolute; top: 44px; z-index: 1000; margin: 0px; padding: 7px; min-width: 190px; -webkit-transform-origin: 0% 0%; -webkit-transition: -webkit-transform 0.3s, opacity 0.3s; -webkit-transform-style: preserve-3d; background-color: #21262d; box-shadow: 0 10px 15px rgba(33, 38, 45, 0.29); border: 1px solid rgba(255, 255, 255, 0.04);}
 .navlist li{display: inline-block; margin-right: 5px;position: relative;}
 .nav-item a{display: flex; align-items: center; color: rgba(255,255,255,0.73); padding: 5px 15px; border-radius: 4px; transition: all .2s ease-in-out;}.nav-item a svg{width:16px;margin-right:7px}.navlist{display:flex;align-items:center}
 .nav-item a:hover{background: rgba(255, 255, 255, 0.16);}
@@ -48,7 +48,7 @@ flex-direction: column;
 .opened .line2{stroke-dasharray:1 60;stroke-dashoffset:-30;stroke-width:6}
 .opened .line3{stroke-dasharray:90 207;stroke-dashoffset:-134;stroke-width:6}
 
-.logo-wrapper{width: 150px;}
+.logo-wrapper{width: 200px;}
 
 @media (max-width:768px){
     .nav-submenu{display: none;opacity: 1; visibility: visible;-webkit-transform: unset;position:relative;top:0;padding:5px;min-width:auto;background:rgba(1,1,1,0.4);border:0}
@@ -126,6 +126,9 @@ flex-direction: column;
 .form-icon-right{display:flex;align-items:center;background:#313842!important;border:1px solid #525c6a!important;border-radius:.25rem;width:100%}
 .form-icon-right span{color:#ffe82b;font-weight:400;flex:0 0 auto;padding:0 10px;border-left:1px solid #667282}
 .form-icon-right input{border:0!important}
+
+.small-icon{padding:7px;display:inline-flex;align-items:center;border-radius:5px;margin-right:5px}
+.small-icon svg{width:14px;height:14px}
 
 @media (min-width:550px){
     

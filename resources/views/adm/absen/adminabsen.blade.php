@@ -106,9 +106,12 @@ tengahkan
     </div>
   </div>
 </div>
-                   
-                 @endforeach
-                  
+@empty
+<tr>
+<td colspan="7" class="text-center">Belum ada yang izin</td>
+</tr>
+
+@endforelse
                      
                      </tbody>
              </table>
