@@ -52,25 +52,28 @@ Route::post('/ads/addtop', ['as' => 'ads.storetop', 'uses' => 'App\Http\Controll
 Route::get('/ads/pay/{ant}', ['as' => 'ads.pay', 'uses' => 'App\Http\Controllers\AdsController@pay']);
 Route::get('/ads/all', ['as' => 'ads.allads', 'uses' => 'App\Http\Controllers\AdsController@allads']);
 
+Route::group(['prefix'=>'srv'], function(){
+
+    Route::get('/host', ['as' => 'host.all', 'uses' => 'App\Http\Controllers\HostCtrl@index']);
+    Route::post('/host/add', ['as' => 'host.add', 'uses' => 'App\Http\Controllers\HostCtrl@add']);
+    Route::get('/host/{id}/view', ['as' => 'host.view', 'uses' => 'App\Http\Controllers\HostCtrl@view']);
+    Route::post('/host/{id}/edit', ['as' => 'host.edit', 'uses' => 'App\Http\Controllers\HostCtrl@edit']);
+    Route::get('/host/{id}/del', ['as' => 'host.del', 'uses' => 'App\Http\Controllers\HostCtrl@destroy']);
+    Route::get('/host/{host}/list-domain', ['as' => 'host.getDomain', 'uses' => 'App\Http\Controllers\HostCtrl@getDomain']);
+
+    Route::get('/renewal', ['as' => 'renewal.index', 'uses' => 'App\Http\Controllers\RenewalController@index']);
 
 
-Route::get('/host', ['as' => 'host.all', 'uses' => 'App\Http\Controllers\HostCtrl@index']);
-Route::post('/host/add', ['as' => 'host.add', 'uses' => 'App\Http\Controllers\HostCtrl@add']);
-Route::get('/host/{id}/view', ['as' => 'host.view', 'uses' => 'App\Http\Controllers\HostCtrl@view']);
-Route::post('/host/{id}/edit', ['as' => 'host.edit', 'uses' => 'App\Http\Controllers\HostCtrl@edit']);
-Route::get('/host/{id}/del', ['as' => 'host.del', 'uses' => 'App\Http\Controllers\HostCtrl@destroy']);
-Route::get('/host/{host:domHost}/list-domain', ['as' => 'host.getDomain', 'uses' => 'App\Http\Controllers\HostCtrl@getDomain']);
+    Route::get('/domain', ['as' => 'domain.index', 'uses' => 'App\Http\Controllers\DomainController@index']);
+    Route::post('/domain', ['as' => 'domain.store', 'uses' => 'App\Http\Controllers\DomainController@store']);
+    Route::get('/domain/search', ['as' => 'domain.search', 'uses' => 'App\Http\Controllers\DomainController@searchAjax']);
+    Route::get('/domain/{id}/view', ['as' => 'domain.view', 'uses' => 'App\Http\Controllers\DomainController@view']);
+    Route::post('/domain/{id}/edit', ['as' => 'domain.edit', 'uses' => 'App\Http\Controllers\DomainController@edit']);
+    Route::get('/domain/{id}/gethosting', ['as' => 'domain.gethosting', 'uses' => 'App\Http\Controllers\DomainController@getHosting']);
+    Route::get('/domain/{host}/list', ['as' => 'domain.list', 'uses' => 'App\Http\Controllers\DomainController@list']);
+});
 
-Route::get('/renewal', ['as' => 'renewal.index', 'uses' => 'App\Http\Controllers\RenewalController@index']);
 
-
-Route::get('/domain', ['as' => 'domain.index', 'uses' => 'App\Http\Controllers\DomainController@index']);
-Route::post('/domain', ['as' => 'domain.store', 'uses' => 'App\Http\Controllers\DomainController@store']);
-Route::get('/domain/search', ['as' => 'domain.search', 'uses' => 'App\Http\Controllers\DomainController@searchAjax']);
-Route::get('/domain/{id}/view', ['as' => 'domain.view', 'uses' => 'App\Http\Controllers\DomainController@view']);
-Route::post('/domain/{id}/edit', ['as' => 'domain.edit', 'uses' => 'App\Http\Controllers\DomainController@edit']);
-Route::get('/domain/{id}/gethosting', ['as' => 'domain.gethosting', 'uses' => 'App\Http\Controllers\DomainController@getHosting']);
-Route::get('/domain/all-domain', ['as' => 'domain.getAllDomain', 'uses' => 'App\Http\Controllers\DomainController@getAllDomain']);
 
 Route::get('/jweb/add', ['as' => 'jweb.add', 'uses' => 'App\Http\Controllers\JwebCtrl@add']);
 Route::post('/jweb/add', ['as' => 'jweb.tambah', 'uses' => 'App\Http\Controllers\JwebCtrl@tambah']);

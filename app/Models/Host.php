@@ -14,10 +14,5 @@ class Host extends Model
     public function domain(){
         return $this->hasMany(Akses::class,'host_id', 'idHost');
     }
-
-    public function getRouteKeyName()
-    {
-        return 'domHost';
-    }
 }
 

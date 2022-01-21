@@ -13,5 +13,9 @@ class Order extends Model
     protected $primaryKey = 'idOrder';
 
     protected $dates = ['created_at'];
+
+    public function users() {
+        return $this->belongsTo(User::class,'idUser','idUser');
+    }
 }
 

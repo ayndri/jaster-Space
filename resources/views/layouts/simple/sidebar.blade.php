@@ -27,9 +27,8 @@
       </a>
       <ul class="nav-submenu">
         <li><a href="{{route('host.all')}}" class="{{ Route::currentRouteName() == 'hosting' ? 'active' : '' }}">Hosting</a></li>
-        <li><a href="{{route('domain.getAllDomain')}}" class="{{ Route::currentRouteName() == 'domain' ? 'active' : '' }}">Domain</a></li>
+        <li><a href="{{route('domain.index')}}" class="{{ Route::currentRouteName() == 'domain' ? 'active' : '' }}">Domain</a></li>
         <li><a href="{{route('renewal.index')}}" class="{{ Route::currentRouteName() == 'renewal' ? 'active' : '' }}">Renewal</a></li>
-        <li><a href="{{route('domain.index')}}" class=" ">Cari Hosting</a></li>
       </ul>
     </li>
 

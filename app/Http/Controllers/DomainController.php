@@ -6,19 +6,14 @@ use App\Models\Akses;
 use App\Models\Host;
 use Illuminate\Http\Request;
 use Alert;
+use App\Models\Domain;
 
 class DomainController extends Controller
 {
-
-    public function getAllDomain() {
-        $domain = Akses::get();
-        return view('adm.domain.listDomain',compact('domain'));
-    }
-
     public function index() {
         $domain = Akses::with('hosting')->get();
-        $hosts = Host::get();
-        return view('adm.domain.index',compact('domain','hosts'));
+        $hosts = Host::withCount('domain')->get();
+        return view('adm.server.domain',compact('domain','hosts'));
 
     }
 
@@ -95,13 +90,11 @@ class DomainController extends Controller
             if($domains) {
             foreach ($domains as $domain) {
                     if($domain->hosting != NULL){
-                        $output.='<tr>'.
-                        '<td>'.$domain->id.'</td>'.
-                        '<td>'.$domain->domainAkses.'</td>'.
-                        '<td>'.$domain->hosting->domHost.'</td>'.
-                        '<td><a href="https://'.$domain->hosting->domHost.'/cpanel" class="btn-sm btn-primary d-inline-block" target="_blank">Open cPanel</a> '.
-                        '<button type="button" onclick="getAcc('.$domain->idAkses.')" class="btn-sm btn-primary">Akun</button></td>'.
-                        '</tr>';
+                        $output.='<div class="res">'.
+                        '<p>'.$domain->id.'</p>'.
+                        '<p> Domain '.$domain->domainAkses.' Berada dihosting</p>'.
+                        '<span class="hosting">'.$domain->hosting->domHost.'</span>'.
+                        '</div>';
                     }else{
                         $output.='';
                     }
@@ -140,5 +133,10 @@ class DomainController extends Controller
 
         // dd($response);
         return response()->json($response);
+    }
+
+    public function list(Request $request , Host $host) {
+        $domainHost = Akses::with('hosting')->where('host_id','=',$host->idHost)->get();
+        return view('adm.server.domainListData',compact('domainHost','host'));
     }
 }
