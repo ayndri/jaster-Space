@@ -37,6 +37,10 @@ tengahkan
                      <tr>
                        <th scope="col" class="sort">No</th>
                        <th scope="col" class="sort">Nama Domain</th>
+                       <th scope="col" class="sort">No Order</th>
+                       <th scope="col" class="sort">Tanggal Order</th>
+                       <th scope="col" class="sort">Action</th>
+
                      </tr>
                  </thead>
                  <tbody class="list">
@@ -48,6 +52,17 @@ tengahkan
                      </td>
                      <td>
                       {{ $domain->domainAkses }}
+                     </td>
+                     <td>
+                      {{ $domain->orders->nomerOrder }}
+                     </td>
+                     <td>
+                      {{ $domain->orders->created_at->format('d F y') }}
+                     </td>
+                     <td>
+                      <button class="btn btn-sm btn-primary">
+                        <i data-feather="edit-3"></i>
+                      </button>
                      </td>
                    </tr>
                     @empty

@@ -22,4 +22,9 @@ class Akses extends Model
   {
       return $this->belongsTo(Host::class,'host_id', 'idHost');
   }
+
+  public function orders()
+  {
+      return $this->belongsTo(Order::class,'idOrder','idOrder');
+  }
 }
