@@ -8,10 +8,9 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Carbon;
 
-class addAbsen extends Notification
+class tolakAbsen extends Notification
 {
     use Queueable;
-
 
     /**
      * Create a new notification instance.
@@ -57,10 +56,10 @@ class addAbsen extends Notification
     public function toArray($notifiable)
     {
         return [
-            'idUser' => $this->absen->idUser,
+            'idAbsen' => $this->absen->idUser,
             'tglAbsen' => Carbon::parse($this->absen->tglAbsen)->locale('id')->format('l, j F Y'),
-            'notifType' => 'createabsen',
-            'text' => $this->absen->nama.' tidak masuk pada '.Carbon::parse($this->absen->tglAbsen)->locale('id')->format('j F'),
+            'notifType' => 'tolakabsen',
+            'text' => 'Maaf, Absen Anda pada ditolak',
         ];
     }
 }

@@ -30,27 +30,64 @@
       <ul class="nav-menus">
         {{-- <li>                         <span class="header-search"><i data-feather="search"></i></span></li> --}}
         <li class="onhover-dropdown">
-          <div class="notification-box"><i data-feather="bell"> </i><span class="badge rounded-pill badge-secondary">4                                </span></div>
+          <div class="notification-box"><i data-feather="bell"> </i><span class="badge rounded-pill badge-secondary">
+            
+            @php
+            $showNotif = auth()->user()->unreadNotifications()->latest()->paginate(5);
+            @endphp
+            {{ $showNotif->count() }}
+
+          </span></div>
           <ul class="notification-dropdown onhover-show-div">
             <li>
               <i data-feather="bell"></i>
               <h6 class="f-18 mb-0">Notitications</h6>
             </li>
+
+            @forelse ($showNotif as $notifications)
+            
+            @if ($notifications->data['notifType'] == 'createabsen')
+
             <li>
-              <p><i class="fa fa-circle-o me-3 font-primary"> </i>Delivery processing <span class="pull-right">10 min.</span></p>
+              <p><i class="fa fa-circle-o me-3 font-primary"> </i>{{ $notifications->data['text'] }} <span class="pull-right">{{ $notifications->created_at->diffForHumans(null, false, true) }}</span></p>
             </li>
+            @elseif ($notifications->data['notifType'] == 'setujuAbsen')
             <li>
-              <p><i class="fa fa-circle-o me-3 font-success"></i>Order Complete<span class="pull-right">1 hr</span></p>
+              <p><i class="fa fa-circle-o me-3 font-success"></i>{{ $notifications->data['text'] }}<span class="pull-right">{{ $notifications->created_at->diffForHumans(null, false, true) }}</span></p>
             </li>
+            @elseif ($notifications->data['notifType'] == 'tolakabsen')
             <li>
-              <p><i class="fa fa-circle-o me-3 font-info"></i>Tickets Generated<span class="pull-right">3 hr</span></p>
+              <p><i class="fa fa-circle-o me-3 font-danger"></i>{{ $notifications->data['text'] }}<span class="pull-right">{{ $notifications->created_at->diffForHumans(null, false, true) }}</span></p>
             </li>
+            @elseif ($notifications->data['notifType'] == 'cancelabsen')
+            @role('1')
             <li>
-              <p><i class="fa fa-circle-o me-3 font-danger"></i>Delivery Complete<span class="pull-right">6 hr</span></p>
+              <p><i class="fa fa-circle-o me-3 font-danger"></i>{{ $notifications->data['textAdmin'] }}<span class="pull-right">{{ $notifications->created_at->diffForHumans(null, false, true) }}</span></p>
             </li>
-            <li><a class="btn btn-primary" href="#">Check all notification</a></li>
+            @endrole
+            @role('3')
+            <li>
+              <p><i class="fa fa-circle-o me-3 font-danger"></i>{{ $notifications->data['textUser'] }}<span class="pull-right">{{ $notifications->created_at->diffForHumans(null, false, true) }}</span></p>
+            </li>
+            @endrole
+            @elseif ($notifications->data['notifType'] == 'createorder')
+            <li>
+              <p><i class="fa fa-circle-o me-3 font-info"></i>{{ $notifications->data['text'] }}<span class="pull-right">{{ $notifications->created_at->diffForHumans(null, false, true) }}</span></p>
+            </li>
+
+            @endif
+            @empty
+            <li>
+              <p>Belum Ada Notifikasi</p>
+            </li>
+            @endforelse
+            <li><a class="btn btn-primary" href="{{ route('notif')}}">Check all notification</a></li>
+            
+           
+
           </ul>
         </li>
+
 
 
         <li class="maximize"><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
