@@ -31,6 +31,8 @@ Route::any('/absen/o/{abs}', ['as' => 'cancel.absen', 'uses' => 'App\Http\Contro
 Route::any('/absen/x/{abs}', ['as' => 'tolak.absen', 'uses' => 'App\Http\Controllers\AbsenController@tolak']);
 Route::any('/absen/v/{abs}', ['as' => 'setuju.absen', 'uses' => 'App\Http\Controllers\AbsenController@setuju']);
 
+Route::get('/notif', ['as' => 'notif', 'uses' => 'App\Http\Controllers\AdmController@notifikasi']);
+
 Route::get('/progress/{id}', ['as' => 'progress', 'uses' => 'App\Http\Controllers\BriefController@progress']);
 Route::post('/progressadd/{id}', ['as' => 'progress.add', 'uses' => 'App\Http\Controllers\BriefController@progressadd']);
 

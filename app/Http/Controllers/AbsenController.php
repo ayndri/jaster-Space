@@ -7,6 +7,15 @@ use App\Models\Absen;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Notifications\addAbsen;
+use App\Notifications\setujuAbsen;
+use App\Notifications\tolakAbsen;
+use Illuminate\Support\Facades\Validator;
+use App\Models\User;
+use App\Notifications\cancelAbsen;
+use Illuminate\Support\Facades\Notification;
+use Exception;
+use Response;
 
 class AbsenController extends Controller
 {
@@ -33,6 +42,18 @@ class AbsenController extends Controller
         $absen->isiAbsen = $request->isiAbsen;
         $absen->statusAbsen = 1;
         $absen->save();
+
+        $users = User::whereHas('roles', function ($q) {
+                 $q->Where('name', 1);
+             })->get();
+
+            $absennot = Absen::select('*')
+            ->join('users', 'users.idUser', '=', 'absens.idUser')
+            ->first();
+
+        //dd($absennot);
+
+        Notification::send($users, new addAbsen($absennot));
         
         Alert::success('Oke', 'Izin absen telah terkirim');
         return redirect('/absen/all');
@@ -56,6 +77,24 @@ class AbsenController extends Controller
                 'statusAbsen' => 5,
             ]);
 
+            $users = User::select('*')
+            ->join('absens', 'users.idUser', '=', 'absens.idUser')
+            ->where('absens.idAbsen', $abs)
+            ->first();
+    
+            $absen = Absen::select('*')
+               ->join('users', 'users.idUser', '=', 'absens.idUser')
+               ->first();
+
+            $admins = User::whereHas('roles', function ($q) {
+                $q->Where('name', 1);
+            })->get();
+    
+           //dd($absennot);
+    
+           Notification::send($users, new cancelAbsen($absen));
+           Notification::send($admins, new cancelAbsen($absen));
+
             Alert::success('Oke', 'Absen telah kamu batalkan');
             return redirect('/absen/all');
     }
@@ -67,6 +106,19 @@ class AbsenController extends Controller
                 'statusAbsen' => 3,
             ]);
 
+            $users = User::select('*')
+            ->join('absens', 'users.idUser', '=', 'absens.idUser')
+            ->where('absens.idAbsen', $abs)
+            ->first();
+    
+            $absen = Absen::select('*')
+               ->join('users', 'users.idUser', '=', 'absens.idUser')
+               ->first();
+    
+           //dd($absennot);
+    
+           Notification::send($users, new tolakAbsen($absen));
+
         Alert::success('Nice One', 'Absen telah ditolak');
         return redirect('/absen/list');
     }
@@ -77,6 +129,19 @@ class AbsenController extends Controller
             ->update([
                 'statusAbsen' => 2,
             ]);
+
+        $users = User::select('*')
+        ->join('absens', 'users.idUser', '=', 'absens.idUser')
+        ->where('absens.idAbsen', $abs)
+        ->first();
+
+        $absen = Absen::select('*')
+           ->join('users', 'users.idUser', '=', 'absens.idUser')
+           ->first();
+
+       //dd($absennot);
+
+       Notification::send($users, new setujuAbsen($absen));
 
         Alert::success('Nice One', 'Absen telah diizinkan');
         return redirect('/absen/list');

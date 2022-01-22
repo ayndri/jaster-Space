@@ -17,6 +17,9 @@ use App\Models\Order;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Notifications\cancelAbsen;
+use App\Notifications\createOrder;
+use Illuminate\Support\Facades\Notification;
 
 
 class JwebCtrl extends Controller
@@ -543,8 +546,21 @@ class JwebCtrl extends Controller
         }
 
 
-        // DB::connection('mysql')->table('jwebs')->where('brandWeb', '=', $request->brandComp)->update(['statWeb' => 1]);
+        // DB::connection('mysql2')->table('jwebs')->where('brandWeb', '=', $request->brandComp)->update(['statWeb' => 1]);
 
+        $users = User::whereHas('roles', function ($q) {
+            $q->Where('name', 1)
+            ->orWhere('name', 2)
+            ->orWhere('name', 3)
+            ->orWhere('name', 4);
+        })->get();
+
+       $orderan = Order::select('*')
+       ->first();
+
+   //dd($orderan);
+
+   Notification::send($users, new createOrder($orderan));
 
         Alert::success('Lets get to Work', 'Project has been Created');
         return redirect()->route('jweb.active');

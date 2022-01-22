@@ -51,4 +51,11 @@ class AdmController extends Controller
             // Alert::success('Berhasil', 'Password Anda berhasil diubah');
             return redirect()->back();
     }
+
+    public function notifikasi()
+    {
+        $showNotif = auth()->user()->notifications()->latest()->paginate(5);
+        $allnotif = auth()->user()->notifications()->latest()->get();
+        return view('adm.notifikasi',compact('showNotif','allnotif'));
+    }
 }   
