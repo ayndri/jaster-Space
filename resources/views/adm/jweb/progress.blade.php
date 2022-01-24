@@ -86,6 +86,37 @@
                  </div>
               </div>
         </div>
+
+        <div class="col-md-6">
+          <div class="card">
+
+              <div class="card-header">
+                  <h6>☑️ Status Terakhir</h6>
+              </div>
+              <div class="card-body">
+                    {{-- @csrf  --}}
+                  @foreach ($errors->all() as $error)
+                  <p class="text-danger">{{ $error }}</p>
+                  @endforeach
+                 
+                  <form class="" enctype="multipart/form-data" method="POST" action="{{route('status.add', $brief->idBrief)}}">
+                      @csrf
+                      <div class="form-group">
+                            <input class="form-control" type="text" name="lastStatus" @if($brief->lastStatus != null) value="{{$brief->lastStatus}}" @endif placeholder="Kasih status terakhir disini...">
+                    </div>
+
+                  <button class="btn btn-primary btn-block" type="submit">Submit New Order</button>
+                  @if($brief->dateStatus != null)
+                  <span>{{ \Carbon\Carbon::parse($brief->dateStatus)->locale('id')->diffForHumans(null, true).' lalu' }} oleh {{$brief->updatedBy}}</span>
+                  @endif
+                  
+                  </form>
+  
+               </div>
+            </div>
+      </div>
+
+
     </div>
 </div>
 

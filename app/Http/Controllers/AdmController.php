@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Carbon;
 
 class AdmController extends Controller
 {
@@ -28,7 +29,11 @@ class AdmController extends Controller
      */
     public function index()
     {
-        return view('adm.index');
+        $brief = DB::table('briefs')
+        ->join('companys', 'companys.idBrief', '=', 'briefs.idBrief')
+        ->get();
+
+        return view('adm.index', compact('brief'));
                     
     }
     
@@ -57,5 +62,16 @@ class AdmController extends Controller
         $showNotif = auth()->user()->notifications()->latest()->paginate(5);
         $allnotif = auth()->user()->notifications()->latest()->get();
         return view('adm.notifikasi',compact('showNotif','allnotif'));
+    }
+
+    public function markRead($id)
+    {
+        DB::table('notifications')
+           ->where('id', $id)
+           ->update(
+            ['notifications.read_at' => Carbon::now()]
+            );
+
+        return back();
     }
 }   
