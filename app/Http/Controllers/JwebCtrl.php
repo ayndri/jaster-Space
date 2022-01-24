@@ -28,7 +28,7 @@ class JwebCtrl extends Controller
     {
         $host = DB::table('hosts')
         ->get();
-        
+
         return view('adm.jweb.add', compact('host'));
     }
 
@@ -57,7 +57,7 @@ class JwebCtrl extends Controller
         ->orderBy('orders.tglOrder', 'desc')
         ->get();
 
-        
+
 
         return view('adm.jweb.active', compact('webs'));
     }
@@ -72,7 +72,7 @@ class JwebCtrl extends Controller
         ->orderBy('orders.tglOrder', 'desc')
         ->get();
 
-        
+
 
         return view('adm.jweb.history', compact('webs'));
     }
@@ -115,7 +115,7 @@ class JwebCtrl extends Controller
         $host = DB::table('hosts')
                 ->get();
 
-
+        // dd($coba);
         return view('adm.jweb.edit', compact('coba', 'host'));
     }
 
@@ -190,7 +190,7 @@ class JwebCtrl extends Controller
                  'trxs.hargaTrx' => $request->hargaTrx[$i],
                  'created_at' => Carbon::now(),
                  'updated_at' => Carbon::now(),]
-                 
+
                  );
             }
         }
@@ -225,6 +225,12 @@ class JwebCtrl extends Controller
         'aksess.passAkses' => $request->passAkses,
         'briefs.targetBrief' => $request->targetBrief,
         'briefs.reqBrief' => $request->reqBrief,
+        'briefs.waBrief' => $request->waBrief,
+        'briefs.igBrief' => $request->igBrief,
+        'briefs.fbBrief' => $request->fbBrief,
+        'briefs.sosBrief' => $request->sosBrief,
+        'briefs.telfBrief' => $request->telfBrief,
+        'briefs.mpBrief' => $request->mpBrief,
         'aksess.host_id' => $request->idHost,
         'orders.dpTrx' => $request->dpTrx,
         'orders.renew' => $request->renew,
@@ -254,8 +260,6 @@ class JwebCtrl extends Controller
         ->where('orders.idBrief', '=', $id)
         ->get();
 
-
-        //dd($trxweb);
 
         return view('adm.jweb.webview', compact('webs', 'trxweb'));
     }
@@ -418,7 +422,7 @@ class JwebCtrl extends Controller
             $user->assignRole('4');
             $user->save();
         }
-        
+
         $cekcompany = Company::where('brandComp', '=', $request->brandComp)->first();
         if ($cekcompany == null) {
 
@@ -459,6 +463,12 @@ class JwebCtrl extends Controller
         $brief->colorBrief = $request->colorBrief;
         $brief->targetBrief = $request->targetBrief;
         $brief->reqBrief = $request->reqBrief;
+        $brief->waBrief = $request->waBrief;
+        $brief->igBrief = $request->igBrief;
+        $brief->fbBrief = $request->fbBrief;
+        $brief->sosBrief = $request->sosBrief;
+        $brief->telfBrief = $request->telfBrief;
+        $brief->mpBrief = $request->mpBrief;
         $brief->save();
 
         $akses->idBrief = $brief->idBrief;

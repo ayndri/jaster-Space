@@ -118,8 +118,8 @@
                             <option @if ( $webs->postBrief == "Landing") selected @endif value="Landing">Landing</option>
                           </select>
                         </div>
-                        
-                        
+
+
                         <div class="form-group">
                             <label class="col-form-label">Paket Website</label>
                             <select class="form-control" name="paketBrief" id="selpost" required="">
@@ -187,7 +187,48 @@
                 </div>
              </div>
         </div>
-
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h6>💻 Social Media</h6>
+                </div>
+                <div class="card-body">
+                    <div class="bagi2">
+                        <div class="form-group">
+                            <label class="col-form-label">No WhatsApp</label>
+                            <div class="form-icon">
+                                <span>+62</span>
+                                <input class="form-control" type="text" name="waBrief" value="{{ $webs->waBrief }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Akun Instagram</label>
+                            <div class="form-icon">
+                                <span>@</span>
+                                <input class="form-control" type="text" name="igBrief" value="{{ $webs->igBrief }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Akun Facebook</label>
+                            <input class="form-control" type="text" name="fbBrief" value="{{ $webs->fbBrief }}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Akun Sosmed Lainnya</label>
+                            {{-- <textarea id="w3review" name="w3review" rows="4" cols="10">{{ $coba[0]['sosWeb'] }}</textarea> --}}
+                            <input class="form-control" type="text" name="sosBrief" value="{{ $webs->sosBrief }}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">No Telfon</label>
+                                <input class="form-control" type="text" name="telfBrief" value="{{ $webs->telfBrief }}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Marketplace</label>
+                                <input class="form-control" type="text" name="mpBrief" value="{{ $webs->mpBrief }}">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
 		<div class="col-md-5">
             <div class="card">
                 <div class="card-header">
@@ -234,7 +275,22 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Reference</label>
-                                    <input class="form-control" type="text" value="{{ $webs->fromTrx }}" name="fromTrx" required>
+                                <div class="form-group">
+                                    <label class="col-form-label">Reference</label>
+                                        {{-- <input class="form-control" type="text" value="{{ $webs->fromTrx }}" name="fromTrx" readonly> --}}
+                                            <label class="col-form-label">Reference</label>
+                                                <select class="form-control digits" name="fromTrx" id="exampleFormControlSelect9" required="">
+                                                    <option>{{ $webs->fromTrx }}</option>
+                                                    <option value="website">Website</option>
+                                                    <option value="google">Pencarian Google</option>
+                                                    <option value="instagram">Instagram</option>
+                                                    <option value="facebook">Facebook</option>
+                                                    <option value="youtube">Youtube</option>
+                                                    <option value="media">Media Online</option>
+                                                    <option value="jalan">Jalan (Spanduk)</option>
+                                                    <option value="teman">Teman / Kerabat</option>
+                                                  </select>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Deadline</label>
@@ -258,19 +314,19 @@
                 </div>
 
                 <div class="card-body">
-                    
+
                     <input type="hidden" name="count" id="count" value="{{ $count }}"/>
                     <input type="hidden" name="plusone" id="plusone" value="{{ $plusone }}"/>
                     <input type="hidden" name="idOrder" id="idOrder" value="{{ $webs->idOrder }}"/>
-                   
 
-                    
+
+
 
                     <div class="itemlist" id="itemlist">
 
                         @foreach ($trxweb as $trx)
 
-                       
+
 
                         <div class="item_order targetfields listtrx" id="item_order[{{$count}}]">
                             <input type="hidden" name="idTrx[]" value="{{$trx->idTrx}}"/>
@@ -324,10 +380,10 @@
                     @endforeach
                     </div>
 
-                   
+
 
                     <input class="" id="totalasli" type="hidden" name="totalOrder">
-            
+
                     <span class="heading3">Total: <small id="total">Rp @money($webs->totalOrder)</small></span>
                     <button class="btn btn-primary btn-block w100" type="submit">Submit New Order</button>
                     </div>
@@ -371,17 +427,17 @@ function kasihtitik(objek) {
 objek.value = c;
 }
 </script>
-    
+
 <script type="text/javascript">
 
    var count = $("#count").val();
-   
+
     var i = count;
 
     var plusc = $("#plusone").val();
-  
+
     document.getElementById("remove").style.display = "none";
-   
+
     $("#add").click(function(){
 
         i++
@@ -390,13 +446,13 @@ objek.value = c;
 
         $("#itemlist").append(
             '<div class="item_order targetfields listtrx" id="item_order['+i+']"><input type="hidden" name="idTrx[]"/><div class="form-group"><label class="col-form-label">Service</label><select class="form-control" name="paketTrx[]" id="selpost" required=""><option disabled selected>--- Pilih salah satu ---</option><option value="Beli Hosting">Beli Hosting</option><option value="Beli Domain">Beli Domain</option><option value="Web Company Profile">Web Company Profile</option><option value="Web Sales">Web Sales</option><option value="Web Listing">Web Listing</option><option value="Web Resto">Web Resto</option><option value="Web Dinas / Instansi">Web Dinas / Instansi</option><option value="Web Kecantikan">Web Kecantikan</option><option value="Web Toko Online">Web Toko Online</option><option value="Web Rental">Web Rental</option><option value="Web Travel">Web Travel</option><option value="Blog">Blog</option><option value="Web Booking / Hotel">Web Booking / Hotel</option><option value="Redesign / Web Custom">Redesign / Web Custom</option><option value="Logo">Logo</option><option value="Brosur">Brosur</option><option value="Company Profile">Company Profile</option><option value="Menu / Banner Service">Menu / Banner Service</option><option value="Kartu Nama">Kartu Nama</option><option value="Stempel">Stempel</option><option value="ID Card">ID Card</option><option value="Sticker">Sticker</option><option value="Nota / Invoice">Nota / Invoice</option><option value="Google Adwords">Google Adwords</option><option value="Design Katalog">Design Katalog</option><option value="Domain Security">Domain Security</option><option value="Google Business">Google Business</option><option value="Foto Produk">Foto Produk</option></select></div><div class="form-group" style="width: 250px;"><label class="col-form-label">Qty</label><input class="qty form-control" type="number" name="qtyTrx[]" required></div><div class="form-group"><label class="col-form-label">Harga</label><div class="form-icon"><span>Rp</span><input class="harga form-control" type="text" name="hargaTrx[]" required></div></div></div>');
-    
-    
+
+
             $(function() {
 
 $(".item_order").on('keyup change', function(e) {
  var total = 0;
- 
+
  $(".item_order").each(function() {
 
      var qty = parseInt($(this).find(".qty").val());
@@ -408,7 +464,7 @@ $(".item_order").on('keyup change', function(e) {
 
          $("#totalasli").val(total);
 
-         
+
 
 });
 var	reverse = total.toString().split('').reverse().join(''),
@@ -422,11 +478,11 @@ $("#total").text('Rp '+ribuan);
 
     });
 
-    
 
-    
 
-    $("#remove").click(function(){  
+
+
+    $("#remove").click(function(){
 
 
         if($(".item_order").length == plusc){
@@ -436,9 +492,9 @@ $("#total").text('Rp '+ribuan);
 
 
 
-    });  
+    });
 
-   
+
 
 </script>
 
@@ -448,7 +504,7 @@ $(function() {
 
 $(".item_order").on('keyup change', function(e) {
  var total = 0;
- 
+
  $(".item_order").each(function() {
 
      var qty = parseInt($(this).find(".qty").val());
@@ -460,7 +516,7 @@ $(".item_order").on('keyup change', function(e) {
 
          $("#totalasli").val(total);
 
-         
+
 
 });
 var	reverse = total.toString().split('').reverse().join(''),
