@@ -40,15 +40,27 @@ Notifikasi
                                 <div class="isinote">
                                     <b>Project
                                   
-
+                                    <input class="idnotif" type="hidden" name="id" value="{{ $notifications->id }}"/>
                                     {!! $notifications->data['text'] !!}</b>
 
                                     <span>{{ $notifications->created_at->locale('id')->diffForHumans() }}</span>
                                 </div>
 
-                                @elseif($notifications->data['notifType'] == 'setujuAbsen')
+                                @elseif($notifications->data['notifType'] == 'addStatus')
 
                                 <div class="isinote">
+
+                                    <input class="idnotif" type="hidden" name="id" value="{{ $notifications->id }}"/>
+
+                                    <b>{!! $notifications->data['text'] !!}</b>
+
+                                    <span>{{ $notifications->created_at->locale('id')->diffForHumans() }}</span>
+                                </div>
+
+                                @elseif($notifications->data['notifType'] == 'setujuabsen')
+
+                                <div class="isinote">
+                                    <input class="idnotif" type="hidden" name="id" value="{{ $notifications->id }}"/>
 
                                     <b>{!! $notifications->data['text'] !!}</b>
 
@@ -58,6 +70,7 @@ Notifikasi
                                 @elseif($notifications->data['notifType'] == 'selesaiTf')
 
                                 <div class="isinote">
+                                    <input class="idnotif" type="hidden" name="id" value="{{ $notifications->id }}"/>
 
                                     <b>{!! $notifications->data['text'] !!}</b> 
                                     <span>{{ $notifications->created_at->locale('id')->diffForHumans() }}</span>
@@ -66,6 +79,7 @@ Notifikasi
                                 @elseif($notifications->data['notifType'] == 'CreateTiket')
 
                                 <div class="isinote">
+                                    <input class="idnotif" type="hidden" name="id" value="{{ $notifications->id }}"/>
 
                                     <b> Tiket bernomor
 
@@ -77,6 +91,7 @@ Notifikasi
                                 @elseif($notifications->data['notifType'] == 'ClearTiket')
 
                                 <div class="isinote">
+                                    <input class="idnotif" type="hidden" name="id" value="{{ $notifications->id }}"/>
                                 <b>{!! $notifications->data['text'] !!}</b>
                                 <span>{{ $notifications->created_at->locale('id')->diffForHumans() }}</span>
                                 </div>
@@ -84,6 +99,7 @@ Notifikasi
                                 @elseif($notifications->data['notifType'] == 'StatusTiket')
 
                                 <div class="isinote">
+                                    <input class="idnotif" type="hidden" name="id" value="{{ $notifications->id }}"/>
                                     <b>{!! $notifications->data['text'] !!}</b>
                                     <span>{{ $notifications->created_at->locale('id')->diffForHumans() }}</span>
                                 </div>
@@ -91,6 +107,7 @@ Notifikasi
                                 @elseif($notifications->data['notifType'] == 'CreateReview')
 
                                 <div class="isinote">
+                                    <input class="idnotif" type="hidden" name="id" value="{{ $notifications->id }}"/>
                                     @if (auth()->user()->idUser == 1 or auth()->user()->idUser == 2)
                                     {{ $notifications->data['adminText'] }}
                                     @else
@@ -101,6 +118,7 @@ Notifikasi
                                 @elseif($notifications->data['notifType'] == 'createRevisi')
 
                                 <div class="isinote">
+                                    <input class="idnotif" type="hidden" name="id" value="{{ $notifications->id }}"/>
                                     @role('4')
                                     <a href="{{route('revisi',$notifications->data['idPro'])}}">
                                         {{ $notifications->data['textClient'] }}
@@ -116,6 +134,7 @@ Notifikasi
                                 @elseif($notifications->data['notifType'] == 'handleRev')
 
                                 <div class="isinote">
+                                    <input class="idnotif" type="hidden" name="id" value="{{ $notifications->id }}"/>
                                     @role('4')
                                     <a href="{{route('revisi',$notifications->data['idPro'])}}">
                                         {{ $notifications->data['textClient'] }}
@@ -131,6 +150,7 @@ Notifikasi
                                 @elseif($notifications->data['notifType'] == 'clientProgress')
 
                                 <div class="isinote">
+                                    <input class="idnotif" type="hidden" name="id" value="{{ $notifications->id }}"/>
 
                                 {{-- <a href="{{route('progress',$notifications->data['idPro'])}}"> --}}
                                 <b>{!! $notifications->data['text']!!}</b>
@@ -142,6 +162,7 @@ Notifikasi
                                 @elseif($notifications->data['notifType'] == 'teamProgress')
 
                                 <div class="isinote">
+                                    <input class="idnotif" type="hidden" name="id" value="{{ $notifications->id }}"/>
 
                                 {{-- <a href="{{route('history')}}"> --}}
                                     <b> {!! $notifications->data['text']!!}</b>
@@ -157,7 +178,7 @@ Notifikasi
                                 <span></span>
                                 @else
                                 <div id="pull-right-bell" class="pull-right">
-                                    <a href="#" class="mark-as-read float-right"
+                                    <a id="tes mark-as-read" class="tes mark-as-read float-right"
                                         data-id="{{ $notifications->id }}">
                                         <svg width="20" stroke="#fff" className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" /></svg>
 
@@ -190,4 +211,35 @@ Notifikasi
 @endsection
 
 @section('script')
+<script>
+    var id = $('.idnotif').value;
+    var url = "{{ route('markread', ":id") }}";
+    url = url.replace(':id', id);
+
+   
+
+    $(document).on('click', '.tes', function(){
+
+
+
+    $.ajax({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+
+        url: url,
+        type: "POST",
+        data: id,
+		dataType: "json",
+
+		success: function (result) {
+
+		}
+
+
+	});
+}
+
+	});
+</script>
 @endsection

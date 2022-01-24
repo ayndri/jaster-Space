@@ -9,6 +9,39 @@
 @endsection
 
 @section('style')
+<style>
+	.latestweb {
+	list-style: none;
+	margin: 0 !important;
+	padding: 0;
+}
+.latestweb li {
+	margin-bottom: 20px;
+	background: #535780;
+	padding: 10px 15px;
+	border-radius: 3px;
+	width: 100%;
+}
+.latestweb li a {
+	padding: 10px 15px;
+	background: #3b3e5f;
+	border-radius: 3px;
+	margin-left: 10px;
+	font-size: 13px;
+	color: #e4e4e4;
+	text-decoration: none !important;
+}
+.latestweb li i {
+	font-size: 22px;
+	float: right;
+	margin-top: 3px;
+}
+.latestweb li i:hover {
+	color: #27ae60;
+	background: #fff;
+	border-radius: 100%;
+}
+</style>
 @endsection
 
 @section('breadcrumb-title')
@@ -60,8 +93,12 @@
 					<h5>🟡 Last Updates from Jasterweb</h5>
             	</div>
 				<div class="card-body">
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-				</div>
+					<ul class="latestweb">
+				  @foreach ($brief as $bri)
+						<li id="hilang{{ $bri->idBrief }}">{{ $bri->brandComp }} : <a href="/progress/{{ $bri->idBrief }}" target="_blank">{{ $bri->lastStatus }}</a><i id="kliken{{ $bri->idBrief }}" class="fas fa-check-circle"></i></li>
+					@endforeach
+					</ul>
+			  </div>
 			</div>
 		</div>
 		<div class="col-md-5">
@@ -81,7 +118,12 @@
 @endsection
 
 @section('script')
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
+
+<script>
+	@foreach ($brief as $bri)
+		 $("#kliken{{ $bri->idBrief }}").click(function(){
+		$("#hilang{{ $bri->idBrief }}").hide();
+		
+	  }); @endforeach
+	</script>
 @endsection

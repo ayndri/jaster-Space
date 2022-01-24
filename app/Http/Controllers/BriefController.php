@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\addStatus;
+use Illuminate\Support\Facades\Notification;
+use App\Models\User;
+use App\Models\Brief;
 
 class BriefController extends Controller
 {
@@ -22,5 +28,30 @@ class BriefController extends Controller
         ->where('idBrief', $id)
         ->update(['progressBrief' => $request->progressBrief]);
 
+    }
+
+    public function lastStatus(Request $request, $id)
+    {
+        DB::table('briefs')
+        ->where('idBrief', $id)
+        ->update(['lastStatus' => $request->lastStatus,
+    'dateStatus' => Carbon::now(), 
+    'updatedBy' => Auth::user()->nama]);
+
+    $users = User::whereHas('roles', function ($q) {
+        $q->Where('name', 1)
+        ->orWhere('name', 2)
+        ->orWhere('name', 3)
+        ->orWhere('name', 4);
+    })->get();
+
+   $status = Brief::select('*')
+   ->join('companys', 'companys.idBrief', '=', 'briefs.idBrief')
+   ->first();
+
+
+    Notification::send($users, new addStatus($status));
+
+        return back();
     }
 }

@@ -51,7 +51,11 @@
             <li>
               <p><i class="fa fa-circle-o me-3 font-primary"> </i>{{ $notifications->data['text'] }} <span class="pull-right">{{ $notifications->created_at->diffForHumans(null, false, true) }}</span></p>
             </li>
-            @elseif ($notifications->data['notifType'] == 'setujuAbsen')
+            @elseif ($notifications->data['notifType'] == 'setujuabsen')
+            <li>
+              <p><i class="fa fa-circle-o me-3 font-success"></i>{{ $notifications->data['text'] }}<span class="pull-right">{{ $notifications->created_at->diffForHumans(null, false, true) }}</span></p>
+            </li>
+            @elseif ($notifications->data['notifType'] == 'addStatus')
             <li>
               <p><i class="fa fa-circle-o me-3 font-success"></i>{{ $notifications->data['text'] }}<span class="pull-right">{{ $notifications->created_at->diffForHumans(null, false, true) }}</span></p>
             </li>
