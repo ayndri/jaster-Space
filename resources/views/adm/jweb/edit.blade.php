@@ -60,7 +60,7 @@
                         <input class="form-control" type="text" name="nama" value="{{ $pic[0] }}" required>
                      </div>
 
-                     @else 
+                     @else
 
                      <div class="form-group">
                         <label class="col-form-label">Nama PIC</label>
@@ -80,7 +80,7 @@
                         <input class="form-control" type="text" name="nama" value="{{ $pic[0] }}" required>
                     </div>
 
-                    @else 
+                    @else
 
                     <div class="form-group">
                         <label class="col-form-label">Nama PIC</label>
@@ -120,7 +120,7 @@
                         <input class="form-control" type="text" name="jabatUser" value="{{ $pic[1] }}">
                     </div>
 
-                    @else 
+                    @else
 
                     <div class="form-group">
                         <label class="col-form-label">Jabatan</label>
@@ -140,7 +140,7 @@
                         <input class="form-control" type="text" name="jabatUser" value="{{ $pic[1] }}" required>
                      </div>
 
-                     @else 
+                     @else
 
                      <div class="form-group">
                         <label class="col-form-label">Jabatan</label>
@@ -208,9 +208,9 @@
                                 </select>
                             </div>
 
-                            
-                        
-                        
+
+
+
                         <div class="form-group">
                             <label class="col-form-label">Paket Website</label>
                             <select class="form-control" name="paketBrief" id="selpost" required="">
@@ -279,12 +279,54 @@
                         </div>
                         </div>
                     </div>
-                    
+
                     <span class="inblock" style="margin-top: 22px !important;"><b>Note :</b> Klik Tombol Edit untuk merubah data</span>
                 </div>
              </div>
         </div>
-
+    <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h6>💻 Social Media</h6>
+                </div>
+                <div class="card-body">
+                    <div class="bagi2">
+                        <div class="form-group">
+                            <label class="col-form-label">No WhatsApp</label>
+                            <div class="form-icon">
+                                <span>+62</span>
+                                <input class="form-control" type="text" name="waBrief" value="{{ $coba[0]['waWeb'] }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Akun Instagram</label>
+                            <div class="form-icon">
+                                <span>@</span>
+                                <input class="form-control" type="text" name="igBrief" value="{{ $coba[0]['igWeb'] }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Akun Facebook</label>
+                            <input class="form-control" type="text" name="fbBrief" value="{{ $coba[0]['fbWeb'] }}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Akun Sosmed Lainnya</label>
+                            {{-- <textarea id="w3review" name="w3review" rows="4" cols="10">{{ $coba[0]['sosWeb'] }}</textarea> --}}
+                            <input class="form-control" type="text" name="sosBrief" value="{{ $coba[0]['sosWeb'] }}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">No Telfon</label>
+                                <input class="form-control" type="text" name="telfBrief" value="{{ $coba[0]['telWeb'] }}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Marketplace</label>
+                                <input class="form-control" type="text" name="mpBrief" value="{{ $coba[0]['mrkWeb'] }}">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+        </div>
 		<div class="col-md-5">
             <div class="card">
                 <div class="card-header">
@@ -332,7 +374,17 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Reference</label>
-                                    <input class="form-control" type="text"  name="fromTrx" value="{{ $coba[0]['kenalWeb'] }}">
+                                    <select class="form-control digits" name="fromTrx" id="exampleFormControlSelect9" required="">
+                                        <option>{{ $coba[0]['kenalWeb'] }}</option>
+                                        <option value="website">Website</option>
+                                        <option value="google">Pencarian Google</option>
+                                        <option value="instagram">Instagram</option>
+                                        <option value="facebook">Facebook</option>
+                                        <option value="youtube">Youtube</option>
+                                        <option value="media">Media Online</option>
+                                        <option value="jalan">Jalan (Spanduk)</option>
+                                        <option value="teman">Teman / Kerabat</option>
+                                      </select>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Deadline</label>
@@ -401,7 +453,7 @@
                     </div>
 
                     <input class="" id="totalasli" type="hidden" name="totalOrder">
-            
+
                     <span class="heading3">Total: <small id="total">Rp </small></span>
                     <button class="btn btn-primary btn-block w100" type="submit">Submit New Order</button>
                     </div>
@@ -413,7 +465,7 @@
     </form>
 
 	</div>
-</div>
+
 
 @endsection
 
@@ -438,108 +490,108 @@
     }
     objek.value = c;
     }
-     
+
      </script>
-        
+
     <script type="text/javascript">
-    
-       
-    
+
+
+
         var i = 0;
-      
+
         document.getElementById("remove").style.display = "none";
-       
+
         $("#add").click(function(){
-    
+
             i++
-    
+
             document.getElementById("remove").style.display = "block";
-    
+
             $("#itemlist").append(
                 '<div class="item_order targetfields listtrx" id="item_order[0]"><div class="form-group"><label class="col-form-label">Service</label><select class="form-control" name="paketTrx[]" id="selpost" required=""><option disabled selected>--- Pilih salah satu ---</option><option value="Beli Hosting">Beli Hosting</option><option value="Beli Domain">Beli Domain</option><option value="Web Company Profile">Web Company Profile</option><option value="Web Toko Online">Web Toko Online</option><option value="Web Company Profile">Web Artikel</option><option value="Web Rental">Web Rental</option><option value="Web Travel">Web Travel</option><option value="Redesign / Web Custom">Redesign / Web Custom</option><option value="Web Sales">Web Sales</option><option value="Web Listing">Web Listing</option><option value="Web Resto">Web Resto</option><option value="Web Dinas / Instansi">Web Dinas / Instansi</option><option value="Web Booking / Hotel">Web Booking / Hotel</option><option value="Logo">Logo</option><option value="Brosur">Brosur</option><option value="Company Profile">Company Profile</option><option value="Kartu Nama">Kartu Nama</option><option value="ID Card">ID Card</option><option value="Google Business">Google Business</option></select></div><div class="form-group" style="width: 250px;"><label class="col-form-label">Qty</label><input class="qty form-control" type="number" name="qtyTrx[]" required></div><div class="form-group"><label class="col-form-label">Harga</label><div class="form-icon"><span>Rp</span><input class="harga form-control" type="text" name="hargaTrx[]" required></div></div></div>');
-        
-        
+
+
                 $(function() {
-    
+
     $(".item_order").on('keyup change', function(e) {
      var total = 0;
-     
+
      $(".item_order").each(function() {
-    
+
          var qty = parseInt($(this).find(".qty").val());
          var harga = parseInt($(this).find(".harga").val());
          var subtotal = qty * harga;
          $(this).find(".subtotal").val(subtotal);
          if(!isNaN(subtotal))
              total+=subtotal;
-    
-            
-    
+
+
+
              $("#totalasli").val(total);
-    
-             
-    
+
+
+
      });
      var	reverse = total.toString().split('').reverse().join(''),
         ribuan 	= reverse.match(/\d{1,3}/g);
         ribuan	= ribuan.join('.').split('').reverse().join('');
-    
+
      $("#total").text('Rp '+ribuan);
     });
-    
+
     })
-    
+
         });
-    
-        
-    
-        
-    
-        $("#remove").click(function(){  
-    
+
+
+
+
+
+        $("#remove").click(function(){
+
             if($(".item_order").length == 2){
                 document.getElementById("remove").style.display = "none";
             }
             $('.item_order').not(':first').last().remove();
-    
-    
-    
-        });  
-    
-       
-    
+
+
+
+        });
+
+
+
     </script>
-    
+
     <script>
-    
+
     $(function() {
-    
+
     $(".item_order").on('keyup change', function(e) {
      var total = 0;
-     
+
      $(".item_order").each(function() {
-    
+
          var qty = parseInt($(this).find(".qty").val());
          var harga = parseInt($(this).find(".harga").val());
          var subtotal = qty * harga;
          $(this).find(".subtotal").val(subtotal);
          if(!isNaN(subtotal))
              total+=subtotal;
-    
+
              $("#totalasli").val(total);
-    
+
      });
-    
+
      var	reverse = total.toString().split('').reverse().join(''),
         ribuan 	= reverse.match(/\d{1,3}/g);
         ribuan	= ribuan.join('.').split('').reverse().join('');
-    
+
      $("#total").text('Rp '+ribuan);
     });
-    
+
     })
-    
+
     </script>
-    
+
 
 @endsection

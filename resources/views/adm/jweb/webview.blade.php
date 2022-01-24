@@ -104,8 +104,8 @@
                         <label class="col-form-label">Tipe Post</label>
                         <input class="form-control" type="text" name="postBrief" value="{{ $webs->postBrief }}" readonly>
                         </div>
-                        
-                        
+
+
                         <div class="form-group">
                             <label class="col-form-label">Paket Website</label>
                             <input class="form-control" type="text" name="paketBrief" value="{{ $webs->paketBrief }}" readonly>
@@ -154,7 +154,48 @@
                 </div>
              </div>
         </div>
-
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h6>💻 Social Media</h6>
+                </div>
+                <div class="card-body">
+                    <div class="bagi2">
+                        <div class="form-group">
+                            <label class="col-form-label">No WhatsApp</label>
+                            <div class="form-icon">
+                                <span>+62</span>
+                                <input class="form-control" type="text" name="waBrief" value="{{  $webs->waBrief }}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Akun Instagram</label>
+                            <div class="form-icon">
+                                <span>@</span>
+                                <input class="form-control" type="text" name="igBrief" value="{{  $webs->igBrief }}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Akun Facebook</label>
+                            <input class="form-control" type="text" name="fbBrief" value="{{  $webs->fbBrief }}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Akun Sosmed Lainnya</label>
+                            {{-- <textarea id="w3review" name="w3review" rows="4" cols="10">{{ $coba[0]['sosWeb'] }}</textarea> --}}
+                            <input class="form-control" type="text" name="sosBrief" value="{{  $webs->sosBrief }}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">No Telfon</label>
+                                <input class="form-control" type="text" name="telfBrief" value="{{  $webs->telfBrief }}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Marketplace</label>
+                                <input class="form-control" type="text" name="mpBrief" value="{{  $webs->mpBrief }}" readonly>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
 		<div class="col-md-5">
             <div class="card">
                 <div class="card-header">
@@ -190,11 +231,23 @@
                             <div class="form-group">
                                 <label class="col-form-label">Payment Method</label>
                                 <input class="form-control" type="text" value="{{ $webs->pmOrder }}" name="pmOrder" readonly>
-                                
+
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Reference</label>
-                                    <input class="form-control" type="text" value="{{ $webs->fromTrx }}" name="fromTrx" readonly>
+                                    {{-- <input class="form-control" type="text" value="{{ $webs->fromTrx }}" name="fromTrx" readonly> --}}
+                                        <label class="col-form-label">Reference</label>
+                                            <select class="form-control digits" name="fromTrx" id="exampleFormControlSelect9" required="">
+                                                <option>{{ $webs->fromTrx }}</option>
+                                                <option value="website">Website</option>
+                                                <option value="google">Pencarian Google</option>
+                                                <option value="instagram">Instagram</option>
+                                                <option value="facebook">Facebook</option>
+                                                <option value="youtube">Youtube</option>
+                                                <option value="media">Media Online</option>
+                                                <option value="jalan">Jalan (Spanduk)</option>
+                                                <option value="teman">Teman / Kerabat</option>
+                                              </select>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Deadline</label>
@@ -222,7 +275,7 @@
                             <div class="form-group">
                                 <label class="col-form-label">Service</label>
                                 <input class="form-control" type="text" value="{{ $trx->paketTrx }}" name="pmOrder" readonly>
-                               
+
                             </div>
                         <div class="form-group" style="width: 250px;">
                             <label class="col-form-label">Qty</label>
@@ -241,7 +294,7 @@
                     @endforeach
 
                     <input class="" id="totalasli" type="hidden" name="totalOrder">
-            
+
                     <span class="heading3">Total: <small id="total">Rp @money($webs->totalOrder)</small></span>
                     {{-- <button class="btn btn-primary btn-block w100" type="submit">Submit New Order</button> --}}
                     </div>
