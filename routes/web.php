@@ -95,14 +95,14 @@ Route::get('/web/{id}/view', ['as' => 'web.view', 'uses' => 'App\Http\Controller
 Route::get('/account',['as' => 'account.index','uses' => 'App\Http\Controllers\AccountController@index']);
 Route::get('/akun/team',['as' => 'akun.team','uses' => 'App\Http\Controllers\AccountController@team']);
 Route::get('/akun/client',['as' => 'akun.client','uses' => 'App\Http\Controllers\AccountController@client']);
-Route::get('/account/add-account',['as' => 'account.create','uses' => 'App\Http\Controllers\AccountController@create']);
-Route::post('/account/add-account',['as' => 'account.store','uses' => 'App\Http\Controllers\AccountController@store']);
-Route::get('/account/{idUser}/edit-account',['as' => 'account.edit','uses' => 'App\Http\Controllers\AccountController@edit']);
-Route::post('/account/{idUser}/edit-account',['as' => 'account.update','uses' => 'App\Http\Controllers\AccountController@update']);
-Route::get('/account/{user}/delete-account',['as' => 'account.delete','uses' => 'App\Http\Controllers\AccountController@delete']);
+Route::get('/account/add',['as' => 'account.create','uses' => 'App\Http\Controllers\AccountController@create']);
+Route::post('/account/add',['as' => 'account.store','uses' => 'App\Http\Controllers\AccountController@store']);
+Route::get('/account/{idUser}/edit',['as' => 'account.edit','uses' => 'App\Http\Controllers\AccountController@edit']);
+Route::post('/account/{idUser}/edit',['as' => 'account.update','uses' => 'App\Http\Controllers\AccountController@update']);
+Route::get('/account/{user}/delete',['as' => 'account.delete','uses' => 'App\Http\Controllers\AccountController@delete']);
 
-Route::get('/profile/{user}/edit-profile',['as' => 'profile.edit','uses' => 'App\Http\Controllers\ProfileController@edit']);
-Route::post('/profile/{user}/edit-profile',['as' => 'profile.update','uses' => 'App\Http\Controllers\ProfileController@update']);
+Route::get('/profile/{user}/edit',['as' => 'profile.edit','uses' => 'App\Http\Controllers\ProfileController@edit']);
+Route::patch('/profile/{user}/edit',['as' => 'profile.update','uses' => 'App\Http\Controllers\ProfileController@update']);
 
 Route::get('/finish',['as' => 'email','uses' => 'App\Http\Controllers\MailController@index']);
 Route::get('/send',['as' => 'email.create','uses' => 'App\Http\Controllers\MailController@create']);

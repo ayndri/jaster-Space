@@ -37,6 +37,7 @@ tengahkan
                <form class="theme-form" method="POST" action="{{ route('profile.update',$user) }}" enctype="multipart/form-data">
 
                   @csrf
+                  @method('PATCH')
                     <div class="error-message">
                     @foreach ($errors->all() as $error)
                         <p class="text-danger mb-1">*{{ $error }}</p>

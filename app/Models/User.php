@@ -24,7 +24,6 @@ class User extends Authenticatable
         'nama',
         'email',
         'usrn',
-        'password',
         'tglUser',
         'telpUser',
         'lastLogin',
