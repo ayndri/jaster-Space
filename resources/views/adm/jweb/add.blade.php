@@ -143,15 +143,6 @@
                             <input class="form-control" type="text" name="passAkses" required>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-form-label">Hosting</label>
-                            <select class="form-control" name="idHost" id="selpost" required="">
-                                <option disabled selected>--- Pilih salah satu ---</option>
-                                @foreach ( $host as $hos)
-                                <option value="{{$hos->idHost}}">{{$hos->domHost}}</option>
-                                @endforeach
-                                </select>
-                            </div>
                             
                         <div class="form-group">
                             <label class="col-form-label">Target</label>
@@ -183,6 +174,16 @@
                         </div>
                         </div>
                     </div>
+                    
+                    <div class="form-group">
+                        <label class="col-form-label">Hosting</label>
+                        <select class="form-control" name="idHost" id="selpost" required="">
+                            <option disabled selected>--- Pilih salah satu ---</option>
+                            @foreach ( $host as $hos)
+                            <option value="{{$hos->idHost}}">{{$hos->domHost}}</option>
+                            @endforeach
+                            </select>
+                        </div>
                     <span class="inblock" style="margin-top: 22px !important;"><b>Note :</b> Pastikan data diatas sudah benar, Double Check</span>
 
                 </div>
