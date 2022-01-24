@@ -92,8 +92,11 @@ class DomainController extends Controller
                     if($domain->hosting != NULL){
                         $output.='<div class="res">'.
                         '<p>'.$domain->id.'</p>'.
-                        '<p> Domain '.$domain->domainAkses.' Berada dihosting</p>'.
+                        '<p class="domain-p"> Domain '.$domain->domainAkses.' Berada dihosting</p>'.
                         '<span class="hosting">'.$domain->hosting->domHost.'</span>'.
+                        '<br>'.
+                        '<span class="mt-4"><a href="https://'.$domain->hosting->domHost.'/cpanel" class="btn-sm btn-primary d-inline-block" target="_blank">Open cPanel</a> '.
+                        '<button type="button" onclick="getAcc('.$domain->idAkses.')" class="btn-sm btn-primary">Akun</button></span>'.
                         '</div>';
                     }else{
                         $output.='';
