@@ -226,15 +226,19 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-form-label">Logo</label><br>
-                            <input class="form-control mb-1" accept="image/*" name="logoBrief" type="file" id="myImageInput" style="display: none;">
-                            <embed src="https://myjaster.com/img/logo/{{ $coba[0]['logoweb'] }}" width="300" />
-                            <br><br>
-                            
-                            <a href="https://myjaster.com/img/logo/{{ $coba[0]['logoweb'] }}" target="_blank" download=""> Download File</a>
-                            
+                            <label class="col-form-label">Logo</label>
+                            <a href="https://myjaster.com/img/logo/{{ $coba[0]['logoweb'] }}" target="_blank" class="btn btn-secondary form-control" download> Download File</a>
                          </div>
 
+                         <div class="form-group">
+                            <label class="col-form-label">Hosting</label>
+                            <select class="form-control" name="idHost" id="selpost" required="">
+                                <option disabled selected>--- Pilih salah satu ---</option>
+                                @foreach ( $host as $hos)
+                                <option value="{{$hos->idHost}}">{{$hos->domHost}}</option>
+                                @endforeach
+                                </select>
+                        </div>
                         <div class="form-group">
                             <label class="col-form-label">Color</label>
                             <input class="form-control" type="text" name="colorBrief" value="{{ $coba[0]['warnaWeb'] }}">
@@ -244,15 +248,6 @@
                             <input class="form-control" type="text" name="passAkses">
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-form-label">Hosting</label>
-                            <select class="form-control" name="idHost" id="selpost" required="">
-                                <option disabled selected>--- Pilih salah satu ---</option>
-                                @foreach ( $host as $hos)
-                                <option value="{{$hos->idHost}}">{{$hos->domHost}}</option>
-                                @endforeach
-                                </select>
-                            </div>
 
                         <div class="form-group">
                             <label class="col-form-label">Target</label>
@@ -267,7 +262,7 @@
                             <label class="col-form-label d-block">Request</label>
                             <a href="#see" data-bs-toggle="modal" data-target="#see" id="modalnote"
                             data-note="" data-target="#viewNotes"
-                            title="View Notes" class="btn-sm w-100 text-center btn-success d-inline-block" style="padding: 13px 10px;">View Request</a>
+                            title="View Notes" class="btn w-100 text-center btn-success d-inline-block">View Request</a>
                         </div>
 
                         <div class="modal fade" id="see" tabindex="-1" aria-labelledby="see" style="display: none;" aria-hidden="true">
@@ -284,6 +279,7 @@
                         </div>
                         </div>
                     </div>
+                    
                     <span class="inblock" style="margin-top: 22px !important;"><b>Note :</b> Klik Tombol Edit untuk merubah data</span>
                 </div>
              </div>

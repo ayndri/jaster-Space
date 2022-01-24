@@ -19,7 +19,7 @@
 <a href="{{route('jweb.add')}}" class="btn-sm btn-primary d-inline-block">Add New</a>
 @endsection
 
-@section('content')
+@section('content') 
 
 
 <div class="container-fluid">

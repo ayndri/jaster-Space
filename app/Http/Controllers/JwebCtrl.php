@@ -43,7 +43,7 @@ class JwebCtrl extends Controller
         $response = $request->getBody();
         $hasil = json_decode($response, true);
 
-        return view('adm.jweb.all', compact('hasil'));
+        return view('adm.jweb.pending', compact('hasil'));
     }
 
     public function active()
