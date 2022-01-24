@@ -21,6 +21,9 @@
 	align-items: center;
 	display: flex;
 }
+.domain-p{
+    margin: 0;
+}
 </style>
 @endsection
 
@@ -50,7 +53,32 @@ tengahkan
                 <h4 class="text-center">Ketik Domain Dibawah ini</h4>
                 <input type="text" class="form-control" id="search" name="search">
                 <h3 class="text-center" id="hosting"></h3>
-                   </div>
+                </div>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog"     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Akun Hosting <span id="domHosting"></span></h5>
+                          <button type="button" class="btn-sm btn-danger text-white close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><svg width="15" className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg></span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="col-form-label">Username</label>
+                                <input id="userHost" class="form-control" type="text" name="idOrder" required="" disabled>
+                             </div>
+                             <div class="form-group">
+                                <label class="col-form-label">Password</label>
+                                <input id="passHost" class="form-control" type="text" name="idOrder" required="" disabled>
+                             </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary close" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
                 </div>
              </div>
         </div>

@@ -23,9 +23,8 @@ class ProfileController extends Controller
           } else {
             $nama_file = NULL;
           }
-
         Alert::success('Berhasil','Profile telah diupdate');
-        $user->save($request->all());
+        $user->update($request->all());
         return redirect()->route('profile.edit',auth()->user()->idUser);
     }
 }

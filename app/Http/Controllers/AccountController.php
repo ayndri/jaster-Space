@@ -22,14 +22,14 @@ class AccountController extends Controller
 
     public function client() {
 
-        $users = User::get();
+        $users = User::with('roles')->get();
         return view('adm.akun.client',compact('users'));
 
     }
 
     public function team() {
 
-        $users = User::get();
+        $users = User::with('roles')->get();
         return view('adm.akun.team',compact('users'));
 
     }
