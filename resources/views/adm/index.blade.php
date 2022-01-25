@@ -3,45 +3,10 @@
 @section('title', 'Dashboard')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/chartist.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/date-picker.css')}}">
 @endsection
 
 @section('style')
-<style>
-	.latestweb {
-	list-style: none;
-	margin: 0 !important;
-	padding: 0;
-}
-.latestweb li {
-	margin-bottom: 20px;
-	background: #535780;
-	padding: 10px 15px;
-	border-radius: 3px;
-	width: 100%;
-}
-.latestweb li a {
-	padding: 10px 15px;
-	background: #3b3e5f;
-	border-radius: 3px;
-	margin-left: 10px;
-	font-size: 13px;
-	color: #e4e4e4;
-	text-decoration: none !important;
-}
-.latestweb li i {
-	font-size: 22px;
-	float: right;
-	margin-top: 3px;
-}
-.latestweb li i:hover {
-	color: #27ae60;
-	background: #fff;
-	border-radius: 100%;
-}
-</style>
+
 @endsection
 
 @section('breadcrumb-title')
@@ -94,8 +59,11 @@
             	</div>
 				<div class="card-body">
 					<ul class="latestweb">
-				  @foreach ($brief as $bri)
-						<li id="hilang{{ $bri->idBrief }}">{{ $bri->brandComp }} : <a href="/progress/{{ $bri->idBrief }}" target="_blank">{{ $bri->lastStatus }}</a><i id="kliken{{ $bri->idBrief }}" class="fas fa-check-circle"></i></li>
+				  @foreach ($jweb as $web)
+						<li class="itemlatest" id="hilang{{ $web->idBrief }}">
+							<span>{{ $web->brandComp }} : <a href="/progress/{{ $web->idBrief }}" target="_blank">{{ $web->lastStatus }}</a></span> 
+							<i id="kliken{{ $web->idBrief }}" data-feather="check"></i>
+						</li>
 					@endforeach
 					</ul>
 			  </div>
@@ -120,7 +88,7 @@
 @section('script')
 
 <script>
-	@foreach ($brief as $bri)
+	@foreach ($jweb as $bri)
 		 $("#kliken{{ $bri->idBrief }}").click(function(){
 		$("#hilang{{ $bri->idBrief }}").hide();
 		

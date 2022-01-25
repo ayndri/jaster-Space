@@ -42,7 +42,7 @@
             <div class="card">
 
                 <div class="card-header">
-                    <h6>🏢 Company Details</h6>
+                    <h6>🏢 Company Details- </h6>
                 </div>
                 <div class="card-body">
                       {{-- @csrf  --}}
@@ -99,7 +99,7 @@
                   <p class="text-danger">{{ $error }}</p>
                   @endforeach
                  
-                  <form class="" enctype="multipart/form-data" method="POST" action="{{route('status.add', $brief->idBrief)}}">
+                  <form class="formlatest" enctype="multipart/form-data" method="POST" action="{{route('status.add', $brief->idBrief)}}">
                       @csrf
                       <div class="form-group">
                             <input class="form-control" type="text" name="lastStatus" @if($brief->lastStatus != null) value="{{$brief->lastStatus}}" @endif placeholder="Kasih status terakhir disini...">
