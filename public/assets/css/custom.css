@@ -133,6 +133,12 @@ flex-direction: column;
 .itemlatest{display:flex!important;padding:12px 17px;width:100%;background:#4a5462;margin-bottom:15px;border-radius:6px;align-items:center;justify-content:space-between}
 .itemlatest svg{padding: 5px; background: #6777ef; border-radius: 50px; width: 28px; height: 28px;}.itemlatest span a{padding: 6px 10px; background: #333942; color: #fff; font-size: 13px; margin-left: 10px; border-radius: 5px;}
 .itemlatest svg:hover{background: #EE5A24;}.formlatest span{float: right; margin-top: 9px;}
+.red-blank{display:flex;align-items:center;padding:15px;background:#dc35454f;justify-content:center;flex-direction:column;border-radius:10px}
+.btn-big{padding:10px;background:var(--theme-default);display:flex;border-radius:8px}
+.btn-big svg{color:#fff!important}
+
+
+
 
 @media (min-width:550px){
     

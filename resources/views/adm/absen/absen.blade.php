@@ -17,7 +17,7 @@ tengahkan
 @endsection
 
 @section('tambah')
-<a href="{{route('/')}}" class="btn-sm btn-danger d-inline-block"><i class="fa fa-long-arrow-left"></i> Cancel</a>
+<a href="{{route('team.absen')}}" class="btn-sm btn-danger d-inline-block"><i class="fa fa-long-arrow-left"></i> Cancel</a>
 @endsection
 
 @section('content')

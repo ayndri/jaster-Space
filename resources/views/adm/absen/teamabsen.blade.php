@@ -73,7 +73,7 @@ tengahkan
                      <input class="form-control" type="hidden" name="idAbsen" id="idAbsen" value="{{ $abs->idAbsen }}">
                      <td class="text-right">
                          <a class="btn-ic btn-success m-r-5" href="#see-{{ $abs->idAbsen }}" data-bs-toggle="modal" data-target="#see-{{ $abs->idAbsen }}" id="modalnote"
-                          data-note="{{ $abs->noteAds }}"
+                          data-note="{{ $abs->isiAbsen }}"
                           data-target="#viewNotes" title="View Notes">
                             <i class="icon-eye"></i>
                           </a>
@@ -101,8 +101,14 @@ tengahkan
     </div>
   </div>
 </div>
+
+@empty
+<tr>
+<td colspan="6" class="text-center">Tidak ada Izin Absen</td>
+</tr>
+
+@endforelse
                    
-                 @endforeach
                   
                      
                      </tbody>

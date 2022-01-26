@@ -59,7 +59,7 @@ class setujuAbsen extends Notification
             'idAbsen' => $this->absen->idUser,
             'tglAbsen' => Carbon::parse($this->absen->tglAbsen)->locale('id')->format('l, j F Y'),
             'notifType' => 'setujuabsen',
-            'text' => 'Absen Anda pada disetujui',
+            'text' => 'Absen kamu pada '.Carbon::parse($this->absen->tglAbsen)->locale('id')->format('j F Y').' telah disetujui',
         ];
     }
 }
