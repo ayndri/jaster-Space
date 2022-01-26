@@ -88,10 +88,11 @@
 @section('script')
 
 <script>
+
 	@foreach ($jweb as $web)
 		 $("#kliken{{ $web->idBrief }}").click(function(){
 		$("#hilang{{ $web->idBrief }}").attr("style", "display: none !important");
-		
+
 	  }); @endforeach
 	</script>
 @endsection

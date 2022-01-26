@@ -33,6 +33,7 @@ class AdmController extends Controller
         ->join('briefs', 'briefs.idBrief', '=', 'orders.idBrief')
         ->join('companys', 'companys.idBrief', '=', 'briefs.idBrief')
         ->where('orders.statusOrder',1)
+        ->orderBy('orders.tglOrder', 'desc')
         ->get();
 
         return view('adm.index', compact('jweb'));

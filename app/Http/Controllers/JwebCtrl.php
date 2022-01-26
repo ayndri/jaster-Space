@@ -116,7 +116,7 @@ class JwebCtrl extends Controller
                 ->get();
 
         // dd($coba);
-        return view('adm.jweb.edit', compact('coba', 'host'));
+        return view('adm.jweb.acc', compact('coba', 'host'));
     }
 
     public function editweb($id)
@@ -288,14 +288,14 @@ class JwebCtrl extends Controller
                 $har[] = $titlehar;
             }
 
-            if ($request->hasFile('logoWeb')) {
-                $file = $request->file('logoWeb');
-                $nama_file = Carbon::now()->format('mYd')."_".$file->getClientOriginalName();
-                $tujuan_upload = "img/logo";
-                $file->move($tujuan_upload, $nama_file);
-                }else{
-                    $nama_file = "placeholder.png";
-            }
+            // if ($request->hasFile('logoWeb')) {
+            //     $file = $request->file('logoWeb');
+            //     $nama_file = Carbon::now()->format('mYd')."_".$file->getClientOriginalName();
+            //     $tujuan_upload = "img/logo";
+            //     $file->move($tujuan_upload, $nama_file);
+            //     }else{
+            //         $nama_file = "placeholder.png";
+            // }
 
             $jweb = new Jweb;
             $jweb->brandWeb = $request->brandWeb;
@@ -336,7 +336,7 @@ class JwebCtrl extends Controller
         $response = $request->getBody();
         $hasil = json_decode($response, true);
 
-        return view('adm.jweb.all', compact('hasil'));
+        return view('adm.jweb.pending', compact('hasil'));
     }
 
     public function tambahsalah(Request $request)
@@ -363,14 +363,14 @@ class JwebCtrl extends Controller
             $har[] = $titlehar;
         }
 
-        if ($request->hasFile('logoWeb')) {
-            $file = $request->file('logoWeb');
-            $nama_file = Carbon::now()->format('mYd')."_".$file->getClientOriginalName();
-            $tujuan_upload = "img/logo";
-            $file->move($tujuan_upload, $nama_file);
-            }else{
-                $nama_file = "placeholder.png";
-        }
+        // if ($request->hasFile('logoWeb')) {
+        //     $file = $request->file('logoWeb');
+        //     $nama_file = Carbon::now()->format('mYd')."_".$file->getClientOriginalName();
+        //     $tujuan_upload = "img/logo";
+        //     $file->move($tujuan_upload, $nama_file);
+        //     }else{
+        //         $nama_file = "placeholder.png";
+        // }
 
         $jweb = new Jweb;
         $jweb->brandWeb = $request->brandWeb;
@@ -435,6 +435,7 @@ class JwebCtrl extends Controller
         }
             $comp->brandComp = $request->brandComp;
             $comp->namaComp = $request->namaComp;
+            $comp->kotaComp = $request->kotaComp;
             $comp->addrComp = $request->addrComp;
             $comp->save();
 

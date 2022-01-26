@@ -17,7 +17,9 @@
 @endsection
 
 @section('tambah')
-<a href="{{route('jweb.active')}}" class="btn-sm btn-success inflex m-r-10"><svg class="w-6 h-6 m-r-5" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+
+<a href="https://idwebhost.com/cek-domain/{{ $coba[0]['domWeb'] }}" target="_blank" class="btn-sm btn-info inflex m-r-10">Cek Domain</a>
+<a href="{{route('jweb.pending')}}" class="btn-sm btn-success inflex"><svg class="w-6 h-6 m-r-5" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path></svg> Go Back</a>
 @endsection
 
@@ -103,7 +105,11 @@
                         <label class="col-form-label">Email Aktif</label>
                         <input class="form-control" type="mail" name="email" value="{{ $coba[0]['emailWeb'] }}">
                     </div>
-
+                    
+                    <div class="form-group">
+                        <label class="col-form-label">Domisili Company</label>
+                        <input class="form-control" type="text" value="{{ $coba[0]['posWeb'] }}" name="posWeb">
+                    </div>
                     <div class="form-group">
                         <label class="col-form-label">Nama Instansi</label>
                         <input class="form-control" type="text" name="namaComp" value="{{ $coba[0]['brandWeb'] }}">
@@ -166,8 +172,14 @@
                             <span>+62</span>
                             <input class="form-control" type="text" onkeypress="validate(event)" value="{{ $coba[0]['waWeb'] }}" name="telpUser">
                         </div>
-                        </div>
+                    </div>
+                    
+                    <div class="form-group" style="visibility: hidden">
+                        <label class="col-form-label">Ntah Apa Kosongi aja dulu</label>
+                        <input class="form-control" type="text" value="" name="posWeb">
+                    </div>
                 </div>
+                
                 <div class="form-group">
                     <label class="col-form-label">Alamat Office</label>
                     <textarea class="form-control" name="addrComp">{{ $webs->addrWeb ?? $coba[0]['almWeb'] }}, {{ $coba[0]['posWeb'] }}</textarea>
@@ -239,16 +251,12 @@
                                 @endforeach
                                 </select>
                         </div>
-                        <div class="form-group">
-                            <label class="col-form-label">Color</label>
-                            <input class="form-control" type="text" name="colorBrief" value="{{ $coba[0]['warnaWeb'] }}">
-                            </div>
+                        
                         <div class="form-group">
                             <label class="col-form-label">Password</label>
                             <input class="form-control" type="text" name="passAkses">
                         </div>
-
-
+                        
                         <div class="form-group">
                             <label class="col-form-label">Target</label>
                             <select class="form-control" name="targetBrief" id="selpost" required="">
@@ -258,6 +266,12 @@
                                 <option value="Checkout">Checkout</option>
                                 </select>
                         </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Color</label>
+                            <input class="form-control" type="text" name="colorBrief" value="{{ $coba[0]['warnaWeb'] }}">
+                            </div>
+
+
                         <div class="form-group">
                             <label class="col-form-label d-block">Request</label>
                             <a href="#see" data-bs-toggle="modal" data-target="#see" id="modalnote"
@@ -280,53 +294,45 @@
                         </div>
                     </div>
 
-                    <span class="inblock" style="margin-top: 22px !important;"><b>Note :</b> Klik Tombol Edit untuk merubah data</span>
+                    <span class="inblock" style="margin-top: 27px !important;"><b>Note :</b> Pastikan data sudah benar / Double Check</span>
                 </div>
              </div>
         </div>
     <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h6>💻 Social Media</h6>
+                    <h6>📱 Social Media</h6>
                 </div>
                 <div class="card-body">
                     <div class="bagi2">
                         <div class="form-group">
                             <label class="col-form-label">No WhatsApp</label>
-                            <div class="form-icon">
-                                <span>+62</span>
-                                <input class="form-control" type="text" name="waBrief" value="{{ $coba[0]['waWeb'] }}">
-                            </div>
+                            <textarea class="form-control" name="waBrief">{{ $coba[0]['waWeb'] }}</textarea>
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">Akun Instagram</label>
-                            <div class="form-icon">
-                                <span>@</span>
-                                <input class="form-control" type="text" name="igBrief" value="{{ $coba[0]['igWeb'] }}">
-                            </div>
+                            <textarea class="form-control" name="igBrief">{{ $coba[0]['igWeb'] }}</textarea>
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">Akun Facebook</label>
-                            <input class="form-control" type="text" name="fbBrief" value="{{ $coba[0]['fbWeb'] }}">
+                            <textarea class="form-control" name="fbBrief">{{ $coba[0]['fbWeb'] }}</textarea>
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">Akun Sosmed Lainnya</label>
-                            {{-- <textarea id="w3review" name="w3review" rows="4" cols="10">{{ $coba[0]['sosWeb'] }}</textarea> --}}
-                            <input class="form-control" type="text" name="sosBrief" value="{{ $coba[0]['sosWeb'] }}">
+                            <textarea class="form-control" name="sosBrief">{{ $coba[0]['sosWeb'] }}</textarea>
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">No Telfon</label>
-                                <input class="form-control" type="text" name="telfBrief" value="{{ $coba[0]['telWeb'] }}">
+                            <textarea class="form-control" name="telfBrief">{{ $coba[0]['telWeb'] }}</textarea>
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">Marketplace</label>
-                                <input class="form-control" type="text" name="mpBrief" value="{{ $coba[0]['mrkWeb'] }}">
+                            <textarea class="form-control" name="mpBrief">{{ $coba[0]['mrkWeb'] }}</textarea>
                         </div>
                         </div>
                     </div>
                 </div>
     </div>
-        </div>
 		<div class="col-md-5">
             <div class="card">
                 <div class="card-header">
@@ -462,6 +468,7 @@
              </div>
         </div>
 
+    </div>
     </form>
 
 	</div>

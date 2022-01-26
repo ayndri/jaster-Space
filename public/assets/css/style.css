@@ -969,6 +969,8 @@ border-color: #f78c58;
 .btn-info:focus,
 .btn-info:active,
 .btn-info.active {
+    background-color: #F07DD9;
+    border-color: #F07DD9;
     color: #fff;
 }
 .btn-info.disabled,
