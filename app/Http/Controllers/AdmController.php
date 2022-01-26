@@ -29,11 +29,13 @@ class AdmController extends Controller
      */
     public function index()
     {
-        $brief = DB::table('briefs')
+        $jweb = DB::table('orders')
+        ->join('briefs', 'briefs.idBrief', '=', 'orders.idBrief')
         ->join('companys', 'companys.idBrief', '=', 'briefs.idBrief')
+        ->where('orders.statusOrder',1)
         ->get();
 
-        return view('adm.index', compact('brief'));
+        return view('adm.index', compact('jweb'));
                     
     }
     
