@@ -54,7 +54,7 @@ tengahkan
                           <a href="https://idwebhost.com/cek-domain/{{ $res['domWeb'] }}" target="_blank"/>{{ $res['domWeb'] }}</a>
                         </td>
                         <td class="text-right">
-                          <a class="btn-ic btn-success" href="/jweb/{{ $res['idWeb'] }}/edit">
+                          <a class="btn-ic btn-success" href="/jweb/{{ $res['idWeb'] }}/acc">
                             <i data-feather="eye" class="m-r-10"></i> Lihat Brief
                           </a>
                          

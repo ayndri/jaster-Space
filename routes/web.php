@@ -82,12 +82,12 @@ Route::group(['prefix'=>'srv'], function(){
 
 Route::get('/jweb/add', ['as' => 'jweb.add', 'uses' => 'App\Http\Controllers\JwebCtrl@add']);
 Route::post('/jweb/add', ['as' => 'jweb.tambah', 'uses' => 'App\Http\Controllers\JwebCtrl@tambah']);
-Route::get('/jweb/pending', ['as' => 'jweb.all', 'uses' => 'App\Http\Controllers\JwebCtrl@all']);
+Route::get('/jweb/pending', ['as' => 'jweb.pending', 'uses' => 'App\Http\Controllers\JwebCtrl@all']);
 Route::get('/jweb/active', ['as' => 'jweb.active', 'uses' => 'App\Http\Controllers\JwebCtrl@active']);
 Route::get('/jweb/history', ['as' => 'jweb.history', 'uses' => 'App\Http\Controllers\JwebCtrl@history']);
 Route::get('/jweb/{id}/view', ['as' => 'jweb.view', 'uses' => 'App\Http\Controllers\JwebCtrl@view']);
-Route::get('/jweb/{id}/edit', ['as' => 'jweb.edit', 'uses' => 'App\Http\Controllers\JwebCtrl@edit']);
-Route::post('/jweb/{id}/edit', ['as' => 'jweb.update', 'uses' => 'App\Http\Controllers\JwebCtrl@update']);
+Route::get('/jweb/{id}/acc', ['as' => 'jweb.acc', 'uses' => 'App\Http\Controllers\JwebCtrl@edit']);
+Route::post('/jweb/{id}/acc', ['as' => 'jweb.update', 'uses' => 'App\Http\Controllers\JwebCtrl@update']);
 
 Route::get('/web/{id}/edit', ['as' => 'web.edit', 'uses' => 'App\Http\Controllers\JwebCtrl@editweb']);
 Route::post('/web/{id}/edit', ['as' => 'web.ubah', 'uses' => 'App\Http\Controllers\JwebCtrl@ubahweb']);
