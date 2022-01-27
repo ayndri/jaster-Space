@@ -61,7 +61,7 @@
 					<ul class="latestweb">
 				  @foreach ($jweb as $web)
 						<li class="itemlatest" id="hilang{{ $web->idBrief }}">
-							<span>{{ $web->brandComp }} : <a href="/progress/{{ $web->idBrief }}" target="_blank">{{ $web->lastStatus }}</a></span> 
+							<span>{{ $web->brandComp }} : <a href="/jweb/{{ $web->idBrief }}/view" target="_blank">{{ $web->lastStatus }}</a></span> 
 							<i id="kliken{{ $web->idBrief }}" data-feather="check"></i>
 						</li>
 					@endforeach

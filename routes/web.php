@@ -89,10 +89,10 @@ Route::get('/jweb/{id}/view', ['as' => 'jweb.view', 'uses' => 'App\Http\Controll
 Route::get('/jweb/{id}/acc', ['as' => 'jweb.acc', 'uses' => 'App\Http\Controllers\JwebCtrl@edit']);
 Route::post('/jweb/{id}/acc', ['as' => 'jweb.update', 'uses' => 'App\Http\Controllers\JwebCtrl@update']);
 
-Route::get('/web/{id}/edit', ['as' => 'web.edit', 'uses' => 'App\Http\Controllers\JwebCtrl@editweb']);
-Route::post('/web/{id}/edit', ['as' => 'web.ubah', 'uses' => 'App\Http\Controllers\JwebCtrl@ubahweb']);
+Route::get('/jweb/{id}/edit', ['as' => 'web.edit', 'uses' => 'App\Http\Controllers\JwebCtrl@editweb']);
+Route::post('/jweb/{id}/edit', ['as' => 'web.ubah', 'uses' => 'App\Http\Controllers\JwebCtrl@ubahweb']);
 
-Route::get('/web/{id}/view', ['as' => 'web.view', 'uses' => 'App\Http\Controllers\JwebCtrl@webview']);
+Route::get('/jweb/{id}/view', ['as' => 'web.view', 'uses' => 'App\Http\Controllers\JwebCtrl@webview']);
 
 
 Route::get('/account',['as' => 'account.index','uses' => 'App\Http\Controllers\AccountController@index']);

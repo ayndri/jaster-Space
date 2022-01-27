@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use App\Notifications\addStatus;
 use Illuminate\Support\Facades\Notification;
 use App\Models\User;
 use App\Models\Brief;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BriefController extends Controller
 {
@@ -50,8 +50,7 @@ class BriefController extends Controller
    ->first();
 
 
-    Notification::send($users, new addStatus($status));
-
-        return back();
+   Alert::success('Nice One', 'Status telah terupdate');
+   return redirect()->back();
     }
 }
