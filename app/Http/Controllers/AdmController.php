@@ -36,10 +36,17 @@ class AdmController extends Controller
         ->orderBy('orders.nomerOrder', 'desc')
         ->get();
 
-        return view('adm.index', compact('jweb'));
-                    
+        $notes = DB::table('users')
+        ->join('notes','notes.pengirim','=','users.idUser')
+        ->select('users.nama as namaPengirim','users.idUser','notes.*')
+        ->where('notes.penerima' , '=',auth()->user()->idUser)
+        ->get();
+        // dd($notes);
+
+        return view('adm.index', compact('jweb','notes'));
+
     }
-    
+
     public function reset()
     {
         return view('adm.akun.pass');
@@ -77,4 +84,4 @@ class AdmController extends Controller
 
         return back();
     }
-}   
+}

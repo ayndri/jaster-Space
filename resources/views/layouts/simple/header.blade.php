@@ -31,7 +31,7 @@
         {{-- <li>                         <span class="header-search"><i data-feather="search"></i></span></li> --}}
         <li class="onhover-dropdown">
           <div class="notification-box"><i data-feather="bell"> </i><span class="badge rounded-pill badge-secondary">
-            
+
             @php
             $showNotif = auth()->user()->unreadNotifications()->latest()->paginate(5);
             @endphp
@@ -45,7 +45,7 @@
             </li>
 
             @forelse ($showNotif as $notifications)
-            
+
             @if ($notifications->data['notifType'] == 'createabsen')
 
             <li>
@@ -62,6 +62,10 @@
             @elseif ($notifications->data['notifType'] == 'tolakabsen')
             <li>
               <p><i class="fa fa-circle-o me-3 font-danger"></i>{{ $notifications->data['text'] }}<span class="pull-right">{{ $notifications->created_at->diffForHumans(null, false, true) }}</span></p>
+            </li>
+            @elseif ($notifications->data['notifType'] == 'notes')
+            <li>
+              <p><i class="fa fa-circle-o me-3 font-success"></i>{{ $notifications->data['text'] }}<span class="pull-right">{{ $notifications->created_at->diffForHumans(null, false, true) }}</span></p>
             </li>
             @elseif ($notifications->data['notifType'] == 'cancelabsen')
             @role('1')
@@ -86,8 +90,8 @@
             </li>
             @endforelse
             <li><a class="btn btn-primary" href="{{ route('notif')}}">Check all notification</a></li>
-            
-           
+
+
 
           </ul>
         </li>
@@ -104,7 +108,7 @@
               <img class="b-r-10" src="{{asset('public/assets/fotoUser')}}/{{auth()->user()->fotoUser}}">
               @endif
 
-              
+
 
           </div>
           <ul class="profile-dropdown onhover-show-div">
@@ -115,7 +119,7 @@
               @else
                 <img src="{{asset('public/assets/fotoUser')}}/{{auth()->user()->fotoUser}}">
               @endif
-              
+
               <p class="namanya">{{ auth()->user()->nama }}</p><span class="siapanya">Welcomeback !</span>
             <li><a href="{{route('profile.edit',auth()->user()->idUser)}}"><i data-feather="user"></i><span>Account </span></a></li>
             <li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>
