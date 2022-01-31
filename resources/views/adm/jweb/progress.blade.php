@@ -54,32 +54,107 @@
                         @csrf
                     
                     <div class="form-check">
-                        <input class="myCheckBox" type="checkbox" value="" id="flexCheckDefault" @if( $brief->progressBrief == 25 || $brief->progressBrief >= 25  ) checked @endif >
+                        <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckDefault" value="7" data-nilai="1" >
                         <label class="form-check-label" for="flexCheckDefault">
-                          Default checkbox
+                          Beli Domain
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="myCheckBox" type="checkbox" value="" id="flexCheckChecked" @if( $brief->progressBrief == 50 || $brief->progressBrief >= 50 ) checked @endif>
+                        <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckChecked" value="3" data-nilai="2">
                         <label class="form-check-label" for="flexCheckChecked">
-                          Checked checkbox
+                          Setup Web
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="myCheckBox" type="checkbox" value="" id="flexCheckDefault" @if( $brief->progressBrief == 75 || $brief->progressBrief >= 75  ) checked @endif>
+                        <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckDefault" value="0" data-nilai="3">
                         <label class="form-check-label" for="flexCheckDefault">
-                          Default checkbox
+                          Data Awal
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="myCheckBox" type="checkbox" value="" id="flexCheckChecked" @if( $brief->progressBrief == 100  ) checked @endif>
+                        <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckChecked" value="5" data-nilai="4">
                         <label class="form-check-label" for="flexCheckChecked">
-                          Checked checkbox
+                          Konsep
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckChecked" value="15" data-nilai="5">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Build Home
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckChecked" value="10" data-nilai="6">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Briefing Konten
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckChecked" value="10" data-nilai="7">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Kelengkapan Data
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckChecked" value="15" data-nilai="8">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Upload Konten
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckChecked" value="10" data-nilai="9">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Fix Other Pages
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckChecked" value="10" data-nilai="10">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Checking
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckChecked" value="2" data-nilai="11">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Poles
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckChecked" value="3" data-nilai="12">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          SuruhCek
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckChecked" value="5" data-nilai="13">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Runtest, AAM & Packing
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckChecked" value="2" data-nilai="14">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Lunas
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckChecked" value="1" data-nilai="15">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Backup
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckChecked" value="2" data-nilai="16">
+                        <label class="form-check-label" for="flexCheckChecked">
+                          Its Done!
                         </label>
                       </div>
 
                       <input type="hidden" name="idBrief" id="idBrief" value="{{$brief->idBrief}}">
-                      <input class="" type="hidden" name="progressBrief" value="" id="progress">
+                      <input class="" type="number" name="progressBrief" value="{{$brief->progressBrief}}" id="progtes">
+
+                      <input class="" type="number" name="progressBrief" id="progress">
+                      <input class="" type="text" name="nilaiBrief" id="nilai">
                     
                     </form>
     
@@ -128,7 +203,7 @@
    
   
   
-var idBrief = $('#idBrief').val()
+var idBrief = $('#idBrief').val();
 var url = "{{ route('progress.add', ":id") }}";
 url = url.replace(':id', idBrief);
 
@@ -138,16 +213,20 @@ $('.myCheckBox').click(function() {
 
     var checkBoxes = document.querySelectorAll(".myCheckBox");
   var progress = document.querySelector(".progress-inner");
-  var width = 0;
-  
-  
-  for(let i = 0; i < checkBoxes.length; i++){
-    if(checkBoxes[i].checked){
-      width += 25;
-    }   
-  }
+  var prog = parseInt($('#progtes').val());
+  var els = document.getElementsByName("nilai[]");
 
-$('#progress').val(width);
+  
+  
+  $("input:checked").each(function () {
+    prog += parseInt($(this).val());
+
+    var nilai = $(this).data('nilai');
+
+
+  })
+
+$('#progress').val(prog);
 
 
 
@@ -162,7 +241,7 @@ $('#progress').val(width);
          dataType: 'json',
          data: {
             "_token": "{{ csrf_token() }}",
-             'progressBrief': width
+             'progressBrief': prog
          },
 
          success: function (data) {

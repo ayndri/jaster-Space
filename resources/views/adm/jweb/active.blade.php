@@ -63,9 +63,9 @@
                 {{ Carbon\Carbon::parse($web->updated_at)->locale('id')->diffForHumans(null, true) . " lalu"; }}
               </td>
               <td class="text-right">
-                {{-- <a class="btn-ic btn-info m-r-5" href="{{route('progress', $web->idBrief)}}" data-toggle="tooltip" data-placement="top" title="View">
+                <a class="btn-ic btn-info m-r-5" href="{{route('progress', $web->idBrief)}}" data-toggle="tooltip" data-placement="top" title="View">
                   <i data-feather="edit-2"></i>
-                </a> --}}
+                </a>
                 <a class="btn-ic btn-primary m-r-5" href="/jweb/{{ $web->idBrief }}/view" data-toggle="tooltip" data-placement="top" title="View">
                   <i data-feather="eye"></i>
                 </a>

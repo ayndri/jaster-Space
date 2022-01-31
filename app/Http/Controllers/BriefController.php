@@ -26,7 +26,8 @@ class BriefController extends Controller
     {
         DB::table('briefs')
         ->where('idBrief', $id)
-        ->update(['progressBrief' => $request->progressBrief]);
+        ->update(['progressBrief' => $request->progressBrief,
+                'nilaiBrief' => $request->nilaiBrief]);
 
     }
 
