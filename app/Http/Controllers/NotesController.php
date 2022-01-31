@@ -15,7 +15,7 @@ class NotesController extends Controller
     {
         $user  = User::role([1,2,3,5])->get();
         $listNotes = Notes::join('users', 'notes.penerima', 'users.idUser')
-        ->where('notes.penerima', '=',auth()->user()->idUser)
+        ->where('notes.pengirim', '=',auth()->user()->idUser)
         ->get();
         return view('adm.notes.add',compact('user','listNotes'));
     }
@@ -35,9 +35,5 @@ class NotesController extends Controller
         Notification::send($users, new NotesNotification($notes));
         Alert::success('Berhasil','Notes added');
         return redirect()->route('notes.add');
-    }
-
-    public function getNotes() {
-        $notes = Notes::where('');
     }
 }

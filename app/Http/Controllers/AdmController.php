@@ -40,6 +40,7 @@ class AdmController extends Controller
         ->join('notes','notes.pengirim','=','users.idUser')
         ->select('users.nama as namaPengirim','users.idUser','notes.*')
         ->where('notes.penerima' , '=',auth()->user()->idUser)
+        ->latest()
         ->get();
         // dd($notes);
 

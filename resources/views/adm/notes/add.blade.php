@@ -1,6 +1,6 @@
 @extends('layouts.simple.master')
 
-@section('title', 'Izin Absen')
+@section('title', 'Add Notes')
 
 @section('css')
 @endsection
@@ -51,7 +51,7 @@ tengahkan
 
                         <div class="form-group">
                             <label class="col-form-label">Isi Notes</label>
-                            <textarea class="form-control" name="isiPesan" rows="3" id="area" required="" placeholder="Masukkan Notes"></textarea>
+                            <textarea class="form-control" name="isiPesan" rows="3" id="valueArea" required="" placeholder="Masukkan Notes"></textarea>
                          </div>
                      </div>
                   </div>
@@ -74,16 +74,23 @@ tengahkan
 
 @section('script')
 <script>
- $('document').ready(function () {
+    $('document').ready(function () {
 
     $('#nerima').on('change', function () {
         var selectedUserSend = $(this).children("option:selected").val();
-        console.log(selectedUserSend);
+        var lihatNote = [@php for($i = 0; $i < count($listNotes); $i++) { echo $listNotes[$i]->toJson(); if ($i + 1 < count($listNotes)) { echo ','; } } @endphp]
+
+        lihatNote.forEach(function (item, index) {
+            if (selectedUserSend == item.penerima && {{ auth()->user()->idUser }} == item.pengirim ) {
+                document.getElementById("valueArea").value = item.isiPesan;
+                console.log(item.isiPesan)
+            }
+
 
     })
 
+    })
     })
 </script>
-<script>
 
 @endsection
