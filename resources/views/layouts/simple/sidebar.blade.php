@@ -11,15 +11,20 @@
 	  <i data-feather="monitor"></i><span>Jasterweb</span>
       </a>
       <ul class="nav-submenu">
+        @role('1|2|3|4')
         <li><a href="{{ Route('jweb.active') }}" class="{{ Route::currentRouteName() == 'jweb' ? 'active' : '' }}">Progress</a></li>
         <li><a href="{{ Route('jweb.pending') }}" class="{{ Route::currentRouteName() == 'jweb' ? 'active' : '' }}">Pending</a></li>
         <li><a href="{{ Route('jweb.add') }}" class="{{ Route::currentRouteName() == 'jweb' ? 'active' : '' }}">Add Order</a></li>
         <li><a href="{{ Route('jweb.history') }}"class="{{ Route::currentRouteName() == 'jweb' ? 'active' : '' }}">History</a></li>
         <li><a class="{{ Route::currentRouteName() == 'prog-point' ? 'active' : '' }}">Progress Point</a></li>
         <li><a href="{{ Route('email') }}" class="{{ Route::currentRouteName() == 'prog-point' ? 'active' : '' }}">Send Email</a></li>
+        @endrole
+        @role('5')
+        <li><a href="{{ Route('jweb.active') }}" class="{{ Route::currentRouteName() == 'jweb' ? 'active' : '' }}">Progress</a></li>
+        @endrole
       </ul>
     </li>
-
+    @role('1|2|3|4')
     <li class="nav-item">
       <a class="{{ request()->route()->getPrefix() == '/page-layouts' ? 'active' : '' }}">
 	  <i data-feather="hard-drive"></i><span>Server</span>
@@ -31,6 +36,7 @@
         <li><a href="{{route('renewal.index')}}" class="{{ Route::currentRouteName() == 'renewal' ? 'active' : '' }}">Renewal</a></li>
       </ul>
     </li>
+    @endrole
 
     @role('1|2')
     <li class="nav-item">
@@ -59,18 +65,27 @@
       </ul>
     </li>
 
+    @role('1|2|3|4')
     <li class="nav-item">
       <a class="{{ request()->route()->getPrefix() == '/page-layouts' ? 'active' : '' }}">
         <i data-feather="users"></i>
         <span>Account</span>
       </a>
       <ul class="nav-submenu">
-        @role('1|2|3|5')
         <li><a href="{{ route('akun.team') }}" class="{{ Route::currentRouteName() == 'akun' ? 'active' : '' }}">Team Account</a></li>
-        @endrole
         <li><a href="{{ route('akun.client') }}" class="{{ Route::currentRouteName() == 'akun' ? 'active' : '' }}">Client Account</a></li>
       </ul>
     </li>
+    @endrole
+
+    @role('5')
+    <li class="nav-item">
+      <a href="{{route('profile.edit',auth()->user()->idUser)}}" class="{{ request()->route()->getPrefix() == '/page-layouts' ? 'active' : '' }}">
+        <i data-feather="users"></i>
+        <span>Account</span>
+      </a>
+    </li>
+    @endrole
 
 
     <li class="nav-item">
