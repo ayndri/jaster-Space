@@ -16,7 +16,7 @@ class AccountController extends Controller
         $users = User::get();
         $roles = Role::get();
 
-        return view('adm.manage-akun.index',compact('users','roles'));
+        return view('adm.akun.add',compact('users','roles'));
 
     }
 
@@ -36,7 +36,7 @@ class AccountController extends Controller
 
     public function create() {
 
-        return view('adm.manage-akun.add');
+        return view('adm.akun.add');
 
     }
 
@@ -82,7 +82,7 @@ class AccountController extends Controller
 
         $user = User::findOrFail($idUser);
         $roles = Role::get();
-        return view('adm.manage-akun.edit',compact('user','roles'));
+        return view('adm.akun.edit',compact('user','roles'));
 
     }
 

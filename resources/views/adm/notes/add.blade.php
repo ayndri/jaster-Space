@@ -1,6 +1,6 @@
 @extends('layouts.simple.master')
 
-@section('title', 'Add Notes')
+@section('title', 'Send Notes')
 
 @section('css')
 @endsection
@@ -13,7 +13,7 @@ tengahkan
 @endsection
 
 @section('breadcrumb-title')
-<h3>Notes</h3>
+<h3>Send Notes</h3>
 @endsection
 
 @section('tambah')

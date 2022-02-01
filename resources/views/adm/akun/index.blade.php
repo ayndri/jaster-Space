@@ -1,6 +1,6 @@
 @extends('layouts.simple.master')
 
-@section('title', 'Account')
+@section('title', 'All Account')
 
 @section('css')
 @endsection
@@ -12,7 +12,7 @@
 @endsection
 
 @section('breadcrumb-title')
-<h3>Account</h3>
+<h3>All Account</h3>
 @endsection
 
 @section('tambah')
