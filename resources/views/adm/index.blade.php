@@ -46,34 +46,39 @@
 						</div>
 					</div>
 					<div class="col-md-6 text-right">
-						<a href="#" class="btn btn-primary m-r-10"><i class="fa fa-envelope-o"></i> Inbox</a>
+						<a href="{{route('notes.add')}}" class="btn btn-primary m-r-10"><i class="fa fa-envelope-o"></i> Send Notes</a>
 						<a href="#" class="btn btn-outline-warning"><i class="fa fa-check-square-o"></i> List Task</a>
 					</div>
 				</div>
 			 </div>
 		</div>
-		<div class="col-md-7">
-			<div class="card">
-				<div class="card-header">
-					<h5>ðŸŸ¡ Last Updates from Jasterweb</h5>
-            	</div>
-				<div class="card-body">
-					<ul class="latestweb">
-				  @foreach ($jweb as $web)
-						<li class="itemlatest" id="hilang{{ $web->idBrief }}">
-							<span>{{ $web->brandComp }} : <a href="/jweb/{{ $web->idBrief }}/view" target="_blank">{{ $web->lastStatus }}</a></span>
-							<i id="kliken{{ $web->idBrief }}" data-feather="check"></i>
-						</li>
-					@endforeach
-					</ul>
-			  </div>
+		
+		@if (auth()->user()->hasRole('5'))
+		@else
+			<div class="col-md-7">
+				<div class="card">
+					<div class="card-header">
+						<h5>🟡 Last Updates from Jasterweb</h5>
+					</div>
+					<div class="card-body">
+						<ul class="latestweb">
+						@foreach ($jweb as $web)
+								<li class="itemlatest" id="hilang{{ $web->idBrief }}">
+									<span>{{ $web->brandComp }} : <a href="/jweb/{{ $web->idBrief }}/view" target="_blank">{{ $web->lastStatus }}</a></span>
+									<i id="kliken{{ $web->idBrief }}" data-feather="check"></i>
+								</li>
+						@endforeach
+						</ul>
+					</div>
+				</div>
 			</div>
-		</div>
+		@endif
+		
 		<div class="col-md-5">
 
 			<div class="card">
 				<div class="card-header">
-					<h5>🟡 Catatan Buat Kamu</h5>
+					<h5>🟢 Notes for you</h5>
             	</div>
                 <div class="card-body">
                 @forelse ($notes as $note)
