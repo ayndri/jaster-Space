@@ -35,7 +35,7 @@ class BriefController extends Controller
         DB::table('briefs')
         ->where('idBrief', $id)
         ->update(['lastStatus' => $request->lastStatus,
-    'dateStatus' => Carbon::now(), 
+    'dateStatus' => Carbon::now(),
     'updatedBy' => Auth::user()->nama]);
 
     $users = User::whereHas('roles', function ($q) {
