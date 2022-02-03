@@ -3,9 +3,6 @@
 @section('title', 'Password')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/chartist.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/date-picker.css')}}">
 @endsection
 
 @section('style')
@@ -64,7 +61,4 @@
 @endsection
 
 @section('script')
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.en.js')}}"></script>
-<script src="{{asset('assets/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
 @endsection

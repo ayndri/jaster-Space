@@ -16,10 +16,12 @@
 @endsection
 
 @section('tambah')
+@role('1|2|3|4')
 <a href="{{route('jweb.add')}}" class="btn-sm btn-primary d-inline-block">Add New</a>
+@endrole
 @endsection
 
-@section('content') 
+@section('content')
 
 
 <div class="container-fluid">
@@ -27,7 +29,7 @@
 		<div class="col-md-12">
       <div class="card">
         <div class="card-body">
-          
+
         <div class="table-responsive">
           <table class="table table-striped">
           <thead class="thead">
@@ -63,30 +65,32 @@
                 {{ Carbon\Carbon::parse($web->updated_at)->locale('id')->diffForHumans(null, true) . " lalu"; }}
               </td>
               <td class="text-right">
-                <a class="btn-ic btn-info m-r-5" href="{{route('progress', $web->idBrief)}}" data-toggle="tooltip" data-placement="top" title="View">
+                {{-- <a class="btn-ic btn-info m-r-5" href="{{route('progress', $web->idBrief)}}" data-toggle="tooltip" data-placement="top" title="View">
                   <i data-feather="edit-2"></i>
-                </a>
+                </a> --}}
+                @role('1|2|3|4')
                 <a class="btn-ic btn-primary m-r-5" href="/jweb/{{ $web->idBrief }}/view" data-toggle="tooltip" data-placement="top" title="View">
                   <i data-feather="eye"></i>
                 </a>
                 <a class="btn-ic btn-secondary m-r-5" href="https://{{ $web->domainAkses }}/in" target="_blank" data-toggle="tooltip" data-placement="top" title="Login">
                   <i data-feather="log-in"></i>
                 </a>
+                @endrole
                 <a class="btn-ic btn-success" href="https://{{ $web->domainAkses }}" target="_blank">
                   <i data-feather="globe" class="m-r-10"></i> Buka Web
                 </a>
                 {{-- <a class="btn-ic btn-success m-r-5" href="/web/{{ $web->idBrief }}/edit" data-toggle="tooltip" data-placement="top" title="Edit">
                   <i class="icon-pencil"></i>
                 </a> --}}
-               
+
 
               </td>
             </tr>
-            
+
             @endforeach
-              
+
               </tbody>
-          </table>     
+          </table>
       </div>
         </div>
       </div>

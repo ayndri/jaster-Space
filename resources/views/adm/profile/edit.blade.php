@@ -98,7 +98,7 @@ tengahkan
 
                         <div class="form-group mt-4">
                             <label class="form-label">Upload foto profile</label>
-                            <br/>
+                           
                             @if ($user->fotoUser == NULL)
                             <img src="{{asset('assets/images/user/10.jpg')}}" alt="NULL" srcset="" width="120px" class="m-t-10 m-b-10">
                             @else
