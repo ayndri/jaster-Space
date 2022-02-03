@@ -7,24 +7,7 @@
 @endsection
 
 @section('style')
-<style>
-    .select2-selection--single
-{
-    background-color: #313842!important;
-    border: 1px solid #282828 !important;
-}
-.res .hosting {
-	color: #FFBA08;
-}
-#icons {
-	justify-content: center;
-	align-items: center;
-	display: flex;
-}
-.domain-p{
-    margin: 0;
-}
-</style>
+
 @endsection
 
 @section('mxwidth')
@@ -36,7 +19,6 @@ tengahkan
 @endsection
 
 @section('tambah')
-<a href="" class="btn btn-danger">cancel</a>
 @endsection
 
 @section('content')
@@ -50,7 +32,7 @@ tengahkan
                 <div class="card-body">
 
                <div class="card">
-                <h4 class="text-center">Ketik Domain Dibawah ini</h4>
+                <h5 class="text-center m-b-25 m-t-15">Ketik Domain Dibawah ini</h5>
                 <input type="text" class="form-control" id="search" name="search">
                 <h3 class="text-center" id="hosting"></h3>
                 </div>
@@ -88,18 +70,17 @@ tengahkan
             @forelse ( $hosts as $host)
             <div class="col-md-4">
                 <div class="card mb-3">
-                    <div class="row no-gutters">
-                      <div class="col-md-10">
-                        <div class="card-body">
+                    
+                    <div class="card-body">
+                        <div class="pull-left">
                             <h6 class="card-title">{{$host->domHost}}</h6>
                             <p class="card-text">Memiliki {{$host->domain_count}} website</p>
-                          </div>
-                      </div>
-                      <div class="col-md-2" id="icons">
-                        <a href="{{route('domain.list',$host->idHost)}}"><i data-feather="eye"></i></a>
-                      </div>
+                        </div>
+                        <div class="pull-right">
+                            <a class="btn-big" href="{{route('domain.list',$host->idHost)}}"><i data-feather="arrow-right"></i></a>
+                        </div>
                     </div>
-                  </div>
+                </div>
             </div>
             @empty
 
@@ -114,13 +95,6 @@ tengahkan
 @endsection
 
 @section('script')
-<script src="{{asset('assets/js/select2/select2.full.min.js')}}"></script>
-<script src="{{asset('assets/js/select2/select2-custom.js')}}"></script>
-<script>
-        $('#dttbls').DataTable({
-            lengthMenu: [6, 10, 20, 50, 100, 200, 500],
-        });
-</script>
 <script>
     function show(idAkses) {
         var urlView = '{{ route("domain.view", ":id") }}';

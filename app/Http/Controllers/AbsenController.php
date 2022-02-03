@@ -9,6 +9,7 @@ use Illuminate\Support\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Notifications\addAbsen;
 use App\Notifications\setujuAbsen;
+use Illuminate\Support\Facades\DB;
 use App\Notifications\tolakAbsen;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
@@ -150,9 +151,18 @@ class AbsenController extends Controller
 
     public function adminabsen () {
 
+<<<<<<< HEAD
+        $absen = DB::table('absens')
+        ->join('users', 'users.idUser', '=', 'absens.idUser')
+        ->orderBy('absens.created_at', 'desc')
+        ->get();
+
+       
+=======
         $absen = Absen::orderBy('idAbsen','asc')
                 ->get();
 
+>>>>>>> 0c24bd860ec90abf1f7bd8013eb7f13326a44af9
         if (auth()->user()->hasRole('1')) {
             return view('adm.absen.adminabsen', compact('absen'));
         }else{

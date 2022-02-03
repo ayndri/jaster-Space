@@ -12,6 +12,7 @@
 <script src="{{asset('assets/js/scrollbar/custom.js')}}"></script>
 <!-- Sidebar jquery-->
 <script src="{{asset('assets/js/config.js')}}"></script>
+<script src="{{ asset('js/iziToast.js') }}"></script>
 <!-- Plugins JS start-->
 <script id="menu" src="{{asset('assets/js/sidebar-menu.js')}}"></script>
 @yield('script')

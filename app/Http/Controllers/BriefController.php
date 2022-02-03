@@ -26,9 +26,37 @@ class BriefController extends Controller
     {
         DB::table('briefs')
         ->where('idBrief', $id)
-        ->update(['progressBrief' => $request->progressBrief]);
+        ->update(['progressBrief' => $request->progressBrief,
+        'nilaiBrief' => $request->nilaiBrief,
+        'tglProgress' => Carbon::now(), 
+        'progressBy' => Auth::user()->nama
+    ]);
+
+    
+    }
+
+    public function updateprog(Request $request, $id)
+    {
+        DB::table('briefs')
+        ->where('idBrief', $id)
+        ->update(['progressBrief' => $request->progressBrief,
+        'tglProgress' => Carbon::now(), 
+        'progressBy' => Auth::user()->nama
+    ]);
+
+    return redirect()->back();
 
     }
+
+    public function progressdel($id)
+    {
+        DB::table('orders')
+        ->where('idBrief', $id)
+        ->update(['statusOrder' => 2
+    ]);
+
+    }
+    
 
     public function lastStatus(Request $request, $id)
     {
