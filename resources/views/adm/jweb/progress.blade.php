@@ -265,6 +265,7 @@ $('.myCheckBox').click(function() {
   timer: 1500
 })
 
+
             $("input:checked").each(function () {
               prog += parseInt($(this).val());
               

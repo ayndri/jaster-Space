@@ -56,6 +56,7 @@ class BriefController extends Controller
     ]);
 
     }
+    
 
     public function lastStatus(Request $request, $id)
     {
