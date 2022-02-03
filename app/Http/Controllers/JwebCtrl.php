@@ -54,7 +54,7 @@ class JwebCtrl extends Controller
         ->join('users', 'users.idUser', '=', 'orders.idUser')
         ->join('companys', 'companys.idComp', '=', 'orders.idComp')
         ->where('orders.statusOrder', 1)
-        ->orderBy('orders.tglOrder', 'desc')
+        ->orderBy('orders.nomerOrder', 'desc')
         ->get();
 
 
@@ -158,6 +158,7 @@ class JwebCtrl extends Controller
         ->where('orders.idBrief', '=', $id)
         ->count();
 
+        
         $c = count($request->paketTrx);
 
         if( $count == $c )
@@ -204,6 +205,10 @@ class JwebCtrl extends Controller
         //     'trxs.hargaTrx' => $request->hargaTrx,]
         //     );
 
+        
+        $dp = str_replace(".", "", $request->dpTrx);
+        $renew = str_replace(".", "", $request->renew);
+        
 
         DB::table('orders')
         ->join('briefs', 'briefs.idBrief', '=', 'orders.idBrief')
@@ -214,6 +219,7 @@ class JwebCtrl extends Controller
         ->where('orders.idBrief', '=', $id)
         ->update([  'companys.brandComp' => $request->brandComp,
         'companys.namaComp' => $request->namaComp,
+        'companys.kotaComp' => $request->kotaComp,
         'users.email' => $request->email,
         'users.nama' => $request->nama,
         'users.jabatUser' => $request->jabatUser,
@@ -232,8 +238,8 @@ class JwebCtrl extends Controller
         'briefs.telfBrief' => $request->telfBrief,
         'briefs.mpBrief' => $request->mpBrief,
         'aksess.host_id' => $request->idHost,
-        'orders.dpTrx' => $request->dpTrx,
-        'orders.renew' => $request->renew,
+        'orders.dpTrx' => $dp,
+        'orders.renew' => $renew,
         'orders.pmOrder' => $request->pmOrder,
         'orders.fromTrx' => $request->fromTrx,
         'orders.totalOrder' => $request->totalOrder,
@@ -260,8 +266,12 @@ class JwebCtrl extends Controller
         ->where('orders.idBrief', '=', $id)
         ->get();
 
+        
+        $brief = DB::table('briefs')
+        ->where('idBrief', $id)
+        ->first();
 
-        return view('adm.jweb.webview', compact('webs', 'trxweb'));
+        return view('adm.jweb.webview', compact('webs', 'trxweb','brief'));
     }
 
     public function update(Request $request, Jweb $coba)

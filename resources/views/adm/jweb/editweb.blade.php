@@ -1,28 +1,19 @@
 @extends('layouts.simple.master')
 
-@section('title', 'Add Order')
+@section('title', 'Edit Order')
 
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/date-picker.css')}}">
 @endsection
 
 @section('mxwidth')
 @endsection
 
 @section('style')
-<style>
 
-.d-flex.theme-form {
-  flex-wrap: wrap;
-}
-.d-flex.theme-form div {
-  padding: 9px;
-}
-</style>
 @endsection
 
 @section('breadcrumb-title')
-<h3>Add Order</h3>
+<h3>Edit Order</h3>
 @endsection
 
 @section('tambah')
@@ -63,7 +54,10 @@
                         <label class="col-form-label">Email Aktif</label>
                         <input class="form-control" type="mail" name="email" value="{{ $webs->email }}" required>
                     </div>
-
+                    <div class="form-group">
+                        <label class="col-form-label">Domisili Company</label>
+                        <input class="form-control" type="text" value="{{ $webs->kotaComp }}" name="kotaComp">
+                    </div>
                     <div class="form-group">
                         <label class="col-form-label">Nama Instansi</label>
                         <input class="form-control" type="text" name="namaComp" value="{{ $webs->namaComp }}" required>
@@ -78,7 +72,12 @@
                             <span>+62</span>
                             <input class="form-control" type="text" onkeypress="validate(event)" value="{{ $webs->telpUser }}" name="telpUser" required>
                         </div>
-                        </div>
+                    </div>
+                    
+                    <div class="form-group" style="visibility: hidden">
+                        <label class="col-form-label">Ntah Apa Kosongi aja dulu</label>
+                        <input class="form-control" type="text" value="" name="posWeb">
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="col-form-label">Alamat Office</label>
@@ -136,7 +135,8 @@
                         <div class="form-group">
                             <label class="col-form-label">Color</label>
                             <input class="form-control" type="text" name="colorBrief" value="{{ $webs->colorBrief }}" required>
-                            </div>
+                        </div>
+                        
                         <div class="form-group">
                             <label class="col-form-label">Password</label>
                             <input class="form-control" type="text" name="passAkses" value="{{ $webs->passAkses }}" required>
@@ -167,7 +167,10 @@
                             data-note="" data-target="#viewNotes"
                             title="View Notes" class="btn-sm w-100 text-center btn-success d-inline-block" style="padding: 13px 10px;">View Request</a>
                         </div>
-
+                        <div class="form-group" style="visibility: hidden">
+                            <label class="col-form-label">Ntah Apa Kosongi aja dulu</label>
+                            <input class="form-control" type="text" value="" name="posWeb">
+                        </div>
                         <div class="modal fade" id="see" tabindex="-1" aria-labelledby="see" style="display: none;" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -187,47 +190,43 @@
                 </div>
              </div>
         </div>
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h6>💻 Social Media</h6>
+    
+    <div class="col-md-12">
+        <div class="card">
+
+           <div class="card-header">
+               <h5>🟢 Social Media</h5>
+           </div>
+           <div class="card-body">
+             
+            <div class="bagi2">
+                <div class="form-group">
+                    <label class="col-form-label">No WhatsApp</label>
+                    <textarea class="form-control" name="waBrief">{{ $webs->waBrief }}</textarea>
                 </div>
-                <div class="card-body">
-                    <div class="bagi2">
-                        <div class="form-group">
-                            <label class="col-form-label">No WhatsApp</label>
-                            <div class="form-icon">
-                                <span>+62</span>
-                                <input class="form-control" type="text" name="waBrief" value="{{ $webs->waBrief }}">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-form-label">Akun Instagram</label>
-                            <div class="form-icon">
-                                <span>@</span>
-                                <input class="form-control" type="text" name="igBrief" value="{{ $webs->igBrief }}">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-form-label">Akun Facebook</label>
-                            <input class="form-control" type="text" name="fbBrief" value="{{ $webs->fbBrief }}">
-                        </div>
-                        <div class="form-group">
-                            <label class="col-form-label">Akun Sosmed Lainnya</label>
-                            {{-- <textarea id="w3review" name="w3review" rows="4" cols="10">{{ $coba[0]['sosWeb'] }}</textarea> --}}
-                            <input class="form-control" type="text" name="sosBrief" value="{{ $webs->sosBrief }}">
-                        </div>
-                        <div class="form-group">
-                            <label class="col-form-label">No Telfon</label>
-                                <input class="form-control" type="text" name="telfBrief" value="{{ $webs->telfBrief }}">
-                        </div>
-                        <div class="form-group">
-                            <label class="col-form-label">Marketplace</label>
-                                <input class="form-control" type="text" name="mpBrief" value="{{ $webs->mpBrief }}">
-                        </div>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label class="col-form-label">No Telfon</label>
+                    <textarea class="form-control" name="telfBrief">{{ $webs->telfBrief }}</textarea>
                 </div>
+                <div class="form-group">
+                    <label class="col-form-label">Akun Facebook</label>
+                    <textarea class="form-control" name="fbBrief">{{ $webs->fbBrief }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Akun Instagram</label>
+                    <textarea class="form-control" name="igBrief">{{ $webs->igBrief }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Akun Sosmed Lainnya</label>
+                    <textarea class="form-control" name="sosBrief">{{ $webs->sosBrief }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Marketplace</label>
+                    <textarea class="form-control" name="mpBrief">{{ $webs->mpBrief }}</textarea>
+                </div>
+                </div>
+            </div>
+         </div>
     </div>
 		<div class="col-md-5">
             <div class="card">
@@ -275,22 +274,17 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Reference</label>
-                                <div class="form-group">
-                                    <label class="col-form-label">Reference</label>
-                                        {{-- <input class="form-control" type="text" value="{{ $webs->fromTrx }}" name="fromTrx" readonly> --}}
-                                            <label class="col-form-label">Reference</label>
-                                                <select class="form-control digits" name="fromTrx" id="exampleFormControlSelect9" required="">
-                                                    <option>{{ $webs->fromTrx }}</option>
-                                                    <option value="website">Website</option>
-                                                    <option value="google">Pencarian Google</option>
-                                                    <option value="instagram">Instagram</option>
-                                                    <option value="facebook">Facebook</option>
-                                                    <option value="youtube">Youtube</option>
-                                                    <option value="media">Media Online</option>
-                                                    <option value="jalan">Jalan (Spanduk)</option>
-                                                    <option value="teman">Teman / Kerabat</option>
-                                                  </select>
-                                </div>
+                                    <select class="form-control digits" name="fromTrx" id="exampleFormControlSelect9" required="">
+                                        <option>{{ $webs->fromTrx }}</option>
+                                        <option value="website">Website</option>
+                                        <option value="google">Pencarian Google</option>
+                                        <option value="instagram">Instagram</option>
+                                        <option value="facebook">Facebook</option>
+                                        <option value="youtube">Youtube</option>
+                                        <option value="media">Media Online</option>
+                                        <option value="jalan">Jalan (Spanduk)</option>
+                                        <option value="teman">Teman / Kerabat</option>
+                                    </select>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Deadline</label>
@@ -385,7 +379,7 @@
                     <input class="" id="totalasli" type="hidden" name="totalOrder">
 
                     <span class="heading3">Total: <small id="total">Rp @money($webs->totalOrder)</small></span>
-                    <button class="btn btn-primary btn-block w100" type="submit">Submit New Order</button>
+                    <button class="btn btn-primary btn-block w100" type="submit">Update Order</button>
                     </div>
 
 
@@ -400,13 +394,6 @@
 @endsection
 
 @section('script')
-<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.ckeditor').ckeditor();
-    });
-</script>
 
 <script>
 function kasihtitik(objek) {

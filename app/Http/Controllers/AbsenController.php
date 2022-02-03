@@ -50,12 +50,13 @@ class AbsenController extends Controller
 
             $absennot = Absen::select('*')
             ->join('users', 'users.idUser', '=', 'absens.idUser')
+            ->where('users.idUser','=',auth()->user()->idUser)
             ->first();
 
+            Notification::send($users, new addAbsen($absennot));
         //dd($absennot);
 
-        Notification::send($users, new addAbsen($absennot));
-        
+
         Alert::success('Oke', 'Izin absen telah terkirim');
         return redirect('/absen/all');
 
@@ -82,7 +83,7 @@ class AbsenController extends Controller
             ->join('absens', 'users.idUser', '=', 'absens.idUser')
             ->where('absens.idAbsen', $abs)
             ->first();
-    
+
             $absen = Absen::select('*')
                ->join('users', 'users.idUser', '=', 'absens.idUser')
                ->first();
@@ -90,9 +91,9 @@ class AbsenController extends Controller
             $admins = User::whereHas('roles', function ($q) {
                 $q->Where('name', 1);
             })->get();
-    
+
            //dd($absennot);
-    
+
            Notification::send($users, new cancelAbsen($absen));
            Notification::send($admins, new cancelAbsen($absen));
 
@@ -111,13 +112,13 @@ class AbsenController extends Controller
             ->join('absens', 'users.idUser', '=', 'absens.idUser')
             ->where('absens.idAbsen', $abs)
             ->first();
-    
+
             $absen = Absen::select('*')
                ->join('users', 'users.idUser', '=', 'absens.idUser')
                ->first();
-    
+
            //dd($absennot);
-    
+
            Notification::send($users, new tolakAbsen($absen));
 
         Alert::success('Nice One', 'Absen telah ditolak');
@@ -150,17 +151,23 @@ class AbsenController extends Controller
 
     public function adminabsen () {
 
+<<<<<<< HEAD
         $absen = DB::table('absens')
         ->join('users', 'users.idUser', '=', 'absens.idUser')
         ->orderBy('absens.created_at', 'desc')
         ->get();
 
        
+=======
+        $absen = Absen::orderBy('idAbsen','asc')
+                ->get();
+
+>>>>>>> 0c24bd860ec90abf1f7bd8013eb7f13326a44af9
         if (auth()->user()->hasRole('1')) {
             return view('adm.absen.adminabsen', compact('absen'));
         }else{
             abort(404);
         }
-   
+
     }
 }

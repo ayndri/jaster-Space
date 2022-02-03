@@ -117,7 +117,9 @@ flex-direction: column;
 .form-icon{display:flex;align-items:center;background:#313842!important;border:1px solid #525c6a!important;border-radius:.25rem}
 .form-icon input{border:0!important}.form-icon span,.form-icon i,.form-icon svg{color: #ffe82b;font-weight:400;flex:0 0 auto;padding:0 10px;border-right:1px solid #667282}
 .dataTable .thead{background: #647286;}
-
+.red-blank{display:flex;align-items:center;padding:15px;background:#dc35454f;justify-content:center;flex-direction:column;border-radius:10px}
+.btn-big{padding:10px;background:var(--theme-default);display:flex;border-radius:8px}
+.btn-big svg{color:#fff!important}
 .form-icon-v2{display:flex;align-items:center;background:#f3f3ff!important;border:1px solid #525c6a!important;border-radius:.25rem}
 .form-icon-v2 span{padding:0 15px;border-right:1px solid #b0b0b9;display:flex;align-items:center}
 .form-icon-v2 input{border:0!important}.form-icon-v2 span svg{color:#616168;width:18px;height:18px}
@@ -140,6 +142,10 @@ flex-direction: column;
 
 
 
+.card-header p{margin: 0; font-size: 14px;}
+.proglist{columns:3}.proglist li{width: 100%; margin-bottom: 20px; display: flex !important;}
+.proglist li b{width:100px;font-weight:600}.proglist li p span{margin-left:15px;color:#FFE82B}
+.div1{width: 100%; display: inline-block;}
 @media (min-width:550px){
     
 .bagi2{columns: 2; column-gap: 20px;}.form-group select option{color: #f7f7f7;}
