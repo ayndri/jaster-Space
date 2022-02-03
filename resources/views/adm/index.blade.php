@@ -21,7 +21,7 @@
 @section('content')
 <div class="container-fluid">
 	<div class="row second-chart-list third-news-update">
-		
+
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-body row flex-center">
@@ -46,38 +46,60 @@
 						</div>
 					</div>
 					<div class="col-md-6 text-right">
-						<a href="#" class="btn btn-primary m-r-10"><i class="fa fa-envelope-o"></i> Inbox</a>
+						<a href="{{route('notes.add')}}" class="btn btn-primary m-r-10"><i class="fa fa-envelope-o"></i> Send Notes</a>
 						<a href="#" class="btn btn-outline-warning"><i class="fa fa-check-square-o"></i> List Task</a>
 					</div>
 				</div>
 			 </div>
 		</div>
-		<div class="col-md-7">
-			<div class="card">
-				<div class="card-header">
-					<h5>🟡 Last Updates from Jasterweb</h5>
-            	</div>
-				<div class="card-body">
-					<ul class="latestweb">
-				  @foreach ($jweb as $web)
-						<li class="itemlatest" id="hilang{{ $web->idBrief }}">
-							<span>{{ $web->brandComp }} : <a href="/jweb/{{ $web->idBrief }}/view" target="_blank">{{ $web->lastStatus }}</a></span> 
-							<i id="kliken{{ $web->idBrief }}" data-feather="check"></i>
-						</li>
-					@endforeach
-					</ul>
-			  </div>
-			</div>
-		</div>
-		<div class="col-md-5">
 		
+		@if (auth()->user()->hasRole('5'))
+		@else
+			<div class="col-md-7">
+				<div class="card">
+					<div class="card-header">
+						<h5>🟡 Last Updates from Jasterweb</h5>
+					</div>
+					<div class="card-body">
+						<ul class="latestweb">
+						@foreach ($jweb as $web)
+								<li class="itemlatest" id="hilang{{ $web->idBrief }}">
+									<span>{{ $web->brandComp }} : <a href="/jweb/{{ $web->idBrief }}/view" target="_blank">{{ $web->lastStatus }}</a></span>
+									<i id="kliken{{ $web->idBrief }}" data-feather="check"></i>
+								</li>
+						@endforeach
+						</ul>
+					</div>
+				</div>
+			</div>
+		@endif
+		
+		<div class="col-md-5">
+
 			<div class="card">
 				<div class="card-header">
-					<h5>🔴 Catatan Buat Kamu</h5>
+					<h5>🟢 Notes for you</h5>
             	</div>
-				<div class="card-body">
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-				</div>
+                <div class="card-body">
+                @forelse ($notes as $note)
+
+                   <div class="default-according mb-2" id="accordionclose">
+                    <div class="card">
+                      <div class="card-header" id="heading1">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#{{$note->id}}" aria-expanded="false" aria-controls="heading1" data-original-title="" title="">Dari <span>{{$note->namaPengirim}}</span></button>
+                        </h5>
+                      </div>
+                      <div class="collapse" id="{{$note->id}}" aria-labelledby="heading1" data-parent="#accordionclose" style="">
+                        <div class="card-body">{{$note->isiPesan}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  @empty
+                  no message
+                  @endforelse
+                </div>
+
 			</div>
 		</div>
 	</div>
@@ -86,7 +108,9 @@
 @endsection
 
 @section('script')
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script>
 
 	@foreach ($jweb as $web)

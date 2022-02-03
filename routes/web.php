@@ -112,6 +112,8 @@ Route::get('/finish',['as' => 'email','uses' => 'App\Http\Controllers\MailContro
 Route::get('/send',['as' => 'email.create','uses' => 'App\Http\Controllers\MailController@create']);
 Route::post('/send',['as' => 'email.send','uses' => 'App\Http\Controllers\MailController@store']);
 
+Route::get('/notes/add',['as' => 'notes.add','uses' => 'App\Http\Controllers\NotesController@create']);
+Route::post('/notes/add',['as' => 'notes.store','uses' => 'App\Http\Controllers\NotesController@store']);
 
 Route::get('/reset', ['as' => 'reset.pass', 'uses' => 'App\Http\Controllers\AdmController@reset'])->middleware('admin');
 Route::post('/reset', ['as' => 'change.pass', 'uses' => 'App\Http\Controllers\AdmController@change'])->middleware('admin');

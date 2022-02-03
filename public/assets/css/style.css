@@ -20038,7 +20038,7 @@ footer {
     }
 }
 .login-card {
-    min-height: 100vh;
+    min-height: 90vh;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

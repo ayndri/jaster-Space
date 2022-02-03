@@ -158,7 +158,7 @@ class JwebCtrl extends Controller
         ->where('orders.idBrief', '=', $id)
         ->count();
 
-        
+
         $c = count($request->paketTrx);
 
         if( $count == $c )
@@ -205,10 +205,10 @@ class JwebCtrl extends Controller
         //     'trxs.hargaTrx' => $request->hargaTrx,]
         //     );
 
-        
+
         $dp = str_replace(".", "", $request->dpTrx);
         $renew = str_replace(".", "", $request->renew);
-        
+
 
         DB::table('orders')
         ->join('briefs', 'briefs.idBrief', '=', 'orders.idBrief')
@@ -266,7 +266,7 @@ class JwebCtrl extends Controller
         ->where('orders.idBrief', '=', $id)
         ->get();
 
-        
+
         $brief = DB::table('briefs')
         ->where('idBrief', $id)
         ->first();
@@ -373,14 +373,14 @@ class JwebCtrl extends Controller
             $har[] = $titlehar;
         }
 
-        // if ($request->hasFile('logoWeb')) {
-        //     $file = $request->file('logoWeb');
-        //     $nama_file = Carbon::now()->format('mYd')."_".$file->getClientOriginalName();
-        //     $tujuan_upload = "img/logo";
-        //     $file->move($tujuan_upload, $nama_file);
-        //     }else{
-        //         $nama_file = "placeholder.png";
-        // }
+        if ($request->hasFile('logoWeb')) {
+            $file = $request->file('logoWeb');
+            $nama_file = Carbon::now()->format('mYd')."_".$file->getClientOriginalName();
+            $tujuan_upload = "img/logo";
+            $file->move($tujuan_upload, $nama_file);
+            }else{
+                $nama_file = "placeholder.png";
+        }
 
         $jweb = new Jweb;
         $jweb->brandWeb = $request->brandWeb;

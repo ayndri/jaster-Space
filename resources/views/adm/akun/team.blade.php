@@ -1,6 +1,6 @@
 @extends('layouts.simple.master')
 
-@section('title', 'Account Client')
+@section('title', 'Account Team')
 
 @section('css')
 @endsection
@@ -12,10 +12,11 @@
 @endsection
 
 @section('breadcrumb-title')
-<h3>Account Client</h3>
+<h3>Account Team</h3>
 @endsection
 
 @section('tambah')
+<a href="{{route('account.create')}}" class="btn-sm btn-primary d-inline-block">Create New</a>
 @endsection
 
 @section('content')
@@ -43,7 +44,7 @@
                  <tbody class="list">
                   @php $no = 1; @endphp
                   @forelse ($users as $key => $user)
-                  @if ($user->hasRole('1|2|3|4'))
+                  @if ($user->hasRole('1|2|3'))
 
 
                    <tr>
