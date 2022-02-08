@@ -9,7 +9,6 @@
 @endsection
 
 @section('mxwidth')
-tengahkan
 @endsection
 
 @section('breadcrumb-title')
@@ -34,6 +33,7 @@ tengahkan
                      <tr>
                        <th scope="col" class="sort" data-sort="no">No</th>
                        <th scope="col" class="sort">Tgl Absen</th>
+                       <th scope="col" class="sort">Nama Staff</th>
                        <th scope="col" class="sort">Tgl Submit</th>
                        <th scope="col" class="sort">Jumlah Absen</th>
                        <th scope="col" class="sort">Alasan</th>
@@ -50,6 +50,9 @@ tengahkan
                      </td>
                      <td>
                       {{ Carbon\Carbon::parse($abs->tglAbsen)->locale('id')->translatedFormat('d F Y')}}
+                     </td>
+                     <td>
+                      {{ $abs->nama }}
                      </td>
                      <td>
                       {{ $abs->created_at }}
@@ -78,7 +81,7 @@ tengahkan
                      <td class="text-right">
                         
                       <a class="btn-ic btn-success m-r-5" href="#see-{{ $abs->idAbsen }}" data-bs-toggle="modal" data-target="#see-{{ $abs->idAbsen }}" id="modalnote"
-                        data-note="{{ $abs->noteAds }}"
+                        data-note="{{ $abs->isiAbsen }}"
                         data-target="#viewNotes" title="View Notes">
                         <i data-feather="eye"></i>
                         </a>

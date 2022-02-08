@@ -9,7 +9,7 @@
 @endsection
 
 @section('breadcrumb-title')
-Notifikasi
+<h3>Notif Center</h3>
 @endsection
 
 @section('breadcrumb-items')

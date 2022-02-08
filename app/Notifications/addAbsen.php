@@ -60,7 +60,7 @@ class addAbsen extends Notification
             'idUser' => $this->absen->idUser,
             'tglAbsen' => Carbon::parse($this->absen->tglAbsen)->locale('id')->format('l, j F Y'),
             'notifType' => 'createabsen',
-            'text' => $this->absen->nama.' tidak masuk pada '.Carbon::parse($this->absen->tglAbsen)->locale('id')->format('j F'),
+            'text' => 'Izin Absen dari '.$this->absen->nama.' untuk '.Carbon::parse($this->absen->tglAbsen)->locale('id')->format('j F Y'),
         ];
     }
 }

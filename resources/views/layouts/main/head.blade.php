@@ -7,6 +7,7 @@
     <meta name="description" content="#">
     <meta name="author" content="Jasterweb">
     <link rel="icon" href="{{asset('assets/img/fav.png')}}" type="image/x-icon">
+    <link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{asset('assets/img/fav.png')}}" type="image/x-icon">
     <title>@yield('title') - JasterSpace</title>
     <!-- Google font-->
