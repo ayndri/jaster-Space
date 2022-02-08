@@ -10,6 +10,7 @@ class RenewalController extends Controller
 {
     public function index() {
         $renewals = Order::with('users')->get();
+        // dd(now()->subDays(14)->format('d'));
         return view('adm.server.renewal',compact('renewals'));
     }
 }

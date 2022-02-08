@@ -30,7 +30,8 @@ class User extends Authenticatable
         'jabatUser',
         'fotoUser',
         'addrUser',
-        'kotaUser'
+        'kotaUser',
+        'password'
     ];
 
     /**

@@ -447,6 +447,7 @@ class JwebCtrl extends Controller
             $comp->namaComp = $request->namaComp;
             $comp->kotaComp = $request->kotaComp;
             $comp->addrComp = $request->addrComp;
+
             $comp->save();
 
         }
@@ -496,28 +497,30 @@ class JwebCtrl extends Controller
         $ambilUser = User::where('email', '=', $request->input('email'))->first();
 
 
-        $isiorder = Order::orderBy('idOrder', 'DESC')->pluck('idOrder')->first();
+        // $isiorder = Order::orderBy('idOrder', 'DESC')->pluck('idOrder')->first();
 
-        if ($isiorder == null or $isiorder == "") {
-            #If Table is Empty
-            $ornum = 455;
-        } else {
+        // if ($isiorder == null or $isiorder == "") {
+        //     #If Table is Empty
+        //     $ornum = 455;
+        // } else {
 
-            $lastorderId = Order::orderBy('idOrder', 'desc')->first()->nomerOrder;
+        //     $lastorderId = Order::orderBy('idOrder', 'desc')->first()->nomerOrder;
 
-            $lastIncreament = substr($lastorderId, -3);
+        //     $lastIncreament = substr($lastorderId, -3);
 
-            $newOrderId = str_pad($lastIncreament + 1, 3, 0, STR_PAD_LEFT);
+        //     $newOrderId = str_pad($lastIncreament + 1, 3, 0, STR_PAD_LEFT);
 
-            $ornum = $newOrderId;
+        //     $ornum = $newOrderId;
 
-        }
+        // }
 
         $dp = str_replace(".", "", $request->dpTrx);
         $renew = str_replace(".", "", $request->renew);
 
         $order = new Order;
-        $order->nomerOrder = 'JW' . $ornum;
+        // $order->nomerOrder = 'JW' . $ornum;
+        // dd($request->nomerOrder);
+        $order->nomerOrder = 'JW'.$request->nomerOrder;
         $order->idBrief = $brief->idBrief;
         $order->idAkses = $akses->idAkses;
         if ($cekuser == null) {
@@ -542,7 +545,8 @@ class JwebCtrl extends Controller
         $order->fromTrx = $request->fromTrx;
         $order->totalOrder = $request->totalOrder;
         $order->jenisOrder = "Website";
-        $order->statusOrder = 1;
+
+        $order->statusOrder = 2;
         $order->save();
 
         $akses->idOrder = $order->idOrder;
