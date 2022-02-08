@@ -61,8 +61,9 @@ class AdmController extends Controller
             'new_confirm_password' => ['same:new_password'],
             ]);
 
-            User::find(auth()->user()->idUser)
-            ->update(['password'=> Hash::make($request->new_password)]);
+            $user = User::find(auth()->user()->idUser)
+            ->update(['password' => Hash::make($request->new_password)]);
+            // dd($user);
             Alert::success('Berhasil', 'Password telah berubah');
             // Alert::success('Berhasil', 'Password Anda berhasil diubah');
             return redirect()->back();

@@ -34,10 +34,9 @@ Route::any('/absen/v/{abs}', ['as' => 'setuju.absen', 'uses' => 'App\Http\Contro
 Route::get('/notif', ['as' => 'notif', 'uses' => 'App\Http\Controllers\AdmController@notifikasi']);
 Route::post('/markread/{id}', ['as' => 'markread', 'uses' => 'App\Http\Controllers\AdmController@markRead']);
 
+
 Route::get('/progress/{id}', ['as' => 'progress', 'uses' => 'App\Http\Controllers\BriefController@progress']);
 Route::post('/progressadd/{id}', ['as' => 'progress.add', 'uses' => 'App\Http\Controllers\BriefController@progressadd']);
-Route::post('/updateprogress/{id}', ['as' => 'progress.upd', 'uses' => 'App\Http\Controllers\BriefController@updateprog']);
-Route::post('/progressdel/{id}', ['as' => 'progress.del', 'uses' => 'App\Http\Controllers\BriefController@progressdel']);
 Route::post('/status/{id}', ['as' => 'status.add', 'uses' => 'App\Http\Controllers\BriefController@lastStatus']);
 
 Route::get('/ads/active', ['as' => 'ads.active', 'uses' => 'App\Http\Controllers\AdsController@index']);
