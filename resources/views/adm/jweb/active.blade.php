@@ -59,7 +59,7 @@
                 {{ Carbon\Carbon::parse($web->deadlineOrder)->locale('id')->translatedFormat('d F Y')}}
               </td>
               <td>
-                0%
+                {{ $web->progressBrief }}
               </td>
               <td>
                 {{ Carbon\Carbon::parse($web->updated_at)->locale('id')->diffForHumans(null, true) . " lalu"; }}
