@@ -447,6 +447,7 @@ class JwebCtrl extends Controller
             $comp->namaComp = $request->namaComp;
             $comp->kotaComp = $request->kotaComp;
             $comp->addrComp = $request->addrComp;
+
             $comp->save();
 
         }
@@ -542,6 +543,7 @@ class JwebCtrl extends Controller
         $order->fromTrx = $request->fromTrx;
         $order->totalOrder = $request->totalOrder;
         $order->jenisOrder = "Website";
+
         $order->statusOrder = 1;
         $order->save();
 
@@ -586,6 +588,144 @@ class JwebCtrl extends Controller
         Alert::success('Lets get to Work', 'Project has been Created');
         return redirect()->route('jweb.active');
 
+    }
+
+    public function darimjas(Request $request)
+    {
+        $cekuser = User::where('email', '=', $request->input('email'))->first();
+        if ($cekuser == null) {
+            $user = new User;
+            $user->email = $request->email;
+            $user->nama = $request->nama;
+            $user->jabatUser = $request->jabatUser;
+            $user->telpUser = $request->telpUser;
+            $user->assignRole('4');
+            $user->save();
+        }
+
+        $cekcompany = Company::where('brandComp', '=', $request->brandComp)->first();
+        if ($cekcompany == null) {
+
+        $comp = new Company;
+        if ($cekuser == null) {
+            $comp->idUser = $user->idUser;
+        }
+        else{
+            $comp->idUser = $cekuser->idUser;
+        }
+            $comp->brandComp = $request->brandComp;
+            $comp->namaComp = $request->namaComp;
+            $comp->kotaComp = $request->kotaComp;
+            $comp->addrComp = $request->addrComp;
+
+            $comp->save();
+
+        }
+
+        $akses = new Akses;
+        $akses->host_id = $request->idHost;
+        $akses->domainAkses = $request->domainAkses;
+        $akses->userAkses = $request->userAkses;
+        $akses->passAkses = $request->passAkses;
+        $akses->save();
+
+        $ambilcomp = Company::where('brandComp', '=', $request->input('brandComp'))->first();
+
+        $brief = new Brief;
+        $brief->idAkses = $akses->idAkses;
+        if ($cekcompany == null) {
+        $brief->idComp = $comp->idComp;
+        }
+        else{
+            $brief->idComp = $ambilcomp->idComp;
+        }
+
+        $brief->postBrief = $request->postBrief;
+        $brief->paketBrief = $request->paketBrief;
+        $brief->colorBrief = $request->colorBrief;
+        $brief->targetBrief = $request->targetBrief;
+        $brief->reqBrief = $request->reqBrief;
+        $brief->waBrief = $request->waBrief;
+        $brief->igBrief = $request->igBrief;
+        $brief->fbBrief = $request->fbBrief;
+        $brief->sosBrief = $request->sosBrief;
+        $brief->telfBrief = $request->telfBrief;
+        $brief->mpBrief = $request->mpBrief;
+        $brief->save();
+
+        $akses->idBrief = $brief->idBrief;
+        $akses->save();
+
+        if ($cekcompany == null) {
+
+        $comp->idBrief = $brief->idBrief;
+        $comp->save();
+
+        }
+
+
+        $ambilUser = User::where('email', '=', $request->input('email'))->first();
+        
+
+        $dp = str_replace(".", "", $request->dpTrx);
+        $renew = str_replace(".", "", $request->renew);
+
+        $order = new Order;
+        $order->nomerOrder = 'JW' . $request->nomerOrder;
+        $order->idBrief = $brief->idBrief;
+        $order->idAkses = $akses->idAkses;
+        if ($cekuser == null) {
+        $order->idUser = $user->idUser;
+        }
+        else {
+            $order->idUser = $ambilUser->idUser;
+        }
+
+        if ($cekcompany == null) {
+           $order->idComp = $comp->idComp;
+            }
+            else{
+            $order->idComp = $ambilcomp->idComp;
+            }
+
+        $order->dpTrx = $dp;
+        $order->renew = $renew;
+        $order->pmOrder = $request->pmOrder;
+        $order->tglOrder = $request->tglOrder;
+        $order->deadlineOrder = $request->deadlineOrder;
+        $order->fromTrx = $request->fromTrx;
+        $order->totalOrder = $request->totalOrder;
+        $order->jenisOrder = "Website";
+
+        $order->statusOrder = 2;
+        $order->save();
+
+        $akses->idOrder = $order->idOrder;
+        $akses->save();
+
+        $brief->idOrder = $order->idOrder;
+        $brief->save();
+
+        $c = count($request->paketTrx);
+
+        $paketTrx = $request->paketTrx;
+        $qtyTrx = $request->qtyTrx;
+        $hargaTrx = $request->hargaTrx;
+
+        for ( $i=0; $i< $c; ++$i) {
+            $trx = new Trx;
+            $trx->idOrder = $order->idOrder;
+            $trx->paketTrx = $paketTrx[$i];
+            $trx->qtyTrx = $qtyTrx[$i];
+            $trx->hargaTrx = $hargaTrx[$i];
+            $trx->save();
+        }
+
+
+        // DB::connection('mysql2')->table('jwebs')->where('brandWeb', '=', $request->brandComp)->update(['statWeb' => 1]);
+
+
+        return redirect()->route('jweb.history');
     }
 
 }

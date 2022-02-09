@@ -45,7 +45,7 @@ tengahkan
                                  @forelse ($renewals as $renewal)
 
 
-                                 @if (now()->format('d') - 14 == $renewal->created_at->format('d'))
+                                 @if (now()->subDays(14)->format('d') == $renewal->created_at->format('d') && now()->format('y') - 1 == $renewal->created_at->format('y'))
                                   <tr>
                                     <td>
                                        {{ $no++}}
@@ -102,7 +102,7 @@ tengahkan
                                  @forelse ($renewals as $renewal)
 
 
-                                 @if (now()->format('d') - 4 == $renewal->created_at->format('d'))
+                                 @if (now()->subDays(4)->format('d') == $renewal->created_at->format('d') && now()->format('y') - 1 == $renewal->created_at->format('y'))
                                   <tr>
                                     <td>
                                        {{ $no++}}
@@ -132,7 +132,7 @@ tengahkan
 
                             </table>
                            </div>
-                   
+
 
 
                 </div>
@@ -162,7 +162,7 @@ tengahkan
                                  @forelse ($renewals as $renewal)
 
 
-                                 @if (now()->format('y') - 1 == $renewal->created_at->format('y'))
+                                 @if (now()->format('d') == $renewal->created_at->format('d') && now()->format('y') - 1 == $renewal->created_at->format('y'))
                                   <tr>
                                     <td>
                                        {{ $no++}}
@@ -192,7 +192,7 @@ tengahkan
 
                             </table>
                            </div>
-                    
+
 
 
                 </div>

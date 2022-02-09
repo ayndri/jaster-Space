@@ -28,11 +28,11 @@ class BriefController extends Controller
         ->where('idBrief', $id)
         ->update(['progressBrief' => $request->progressBrief,
         'nilaiBrief' => $request->nilaiBrief,
-        'tglProgress' => Carbon::now(), 
+        'tglProgress' => Carbon::now(),
         'progressBy' => Auth::user()->nama
     ]);
 
-    
+
     }
 
     public function updateprog(Request $request, $id)
@@ -40,7 +40,7 @@ class BriefController extends Controller
         DB::table('briefs')
         ->where('idBrief', $id)
         ->update(['progressBrief' => $request->progressBrief,
-        'tglProgress' => Carbon::now(), 
+        'tglProgress' => Carbon::now(),
         'progressBy' => Auth::user()->nama
     ]);
 
@@ -57,14 +57,18 @@ class BriefController extends Controller
 
     }
 
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> af04f8ebc782ca1a8e6d9c9566921ed92e929da2
 
     public function lastStatus(Request $request, $id)
     {
         DB::table('briefs')
         ->where('idBrief', $id)
         ->update(['lastStatus' => $request->lastStatus,
-    'dateStatus' => Carbon::now(), 
+    'dateStatus' => Carbon::now(),
     'updatedBy' => Auth::user()->nama]);
 
     $users = User::whereHas('roles', function ($q) {

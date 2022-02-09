@@ -51,7 +51,7 @@ tengahkan
 
                         <div class="form-group">
                             <label class="col-form-label">Isi Notes</label>
-                            <textarea class="form-control" name="isiPesan" rows="3" id="valueArea" required="" placeholder="Masukkan Notes"></textarea>
+                            <textarea class="ckeditor form-control" name="isiPesan" rows="3" id="valueArea" required="" placeholder="Masukkan Notes"></textarea>
                          </div>
                      </div>
                   </div>
@@ -73,6 +73,12 @@ tengahkan
 @endsection
 
 @section('script')
+<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.ckeditor').ckeditor();
+    });
+</script>
 <script>
     $('document').ready(function () {
 

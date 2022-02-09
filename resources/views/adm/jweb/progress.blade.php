@@ -43,17 +43,17 @@
             <div class="card">
 
                 <div class="card-header">
-                    <h6>🏢 Company Details- </h6>
+                    <h6>🏢 Progress </h6>
                 </div>
                 <div class="card-body">
                       {{-- @csrf  --}}
                     @foreach ($errors->all() as $error)
                     <p class="text-danger">{{ $error }}</p>
                     @endforeach
-                   
+
                     <form class="" enctype="multipart/form-data" method="POST">
                         @csrf
-                    
+
                     <div class="form-check">
                         <input class="myCheckBox" type="checkbox" name="nilai[]" id="flexCheckDefault" value="7" data-nilai="a" @if (str_contains($brief->nilaiBrief, "a")) checked @endif >
                         <label class="form-check-label" for="flexCheckDefault">
@@ -155,10 +155,10 @@
 
                       <input class="" type="hidden" name="progressBrief" id="progress">
                       <input class="" type="hidden" name="nilaiBrief" id="nilai">
-                    
+
                     </form>
-                   
-    
+
+
                  </div>
               </div>
         </div>
@@ -174,7 +174,7 @@
                   @foreach ($errors->all() as $error)
                   <p class="text-danger">{{ $error }}</p>
                   @endforeach
-                 
+
                   <form class="formlatest" enctype="multipart/form-data" method="POST" action="{{route('status.add', $brief->idBrief)}}">
                       @csrf
                       <div class="form-group">
@@ -185,9 +185,9 @@
                   @if($brief->dateStatus != null)
                   <span>{{ \Carbon\Carbon::parse($brief->dateStatus)->locale('id')->diffForHumans(null, true).' lalu' }} oleh {{$brief->updatedBy}}</span>
                   @endif
-                  
+
                   </form>
-  
+
                </div>
             </div>
       </div>
@@ -203,7 +203,7 @@
                 @foreach ($errors->all() as $error)
                 <p class="text-danger">{{ $error }}</p>
                 @endforeach
-               
+
                 <form class="formlatest" enctype="multipart/form-data" method="POST" action="{{route('progress.upd', $brief->idBrief)}}">
                     @csrf
                     <div class="form-group">
@@ -214,7 +214,7 @@
                 @if($brief->tglProgress != null)
                 <span>{{ \Carbon\Carbon::parse($brief->tglProgress)->locale('id')->diffForHumans(null, true).' lalu' }} oleh {{$brief->progressBy}}</span>
                 @endif
-                
+
                 </form>
 
              </div>
@@ -232,9 +232,9 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-   
-  
-  
+
+
+
 var idBrief = $('#idBrief').val();
 var url = "{{ route('progress.add', ":id") }}";
 url = url.replace(':id', idBrief);
@@ -253,7 +253,7 @@ $('.myCheckBox').click(function() {
   var toastLiveExample = document.getElementById('liveToast')
   var gagal = document.getElementById('gagal')
 
- 
+
           if($(this).prop("checked") == true){
 
             Swal.fire({
@@ -267,19 +267,21 @@ $('.myCheckBox').click(function() {
 
             $("input:checked").each(function () {
               prog += parseInt($(this).val());
-              
+
               nilai += $(this).data('nilai');
-   
+
              })
 
              $('#progress').val(prog);
              $('#progresstext').val(prog);
 
              var tanpa = nilai.replace(/^0+/, '');
-  
+
               $('#nilai').val(tanpa);
 
               var sempur = $('#progress').val();
+
+
 
               if( sempur != 100)
   {
@@ -306,17 +308,16 @@ $('.myCheckBox').click(function() {
 
   else {
 
-    swal({
+    Swal.fire({
         title: "Delete Order?",
         text: "Apakah anda yakin order ini telah selesai semua progress nya?",
         icon: "warning",
-        buttons: [
-          'Maaf, Tidak jadi',
-          'Ya! Hapus'
-        ],
+        showCancelButton: true,
+        confirmButtonText: `Iya`,
+        denyButtonText: `Maaf Tidak Jadi`,
         dangerMode: true,
-      }).then(function(isConfirm) {
-          if (isConfirm) {
+      }).then((result) => {
+          if (result.isConfirmed) {
 
             $.ajax({
             headers: {
@@ -336,21 +337,21 @@ $('.myCheckBox').click(function() {
 
      });
 
-     
 
-    
+
+
 
 
 } else {
-            swal("Tidak jadi", "Project tidak jadi dihapus", "error");
+            swal.fire("Tidak jadi", "Project tidak jadi dihapus", "error");
           }
         });
 
 
-    
+
   }
 
- 
+
 
 
 
@@ -367,7 +368,7 @@ $('.myCheckBox').click(function() {
 })
             }
 
- 
+
 
 
       });
@@ -381,7 +382,7 @@ $('.myCheckBox').click(function() {
 <script>
 
 
-   
+
 </script>
 
 @endsection

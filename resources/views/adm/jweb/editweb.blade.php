@@ -375,9 +375,8 @@
                     </div>
 
 
-
                     <input class="" id="totalasli" type="hidden" name="totalOrder">
-
+                    
                     <span class="heading3">Total: <small id="total">Rp @money($webs->totalOrder)</small></span>
                     <button class="btn btn-primary btn-block w100" type="submit">Update Order</button>
                     </div>

@@ -32,7 +32,7 @@
 
 
 <div class="container-fluid">
-		<form class="" enctype="multipart/form-data" method="POST" action="{{ route('jweb.tambah') }}">
+		<form class="" enctype="multipart/form-data" method="POST" action="{{ route('jweb.mjas') }}">
             @csrf
 
 	<div class="row">
@@ -49,6 +49,13 @@
                 @endforeach
                 <input class="form-control" type="hidden" name="idWeb" required>
                 <input class="form-control" type="hidden" name="statweb" value="1" required>
+                <div class="form-group">
+                    <label class="col-form-label">Nomer order</label>
+                    <div class="form-icon">
+                        <span>#</span>
+                        <input class="form-control" type="text" name="nomerOrder" required>
+                    </div>
+                    </div>
                 <div class="bagi2">
                     <div class="form-group">
                         <label class="col-form-label">Nama Brand</label>
@@ -118,8 +125,8 @@
                             <option value="Landing">Landing</option>
                             </select>
                         </div>
-                        
-                        
+
+
                         <div class="form-group">
                             <label class="col-form-label">Paket Website</label>
                             <select class="form-control" name="paketBrief" id="selpost" required="">
@@ -143,7 +150,7 @@
                             <input class="form-control" type="text" name="passAkses" required>
                         </div>
 
-                            
+
                         <div class="form-group">
                             <label class="col-form-label">Target</label>
                             <select class="form-control" name="targetBrief" id="selpost" required="">
@@ -174,7 +181,7 @@
                         </div>
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label class="col-form-label">Hosting</label>
                         <select class="form-control" name="idHost" id="selpost" required="">
@@ -244,7 +251,7 @@
                                     <input class="form-control" type="date" name="deadlineOrder" required>
                             </div>
 
-                           
+
                         </div>
                     </div>
 
@@ -308,7 +315,7 @@
                     </div>
 
                     <input class="" id="totalasli" type="hidden" name="totalOrder">
-            
+
                     <span class="heading3">Total: <small id="total">Rp </small></span>
                     <button class="btn btn-primary btn-block w100" type="submit">Submit New Order</button>
                     </div>
@@ -345,17 +352,17 @@ function kasihtitik(objek) {
 }
 objek.value = c;
 }
- 
+
  </script>
-    
+
 <script type="text/javascript">
 
-   
+
 
     var i = 0;
-  
+
     document.getElementById("remove").style.display = "none";
-   
+
     $("#add").click(function(){
 
         i++
@@ -364,13 +371,13 @@ objek.value = c;
 
         $("#itemlist").append(
             '<div class="item_order targetfields listtrx" id="item_order[0]"><div class="form-group"><label class="col-form-label">Service</label><select class="form-control" name="paketTrx[]" id="selpost" required=""><option disabled selected>--- Pilih salah satu ---</option><option value="Beli Hosting">Beli Hosting</option><option value="Beli Domain">Beli Domain</option><option value="Web Company Profile">Web Company Profile</option><option value="Web Toko Online">Web Toko Online</option><option value="Web Company Profile">Web Artikel</option><option value="Web Rental">Web Rental</option><option value="Web Travel">Web Travel</option><option value="Redesign / Web Custom">Redesign / Web Custom</option><option value="Web Sales">Web Sales</option><option value="Web Listing">Web Listing</option><option value="Web Resto">Web Resto</option><option value="Web Dinas / Instansi">Web Dinas / Instansi</option><option value="Web Booking / Hotel">Web Booking / Hotel</option><option value="Logo">Logo</option><option value="Brosur">Brosur</option><option value="Company Profile">Company Profile</option><option value="Kartu Nama">Kartu Nama</option><option value="ID Card">ID Card</option><option value="Google Business">Google Business</option></select></div><div class="form-group" style="width: 250px;"><label class="col-form-label">Qty</label><input class="qty form-control" type="number" name="qtyTrx[]" required></div><div class="form-group"><label class="col-form-label">Harga</label><div class="form-icon"><span>Rp</span><input class="harga form-control" type="text" name="hargaTrx[]" required></div></div></div>');
-    
-    
+
+
             $(function() {
 
 $(".item_order").on('keyup change', function(e) {
  var total = 0;
- 
+
  $(".item_order").each(function() {
 
      var qty = parseInt($(this).find(".qty").val());
@@ -380,11 +387,11 @@ $(".item_order").on('keyup change', function(e) {
      if(!isNaN(subtotal))
          total+=subtotal;
 
-        
+
 
          $("#totalasli").val(total);
 
-         
+
 
  });
  var	reverse = total.toString().split('').reverse().join(''),
@@ -398,11 +405,11 @@ $(".item_order").on('keyup change', function(e) {
 
     });
 
-    
 
-    
 
-    $("#remove").click(function(){  
+
+
+    $("#remove").click(function(){
 
         if($(".item_order").length == 2){
             document.getElementById("remove").style.display = "none";
@@ -411,9 +418,9 @@ $(".item_order").on('keyup change', function(e) {
 
 
 
-    });  
+    });
 
-   
+
 
 </script>
 
@@ -423,7 +430,7 @@ $(function() {
 
 $(".item_order").on('keyup change', function(e) {
  var total = 0;
- 
+
  $(".item_order").each(function() {
 
      var qty = parseInt($(this).find(".qty").val());

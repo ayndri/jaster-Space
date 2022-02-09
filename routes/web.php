@@ -84,6 +84,7 @@ Route::group(['prefix'=>'srv'], function(){
 
 Route::get('/jweb/add', ['as' => 'jweb.add', 'uses' => 'App\Http\Controllers\JwebCtrl@add']);
 Route::post('/jweb/add', ['as' => 'jweb.tambah', 'uses' => 'App\Http\Controllers\JwebCtrl@tambah']);
+Route::post('/jweb/addmjas', ['as' => 'jweb.mjas', 'uses' => 'App\Http\Controllers\JwebCtrl@darimjas']);
 Route::get('/jweb/pending', ['as' => 'jweb.pending', 'uses' => 'App\Http\Controllers\JwebCtrl@all']);
 Route::get('/jweb/active', ['as' => 'jweb.active', 'uses' => 'App\Http\Controllers\JwebCtrl@active']);
 Route::get('/jweb/history', ['as' => 'jweb.history', 'uses' => 'App\Http\Controllers\JwebCtrl@history']);
